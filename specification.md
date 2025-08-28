@@ -116,6 +116,7 @@ This specification is designed to be implemented deterministically, with no room
   /projects.json             -> Project data
   /academic.json             -> Academic achievements data
   /experience.json           -> Work experience data
+  /siteSettings.json         -> Global site configuration and content
 /public
   /placeholders/             -> Placeholder images
   /resume.pdf                -> Downloadable resume
@@ -124,6 +125,57 @@ This specification is designed to be implemented deterministically, with no room
 ```
 
 ## Content Model Schemas
+
+### Site Settings Schema
+```json
+{
+  "owner": {
+    "name": "Shafaat Jamil Nakib",
+    "title": "Full-stack & Robotics Engineer",
+    "location": "Dhaka, Bangladesh",
+    "email": "shafaat@example.com",
+    "phone": "+1 (555) 123-4567",
+    "avatar": "/profile-photo.jpg",
+    "bio": "Brief biography for metadata and SEO purposes",
+    "motto": "// Design, Code, Innovate"
+  },
+  "social": [
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/username",
+      "icon": "Github"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/in/username",
+      "icon": "Linkedin"
+    },
+    {
+      "platform": "Twitter",
+      "url": "https://twitter.com/username",
+      "icon": "Twitter"
+    }
+  ],
+  "navigation": {
+    "headerLinks": [
+      { "name": "Home", "path": "/" },
+      { "name": "My Projects", "path": "/projects" },
+      { "name": "Academic", "path": "/academic" },
+      { "name": "About Me", "path": "/about" }
+    ]
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "mainTitle": "FULL-STACK & ROBOTICS ENGINEER",
+    "tagline": "I create digital experiences that border on efficiency, aesthetics and functionality.",
+    "contextualTags": [
+      "// Based in Dhaka, Bangladesh",
+      "// UI/UX Designer",
+      "// Full Stack Developer"
+    ]
+  }
+}
+```
 
 ### Project Schema
 ```json
@@ -205,19 +257,71 @@ This specification is designed to be implemented deterministically, with no room
 
 ### 1. Home Page (/)
 
+#### Header
+- **Structure & Layout**:
+  - **Position**: Sticky navigation bar fixed at the top of the viewport
+  - **Left Section**: 
+    - Portfolio owner's name or custom logo in SVG format
+    - Hover animation with subtle scale-up (transform: scale(1.05)) or color shift
+    - Links to homepage (/)
+  - **Center Section**:
+    - Navigation links ("Home", "My Projects", "Academic", "About Me")
+    - Each link with unique hover effect (underline expanding from center)
+    - Active page visually differentiated
+    - Uses display: flex with justify-content: center for even spacing
+  - **Right Section**:
+    - Prominent "Contact Me" button with contrasting background
+    - Rounded corners and dynamic hover effect (background color change, shadow)
+    - Links to contact page (/contact)
+    - Resume download button and theme toggle
+  - **Mobile**:
+    - Collapsible hamburger menu with smooth animation
+    - Full-width overlay navigation when expanded
+- **Styling**:
+  - Background: Dark, semi-transparent (rgba(20, 20, 20, 0.8)) with backdrop-filter: blur(10px)
+  - Typography: "Inter" font, navigation links at font-size: 1rem, font-weight: 500
+  - Transitions: Smooth transitions (0.3s ease-in-out) for all hover/active states
+  - Accessible: All interactive elements keyboard-navigable with ARIA labels
+
 #### Hero Section
-- **Position**: Above the fold
-- **Content**:
-  - **Left**: 
-    - Your name in large, bold typography
-    - Professional title/role that emphasizes both academia and development skills
-    - 1-2 sentence concise description of your expertise
-    - Two clear CTAs: "View Projects" and "Download Resume"
-  - **Right**:
-    - Placeholder for professional headshot (circular or rounded square)
-    - Subtle background element or pattern that enhances without distracting
-- **Animation**: Subtle fade-in and slight movement on page load
-- **Responsiveness**: Stacks vertically on mobile with image above text
+- **Position**: Above the fold, central focal point
+- **Structure & Layout**:
+  - **Central Content Block**:
+    - **Avatar & Greeting**:
+      - Small rounded avatar/image with subtle pulsing animation
+      - "Hello, I'm Shafaat Jamil Nakib" text with typewriter effect on load
+    - **Main Title/Profession**:
+      - Large, bold typography displaying professional identity
+      - "FULL-STACK & ROBOTICS ENGINEER" broken into multiple lines
+      - Keywords in different vibrant colors (#BD93F9 purple, #FFD700 yellow, #69F0AE green)
+      - Interactive text effect on hover (subtle color/scale/rotation shifts)
+    - **CTAs**:
+      - Primary "View Projects" button
+      - Secondary "Download Resume" button with download icon
+      - "Let's Connect" button positioned near main title
+    - **Supporting Information**:
+      - Contextual tags: "// Based in Dhaka, Bangladesh"
+      - Small product tags with colored backgrounds
+      - Role tags: "// UI/UX Designer", "Full Stack Developer"
+    - **Tagline/Value Proposition**:
+      - Concise sentence summarizing expertise and approach
+      - Key words highlighted with different color or underline
+  - **Background**:
+    - Subtle, non-distracting animation (particles, geometric shapes, or gradient)
+- **Styling**:
+  - Background: Deep, dark color (#121212 or similar dark purple/black)
+  - Typography:
+    - "Inter" font family throughout
+    - Greeting: font-size: 1.2rem, font-weight: 400, lighter color
+    - Main Title: font-size: clamp(2.5rem, 8vw, 6rem), font-weight: 800, vibrant colors
+    - Tagline: font-size: clamp(1rem, 3vw, 1.5rem), font-weight: 300, light grey
+    - Tags: font-size: 0.8rem, subtle colors, rounded backgrounds
+  - Spacing: Ample vertical and horizontal spacing for clean, uncrowded feel
+  - Responsive: Font sizes scale fluidly with viewport width using clamp() or media queries
+- **Functionality**:
+  - Dynamic text animations on load
+  - Smooth scrolling to anchor links
+  - Distinct hover and active states for buttons
 
 #### Skills Section
 - Horizontal scrollable row of skill badges (visible on all devices)
@@ -464,6 +568,28 @@ This specification is designed to be implemented deterministically, with no room
 - Active page indication
 - Smooth scroll to sections on home page
 - Mobile: hamburger menu with elegant animation
+
+### Footer
+- **Structure & Layout**:
+  - **Left Section**: 
+    - Brief motto/statement (e.g., "// Design, Code, Engage")
+    - Portfolio owner's brief summary
+  - **Center Section**:
+    - Social media links with scalable SVG icons (GitHub, LinkedIn, Twitter, etc.)
+    - Icons with subtle hover effects (color change, slight scale)
+    - Even spacing between icons
+  - **Right Section**:
+    - Contact email address with clickable mailto: link
+    - Subtle hover effect on email link
+- **Styling**:
+  - Background: Dark, consistent with the header/hero section
+  - Typography: "Inter" font, font-size: 0.9rem, light grey color
+  - Spacing: Generous padding to separate from main content
+  - Border-top: subtle divider between content and footer
+- **Functionality**:
+  - All links should be fully accessible with keyboard navigation
+  - Social icons should have appropriate aria-labels
+  - Copyright information with current year (dynamically updated)
 
 ### Project Browsing
 - Filter options that update dynamically without page reload
