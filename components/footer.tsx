@@ -2,49 +2,64 @@ import Link from "next/link"
 import { Github, Linkedin, Mail, Twitter } from "lucide-react"
 
 export function Footer() {
+  // Get current year for copyright
+  const currentYear = new Date().getFullYear()
+  
   return (
-    <footer className="border-t bg-background">
+    <footer className="border-t bg-background/90 backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h3 className="text-lg font-semibold text-foreground mb-2">Shafaat Jamil Nakib</h3>
+        <div className="grid md:grid-cols-3 gap-8 items-start">
+          {/* Left section */}
+          <div className="space-y-4">
+            <p className="text-sm font-mono text-primary/80">// Design, Code, Innovate</p>
             <p className="text-muted-foreground text-pretty">
               Full-stack & Robotics Engineer passionate about creating innovative solutions that bridge software and
-              hardware.
+              hardware. Building digital experiences that make an impact.
             </p>
           </div>
-
-          <div className="flex justify-start md:justify-end">
-            <div className="flex space-x-4">
-              <Link
-                href="#"
-                className="w-10 h-10 bg-muted hover:bg-primary hover:text-primary-foreground rounded-lg flex items-center justify-center transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </Link>
-              <Link
-                href="#"
-                className="w-10 h-10 bg-muted hover:bg-primary hover:text-primary-foreground rounded-lg flex items-center justify-center transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </Link>
-              <Link
-                href="#"
-                className="w-10 h-10 bg-muted hover:bg-primary hover:text-primary-foreground rounded-lg flex items-center justify-center transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </Link>
-              <Link
-                href="mailto:shafaat@example.com"
-                className="w-10 h-10 bg-muted hover:bg-primary hover:text-primary-foreground rounded-lg flex items-center justify-center transition-colors"
-                aria-label="Email"
-              >
-                <Mail className="h-5 w-5" />
-              </Link>
-            </div>
+          
+          {/* Center section - Social Links */}
+          <div className="flex justify-center space-x-5">
+            <Link
+              href="https://github.com/username"
+              className="w-10 h-10 bg-muted hover:bg-primary hover:text-primary-foreground rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+              aria-label="GitHub"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github className="h-5 w-5" />
+            </Link>
+            <Link
+              href="https://linkedin.com/in/username"
+              className="w-10 h-10 bg-muted hover:bg-primary hover:text-primary-foreground rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+              aria-label="LinkedIn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin className="h-5 w-5" />
+            </Link>
+            <Link
+              href="https://twitter.com/username"
+              className="w-10 h-10 bg-muted hover:bg-primary hover:text-primary-foreground rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+              aria-label="Twitter"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Twitter className="h-5 w-5" />
+            </Link>
+          </div>
+          
+          {/* Right section - Contact */}
+          <div className="flex flex-col items-start md:items-end">
+            <Link
+              href="mailto:shafaat@example.com"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300"
+            >
+              shafaat@example.com
+            </Link>
+            <p className="text-sm text-muted-foreground/70 mt-4">
+              &copy; {currentYear} Shafaat Jamil Nakib. All rights reserved.
+            </p>
           </div>
         </div>
 
