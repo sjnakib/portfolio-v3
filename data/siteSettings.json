@@ -1,0 +1,64 @@
+{
+  "owner": {
+    "name": "Shafaat Jamil Nakib",
+    "title": "Full-Stack & UI/UX Developer",
+    "location": "Dhaka, Bangladesh",
+    "email": "shafaat@example.com",
+    "phone": "+1 (555) 123-4567",
+    "avatar": "/profile-photo.jpg",
+    "bio": "Full-stack developer and UI/UX designer with expertise in designing and developing innovative digital solutions that combine technical excellence with exceptional user experience.",
+    "motto": "// Design, Code, Innovate",
+    "tagline": "Where aesthetics & functionality meet",
+    "brandDisplay": "Shafaat Jamil Nakib"
+  },
+  "social": [
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/username",
+      "icon": "Github"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/in/username",
+      "icon": "Linkedin"
+    },
+    {
+      "platform": "Twitter",
+      "url": "https://twitter.com/username",
+      "icon": "Twitter"
+    },
+    {
+      "platform": "Behance",
+      "url": "https://behance.net/username",
+      "icon": "Behance"
+    },
+    {
+      "platform": "Dribbble",
+      "url": "https://dribbble.com/username",
+      "icon": "Dribbble"
+    },
+    {
+      "platform": "Discord",
+      "url": "https://discord.com/users/username",
+      "icon": "MessageSquare"
+    }
+  ],
+  "navigation": {
+    "headerLinks": [
+      { "name": "Home", "path": "/" },
+      { "name": "Projects", "path": "/projects" },
+      { "name": "Academics", "path": "/academic" },
+      { "name": "About Me", "path": "/about" }
+    ]
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "mainTitle": "FULL-STACK & UI/UX DEVELOPER",
+    "tagline": "I create digital experiences that border on efficiency, aesthetics and functionality.",
+    "contextualTags": [
+      "// Based in Dhaka, Bangladesh",
+      "// UI/UX Designer",
+      "// Full-Stack Developer"
+    ]
+  }
+}
