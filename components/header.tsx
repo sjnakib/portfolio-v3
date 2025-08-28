@@ -26,8 +26,8 @@ export function Header() {
   const isActive = (path: string) => pathname === path
 
   return (
-    <header className={`sticky top-0 z-50 w-full backdrop-blur-[10px] transition-all duration-300 ${
-      isScrolled ? "bg-[rgba(20,20,20,0.8)] shadow-sm" : "bg-[rgba(20,20,20,0.8)]"
+    <header className={`sticky top-0 z-50 w-full backdrop-blur transition-all duration-300 ${
+      isScrolled ? "bg-background/80 shadow-sm" : "bg-background/60"
     }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
@@ -44,21 +44,23 @@ export function Header() {
             <div className="flex space-x-1">
               {[
                 { name: "Home", path: "/" },
-                { name: "Projects", path: "/projects" },
-                { name: "Academics", path: "/academic" },
+                { name: "My Projects", path: "/projects" },
+                { name: "Academic", path: "/academic" },
                 { name: "About Me", path: "/about" }
               ].map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}
-                  className={`relative px-4 py-2 mx-1 text-base font-medium transition-all duration-300
+                  className={`relative px-4 py-2 mx-1 text-sm font-medium transition-colors duration-300
                     ${isActive(link.path) 
-                      ? "text-white" 
-                      : "text-gray-300 hover:text-white"
-                    } group`}
+                      ? "text-foreground" 
+                      : "text-muted-foreground hover:text-foreground"
+                    }`}
                 >
-                  <span>{link.name}</span>
-                  <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary transform -translate-x-1/2 transition-all duration-300 group-hover:w-full ${isActive(link.path) ? 'w-full' : ''}`} />
+                  {link.name}
+                  {isActive(link.path) && (
+                    <span className="absolute bottom-0 left-1/2 w-1/2 h-0.5 bg-primary transform -translate-x-1/2" />
+                  )}
                 </Link>
               ))}
             </div>
@@ -66,12 +68,12 @@ export function Header() {
           
           {/* Right Section - Contact/Resume/Theme */}
           <div className="flex items-center space-x-4">
-            <Button className="rounded-md bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-300" asChild>
+            <Button className="rounded-md bg-primary text-primary-foreground hover:bg-primary/90" asChild>
               <Link href="/contact">
                 Contact Me
               </Link>
             </Button>
-            <Button variant="outline" size="icon" asChild className="hidden md:flex hover:bg-primary/10 transition-all duration-300">
+            <Button variant="outline" size="icon" asChild className="hidden md:flex">
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download Resume">
                 <Download className="h-4 w-4" />
               </a>
