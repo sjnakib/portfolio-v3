@@ -1,0 +1,103 @@
+{
+  "projects": [
+    {
+      "id": "usis-20",
+      "title": "USIS 2.0",
+      "slug": "usis-20",
+      "shortDescription": "A comprehensive university student information system with real-time data processing",
+      "fullDescription": "A comprehensive university student information system built with modern web technologies, featuring real-time data processing and intuitive user interfaces. Designed to streamline administrative tasks, enhance student experience, and provide powerful analytics for decision-making.",
+      "type": "client-website",
+      "technologies": ["React", "Next.js", "TypeScript", "MySQL"],
+      "roles": ["Full-stack Developer", "UI Designer"],
+      "features": [
+        "Implemented real-time data synchronization between client and server",
+        "Designed intuitive dashboards for students and administrators",
+        "Created automated grade calculation and reporting system"
+      ],
+      "challenges": [
+        "Overcame complex data relationships by implementing a well-structured database schema",
+        "Solved performance issues by optimizing database queries and implementing caching"
+      ],
+      "outcomes": [
+        "Reduced administrative processing time by 40%",
+        "Improved student satisfaction ratings by 35%"
+      ],
+      "images": [
+        {
+          "src": "/university-student-information-system-dashboard.png",
+          "alt": "USIS 2.0 Dashboard Interface",
+          "caption": "Main dashboard showing student information and course selection"
+        }
+      ],
+      "liveUrl": "https://usis-example.com",
+      "sourceUrl": "https://github.com/username/usis-20",
+      "date": "2023-08"
+    },
+    {
+      "id": "accounting-dashboard",
+      "title": "Accounting Dashboard",
+      "slug": "accounting-dashboard",
+      "shortDescription": "Professional financial management dashboard with advanced analytics and reporting",
+      "fullDescription": "Professional financial management dashboard with advanced analytics, reporting features, and real-time data visualization for business insights. This system integrates with major accounting platforms and provides customizable reports for businesses of all sizes.",
+      "type": "client-website",
+      "technologies": ["Node.js", "React", "Python", "MySQL"],
+      "roles": ["Backend Developer", "Data Visualization Specialist"],
+      "features": [
+        "Built dynamic reporting system with customizable parameters",
+        "Integrated with external financial APIs for real-time data",
+        "Designed interactive charts and visualizations for financial metrics"
+      ],
+      "challenges": [
+        "Ensured data accuracy across multiple integration points",
+        "Optimized performance for handling large financial datasets"
+      ],
+      "outcomes": [
+        "Increased financial decision-making efficiency by 25%",
+        "Reduced monthly closing process time by 3 business days"
+      ],
+      "images": [
+        {
+          "src": "/financial-accounting-dashboard-with-charts.png",
+          "alt": "Financial Dashboard Interface",
+          "caption": "Financial overview dashboard with interactive charts"
+        }
+      ],
+      "liveUrl": "https://accounting-example.com",
+      "sourceUrl": "https://github.com/username/accounting-dashboard",
+      "date": "2023-05"
+    },
+    {
+      "id": "robotics-control-system",
+      "title": "Robotics Control System",
+      "slug": "robotics-control-system",
+      "shortDescription": "Advanced robotics control interface using ROS for autonomous navigation",
+      "fullDescription": "Advanced robotics control interface using ROS for autonomous navigation and real-time sensor data processing in industrial environments. The system provides a user-friendly interface for monitoring and controlling robotic systems with precise movement control and safety features.",
+      "type": "personal-project",
+      "technologies": ["Python", "ROS", "TypeScript", "React"],
+      "roles": ["Robotics Engineer", "UI Developer"],
+      "features": [
+        "Developed path planning algorithms for efficient navigation",
+        "Created real-time sensor data visualization dashboard",
+        "Implemented safety protocols and collision avoidance systems"
+      ],
+      "challenges": [
+        "Integrated diverse sensor systems with varying data formats",
+        "Optimized algorithms for real-time performance on embedded systems"
+      ],
+      "outcomes": [
+        "Achieved 98.5% accuracy in autonomous navigation tasks",
+        "Reduced robot setup and programming time by 60%"
+      ],
+      "images": [
+        {
+          "src": "/robotics-control-system-interface.png",
+          "alt": "Robotics Control System Interface",
+          "caption": "Control interface showing robot status and sensor data"
+        }
+      ],
+      "liveUrl": "https://robotics-demo.example.com",
+      "sourceUrl": "https://github.com/username/robotics-control",
+      "date": "2023-02"
+    }
+  ]
+}

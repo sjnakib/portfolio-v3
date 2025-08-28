@@ -1,0 +1,50 @@
+{
+  "education": [
+    {
+      "institution": "BRAC University",
+      "degree": "BSc in Computer Science and Engineering",
+      "gpa": "3.97/4.0",
+      "location": "Dhaka, Bangladesh",
+      "startDate": "2016-01",
+      "endDate": "2020-12",
+      "highlights": [
+        "Top of class in algorithm design",
+        "Research assistant in robotics lab",
+        "Received Merit Scholarship for academic excellence",
+        "Senior project in autonomous robotics systems"
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "title": "Advanced Autonomous Navigation in Complex Industrial Environments",
+      "authors": ["Shafaat Jamil Nakib", "Dr. Jane Smith"],
+      "journal": "IEEE Robotics and Automation Letters",
+      "date": "2022-05",
+      "link": "https://doi.org/example-doi",
+      "abstract": "This paper presents a novel approach to autonomous robot navigation in dynamic industrial environments, combining traditional path planning with deep reinforcement learning for obstacle avoidance and decision-making."
+    },
+    {
+      "title": "Efficient Database Schema Design for Student Information Systems",
+      "authors": ["Shafaat Jamil Nakib", "Dr. John Doe"],
+      "journal": "International Conference on Educational Technology",
+      "date": "2021-09",
+      "link": "https://doi.org/example-doi-2",
+      "abstract": "An exploration of database architecture optimization techniques specifically designed for educational management systems, with a focus on scalability and performance."
+    }
+  ],
+  "researchProjects": [
+    {
+      "title": "Autonomous Robot Navigation System",
+      "description": "Developed algorithms for autonomous navigation in complex, dynamic environments using computer vision and machine learning techniques",
+      "technologies": ["Python", "ROS", "TensorFlow", "Computer Vision"],
+      "outcomes": ["Published research paper in IEEE Robotics and Automation Letters", "Achieved 95% navigation accuracy in cluttered environments"]
+    },
+    {
+      "title": "Educational Data Mining for Student Performance Prediction",
+      "description": "Used machine learning to analyze student performance patterns and predict academic outcomes based on historical data",
+      "technologies": ["Python", "Scikit-learn", "SQL", "Pandas"],
+      "outcomes": ["Developed model with 87% prediction accuracy", "Implemented in university advising system"]
+    }
+  ]
+}

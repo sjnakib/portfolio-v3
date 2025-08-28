@@ -21,25 +21,33 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link
-              href="#projects"
+              href="/projects"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Projects
             </Link>
             <Link
-              href="#about"
+              href="/academic"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Academic
+            </Link>
+            <Link
+              href="/about"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               About
             </Link>
             <Link
-              href="#contact"
+              href="/contact"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Contact
             </Link>
-            <Button variant="outline" size="sm">
-              Resume
+            <Button variant="outline" size="sm" asChild>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                Resume
+              </a>
             </Button>
             <ThemeToggle />
           </nav>
@@ -58,28 +66,37 @@ export function Header() {
           <div className="md:hidden border-t bg-background">
             <nav className="flex flex-col space-y-4 px-4 py-6">
               <Link
-                href="#projects"
+                href="/projects"
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Projects
               </Link>
               <Link
-                href="#about"
+                href="/academic"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Academic
+              </Link>
+              <Link
+                href="/about"
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
               </Link>
               <Link
-                href="#contact"
+                href="/contact"
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
               </Link>
-              <Button variant="outline" size="sm" className="w-fit bg-transparent">
-                Resume
+              <Button variant="outline" size="sm" className="w-fit bg-transparent" asChild>
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                  Resume
+                </a>
               </Button>
             </nav>
           </div>

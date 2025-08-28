@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -67,13 +68,25 @@ export function ProjectsSection() {
                   ))}
                 </div>
                 <div className="flex gap-2">
-                  <Button size="sm" className="flex-1">
-                    <ExternalLink className="mr-2 h-3 w-3" />
-                    Live Demo
+                  <Button size="sm" className="flex-1" asChild>
+                    <Link href={`/projects/${project.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                      View Details
+                    </Link>
                   </Button>
-                  <Button variant="outline" size="sm">
-                    <Github className="h-3 w-3" />
-                  </Button>
+                  {project.liveUrl && (
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </Button>
+                  )}
+                  {project.githubUrl && (
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <Github className="h-3 w-3" />
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </CardContent>
             </Card>
