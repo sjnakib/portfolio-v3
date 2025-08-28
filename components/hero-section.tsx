@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Download, ArrowRight, MessageSquare } from "lucide-react"
+import { staggerContainer, heroTag, heroTitle, heroButton, heroAvatar, fadeInUp, fadeIn } from "@/lib/animations"
 
 export function HeroSection() {
   const [typedText, setTypedText] = useState("")
@@ -30,7 +31,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden">
+    <motion.section className="py-20 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-transparent" />
       </div>
@@ -77,14 +78,22 @@ export function HeroSection() {
             
             {/* Supporting Information */}
             <motion.div
-              variants={staggerContainer}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.3 } }}
               className="space-y-1 text-sm text-white/70"
             >
               {["// Based in Dhaka, Bangladesh", "// UI/UX Designer", "// Full-Stack Developer"].map((tag, i) => (
                 <motion.p 
                   key={tag}
-                  variants={heroTag}
-                  custom={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ 
+                    opacity: 1, 
+                    x: 0, 
+                    transition: { 
+                      delay: 0.4 + (i * 0.1), 
+                      duration: 0.5 
+                    } 
+                  }}
                   className="font-mono relative pl-1 border-l-2 border-primary/50 hover:border-primary transition-colors duration-300 hover:bg-primary/5 rounded-sm"
                 >
                   {tag}
@@ -116,7 +125,15 @@ export function HeroSection() {
 
             {/* Skills */}
             <motion.div 
-              variants={fadeInUp}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ 
+                opacity: 1, 
+                y: 0, 
+                transition: { 
+                  duration: 0.6,
+                  delay: 0.3 
+                } 
+              }}
               className="space-y-4"
             >
               <h3 className="text-sm font-medium text-white/60 uppercase tracking-wide">
@@ -134,7 +151,13 @@ export function HeroSection() {
 
           {/* Right side - Profile Image */}
           <motion.div 
-            variants={fadeIn}
+            initial={{ opacity: 0 }}
+            animate={{ 
+              opacity: 1, 
+              transition: { 
+                duration: 0.6 
+              } 
+            }}
             className="flex justify-center lg:justify-end"
           >
             <div className="w-80 h-80 rounded-full bg-gradient-to-br from-primary/20 to-cyan-500/20 flex items-center justify-center border-4 border-white/10 relative overflow-hidden">
