@@ -275,7 +275,7 @@ This specification is designed to be implemented deterministically, with no room
     - "Contact Me" button moved inside the hamburger menu
     - Collapsible hamburger menu with smooth animation
     - Full-width overlay navigation when expanded
-    - Navigation link names are consistent with desktop view ("Home", "Projects", "Academic", "About Me", "Contact")
+    - Navigation link names are consistent with desktop view ("Home", "Projects", "Academic", "About Me")
     - Menu items have distinctive hover effect (color change, slight scaling)
     - Current/active page visually differentiated (bold font, accent color, or subtle indicator)
 - **Styling**:

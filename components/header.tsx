@@ -96,8 +96,7 @@ export function Header() {
                 { name: "Home", path: "/" },
                 { name: "Projects", path: "/projects" },
                 { name: "Academic", path: "/academic" },
-                { name: "About Me", path: "/about" },
-                { name: "Contact", path: "/contact" }
+                { name: "About Me", path: "/about" }
               ].map((link) => (
                 <Link
                   key={link.path}
