@@ -9,9 +9,9 @@ import { Download, ArrowRight, MessageSquare } from "lucide-react"
 
 export function HeroSection() {
   const [typedText, setTypedText] = useState("")
-  const fullText = "Hello, I'm Shafaat Jamil Nakib"
+  const fullText = "Hello! I'm Shafaat."
   const typeSpeed = 100
-  const skills = ["React", "Next.js", "Node.js", "TypeScript", "MySQL", "Python", "Figma", "ROS"]
+  const skills = ["React", "Next.js", "Node.js", "TypeScript", "MySQL", "PostgreSQL", "Mongo", "Python", "Figma", "Linux", "Git"]
   
   // Typewriter effect
   useEffect(() => {
@@ -56,9 +56,9 @@ export function HeroSection() {
             
             <div className="space-y-4">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
-                <span className="block text-foreground transition-all hover:scale-[1.01] duration-300">FULL-STACK &</span>
-                <span className="block text-primary transition-all hover:scale-[1.01] duration-300">ROBOTICS</span>
-                <span className="block text-cyan-500 transition-all hover:scale-[1.01] duration-300">ENGINEER</span>
+                <span className="block text-foreground transition-all hover:scale-[1.05] duration-300">FULL-STACK &</span>
+                <span className="block text-orange-400 transition-all hover:scale-[1.05] duration-300">UI/UX</span>
+                <span className="block text-cyan-500 transition-all hover:scale-[1.05] duration-300">DEVELOPER</span>
               </h1>
               
               <p className="text-xl text-muted-foreground max-w-xl">
@@ -66,12 +66,6 @@ export function HeroSection() {
                 <span className="text-cyan-500"> aesthetics</span> and 
                 <span className="text-emerald-500"> functionality</span>.
               </p>
-            </div>
-            
-            <div className="space-y-1 text-sm text-muted-foreground">
-              <p className="font-mono">// Based in Dhaka, Bangladesh</p>
-              <p className="font-mono">// UI/UX Designer</p>
-              <p className="font-mono">// Full Stack Developer</p>
             </div>
 
             {/* CTAs */}

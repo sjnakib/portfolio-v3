@@ -133,8 +133,7 @@ This specification is designed to be implemented deterministically, with no room
     "name": "Shafaat Jamil Nakib",
     "title": "Full-stack & Robotics Engineer",
     "location": "Dhaka, Bangladesh",
-    "email": "shafaat@example.com",
-    "phone": "+1 (555) 123-4567",
+    "email": "sjnakib@gmail.com",
     "avatar": "/profile-photo.jpg",
     "bio": "Brief biography for metadata and SEO purposes",
     "motto": "// Design, Code, Innovate"
@@ -142,37 +141,32 @@ This specification is designed to be implemented deterministically, with no room
   "social": [
     {
       "platform": "GitHub",
-      "url": "https://github.com/username",
+      "url": "https://github.com/sjnakib",
       "icon": "Github"
     },
     {
       "platform": "LinkedIn",
-      "url": "https://linkedin.com/in/username",
+      "url": "https://linkedin.com/in/sjnakib",
       "icon": "Linkedin"
     },
     {
-      "platform": "Twitter",
-      "url": "https://twitter.com/username",
-      "icon": "Twitter"
+      "platform": "X",
+      "url": "https://x.com/username",
+      "icon": "X"
     }
   ],
   "navigation": {
     "headerLinks": [
       { "name": "Home", "path": "/" },
-      { "name": "My Projects", "path": "/projects" },
+      { "name": "Projects", "path": "/projects" },
       { "name": "Academic", "path": "/academic" },
       { "name": "About Me", "path": "/about" }
     ]
   },
   "hero": {
-    "greeting": "Hello, I'm",
-    "mainTitle": "FULL-STACK & ROBOTICS ENGINEER",
+    "greeting": "Hi!, I'm",
+    "mainTitle": "FULL-STACK & UI/UX DEVELOPER",
     "tagline": "I create digital experiences that border on efficiency, aesthetics and functionality.",
-    "contextualTags": [
-      "// Based in Dhaka, Bangladesh",
-      "// UI/UX Designer",
-      "// Full Stack Developer"
-    ]
   }
 }
 ```
@@ -575,7 +569,7 @@ This specification is designed to be implemented deterministically, with no room
     - Brief motto/statement (e.g., "// Design, Code, Engage")
     - Portfolio owner's brief summary
   - **Center Section**:
-    - Social media links with scalable SVG icons (GitHub, LinkedIn, Twitter, etc.)
+    - Social media links with scalable SVG icons (GitHub, LinkedIn, X, etc.)
     - Icons with subtle hover effects (color change, slight scale)
     - Even spacing between icons
   - **Right Section**:
@@ -637,7 +631,7 @@ This specification is designed to be implemented deterministically, with no room
 - Proper heading hierarchy (h1, h2, etc.)
 - Structured data for personal information
 - Sitemap.xml and robots.txt
-- Open Graph and Twitter card meta tags
+- Open Graph and X card meta tags
 - Canonical URLs
 
 ### Responsive Design

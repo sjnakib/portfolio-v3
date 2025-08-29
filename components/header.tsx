@@ -44,7 +44,7 @@ export function Header() {
             <div className="flex space-x-1">
               {[
                 { name: "Home", path: "/" },
-                { name: "My Projects", path: "/projects" },
+                { name: "Projects", path: "/projects" },
                 { name: "Academic", path: "/academic" },
                 { name: "About Me", path: "/about" }
               ].map((link) => (
