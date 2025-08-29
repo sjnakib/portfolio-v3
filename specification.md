@@ -558,12 +558,24 @@ This specification is designed to be implemented deterministically, with no room
 ## UI & Design System
 
 ### Colors
-- **Primary**: #0f172a (deep navy) - For key elements and emphasis
-- **Secondary**: #6366f1 (indigo) - For accents and interactive elements
+- **Primary**: 
+  - Light mode: #0f172a (deep navy) - For key elements and emphasis
+  - Dark mode: #5CCFA9 (teal-green) - For key elements and emphasis in dark mode
+- **Secondary**: 
+  - Light mode: #6366f1 (indigo) - For accents and interactive elements
+  - Dark mode: #1E2224 - For secondary elements in dark mode
 - **Neutral**: 
   - Light mode: #f8fafc (near white) to #64748b (slate)
-  - Dark mode: #0f172a (deep navy) to #cbd5e1 (light slate)
-- **Accent**: #06b6d4 (cyan) - For highlights and call-to-action elements
+  - Dark mode: #0E100F (rich dark) to #C9CDCF (light slate)
+- **Background**:
+  - Light mode: #FFFFFF (white)
+  - Dark mode: #0E100F (rich dark) - Custom dark background that's gentler than pure black
+- **Card/Surface**:
+  - Light mode: #F8FAFC (light gray)
+  - Dark mode: #14171A (slightly lighter than background)
+- **Accent**: 
+  - Light mode: #06b6d4 (cyan) - For highlights and call-to-action elements
+  - Dark mode: #5CCFA9 (teal-green) - Harmonizes with the dark background
 - **Success**: #10b981 (emerald) - For success states
 - **Warning**: #f59e0b (amber) - For warnings
 - **Error**: #ef4444 (red) - For errors

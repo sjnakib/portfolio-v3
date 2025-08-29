@@ -42,39 +42,39 @@
 }
 
 .dark {
-  /* Updated dark mode colors to maintain professional appearance */
-  --background: oklch(0.08 0.01 240); /* Very dark navy background */
+  /* Custom dark mode colors using #0E100F as the base background */
+  --background: #0E100F; /* Custom dark background (#0E100F) */
   --foreground: oklch(0.98 0 0); /* Near white text */
-  --card: oklch(0.12 0.01 240); /* Dark navy card background */
-  --card-foreground: oklch(0.95 0 0); /* Light text on cards */
-  --popover: oklch(0.12 0.01 240); /* Dark navy popover */
+  --card: #14171A; /* Slightly lighter than background for cards */
+  --card-foreground: oklch(0.96 0 0); /* Light text on cards */
+  --popover: #14171A; /* Matching card background for popovers */
   --popover-foreground: oklch(0.98 0 0); /* Light popover text */
-  --primary: oklch(0.98 0 0); /* Light primary in dark mode */
-  --primary-foreground: oklch(0.15 0.02 240); /* Dark text on light primary */
-  --secondary: oklch(0.2 0.01 240); /* Lighter navy secondary */
+  --primary: oklch(0.72 0.18 145); /* Teal-green primary that complements dark background */
+  --primary-foreground: oklch(0.08 0.01 140); /* Dark text on primary */
+  --secondary: #1E2224; /* Lighter secondary background */
   --secondary-foreground: oklch(0.98 0 0); /* Light text on secondary */
-  --muted: oklch(0.15 0.01 240); /* Muted dark navy */
-  --muted-foreground: oklch(0.7 0 0); /* Medium gray muted text */
-  --accent: oklch(0.6 0.15 240); /* Brighter sky blue accent for dark mode */
-  --accent-foreground: oklch(1 0 0); /* White text on accent */
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.2 0.01 240); /* Dark border */
-  --input: oklch(0.15 0.01 240); /* Dark input background */
-  --ring: oklch(0.6 0.15 240 / 0.5); /* Bright sky blue focus ring */
-  --chart-1: oklch(0.6 0.15 240);
-  --chart-2: oklch(0.7 0.1 180);
-  --chart-3: oklch(0.65 0.15 140);
-  --chart-4: oklch(0.6 0.2 20);
-  --chart-5: oklch(0.7 0.15 80);
-  --sidebar: oklch(0.1 0.01 240);
-  --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.6 0.15 240);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.2 0.01 240);
-  --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.2 0.01 240);
-  --sidebar-ring: oklch(0.6 0.15 240 / 0.5);
+  --muted: #191D1F; /* Muted background slightly lighter than base */
+  --muted-foreground: oklch(0.75 0 0); /* Medium gray muted text */
+  --accent: oklch(0.65 0.15 145); /* Accent color in teal-green family */
+  --accent-foreground: oklch(0.1 0.01 140); /* Dark text on accent */
+  --destructive: oklch(0.65 0.18 25); /* Warm red destructive */
+  --destructive-foreground: oklch(0.98 0 0); /* Light text on destructive */
+  --border: #1E2224; /* Dark border matching secondary */
+  --input: #14171A; /* Dark input background matching card */
+  --ring: oklch(0.72 0.18 145 / 0.5); /* Primary color for focus ring */
+  --chart-1: oklch(0.72 0.18 145); /* Primary teal-green */
+  --chart-2: oklch(0.65 0.15 180); /* Blue-teal */
+  --chart-3: oklch(0.68 0.15 110); /* Green */
+  --chart-4: oklch(0.65 0.18 30); /* Amber */
+  --chart-5: oklch(0.62 0.18 60); /* Orange */
+  --sidebar: #0E100F; /* Match the background color */
+  --sidebar-foreground: oklch(0.98 0 0); /* Light text on sidebar */
+  --sidebar-primary: oklch(0.72 0.18 145); /* Match primary color */
+  --sidebar-primary-foreground: oklch(0.08 0.01 140); /* Dark text on primary */
+  --sidebar-accent: #1E2224; /* Match secondary color */
+  --sidebar-accent-foreground: oklch(0.98 0 0); /* Light text on accent */
+  --sidebar-border: #1E2224; /* Match border color */
+  --sidebar-ring: oklch(0.72 0.18 145 / 0.5); /* Match ring color */
 }
 
 @theme inline {
