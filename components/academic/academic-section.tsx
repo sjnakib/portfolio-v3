@@ -26,7 +26,7 @@ export function AcademicSection() {
                     <p className="font-medium">
                       {new Date(edu.startDate).getFullYear()} - {new Date(edu.endDate).getFullYear()}
                     </p>
-                    <p className="text-primary font-medium mt-1">GPA: {edu.gpa}</p>
+                    <p className="text-primary font-medium mt-1">CGPA: {edu.gpa}</p>
                   </div>
                 </div>
               </CardHeader>

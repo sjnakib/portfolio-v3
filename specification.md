@@ -216,7 +216,7 @@ This specification is designed to be implemented deterministically, with no room
     {
       "institution": "BRAC University",
       "degree": "BSc in Computer Science and Engineering",
-      "gpa": "3.97/4.0",
+      "gpa": "3.97/4.0", // Displayed as "CGPA" in the UI
       "location": "Dhaka, Bangladesh",
       "startDate": "2016-01",
       "endDate": "2020-12",

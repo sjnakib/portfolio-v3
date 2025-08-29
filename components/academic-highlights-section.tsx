@@ -36,7 +36,7 @@ export function AcademicHighlightsSection() {
                   <div className="space-y-2">
                     <div className="flex justify-between items-center">
                       <p className="font-medium">{edu.institution}</p>
-                      <p className="text-primary font-medium">GPA: {edu.gpa}</p>
+                      <p className="text-primary font-medium">CGPA: {edu.gpa}</p>
                     </div>
                     <p className="text-sm text-muted-foreground">
                       {new Date(edu.startDate).getFullYear()} - {new Date(edu.endDate).getFullYear()}
