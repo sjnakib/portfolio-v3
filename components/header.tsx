@@ -31,10 +31,17 @@ export function Header() {
     }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Left Section - Logo/Name */}
+          {/* Mobile Menu Button - Moved to leftmost */}
+          <div className="md:hidden">
+            <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          </div>
+
+          {/* Left Section - Logo/Name (hidden on mobile) */}
           <Link 
             href="/" 
-            className="relative px-4 py-2 border-2 border-primary rounded-[50px] group hover:scale-105 transition-all duration-300"
+            className="relative hidden md:block px-4 py-2 border-2 border-primary rounded-[50px] group hover:scale-105 transition-all duration-300"
           >
             <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
               sjnakib
@@ -77,19 +84,30 @@ export function Header() {
               </Link>
             </Button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex items-center space-x-2 md:hidden">
-            <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
-          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden border-t bg-background">
             <nav className="flex flex-col space-y-4 px-4 py-6">
+              {/* Site Logo in Mobile Menu */}
+              <Link 
+                href="/" 
+                className="relative px-4 py-2 border-2 border-primary rounded-[50px] group w-fit mb-4 hover:scale-105 transition-all duration-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                  sjnakib
+                </span>
+              </Link>
+              
+              <Link
+                href="/"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </Link>
               <Link
                 href="/projects"
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
@@ -109,7 +127,7 @@ export function Header() {
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                About
+                About Me
               </Link>
               <Link
                 href="/contact"

@@ -260,7 +260,7 @@ This specification is designed to be implemented deterministically, with no room
     - Stadium shape uses border-radius with elongated sides for distinctive appearance
     - Links to homepage (/)
   - **Center Section**:
-    - Navigation links ("Home", "My Projects", "Academic", "About Me")
+    - Navigation links ("Home", "Projects", "Academic", "About Me")
     - Each link with unique hover effect (underline expanding from center)
     - Active page visually differentiated
     - Uses display: flex with justify-content: center for even spacing
@@ -270,8 +270,11 @@ This specification is designed to be implemented deterministically, with no room
     - Rounded corners and dynamic hover effect (background color change, shadow)
     - Links to contact page (/contact)
   - **Mobile**:
+    - Hamburger menu positioned at leftmost side of header
+    - Site logo "sjnakib" displayed inside mobile menu
     - Collapsible hamburger menu with smooth animation
     - Full-width overlay navigation when expanded
+    - Navigation link names are consistent with desktop view ("Home", "Projects", "Academic", "About Me", "Contact")
 - **Styling**:
   - Background: Dark, semi-transparent (rgba(20, 20, 20, 0.8)) with backdrop-filter: blur(10px)
   - Typography: "Inter" font, navigation links at font-size: 1rem, font-weight: 500
