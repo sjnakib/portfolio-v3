@@ -352,7 +352,20 @@ This specification is designed to be implemented deterministically, with no room
 - Each badge has minimal, consistent styling with optional micro-icon
 - Text size maintains standard body font size (1rem) for better readability
 
-#### Featured Projects Section
+#### Boxed Tabbed Content Section
+- Interactive boxed tab component with three categories:
+  - Projects
+  - Experience
+  - Education
+- Content is contained within a card/box with consistent borders and shadow styling
+- Tabs are positioned at the top of the box with a border separator
+- Tab switching changes content inside the box without affecting the box's size or position
+- Each tab has a distinctive icon for better visual identification
+- Animation for smooth content transitions when switching tabs
+- Consistent header styling within each tab content
+- Mobile-responsive design that maintains the boxed appearance
+
+##### Projects Tab
 - Grid of 3-4 featured projects (your best work)
 - Each card includes:
   - Project image placeholder (16:9 ratio)
@@ -360,10 +373,19 @@ This specification is designed to be implemented deterministically, with no room
   - Short description (1-2 lines max)
   - Technologies used (as small badges)
   - "View Details" link/button
-- Filter tabs above grid: All, Web Development, UI/UX, Academic
 - Subtle hover effects on cards with elevation change
 
-#### Academic Highlights Section
+##### Experience Tab
+- List of professional experiences in reverse chronological order
+- Each experience card includes:
+  - Job title and company name
+  - Employment dates
+  - Location
+  - Key responsibilities
+  - Technologies used
+- Card design with consistent styling across tabs
+
+##### Education Tab
 - Visual timeline of key academic achievements
 - BRAC University degree with GPA highlight
 - Any significant research or publications summarized (1-2 max)
