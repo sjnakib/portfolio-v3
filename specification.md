@@ -22,7 +22,7 @@ This specification is designed to be implemented deterministically, with no room
 - **Styling**: 
   - Tailwind CSS with shadcn/ui components for consistent design language
   - CSS variables for tokens and theme customization
-  - Support for both light and dark modes with smooth transitions
+  - Support for both light and dark modes with smooth transitions (dark mode as default)
 
 ### UI/UX Components
 - **Animations**: CSS animations for polished, performant transitions and micro-interactions
