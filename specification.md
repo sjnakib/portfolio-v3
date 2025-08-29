@@ -276,6 +276,8 @@ This specification is designed to be implemented deterministically, with no room
     - Collapsible hamburger menu with smooth animation
     - Full-width overlay navigation when expanded
     - Navigation link names are consistent with desktop view ("Home", "Projects", "Academic", "About Me", "Contact")
+    - Menu items have distinctive hover effect (color change, slight scaling)
+    - Current/active page visually differentiated (bold font, accent color, or subtle indicator)
 - **Styling**:
   - Background: Dark, semi-transparent (rgba(20, 20, 20, 0.8)) with backdrop-filter: blur(10px)
   - Typography: "Inter" font, navigation links at font-size: 1rem, font-weight: 500

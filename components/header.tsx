@@ -92,41 +92,26 @@ export function Header() {
         {isMenuOpen && (
           <div className="md:hidden border-t bg-background">
             <nav className="flex flex-col space-y-4 px-4 py-6">
-              <Link
-                href="/"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                href="/projects"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Projects
-              </Link>
-              <Link
-                href="/academic"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Academic
-              </Link>
-              <Link
-                href="/about"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About Me
-              </Link>
-              <Link
-                href="/contact"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </Link>
+              {[
+                { name: "Home", path: "/" },
+                { name: "Projects", path: "/projects" },
+                { name: "Academic", path: "/academic" },
+                { name: "About Me", path: "/about" },
+                { name: "Contact", path: "/contact" }
+              ].map((link) => (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  className={`px-3 py-2 text-sm font-medium rounded-md transition-all duration-300
+                    ${isActive(link.path)
+                      ? "text-foreground font-bold bg-primary/10 border-l-4 border-primary pl-2" 
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:scale-105"
+                    }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
               
               {/* Contact Me button added to mobile menu */}
               <div className="pt-4 mt-2 border-t">
