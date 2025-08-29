@@ -1,15 +1,10 @@
-"use client"
-
 import Link from 'next/link'
-import Image from 'next/image'
-import { motion } from 'framer-motion'
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Card, CardContent } from "@/components/ui/card"
 import { ExternalLink, Github, Calendar, User, Tag, CheckCircle, XCircle, TrendingUp } from "lucide-react"
 import type { Project } from "@/types/project"
-import { fadeIn, fadeInUp, staggerContainer, staggerItems } from "@/lib/animations"
 
 interface ProjectDetailProps {
   project: Project

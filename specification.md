@@ -2,10 +2,10 @@
 
 ## Overview and Goals
 
-This document provides a comprehensive technical specification for building a stunning, beautiful, and simple portfolio website with world-class UX and UI design using Next.js. The primary goal is to create a fast, accessible, modern portfolio that gives a hiring manager an immediate — within 10–20 seconds — clear sense of your professional background, technical skill level, the types of work you do, and provides an easy path to your resume and contact information.
+This document provides a comprehensive technical specification for building a stunning, beautiful, and simple portfolio website with world-class UX and UI design using Next.js. The primary goal is to create a fast, accessible, modern portfolio that gives a hiring manager an immediate — within 10–20 seconds — clear sense of your academic background, technical skill level, the types of work you do, and provides an easy path to your resume and contact information.
 
 The portfolio should:
-1. Showcase professional work (websites for clients and UI/UX designs)
+1. Showcase both academic achievements and practical work (websites for clients and UI/UX mockups)
 2. Present information in a clear, concise manner optimized for the 10-20 second scanning behavior of recruiters
 3. Feature excellent aesthetics with responsive design and exceptional UX
 4. Balance creativity with usability, avoiding overwhelming or overly complicated features
@@ -57,7 +57,7 @@ This specification is designed to be implemented deterministically, with no room
 ### Content Management
 - **Data Storage**: JSON files in /data directory
   - projects.json for all project information
-  - education.json for educational background
+  - academic.json for educational achievements and publications
   - experience.json for work experience
 - **Resume**: PDF with machine-readable JSON version for ATS compatibility
 
@@ -70,8 +70,8 @@ This specification is designed to be implemented deterministically, with no room
   /projects/
     /page.tsx                -> Project gallery with filter options
     /[slug]/page.tsx         -> Detailed project view
-  /designs/
-    /page.tsx                -> UI/UX design portfolio and case studies
+  /academic/
+    /page.tsx                -> Academic achievements, research, publications
   /about/
     /page.tsx                -> Personal background, skills, education
   /contact/
@@ -87,50 +87,34 @@ This specification is designed to be implemented deterministically, with no room
     /hero-section.tsx        -> Above-the-fold introduction
     /about-section.tsx       -> Brief about section for homepage
     /projects-section.tsx    -> Featured projects showcase
-    /designs-section.tsx     -> UI/UX design highlights
+    /academic-section.tsx    -> Academic highlights
     /contact-section.tsx     -> Quick contact form or links
   /layout/
     /header.tsx              -> Site header with navigation
-    /footer/
-      /footer.tsx            -> Main footer component
-      /footer-column.tsx     -> Reusable footer column component
-      /footer-nav.tsx        -> Footer navigation links
-      /footer-social.tsx     -> Social media links section
-      /footer-cta.tsx        -> Call-to-action buttons section
-      /footer-branding.tsx   -> Large branding statement component
+    /footer.tsx              -> Site footer with links
   /projects/
     /project-card.tsx        -> Individual project card
     /project-detail.tsx      -> Project details component
     /project-gallery.tsx     -> Project grid layout
-  /designs/
-    /design-card.tsx         -> Design project card
-    /case-study-item.tsx     -> Case study component
+  /academic/
+    /publication-card.tsx    -> Publication listing
+    /research-item.tsx       -> Research project item
   /theme/
     /theme-provider.tsx      -> Context provider for theme
     /theme-toggle.tsx        -> Light/dark mode toggle
 /lib
   /utils.ts                  -> Utility functions
   /constants.ts              -> Site constants
-  /animations/
-    /index.ts                -> Main animation exports
-    /fade.ts                 -> Fade animation variants
-    /slide.ts                -> Slide animation variants
-    /scale.ts                -> Scale animation variants
-    /stagger.ts              -> Stagger helpers for sequenced animations
-    /scroll.ts               -> Scroll-triggered animation utilities
-    /hero.ts                 -> Hero section specific animations
+  /animations.ts             -> Animation variants for Framer Motion
   /hooks/
     /use-intersection.ts     -> Custom hooks for viewport animations
-    /use-animation-sequence.ts -> Hook for sequencing multiple animations
-    /use-parallax.ts         -> Hook for parallax effects on scroll
     /use-theme.ts            -> Theme hook
-    /use-reduced-motion.ts   -> Hook for respecting reduced motion preferences
 /styles
   /globals.css               -> Global styles
   /themes.css                -> Theme variables and tokens
 /data
   /projects.json             -> Project data
-  /education.json            -> Educational background data
+  /academic.json             -> Academic achievements data
   /experience.json           -> Work experience data
   /siteSettings.json         -> Global site configuration and content
 /public
@@ -147,15 +131,13 @@ This specification is designed to be implemented deterministically, with no room
 {
   "owner": {
     "name": "Shafaat Jamil Nakib",
-    "title": "Full-Stack & UI/UX Developer",
+    "title": "Full-stack & Robotics Engineer",
     "location": "Dhaka, Bangladesh",
     "email": "shafaat@example.com",
     "phone": "+1 (555) 123-4567",
     "avatar": "/profile-photo.jpg",
     "bio": "Brief biography for metadata and SEO purposes",
-    "motto": "// Design, Code, Innovate",
-    "tagline": "Where aesthetics & functionality meet",
-    "brandDisplay": "Shafaat Jamil Nakib"
+    "motto": "// Design, Code, Innovate"
   },
   "social": [
     {
@@ -172,39 +154,24 @@ This specification is designed to be implemented deterministically, with no room
       "platform": "Twitter",
       "url": "https://twitter.com/username",
       "icon": "Twitter"
-    },
-    {
-      "platform": "Behance",
-      "url": "https://behance.net/username",
-      "icon": "Behance"
-    },
-    {
-      "platform": "Dribbble",
-      "url": "https://dribbble.com/username",
-      "icon": "Dribbble"
-    },
-    {
-      "platform": "Discord",
-      "url": "https://discord.com/users/username",
-      "icon": "MessageSquare"
     }
   ],
   "navigation": {
     "headerLinks": [
       { "name": "Home", "path": "/" },
-      { "name": "Projects", "path": "/projects" },
-      { "name": "Academics", "path": "/academic" },
+      { "name": "My Projects", "path": "/projects" },
+      { "name": "Academic", "path": "/academic" },
       { "name": "About Me", "path": "/about" }
     ]
   },
   "hero": {
     "greeting": "Hello, I'm",
-    "mainTitle": "FULL-STACK & UI/UX DEVELOPER",
+    "mainTitle": "FULL-STACK & ROBOTICS ENGINEER",
     "tagline": "I create digital experiences that border on efficiency, aesthetics and functionality.",
     "contextualTags": [
       "// Based in Dhaka, Bangladesh",
       "// UI/UX Designer",
-      "// Full-Stack Developer"
+      "// Full Stack Developer"
     ]
   }
 }
@@ -248,7 +215,7 @@ This specification is designed to be implemented deterministically, with no room
 }
 ```
 
-### Education Schema
+### Academic Schema
 ```json
 {
   "education": [
@@ -260,32 +227,27 @@ This specification is designed to be implemented deterministically, with no room
       "startDate": "2016-01",
       "endDate": "2020-12",
       "highlights": [
-        "Web development specialization",
-        "UI/UX design projects"
+        "Top of class in algorithm design",
+        "Research assistant in robotics lab"
       ]
     }
   ],
-  "courses": [
+  "publications": [
     {
-      "title": "Advanced UI/UX Design",
-      "provider": "Course Provider",
+      "title": "Publication Title",
+      "authors": ["Shafaat Jamil Nakib", "Co-author Name"],
+      "journal": "Journal or Conference Name",
       "date": "2022-05",
-      "credential": "https://credential-link...",
-      "description": "Brief description of the course"
+      "link": "https://doi.org/...",
+      "abstract": "Brief abstract of the publication"
     }
   ],
-  "skills": [
+  "researchProjects": [
     {
-      "category": "Frontend",
-      "items": ["React", "Next.js", "TypeScript", "Tailwind CSS"]
-    },
-    {
-      "category": "Design",
-      "items": ["Figma", "User Research", "Wireframing", "Prototyping"]
-    },
-    {
-      "category": "Backend",
-      "items": ["Node.js", "Express", "MongoDB", "PostgreSQL"]
+      "title": "Research Project Title",
+      "description": "Brief description of the research project",
+      "technologies": ["Python", "ROS", "etc"],
+      "outcomes": ["Research outcome or impact"]
     }
   ]
 }
@@ -303,7 +265,7 @@ This specification is designed to be implemented deterministically, with no room
     - Hover animation with subtle scale-up (transform: scale(1.05)) or color shift
     - Links to homepage (/)
   - **Center Section**:
-    - Navigation links ("Home", "Projects", "Academics", "About Me")
+    - Navigation links ("Home", "My Projects", "Academic", "About Me")
     - Each link with unique hover effect (underline expanding from center)
     - Active page visually differentiated
     - Uses display: flex with justify-content: center for even spacing
@@ -322,179 +284,48 @@ This specification is designed to be implemented deterministically, with no room
   - Accessible: All interactive elements keyboard-navigable with ARIA labels
 
 #### Hero Section
-- **Position**: Commanding above-the-fold presence with depth layers creating an immersive digital landscape
+- **Position**: Above the fold, central focal point
 - **Structure & Layout**:
   - **Central Content Block**:
     - **Avatar & Greeting**:
-      - Dynamic avatar with breathing animation effect and subtle 3D rotation that follows cursor movement
-      - Pulsating energy aura radiating from avatar in primary brand colors with variable intensity
-      - "Hello, I'm Shafaat Jamil Nakib" text revealed through high-fidelity typewriter effect with:
-        - Variable typing rhythm (faster in middle, slower at beginning/end) for natural feel
-        - Optional subtle keyboard sound effects on character appearance
-        - Cursor that blinks with realistic timing (750ms cycle)
-      - Avatar enters with cinematic reveal combining scale transformation, rotation and shadow effects (0.8s with elastic easing)
+      - Small rounded avatar/image with subtle pulsing animation
+      - "Hello, I'm Shafaat Jamil Nakib" text with typewriter effect on load
     - **Main Title/Profession**:
-      - Dramatic typographic statement with exaggerated scale and weight contrasts
-      - "FULL-STACK & UI/UX DEVELOPER" presented as layered 3D text with depth perception:
-        - "FULL-STACK" in electric blue-to-purple gradient (#4361EE to #9D4EDD) with metallic sheen
-        - "&" in accent gold with reflective texture effect (#FFD700 with subtle highlight)
-        - "UI/UX" in vibrant sunset gradient (#FF4E50 to #F9D423) that shifts with scroll
-        - "DEVELOPER" in deep teal-to-green gradient (#0F3443 to #34E89E) with subtle glow
-      - Each word magnetically responds to cursor proximity:
-        - Letters subtly rotate to track cursor position (max 3° rotation)
-        - Highlight effect that follows cursor across text surface
-        - Subtle distortion field that pulls nearby elements
-      - Theatrical entrance sequence with each line dramatically revealing:
-        - First line slides in from left with slight rotation and settles with bounce
-        - Second line reveals from invisible to visible with glitch transition
-        - Final line rises from bottom with momentum overshoot
+      - Large, bold typography displaying professional identity
+      - "FULL-STACK & ROBOTICS ENGINEER" broken into multiple lines
+      - Keywords in different vibrant colors (#BD93F9 purple, #FFD700 yellow, #69F0AE green)
+      - Interactive text effect on hover (subtle color/scale/rotation shifts)
     - **CTAs**:
-      - Primary "View Projects" button with:
-        - Dynamic gradient background that animates on hover (shifts hue and saturation)
-        - Energetic floating animation combining y-axis movement with subtle rotation
-        - Arrow icon that extends and pulses when hovered (elastic animation)
-        - Tactile click effect with ripple animation and momentary color flash
-      - Secondary "Download Resume" button with:
-        - Animated border that circulates around the button perimeter (3s cycle)
-        - Download icon that transforms from cloud to downward arrow on hover
-        - Scale transformation and elevation change creating physical presence
-        - Progress animation on click showing download initiation
-      - "Let's Connect" button with:
-        - Hypnotic glow effect with breathing animation (4s cycle)
-        - Micro-particle burst effect on hover emanating from center
-        - Message icon with subtle notification ping animation
-        - Interactive shadow that extends in direction of hover
-      - Choreographed entrance for all buttons with:
-        - Staggered timing creating visual rhythm (0.2s between each)
-        - Different entrance directions for visual interest
-        - Momentum physics with slight bounce at end of animation
+      - Primary "View Projects" button
+      - Secondary "Download Resume" button with download icon
+      - "Let's Connect" button positioned near main title
     - **Supporting Information**:
-      - Contextual tags with dynamic entrance effects:
-        - Background expands from central point with content fade-in
-        - Periodic shimmer effect that sweeps across tags (30s cycle)
-        - Border glow that intensifies on hover or focus
-      - Role tags with interactive features:
-        - Tags expand on hover revealing additional context/skills
-        - Custom tooltip with relevant skill icons on extended hover
-        - Subtle color shift animation cycling through brand palette
-      - Tags orchestrated to appear in sequence:
-        - Wave-like motion pattern creating visual rhythm
-        - Progressive delay pattern (0.1s, 0.2s, 0.4s, etc.)
-        - Brief attention-drawing pulse as each completes its entrance
+      - Contextual tags: "// Based in Dhaka, Bangladesh"
+      - Small product tags with colored backgrounds
+      - Role tags: "// UI/UX Designer", "Full Stack Developer"
     - **Tagline/Value Proposition**:
-      - Dynamic statement with theatrical text reveal:
-        - Words appear with dramatic mask effect (wipe from bottom)
-        - Key terms highlighted with animated underline that draws itself
-        - Color accents that pulse subtly after appearing
-        - Words magnify when cursor approaches (scale: 1.05)
-        - Custom hover effects for each highlighted term relating to meaning:
-          - "efficiency" with speed lines animation
-          - "aesthetics" with color bloom effect
-          - "functionality" with mechanical micro-animation
-
+      - Concise sentence summarizing expertise and approach
+      - Key words highlighted with different color or underline
   - **Background**:
-    - Multi-dimensional digital environment:
-      - Base gradient with subtle animated flow (very slow movement, 60s cycle)
-      - Advanced particle system with physics behavior:
-        - Particles gravitate toward cursor with realistic momentum
-        - Density increases near interactive elements
-        - Color shifts based on section focus and cursor position
-      - Abstract geometric shapes that:
-        - Float with simulated physics (subtle rotation and drift)
-        - React to scroll and mouse movement with parallax effect
-        - Occasionally pulse or glow creating visual rhythm
-      - Subtle grid system or topographic lines:
-        - Distorts slightly based on cursor position (warping effect)
-        - Fades in/out based on scroll position
-        - Creates perception of infinite space and depth
+    - Subtle, non-distracting animation (particles, geometric shapes, or gradient)
 - **Styling**:
-  - Background: Rich, dimensional dark environment (#0F172A with multi-layered overlay elements)
-    - Gradient undertones that shift imperceptibly (60s full cycle)
-    - Atmospheric fog/haze effect creating depth perception
-    - Occasional light flares or particle bursts at key interactions
+  - Background: Deep, dark color (#121212 or similar dark purple/black)
   - Typography:
-    - "Inter" font family with dramatic weight variations (200 to 900)
-    - Custom letter-spacing and kerning for perfect visual rhythm
-    - Greeting: font-size: 1.2rem, font-weight: 400, with subtle gradient and text-shadow
-    - Main Title: font-size: clamp(3rem, 10vw, 7rem), ultra-bold (900), with layered text effects:
-      - Inner text with gradient fill
-      - Subtle outline (0.5px) in complementary color
-      - Drop shadow with variable blur based on theme
-    - Tagline: font-size: clamp(1.2rem, 4vw, 1.8rem), light (300), with animated highlights
-    - Tags: font-size: 0.85rem, with custom padding and animated borders
-  - Lighting Effects:
-    - Simulated directional lighting that influences shadows and highlights
-    - Ambient glow around key interactive elements (variable intensity based on importance)
-    - Dynamic shadows that respond to scroll position (light source appears to move)
-    - Occasional light ray effects that sweep across sections
-  - Spacing: Deliberate use of negative space creating dramatic composition:
-    - Golden ratio relationships between elements
-    - Asymmetric balance creating visual interest
-    - Dynamic spacing that adjusts with viewport size
-  - Material Design Elements:
-    - Subtle texture overlays creating material feel (paper, metal, glass)
-    - Depth layers with appropriate shadow effects
-    - Micro-interactions that respect physical world behaviors
-    - Reflective surfaces on key elements (subtle specular highlights)
-- **Animation System**:
-  - Advanced orchestration framework:
-    - Narrative-driven sequence telling visual story
-    - Perfect timing relationships between elements (golden ratio timing)
-    - Animation paths that complement the visual composition
-    - Energy transfer between elements (one element's exit energy feeds into next element's entrance)
-  - High-fidelity motion design:
-    - Custom easing curves tailored for each animation type:
-      - Text reveals: cubic-bezier(0.25, 1, 0.5, 1) for smooth, controlled motion
-      - Button entrances: cubic-bezier(0.18, 1.25, 0.4, 1) with slight overshoot
-      - Background elements: cubic-bezier(0.1, 0.7, 0.6, 0.9) for organic flow
-    - Variable speed profiles with acceleration/deceleration
-    - Micro-delays creating sense of physical weight and momentum
-    - Animation state persistence between visits (remembers exploration state)
-  - Physics-based interaction system:
-    - Elements respond to cursor with realistic physics
-    - Spring animations for natural movement and bounciness
-    - Inertia effects when elements start or stop moving
-    - Gravity and magnetic attraction between cursor and interactive elements
-  - Visual harmony techniques:
-    - Coordinated color transitions across multiple elements
-    - Rhythmic animation patterns creating visual music
-    - Balanced motion across the composition (no visual imbalance)
-    - Breathing animation cycles (subtle scale/opacity changes)
-  - Optimization and accessibility:
-    - Hardware-accelerated animations using compositor-only properties
-    - Animation batching preventing layout thrashing
-    - Dynamically adjusted complexity based on device performance
-    - Elegant fallbacks for reduced-motion preferences
-    - Frame rate monitoring with complexity throttling
+    - "Inter" font family throughout
+    - Greeting: font-size: 1.2rem, font-weight: 400, lighter color
+    - Main Title: font-size: clamp(2.5rem, 8vw, 6rem), font-weight: 800, vibrant colors
+    - Tagline: font-size: clamp(1rem, 3vw, 1.5rem), font-weight: 300, light grey
+    - Tags: font-size: 0.8rem, subtle colors, rounded backgrounds
+  - Spacing: Ample vertical and horizontal spacing for clean, uncrowded feel
+  - Responsive: Font sizes scale fluidly with viewport width using clamp() or media queries
 - **Functionality**:
-  - Intelligent interactive system:
-    - Context-aware elements that respond differently based on user behavior
-    - Progressive disclosure revealing deeper information as user engages
-    - Visual feedback synchronized perfectly with interaction
-    - State transitions that feel natural and expected
-  - Sophisticated hover interaction model:
-    - Proximity effects that activate before direct hover
-    - Multi-stage hover states that evolve over time
-    - Coordinated hover effects between related elements
-    - Custom cursor styles that change based on interactive context
-  - Multi-sensory feedback (all optional and preference-based):
-    - Subtle audio cues enhancing key interactions
-    - Haptic feedback for mobile devices on important actions
-    - Visual feedback tightly synchronized with other channels
-  - Advanced navigation behaviors:
-    - Predictive preloading of likely next pages
-    - Smooth routing animations preserving context
-    - Elements that transform rather than disappear when navigating
-    - History-aware animations (different when navigating forward vs. backward)
-  - Attention guidance system:
-    - Subtle visual cues directing attention to key content
-    - Animation timing that guides eye movement naturally
-    - Focus management ensuring keyboard users experience designed sequence
-    - Intelligent delay system preventing animation overload
+  - Dynamic text animations on load
+  - Smooth scrolling to anchor links
+  - Distinct hover and active states for buttons
 
 #### Skills Section
 - Horizontal scrollable row of skill badges (visible on all devices)
-- Categories: Programming Languages, Frameworks, Design Tools, Development Technologies
+- Categories: Programming Languages, Frameworks, Tools, Academic Specialties
 - Visual distinction between categories
 - Each badge has minimal, consistent styling with optional micro-icon
 
@@ -506,18 +337,18 @@ This specification is designed to be implemented deterministically, with no room
   - Short description (1-2 lines max)
   - Technologies used (as small badges)
   - "View Details" link/button
-- Filter tabs above grid: All, Web Development, UI/UX Designs, Mobile Apps
+- Filter tabs above grid: All, Web Development, UI/UX, Academic
 - Subtle hover effects on cards with elevation change
 
-#### Design Highlights Section
-- Visual gallery of key UI/UX design projects
-- Featured case studies with thumbnails
-- Design process highlights and key outcomes
-- "View All Designs" link to designs page
+#### Academic Highlights Section
+- Visual timeline of key academic achievements
+- BRAC University degree with GPA highlight
+- Any significant research or publications summarized (1-2 max)
+- "Learn More" link to academic page
 
 #### Brief About Section
 - 2-3 sentence personal introduction
-- Emphasis on professional development and design expertise
+- Emphasis on combined academic and practical expertise
 - Link to full About page
 
 #### Contact CTA
@@ -588,30 +419,30 @@ This specification is designed to be implemented deterministically, with no room
 #### Related Projects
 - 2-3 related project cards at bottom of page
 
-### 4. UI/UX Designs Page (/designs)
+### 4. Academic Page (/academic)
 
-#### Design Philosophy Section
-- Visual representation of your design approach and principles
-- Highlights of your design process and methodology
-- Key design tools and technologies used
+#### Education Section
+- Visually appealing representation of educational background
+- BRAC University with degree details
+- GPA and academic achievements
+- Relevant coursework highlights
 
-#### Case Studies Section
-- In-depth analysis of select design projects
-- Problem statements, research methods, and solutions
-- User flow diagrams and wireframes
-- Before/after comparisons where applicable
+#### Publications Section
+- Academic paper citations in standard format
+- Brief abstracts with "Read More" expansion
+- Links to papers where available
+- Co-authors and publication details
 
-#### Design Gallery
-- Grid layout of UI/UX design projects
-- Filter options by category (Web, Mobile, Dashboard, etc.)
-- Hover states showing brief descriptions
-- Thumbnails with consistent aspect ratio
+#### Research Projects
+- Research focus areas
+- Technologies and methodologies used
+- Visual representation of results or findings
+- Impact of research (if applicable)
 
-#### Skills & Design Tools
-- Visual representation of UI/UX skills
-- Software and design tools proficiency
-- Design certifications and courses
-- Design principles and methodologies
+#### Skills & Certifications
+- Academic and technical skills organized by category
+- Any relevant certifications or specialized training
+- Proficiency indicators for key skills
 
 ### 5. About Page (/about)
 
@@ -619,19 +450,19 @@ This specification is designed to be implemented deterministically, with no room
 - Professional headshot placeholder
 - Extended but concise personal bio (3-4 paragraphs)
 - Career objectives and professional philosophy
-- Balance between technical development and design skills
+- Balance between academic background and practical skills
 
 #### Skills & Expertise
 - Visual representation of skill categories:
-  - Frontend Development
-  - UI/UX Design
-  - Backend Development
+  - Programming & Development
+  - Academic & Research
+  - Tools & Technologies
   - Soft Skills
 - Proficiency indicators for each skill
 
 #### Experience Timeline
-- Visual timeline of professional development milestones
-- Brief descriptions of key roles and projects
+- Visual timeline of professional and academic milestones
+- Brief descriptions of key roles and achievements
 - Interactive elements on hover/tap
 
 #### Personal Interests
@@ -719,42 +550,16 @@ This specification is designed to be implemented deterministically, with no room
 
 ### Animations
 - **Transitions**: 
-  - Extra Fast: 100ms (micro-interactions)
-  - Fast: 150ms (hover effects)
-  - Medium: 300ms (element transitions)
-  - Slow: 500ms (emphasis transitions)
-  - Extra Slow: 800ms+ (hero animations, page transitions)
-- **Easing Functions**:
-  - Default: cubic-bezier(0.16, 1, 0.3, 1) (nice smooth feel)
-  - Entrance: cubic-bezier(0.0, 0.0, 0.2, 1.0) (ease-out, quick start, smooth end)
-  - Exit: cubic-bezier(0.4, 0.0, 1, 1) (ease-in, smooth start, quick end)
-  - Emphasis: cubic-bezier(0.18, 1.25, 0.4, 1) (slight overshoot for bounce)
+  - Fast: 150ms
+  - Medium: 300ms
+  - Slow: 500ms
+- **Easing**: cubic-bezier(0.16, 1, 0.3, 1) (nice smooth feel)
 - **Hover Effects**:
   - Scale: transform: scale(1.02)
-  - Elevation: increased shadow + subtle y-axis translation
-  - Color shift: subtle brightness increase or hue rotation
-  - Glow: box-shadow with matching element color
-  - Float: gentle continuous up/down movement (button hover state)
-- **Hero Section Specific**:
-  - Staggered entrance: Elements appear in sequence
-  - Typewriter effect: Text appears character by character
-  - Parallax: Elements move at different speeds on scroll
-  - Cursor-following: Elements subtly follow mouse position
-- **Page Transitions**: 
-  - Subtle fade between pages
-  - Optional slide transitions for related content
-  - Exit/enter animations for key elements
-- **Loading States**: 
-  - Skeleton screens instead of spinners
-  - Pulsating animation on placeholders (subtle wave effect)
-- **Scroll-Triggered Animations**:
-  - Fade-in-up for content as it enters viewport
-  - Reveal animations for images (mask transitions)
-  - Progressive disclosure of complex information
-- **Accessibility**:
-  - respects prefers-reduced-motion media query
-  - Critical information never relies solely on animation
-  - No rapidly flashing content (safe for photosensitive users)
+  - Elevation: increased shadow
+  - Color shift: subtle brightness increase
+- **Page Transitions**: Subtle fade between pages
+- **Loading States**: Skeleton screens instead of spinners
 
 ## Interaction Patterns
 
@@ -766,99 +571,25 @@ This specification is designed to be implemented deterministically, with no room
 
 ### Footer
 - **Structure & Layout**:
-  - **Multi-columnar layout** that's responsive across all device sizes with dynamic transitions between breakpoints
-  - **Top-Level Content Sections**:
-    - **Branding/Tagline Section (Column 1)**:
-      - Prominent tagline: "Where aesthetics & functionality meet"
-      - The word "meet" styled with vibrant gradient accent color (#4DD0E1 to #6366F1) for emphasis
-      - Left-aligned content with subtle left-to-right text reveal animation on page load
-      - Background elements with subtle parallax effect on scroll
-    - **"Explore" Navigation (Column 2)**:
-      - Heading: "Explore" in radiant sunset gradient (#FF9D00 to #FFD180)
-      - Vertical list of site links with staggered fade-in animations (0.3s delay between each)
-      - Hover effects that transform links with scale (1.02) and color shift to match heading gradient
-      - Custom animated underline that expands from left to right on hover (0.3s duration)
-    - **"Follow Me" Social Links (Column 3)**:
-      - Heading: "Follow Me" in cosmic purple gradient (#A793FF to #6200EA)
-      - Vertical list with animated icons for social platforms
-      - Links include: LinkedIn, Behance, Dribbble, Discord, GitHub with platform-specific brand colors
-      - Icons with float animation on hover (gentle up-down movement, 2s cycle)
-      - Glow effect on hover that matches the platform's brand color (box-shadow with 10px blur)
-    - **"Contact Me" Call to Actions (Column 4)**:
-      - "Contact Me" with animated right-pointing arrow and "Say Hello!" subtext in teal (#00BFA5)
-      - "My Projects" with animated right-pointing arrow and "Explore Projects" subtext in amber (#FFC400)
-      - Right-aligned content within column with fade-in-left entrance animation
-      - Interactive hover effects including arrow animation that extends by 5px with bounce effect
-      - Background that subtly shifts gradient on hover (0.5s transition)
-  - **Large Branding Statement**:
-    - Oversized display of portfolio owner's name or brand with 3D text effect
-    - Centered horizontally in footer with dramatic entrance animation (scale + fade)
-    - Text with subtle shimmer effect that responds to cursor movement
-    - Optional: Letter-by-letter color cycling animation on hover (rainbow gradient)
-  - **Bottom Bar**:
-    - Left content: Copyright notice with year and Privacy Policy link with glowing underline on hover
-    - Right content: Location information with subtle map icon animation
-    - Separator with animated gradient line that shifts colors every 10s
+  - **Left Section**: 
+    - Brief motto/statement (e.g., "// Design, Code, Engage")
+    - Portfolio owner's brief summary
+  - **Center Section**:
+    - Social media links with scalable SVG icons (GitHub, LinkedIn, Twitter, etc.)
+    - Icons with subtle hover effects (color change, slight scale)
+    - Even spacing between icons
+  - **Right Section**:
+    - Contact email address with clickable mailto: link
+    - Subtle hover effect on email link
 - **Styling**:
-  - **Background**: Rich dark background with subtle texture and color gradient overlay (#0A0A0A base with #1A1A2E influence)
-    - Optional: Very subtle particle system that responds to cursor movement (particles drift toward cursor)
-    - Gradient overlay that subtly shifts over time (30s full cycle)
-  - **Typography**: 
-    - Primary text: Light gray with subtle color variations (#E0E0E0 base)
-    - "Inter" font family (consistent with rest of site)
-    - Text with subtle shadow effects for depth (text-shadow: 0 1px 3px rgba(0,0,0,0.2))
-    - Varied font sizes for hierarchy:
-      - Section headings: 1.1em, bold, with custom letter-spacing
-      - Links and normal text: 1em with subtle hover transformations
-      - Subtext: 0.9em with slightly increased line height for readability
-      - Branding statement: Extremely large (8em or larger, responsive) with dramatic weight contrast
-      - Bottom bar: 0.8em with subtle transparency (0.8 opacity)
-  - **Color accents**:
-    - Vibrant gradients rather than flat colors, creating depth and visual interest
-    - "Explore" heading: Sunset gradient (#FF9D00 to #FFD180)
-    - "Follow Me" heading: Cosmic purple gradient (#A793FF to #6200EA)
-    - "Contact" heading: Ocean gradient (#0088FF to #00E5FF)
-    - "meet" in tagline: Electric blue-cyan gradient (#4DD0E1 to #00B0FF)
-    - Social icons: Platform-specific brand colors with glow effects
-  - **Spacing**: 
-    - Dynamic spacing that scales proportionally with viewport size
-    - Generous vertical padding (4rem+) to separate from main content
-    - Elegant negative space to create visual rhythm and balance
-    - Significant spacing around large branding statement with responsive adjustments
-  - **Decorative Elements**:
-    - Subtle animated dot grid background (ultra-low opacity, 0.05)
-    - Thin accent lines with gradient colors separating major sections
-    - Abstract geometric shapes in background with parallax scrolling effect
-- **Responsiveness**:
-  - **Mobile**: Columns collapse into single vertical stack with full width sections and specialized animations
-  - **Tablet**: Maintains 2 columns with reorganized content and adjusted spacing
-  - **Desktop**: Full multi-column layout with maximum visual impact and hover effects
-  - Seamless transitions between layouts with elements that reposition rather than simply stack
-- **Animation System**:
-  - **Entrance Animations**:
-    - Staggered fade-in-up for each column (0.2s delay between columns)
-    - Text elements animate in with slight delay after their containers
-    - Social icons appear with pop effect (quick scale from 0 to 1 with slight overshoot)
-  - **Hover Animations**:
-    - Links: Custom underline animation + subtle scale + color shift
-    - Buttons: Scale (1.02) + elevation change + brightness increase
-    - Social icons: Float animation + glow effect + slight rotation
-  - **Micro-interactions**:
-    - Arrow icons extend on hover with bounce effect
-    - Text links have color transition that sweeps from left to right
-    - Custom cursor style changes on interactive elements
-  - **Performance Optimizations**:
-    - GPU-accelerated animations using transform and opacity
-    - Reduced motion settings for users with vestibular disorders
-    - Efficient animation batching to prevent layout thrashing
+  - Background: Dark, consistent with the header/hero section
+  - Typography: "Inter" font, font-size: 0.9rem, light grey color
+  - Spacing: Generous padding to separate from main content
+  - Border-top: subtle divider between content and footer
 - **Functionality**:
-  - All links fully accessible with keyboard navigation and enhanced focus states
-  - Social icons with appropriate aria-labels and enhanced screen reader descriptions
-  - Privacy policy link with animated underline effect on hover and focus
-  - Copyright information dynamically updated with current year and fade transition on update
-  - Interactive hover states for all clickable elements with coordinated color themes
-  - Arrow icons animate with elastic easing on hover/focus
-  - Smooth scroll behavior when clicking navigation links
+  - All links should be fully accessible with keyboard navigation
+  - Social icons should have appropriate aria-labels
+  - Copyright information with current year (dynamically updated)
 
 ### Project Browsing
 - Filter options that update dynamically without page reload
@@ -956,7 +687,7 @@ This specification is designed to be implemented deterministically, with no room
    - Create page templates
 
 3. **Content & Data Structure**
-   - Define JSON schemas for projects, designs, and personal info
+   - Define JSON schemas for projects, academic info
    - Create placeholder content
    - Build data fetching utilities
 
@@ -964,7 +695,7 @@ This specification is designed to be implemented deterministically, with no room
    - Home page with all sections
    - Projects listing page with filtering
    - Project detail page template
-   - Designs and About pages
+   - Academic and About pages
    - Contact page with form functionality
 
 5. **Enhancements & Polish**
@@ -982,10 +713,10 @@ This specification is designed to be implemented deterministically, with no room
 
 ## Future Enhancement Possibilities
 
-- **Blog Section**: For sharing technical articles or design insights
+- **Blog Section**: For sharing technical articles or academic insights
 - **Interactive Resume**: Enhanced visual version of resume
 - **Dark/Light Mode Refinements**: Advanced theme customization
 - **Internationalization**: Multiple language support
 - **Microinteractions**: Additional polish for delightful user experience
 
-This specification provides a comprehensive blueprint for creating a stunning portfolio website that effectively communicates both design expertise and development skills. The resulting site will create immediate impact with recruiters while maintaining excellent performance and accessibility.
+This specification provides a comprehensive blueprint for creating a stunning portfolio website that effectively communicates both academic achievements and practical development skills. The resulting site will create immediate impact with recruiters while maintaining excellent performance and accessibility.

@@ -3,11 +3,9 @@
 import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Download, ArrowRight, MessageSquare } from "lucide-react"
-import { staggerContainer, heroTag, heroTitle, heroButton, heroAvatar, fadeInUp, fadeIn } from "@/lib/animations"
 
 export function HeroSection() {
   const [typedText, setTypedText] = useState("")
@@ -31,7 +29,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <motion.section className="py-20 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-transparent" />
       </div>
@@ -75,31 +73,6 @@ export function HeroSection() {
               <p className="font-mono">// UI/UX Designer</p>
               <p className="font-mono">// Full Stack Developer</p>
             </div>
-            
-            {/* Supporting Information */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.3 } }}
-              className="space-y-1 text-sm text-white/70"
-            >
-              {["// Based in Dhaka, Bangladesh", "// UI/UX Designer", "// Full-Stack Developer"].map((tag, i) => (
-                <motion.p 
-                  key={tag}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ 
-                    opacity: 1, 
-                    x: 0, 
-                    transition: { 
-                      delay: 0.4 + (i * 0.1), 
-                      duration: 0.5 
-                    } 
-                  }}
-                  className="font-mono relative pl-1 border-l-2 border-primary/50 hover:border-primary transition-colors duration-300 hover:bg-primary/5 rounded-sm"
-                >
-                  {tag}
-                </motion.p>
-              ))}
-            </motion.div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
@@ -124,19 +97,8 @@ export function HeroSection() {
             </div>
 
             {/* Skills */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ 
-                opacity: 1, 
-                y: 0, 
-                transition: { 
-                  duration: 0.6,
-                  delay: 0.3 
-                } 
-              }}
-              className="space-y-4"
-            >
-              <h3 className="text-sm font-medium text-white/60 uppercase tracking-wide">
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
                 Technologies & Skills
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -146,49 +108,24 @@ export function HeroSection() {
                   </Badge>
                 ))}
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Right side - Profile Image */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ 
-              opacity: 1, 
-              transition: { 
-                duration: 0.6 
-              } 
-            }}
-            className="flex justify-center lg:justify-end"
-          >
-            <div className="w-80 h-80 rounded-full bg-gradient-to-br from-primary/20 to-cyan-500/20 flex items-center justify-center border-4 border-white/10 relative overflow-hidden">
-              <motion.div
-                animate={{
-                  scale: [1, 1.05, 1],
-                  rotate: [0, 5, 0],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-                }}
-                className="w-full h-full absolute"
-              >
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 via-transparent to-cyan-500/30 opacity-70" />
-              </motion.div>
-              
-              <div className="text-center text-white/80 relative z-10">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center">
-                  <svg className="w-8 h-8 text-white/70" fill="currentColor" viewBox="0 0 24 24">
+          <div className="flex justify-center lg:justify-end">
+            <div className="w-80 h-80 rounded-full bg-muted flex items-center justify-center border-4 border-border">
+              <div className="text-center text-muted-foreground">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted-foreground/20 flex items-center justify-center">
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                   </svg>
                 </div>
                 <p className="text-sm font-medium">Profile Photo</p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   )
 }

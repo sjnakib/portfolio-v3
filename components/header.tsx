@@ -92,53 +92,38 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden fixed inset-0 bg-[rgba(20,20,20,0.95)] backdrop-blur-md z-50 flex flex-col justify-center">
-            <button 
-              onClick={() => setIsMenuOpen(false)}
-              className="absolute top-4 right-4 text-white p-2"
-              aria-label="Close menu"
-            >
-              <X className="h-6 w-6" />
-            </button>
-            <nav className="flex flex-col items-center space-y-6 px-4 py-6 text-center">
-              <Link
-                href="/"
-                className="text-xl font-medium text-white hover:text-primary transition-colors duration-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
+          <div className="md:hidden border-t bg-background">
+            <nav className="flex flex-col space-y-4 px-4 py-6">
               <Link
                 href="/projects"
-                className="text-xl font-medium text-white hover:text-primary transition-colors duration-300"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Projects
               </Link>
               <Link
                 href="/academic"
-                className="text-xl font-medium text-white hover:text-primary transition-colors duration-300"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Academics
+                Academic
               </Link>
               <Link
                 href="/about"
-                className="text-xl font-medium text-white hover:text-primary transition-colors duration-300"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                About Me
+                About
               </Link>
               <Link
                 href="/contact"
-                className="text-xl font-medium text-white hover:text-primary transition-colors duration-300"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
               </Link>
-              <Button variant="outline" size="lg" className="mt-4 w-fit bg-transparent border-white text-white hover:bg-white/10" asChild>
+              <Button variant="outline" size="sm" className="w-fit bg-transparent" asChild>
                 <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                  <Download className="mr-2 h-4 w-4" />
                   Resume
                 </a>
               </Button>
