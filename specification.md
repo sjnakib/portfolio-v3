@@ -290,6 +290,8 @@ This specification is designed to be implemented deterministically, with no room
     - Hamburger menu positioned at rightmost side of header with enough margin to be fully visible (min 12px from edge)
     - "Contact Me" button moved inside the hamburger menu
     - Collapsible hamburger menu with smooth animation
+    - Menu automatically closes when user clicks outside of it (improved UX with click-outside detection)
+    - Uses React refs to track both menu container and toggle button for accurate click detection
     - Full-width overlay navigation when expanded
     - Navigation link names are consistent with desktop view ("Home", "Projects", "Academic", "About Me")
     - Menu items have distinctive hover effect (color change, slight scaling)

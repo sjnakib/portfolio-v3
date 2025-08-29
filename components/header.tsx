@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -11,6 +11,8 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
+  const menuRef = useRef<HTMLDivElement>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
   
   // Detect scroll for enhanced header appearance
   useEffect(() => {
@@ -21,6 +23,26 @@ export function Header() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+  
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMenuOpen && 
+        menuRef.current && 
+        menuButtonRef.current && 
+        !menuRef.current.contains(event.target as Node) &&
+        !menuButtonRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false)
+      }
+    }
+    
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isMenuOpen])
   
   // Check if a link is active
   const isActive = (path: string) => pathname === path
@@ -84,7 +106,14 @@ export function Header() {
             </div>
             {/* Mobile Menu Button - Moved to rightmost with proper spacing */}
             <div className="md:hidden">
-              <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu" className="mr-1 h-10 w-10 flex items-center justify-center relative">
+              <Button 
+                ref={menuButtonRef}
+                variant="ghost" 
+                size="icon" 
+                onClick={() => setIsMenuOpen(!isMenuOpen)} 
+                aria-label="Toggle menu" 
+                className="mr-1 h-10 w-10 flex items-center justify-center relative"
+              >
                 <div className="transform scale-[1.8] flex items-center justify-center">
                   {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 </div>
@@ -95,7 +124,7 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden border-t bg-background">
+          <div ref={menuRef} className="md:hidden border-t bg-background">
             <nav className="flex flex-col space-y-4 px-4 py-6">
               {[
                 { name: "Home", path: "/" },
