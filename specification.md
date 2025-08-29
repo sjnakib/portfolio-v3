@@ -255,7 +255,9 @@ This specification is designed to be implemented deterministically, with no room
 - **Structure & Layout**:
   - **Position**: Sticky navigation bar fixed at the top of the viewport
   - **Left Section**: 
-    - Site domain name "sjnakib" in a stadium-shaped border as logo
+    - Site domain name "sjnakib" in a slim stadium-shaped border as logo
+    - Text uses font-medium weight (500) instead of bold for a refined, modern appearance
+    - Border is thin (1px) with semi-transparent primary color (80% opacity) for elegant appearance
     - Small solid circle in primary color preceding the text for visual interest
     - Circle perfectly aligned with the text baseline for visual harmony
     - Hover animation with subtle scale-up (transform: scale(1.05)) and color shift matching the site theme

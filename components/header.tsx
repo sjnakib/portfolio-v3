@@ -34,9 +34,9 @@ export function Header() {
           {/* Left Section - Logo/Name (visible on all devices) */}
           <Link 
             href="/" 
-            className="relative px-4 py-2 border-2 border-primary rounded-[50px] group hover:scale-105 transition-all duration-300"
+            className="relative px-4 py-[0.4rem] border border-primary/80 rounded-[50px] group hover:scale-105 transition-all duration-300"
           >
-            <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300 flex items-center">
+            <span className="text-xl font-medium text-foreground group-hover:text-primary transition-colors duration-300 flex items-center">
               <span className="inline-block w-2.5 h-2.5 bg-primary rounded-full mr-1.5 group-hover:scale-110 transition-transform duration-300 translate-y-[0.5px]"></span>
               <span className="inline-block">sjnakib</span>
             </span>
