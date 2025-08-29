@@ -327,8 +327,7 @@ This specification is designed to be implemented deterministically, with no room
 
 #### Skills Section
 - Horizontal scrollable row of skill badges (visible on all devices)
-- Categories: Programming Languages, Frameworks, Tools, Academic Specialties
-- Visual distinction between categories
+- Focused list of key technologies: React, Next.js, Node.js, TypeScript, Figma, Git, Linux
 - Each badge has minimal, consistent styling with optional micro-icon
 - Text size maintains standard body font size (1rem) for better readability
 

@@ -12,7 +12,7 @@ export function HeroSection() {
   const [typedText, setTypedText] = useState("")
   const fullText = "Hello! I'm Shafaat."
   const typeSpeed = 100
-  const skills = ["React", "Next.js", "Node.js", "TypeScript", "MySQL", "PostgreSQL", "Mongo", "Python", "Figma", "Linux", "Git"]
+  const skills = ["React", "Next.js", "Node.js", "TypeScript", "Figma", "Git", "Linux"]
   
   // Use the viewport height hook
   useViewportHeight()
