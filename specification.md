@@ -25,7 +25,7 @@ This specification is designed to be implemented deterministically, with no room
   - Support for both light and dark modes with smooth transitions
 
 ### UI/UX Components
-- **Animations**: Framer Motion for polished, performant transitions and micro-interactions
+- **Animations**: CSS animations for polished, performant transitions and micro-interactions
 - **Icons**: Lucide React icons (comprehensive, minimal set) - Use only where functionally necessary
 - **Image handling**: next/image with proper optimization, placeholders, and blur-up technique
   - All images use appropriate sizing strategies (fill/responsive) with blurDataURL placeholders

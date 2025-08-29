@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Github, Linkedin, Mail, Twitter } from "lucide-react"
+import { Github, Linkedin, Mail, X } from "lucide-react"
 
 export function Footer() {
   // Get current year for copyright
@@ -39,13 +39,13 @@ export function Footer() {
               <Linkedin className="h-5 w-5" />
             </Link>
             <Link
-              href="https://twitter.com/username"
+              href="https://x.com/username"
               className="w-10 h-10 bg-muted hover:bg-primary hover:text-primary-foreground rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-              aria-label="Twitter"
+              aria-label="X"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Twitter className="h-5 w-5" />
+              <X className="h-5 w-5" />
             </Link>
           </div>
           

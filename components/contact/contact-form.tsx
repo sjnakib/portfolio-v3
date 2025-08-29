@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react"
+import { Mail, Phone, MapPin, Send, Github, Linkedin, X } from "lucide-react"
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -144,13 +144,13 @@ export function ContactForm() {
               <Linkedin className="h-5 w-5" />
             </a>
             <a
-              href="https://twitter.com/yourusername"
+              href="https://x.com/yourusername"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-muted hover:bg-primary hover:text-primary-foreground rounded-lg flex items-center justify-center transition-colors"
-              aria-label="Twitter"
+              aria-label="X"
             >
-              <Twitter className="h-5 w-5" />
+              <X className="h-5 w-5" />
             </a>
           </div>
         </div>
