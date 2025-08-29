@@ -8,7 +8,7 @@ import { Briefcase, GraduationCap, Code } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import experienceData from "@/data/experience.json"
 
-// Experience section component
+// Experience section component with compact tiles
 function ExperienceSection() {
   const { experiences } = experienceData;
   
@@ -21,45 +21,46 @@ function ExperienceSection() {
         </p>
       </div>
       
-      <div className="space-y-8">
+      <div className="space-y-4">
         {experiences.map((exp, index) => (
-          <Card key={index} className="overflow-hidden group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-            <CardHeader className="bg-muted/50">
-              <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
-                <CardTitle className="text-xl">{exp.position}</CardTitle>
-                <div className="text-sm font-medium text-muted-foreground">
-                  {new Date(exp.startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - 
-                  {exp.endDate === "Present" ? " Present" : 
-                    new Date(exp.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
-                </div>
+          <div 
+            key={index} 
+            className="group hover:bg-muted/50 px-4 py-3 rounded-lg transition-colors border border-border/40 hover:border-border"
+          >
+            <div className="flex justify-between items-baseline mb-1">
+              <h4 className="font-bold text-lg">{exp.position}</h4>
+              <div className="text-sm text-muted-foreground">
+                {new Date(exp.startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }).replace(',', '')} - 
+                {exp.endDate === "Present" ? " Present" : 
+                  new Date(exp.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }).replace(',', '')}
               </div>
-              <div className="flex flex-wrap gap-2 items-center mt-1">
-                <span className="font-medium">{exp.company}</span>
-                <span className="text-sm text-muted-foreground">• {exp.location}</span>
-              </div>
-            </CardHeader>
-            <CardContent className="pt-6">
-              <ul className="space-y-2 list-disc list-inside text-muted-foreground">
-                {exp.responsibilities.map((resp, idx) => (
+            </div>
+            <div className="mb-2">
+              <span className="font-medium">{exp.company}</span>
+              <span className="text-sm text-muted-foreground ml-2">• {exp.location}</span>
+            </div>
+            <div className="pl-4 mb-2">
+              <ul className="space-y-1 list-disc list-outside text-sm text-muted-foreground">
+                {exp.responsibilities.slice(0, 2).map((resp, idx) => (
                   <li key={idx} className="text-pretty">{resp}</li>
                 ))}
               </ul>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {exp.technologies.slice(0, 5).map((tech) => (
-                  <span key={tech} className="bg-primary/10 text-primary px-2 py-1 rounded-md text-sm">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+            </div>
+            <div className="flex flex-wrap gap-1">
+              {exp.technologies.slice(0, 5).map((tech) => (
+                <span key={tech} className="bg-primary/10 text-primary px-1.5 py-0.5 text-xs rounded">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </div>
   )
 }
 
-// Modified ProjectsSection wrapper to remove section padding
+// Modified ProjectsSection wrapper to use compact tiles
 function ProjectsWrapper() {
   return (
     <div>
@@ -69,13 +70,13 @@ function ProjectsWrapper() {
           A showcase of my recent work in full-stack development and robotics engineering
         </p>
       </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {/* We'll access the projects directly to avoid the section padding from ProjectsSection */}
+      <div className="space-y-4">
+        {/* We'll access the projects directly in a compact format */}
         {[
           {
             title: "USIS 2.0",
             description:
-              "A comprehensive university student information system built with modern web technologies, featuring real-time data processing and intuitive user interfaces.",
+              "A comprehensive university student information system with real-time data processing.",
             image: "/university-student-information-system-dashboard.png",
             technologies: ["React", "Next.js", "TypeScript", "MySQL"],
             liveUrl: "#",
@@ -84,7 +85,7 @@ function ProjectsWrapper() {
           {
             title: "Accounting Dashboard",
             description:
-              "Professional financial management dashboard with advanced analytics, reporting features, and real-time data visualization for business insights.",
+              "Financial management dashboard with advanced analytics and data visualization.",
             image: "/financial-accounting-dashboard-with-charts.png",
             technologies: ["Node.js", "React", "Python", "MySQL"],
             liveUrl: "#",
@@ -93,42 +94,47 @@ function ProjectsWrapper() {
           {
             title: "Robotics Control System",
             description:
-              "Advanced robotics control interface using ROS for autonomous navigation and real-time sensor data processing in industrial environments.",
+              "Advanced robotics control interface using ROS for autonomous navigation.",
             image: "/robotics-control-system-interface.png",
             technologies: ["Python", "ROS", "TypeScript", "React"],
             liveUrl: "#",
             githubUrl: "#",
           },
         ].map((project, index) => (
-          <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-            <div className="aspect-video bg-muted rounded-t-lg overflow-hidden">
-              <img
-                src={project.image || "/placeholder.svg"}
-                alt={`${project.title} screenshot`}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <CardHeader>
-              <CardTitle className="text-xl">{project.title}</CardTitle>
-              <CardDescription className="text-pretty">{project.description}</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
-                  <span key={tech} className="bg-primary/10 text-primary px-2 py-1 rounded-md text-sm">
-                    {tech}
-                  </span>
-                ))}
+          <div 
+            key={index} 
+            className="group hover:bg-muted/50 px-4 py-3 rounded-lg transition-colors border border-border/40 hover:border-border"
+          >
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="sm:w-1/5 flex-shrink-0">
+                <div className="aspect-video rounded-md overflow-hidden bg-muted">
+                  <img
+                    src={project.image || "/placeholder.svg"}
+                    alt={`${project.title} screenshot`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                  />
+                </div>
               </div>
-            </CardContent>
-          </Card>
+              <div className="flex-1">
+                <h4 className="font-bold text-lg mb-1">{project.title}</h4>
+                <p className="text-sm text-muted-foreground mb-2">{project.description}</p>
+                <div className="flex flex-wrap gap-1">
+                  {project.technologies.map((tech) => (
+                    <span key={tech} className="bg-primary/10 text-primary px-1.5 py-0.5 text-xs rounded">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </div>
   )
 }
 
-// Modified AcademicSection wrapper to remove section padding
+// Modified AcademicSection wrapper with compact tiles
 function AcademicWrapper() {
   // Using academic data from the json file
   const academicData = {
@@ -167,69 +173,71 @@ function AcademicWrapper() {
         </p>
       </div>
       
-      <div className="grid md:grid-cols-2 gap-10">
-        {/* Education */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-              <GraduationCap className="h-6 w-6 text-primary" />
+      <div className="space-y-8">
+        {/* Education Section */}
+        <div>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+              <GraduationCap className="h-4 w-4 text-primary" />
             </div>
-            <h3 className="text-2xl font-semibold">Education</h3>
+            <h4 className="text-xl font-semibold">Education</h4>
           </div>
           
-          {academicData.education.map((edu, index) => (
-            <Card key={index}>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-xl">{edu.degree}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <p className="font-medium">{edu.institution}</p>
-                    <p className="text-primary font-medium">CGPA: {edu.gpa}</p>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    {new Date(edu.startDate).getFullYear()} - {new Date(edu.endDate).getFullYear()}
-                  </p>
-                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mt-2">
-                    {edu.highlights.slice(0, 2).map((highlight, idx) => (
-                      <li key={idx}>{highlight}</li>
-                    ))}
-                  </ul>
+          <div className="space-y-4">
+            {academicData.education.map((edu, index) => (
+              <div 
+                key={index}
+                className="group hover:bg-muted/50 px-4 py-3 rounded-lg transition-colors border border-border/40 hover:border-border"
+              >
+                <div className="flex justify-between items-baseline mb-1">
+                  <h4 className="font-bold text-lg">{edu.degree}</h4>
+                  <div className="text-primary font-medium text-sm">CGPA: {edu.gpa}</div>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-medium">{edu.institution}</span>
+                  <span className="text-sm text-muted-foreground">
+                    {new Date(edu.startDate).getFullYear()} - {new Date(edu.endDate).getFullYear()}
+                  </span>
+                </div>
+                <ul className="list-disc list-outside pl-4 space-y-0.5 text-sm text-muted-foreground">
+                  {edu.highlights.map((highlight, idx) => (
+                    <li key={idx}>{highlight}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
         
-        {/* Publications */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-              <Briefcase className="h-6 w-6 text-primary" />
+        {/* Publications Section */}
+        <div>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+              <Briefcase className="h-4 w-4 text-primary" />
             </div>
-            <h3 className="text-2xl font-semibold">Research & Publications</h3>
+            <h4 className="text-xl font-semibold">Research & Publications</h4>
           </div>
           
-          {academicData.publications.slice(0, 1).map((pub, index) => (
-            <Card key={index}>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-xl">{pub.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <p className="text-sm text-muted-foreground">{pub.authors.join(", ")}</p>
-                  <p className="text-sm font-medium">{pub.journal}</p>
-                  <p className="text-sm text-muted-foreground">
+          <div className="space-y-4">
+            {academicData.publications.map((pub, index) => (
+              <div 
+                key={index}
+                className="group hover:bg-muted/50 px-4 py-3 rounded-lg transition-colors border border-border/40 hover:border-border"
+              >
+                <h4 className="font-bold text-lg mb-1">{pub.title}</h4>
+                <div className="text-sm mb-1">{pub.authors.join(", ")}</div>
+                <div className="flex justify-between items-center text-sm">
+                  <span className="font-medium">{pub.journal}</span>
+                  <span className="text-muted-foreground">
                     {new Date(pub.date).toLocaleDateString('en-US', {
                       year: 'numeric',
-                      month: 'long'
+                      month: 'short'
                     })}
-                  </p>
+                  </span>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

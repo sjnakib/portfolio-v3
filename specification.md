@@ -352,7 +352,7 @@ This specification is designed to be implemented deterministically, with no room
 - Each badge has minimal, consistent styling with optional micro-icon
 - Text size maintains standard body font size (1rem) for better readability
 
-#### Boxed Tabbed Content Section
+#### Boxed Tabbed Content Section with Compact Tiles
 - Interactive boxed tab component with three categories:
   - Projects
   - Experience
@@ -365,31 +365,39 @@ This specification is designed to be implemented deterministically, with no room
 - Consistent header styling within each tab content
 - Mobile-responsive design that maintains the boxed appearance
 
-##### Projects Tab
-- Grid of 3-4 featured projects (your best work)
-- Each card includes:
-  - Project image placeholder (16:9 ratio)
-  - Project title
-  - Short description (1-2 lines max)
-  - Technologies used (as small badges)
-  - "View Details" link/button
-- Subtle hover effects on cards with elevation change
+##### Projects Tab with Compact Tiles
+- Vertical list of compact project tiles (SWE resume style)
+- Each tile includes:
+  - Small project image thumbnail (aligned to the left)
+  - Project title (bold, prominent)
+  - Concise description (1 line max)
+  - Technologies used (as small, minimalist badges)
+- Horizontal layout that maximizes information density
+- Subtle hover effects with background color change
+- Clean, lightweight border styling for visual separation
 
-##### Experience Tab
+##### Experience Tab with Compact Tiles
 - List of professional experiences in reverse chronological order
-- Each experience card includes:
-  - Job title and company name
-  - Employment dates
-  - Location
-  - Key responsibilities
-  - Technologies used
-- Card design with consistent styling across tabs
+- Each experience tile includes:
+  - Job title and timeline on the same row (justified between)
+  - Company and location on a single line
+  - 2-3 key bullet points with accomplishments (concise)
+  - Relevant technologies as small badges
+- Resume-like formatting optimized for quick scanning
+- Consistent vertical spacing between entries
 
-##### Education Tab
-- Visual timeline of key academic achievements
-- BRAC University degree with GPA highlight
-- Any significant research or publications summarized (1-2 max)
-- "Learn More" link to academic page
+##### Education Tab with Compact Tiles
+- Organized section with education and publications
+- Education tiles include:
+  - Degree and GPA on the same row (justified between)
+  - Institution and years on a single line
+  - Key achievements as bullet points
+- Publication tiles include:
+  - Paper title (prominent)
+  - Authors list
+  - Journal name and publication date
+- Section headers with small icons for visual organization
+- Consistent styling with other tabs for cohesive appearance
 
 #### Brief About Section
 - 2-3 sentence personal introduction
