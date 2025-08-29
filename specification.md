@@ -285,8 +285,8 @@ This specification is designed to be implemented deterministically, with no room
 - **Position**: Above the fold, central focal point
 - **Structure & Layout**:
   - **Central Content Block**:
-    - **Avatar & Greeting**:
-      - Small rounded avatar/image with subtle pulsing animation
+    - **Avatar & Greeting** (Avatar hidden on mobile):
+      - Small rounded avatar/image with subtle pulsing animation (hidden on mobile)
       - "Hello, I'm Shafaat Jamil Nakib" text with typewriter effect on load
     - **Main Title/Profession**:
       - Large, bold typography displaying professional identity

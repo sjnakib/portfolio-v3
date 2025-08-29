@@ -39,7 +39,7 @@ export function HeroSection() {
           {/* Left side - Content */}
           <div className="space-y-8">
             <div className="flex items-center space-x-3">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-primary animate-pulse-slow">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-primary animate-pulse-slow hidden md:block">
                 <Image 
                   src="/placeholder-user.jpg" 
                   alt="Avatar" 
@@ -105,13 +105,13 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right side - Profile Image */}
-          <div className="flex justify-center lg:justify-end">
+          {/* Right side - Profile Image (hidden on mobile) */}
+          <div className="hidden md:flex justify-center lg:justify-end">
             <div className="w-80 h-80 rounded-full bg-muted flex items-center justify-center border-4 border-border">
               <div className="text-center text-muted-foreground">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted-foreground/20 flex items-center justify-center">
                   <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79 4 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                   </svg>
                 </div>
                 <p className="text-sm font-medium">Profile Photo</p>
