@@ -1,17 +1,21 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Download, ArrowRight, MessageSquare } from "lucide-react"
+import { useViewportHeight } from "@/hooks/use-viewport-height"
 
 export function HeroSection() {
   const [typedText, setTypedText] = useState("")
   const fullText = "Hello! I'm Shafaat."
   const typeSpeed = 100
   const skills = ["React", "Next.js", "Node.js", "TypeScript", "MySQL", "PostgreSQL", "Mongo", "Python", "Figma", "Linux", "Git"]
+  
+  // Use the viewport height hook
+  useViewportHeight()
   
   // Typewriter effect
   useEffect(() => {
@@ -29,7 +33,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden">
+    <section className="h-screen min-h-[calc(var(--vh,1vh)*100)] px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden flex items-center">
       <div className="absolute inset-0 z-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-transparent" />
       </div>
@@ -54,14 +58,14 @@ export function HeroSection() {
               </p>
             </div>
             
-            <div className="space-y-4">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+            <div className="space-y-3">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
                 <span className="block text-foreground transition-all hover:scale-[1.05] duration-300">FULL-STACK &</span>
                 <span className="block text-orange-400 transition-all hover:scale-[1.05] duration-300">UI/UX</span>
                 <span className="block text-cyan-500 transition-all hover:scale-[1.05] duration-300">DEVELOPER</span>
               </h1>
               
-              <p className="text-xl text-muted-foreground max-w-xl">
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-xl">
                 I create digital experiences that border on <span className="text-primary">efficiency</span>, 
                 <span className="text-cyan-500"> aesthetics</span> and 
                 <span className="text-emerald-500"> functionality</span>.
@@ -69,7 +73,7 @@ export function HeroSection() {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-wrap gap-3">
               <Button size="lg" className="group bg-primary text-primary-foreground" asChild>
                 <Link href="/projects">
                   View Projects
@@ -79,25 +83,25 @@ export function HeroSection() {
               <Button variant="outline" size="lg" asChild>
                 <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                   <Download className="mr-2 h-4 w-4" />
-                  Download Resume
+                  Resume
                 </a>
               </Button>
               <Button variant="secondary" size="lg" asChild>
                 <Link href="/contact">
                   <MessageSquare className="mr-2 h-4 w-4" />
-                  Let's Connect
+                  Connect
                 </Link>
               </Button>
             </div>
 
             {/* Skills */}
-            <div className="space-y-4">
+            <div className="space-y-2">
               <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
                 Technologies & Skills
               </h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {skills.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="text-sm px-3 py-1">
+                  <Badge key={skill} variant="secondary" className="text-xs px-2 py-0.5">
                     {skill}
                   </Badge>
                 ))}

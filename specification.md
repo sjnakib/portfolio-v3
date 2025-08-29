@@ -285,7 +285,7 @@ This specification is designed to be implemented deterministically, with no room
   - Accessible: All interactive elements keyboard-navigable with ARIA labels
 
 #### Hero Section
-- **Position**: Above the fold, central focal point
+- **Position**: Full viewport height (100vh), ensuring all content is visible without scrolling on any device
 - **Structure & Layout**:
   - **Central Content Block**:
     - **Avatar & Greeting** (Avatar hidden on mobile):
@@ -648,6 +648,7 @@ This specification is designed to be implemented deterministically, with no room
   - Tablet: 640px - 1024px
   - Desktop: > 1024px
   - Large desktop: > 1280px
+- Hero section must maintain full viewport height (100vh) across all devices with all content visible without scrolling
 - Flexible images and grid layouts
 - Touch-friendly targets (min 44px × 44px)
 - No horizontal scrolling on any screen size

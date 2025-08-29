@@ -10,12 +10,14 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main>
+      <main className="relative">
         <HeroSection />
-        <ProjectsSection />
-        <AcademicHighlightsSection />
-        <AboutSection />
-        <ContactSection />
+        <div>
+          <ProjectsSection />
+          <AcademicHighlightsSection />
+          <AboutSection />
+          <ContactSection />
+        </div>
       </main>
       <Footer />
     </div>
