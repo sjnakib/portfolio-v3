@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Download, ArrowRight, MessageSquare } from "lucide-react"
+import { FileText, ArrowRight, MessageSquare } from "lucide-react"
 import { useViewportHeight } from "@/hooks/use-viewport-height"
 import { useTypewriter } from "@/hooks/use-typewriter"
 
@@ -79,7 +79,7 @@ export function HeroSection() {
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                  <Download className="mr-2 h-4 w-4" />
+                  <FileText className="mr-2 h-4 w-4" />
                   Resume
                 </a>
               </Button>

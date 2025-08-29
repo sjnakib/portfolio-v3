@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Download, Briefcase, GraduationCap, Award } from "lucide-react"
+import { FileText, Briefcase, GraduationCap, Award } from "lucide-react"
 import experienceData from "@/data/experience.json"
 import academicData from "@/data/academic.json"
 
@@ -35,7 +35,7 @@ export function AboutDetail() {
           <div>
             <Button size="lg" asChild>
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                <Download className="mr-2 h-4 w-4" />
+                <FileText className="mr-2 h-4 w-4" />
                 Download Resume
               </a>
             </Button>

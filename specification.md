@@ -624,6 +624,24 @@ This specification is designed to be implemented deterministically, with no room
 - **Large**: 1rem/16px
 - **Full**: 9999px (for circular elements)
 
+### Button Components
+- **Variants**:
+  - Default: Primary color background with white text
+  - Destructive: Red background with white text
+  - Outline: Transparent background with thicker primary-colored border (2px), subtle scale effect on hover (1.02×), preserves text color in dark mode
+  - Secondary: Secondary color background with white text, preserves text color on hover in dark mode
+  - Ghost: Transparent background, preserves text color on hover in dark mode
+  - Link: Text only with underline on hover
+- **Sizes**:
+  - Default: h-9 with px-4 padding
+  - Small: h-8 with px-3 padding
+  - Large: h-10 with px-6 padding
+  - Icon: Square button with equal width and height
+- **Accessibility**:
+  - Focus states with visible rings
+  - Disabled states with reduced opacity
+  - Consistent hover effects that maintain contrast in both light and dark modes
+
 ### Animations
 - **Transitions**: 
   - Fast: 150ms
