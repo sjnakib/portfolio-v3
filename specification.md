@@ -181,7 +181,7 @@ This specification is designed to be implemented deterministically, with no room
       "slug": "project-title",
       "shortDescription": "Brief one-line description of the project",
       "fullDescription": "Detailed multi-paragraph description of the project",
-      "type": "client-website | personal-project | ui-mockup",
+      "type": "client-website | personal-project | ui-mockup", // Display as "Professional Work", "Personal Projects", "Design Work"
       "technologies": ["Next.js", "React", "TailwindCSS", "etc"],
       "roles": ["Full-stack Developer", "UI Designer", "etc"],
       "features": [
@@ -368,12 +368,37 @@ This specification is designed to be implemented deterministically, with no room
 - Consistent horizontal padding that prevents content from touching screen edges
 
 #### Filter System
-- Filter tabs with responsive design:
-  - Wrap gracefully on small screens or reduce font size
-  - Maintain readability on mobile (min text size 12px)
-  - Include overflow handling for many filter options
-  - Maintain touch-friendly tap targets (min 44×44px)
-  - Clear visual indication of active filter
+- Streamlined and intuitive filtering experience:
+  - Compact, single-row design that minimizes vertical space
+  - Two-level filtering system combining categories and technologies
+  - Category buttons with clear, meaningful labels (not technical jargon):
+    - "All Projects" for complete portfolio
+    - "Professional Work" instead of generic "client-website"
+    - "Personal Projects" for self-initiated work
+    - "Design Work" instead of technical "UI/UX mockups"
+  - Technology filtering with prominent, relevant tech badges:
+    - Focus on recruiters' most sought-after skills (6-8 key technologies)
+    - Visual highlighting of active filters through button/badge styling
+    - No redundant active filters display – selected state is clear from highlighting
+  - Single "Reset" button that appears only when filters are active:
+    - Positioned at the right end of the filter bar
+    - Provides quick way to clear all selections at once
+  - Consistent text size matching the rest of the site
+  - Responsive design across all devices:
+    - Standard text size (16px) for better readability
+    - Touch-friendly tap targets (min 44×44px)
+    - Flexible wrapping on smaller screens
+    - Divider between category and technology sections
+
+#### Content Strategy for Recruiters
+- Optimize for quick evaluation (10-20 second scan):
+  - Present technology skills prominently for immediate identification
+  - Use meaningful labels that resonate with non-technical reviewers
+  - Prioritize clear categorization over technical accuracy
+  - Enable efficient filtering based on job requirements
+  - Provide visual feedback through clear highlighting of selected options
+  - Minimize cognitive load by removing redundant information
+  - Focus attention on the projects themselves rather than the filtering UI
   
 #### Project Grid
 - Fully responsive grid layout:

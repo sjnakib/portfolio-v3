@@ -5,63 +5,148 @@ import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, X } from "lucide-react"
 import projectsData from "@/data/projects.json"
+import type { Project } from "@/types/project"
+
+// Type for category filter
+type CategoryType = "all" | "client-website" | "personal-project" | "ui-mockup";
+
+// Type assertion for the projects data
+const typedProjects = projectsData.projects as Project[]
 
 export function ProjectGallery() {
-  const [filter, setFilter] = useState("all")
+  // Extract all unique technologies from projects
+  const allTechnologies = [...new Set(
+    typedProjects.flatMap(project => project.technologies)
+  )].sort();
   
-  // Filter projects based on selected category
-  const filteredProjects = filter === "all" 
-    ? projectsData.projects 
-    : projectsData.projects.filter(project => project.type === filter)
+  // Create category map with human-readable labels
+  const categories: { value: CategoryType; label: string }[] = [
+    { value: "all", label: "All Projects" },
+    { value: "client-website", label: "Professional Work" },
+    { value: "personal-project", label: "Personal Projects" },
+    { value: "ui-mockup", label: "Design Work" }
+  ];
+  
+  type CategoryType = "all" | "client-website" | "personal-project" | "ui-mockup";
+  const [activeCategory, setActiveCategory] = useState<CategoryType>("all");
+  const [activeTechs, setActiveTechs] = useState<string[]>([]);
+  
+  // Filter projects based on selected category and technologies
+  const filteredProjects = typedProjects.filter(project => {
+    // Apply category filter
+    const categoryMatch = activeCategory === "all" || project.type === activeCategory;
+    
+    // Apply technology filter if any are selected
+    const techMatch = activeTechs.length === 0 || 
+      activeTechs.some(tech => project.technologies.includes(tech));
+    
+    return categoryMatch && techMatch;
+  });
 
+  // Handle category selection
+  const handleCategoryChange = (category: CategoryType) => {
+    setActiveCategory(category);
+  };
+
+  // Handle technology selection
+  const handleTechToggle = (tech: string) => {
+    setActiveTechs(prev => 
+      prev.includes(tech) 
+        ? prev.filter(t => t !== tech) 
+        : [...prev, tech]
+    );
+  };
+
+  // Clear all filters
+  const clearFilters = () => {
+    setActiveCategory("all");
+    setActiveTechs([]);
+  };
+
+  // Get top technologies to feature (limit to important/popular ones for compact display)
+  const featuredTechs = ["React", "Next.js", "TypeScript", "Node.js", "UI/UX", "Figma"];
+  
   return (
-    <div className="space-y-8">
-      <Tabs defaultValue="all" className="w-full" onValueChange={setFilter}>
-        <div className="flex justify-center mb-8 overflow-x-auto pb-2">
-          <TabsList className="flex-wrap justify-center sm:flex-nowrap">
-            <TabsTrigger value="all" className="text-xs sm:text-sm whitespace-nowrap">All Projects</TabsTrigger>
-            <TabsTrigger value="client-website" className="text-xs sm:text-sm whitespace-nowrap">Client Websites</TabsTrigger>
-            <TabsTrigger value="personal-project" className="text-xs sm:text-sm whitespace-nowrap">Personal Projects</TabsTrigger>
-            <TabsTrigger value="ui-mockup" className="text-xs sm:text-sm whitespace-nowrap">UI/UX Designs</TabsTrigger>
-          </TabsList>
+    <div>
+      <div className="mb-6">
+        {/* Compact filter bar */}
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap gap-1.5 mr-2">
+              {categories.map((category) => (
+                <Button 
+                  key={category.value}
+                  variant={activeCategory === category.value ? "default" : "outline"} 
+                  size="sm"
+                  onClick={() => handleCategoryChange(category.value)}
+                  className={`rounded-full text-sm h-8 px-3 ${activeCategory === category.value ? "" : "bg-transparent border-muted-foreground/30"}`}
+                >
+                  {category.label}
+                </Button>
+              ))}
+            </div>
+            
+            <div className="h-4 border-r border-border hidden sm:block"></div>
+            
+            <div className="flex flex-wrap gap-1.5 items-center">
+              <span className="text-sm text-muted-foreground hidden sm:inline">Tech:</span>
+              {featuredTechs.map((tech) => (
+                <Badge 
+                  key={tech}
+                  variant={activeTechs.includes(tech) ? "default" : "outline"} 
+                  className={`cursor-pointer text-sm py-1 ${activeTechs.includes(tech) ? "bg-primary" : "bg-transparent border-muted-foreground/30"}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleTechToggle(tech);
+                  }}
+                >
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+          </div>
+          
+          {/* Reset filter button - only shown when filters are active */}
+          {(activeCategory !== "all" || activeTechs.length > 0) && (
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={clearFilters} 
+              className="text-sm h-8 ml-auto"
+            >
+              Reset
+            </Button>
+          )}
         </div>
-        
-        <TabsContent value="all" className="mt-0">
-          <ProjectGrid projects={filteredProjects} />
-        </TabsContent>
-        <TabsContent value="client-website" className="mt-0">
-          <ProjectGrid projects={filteredProjects} />
-        </TabsContent>
-        <TabsContent value="personal-project" className="mt-0">
-          <ProjectGrid projects={filteredProjects} />
-        </TabsContent>
-        <TabsContent value="ui-mockup" className="mt-0">
-          <ProjectGrid projects={filteredProjects} />
-        </TabsContent>
-      </Tabs>
+      </div>
+      
+      {/* Project Grid */}
+      <ProjectGrid projects={filteredProjects} />
     </div>
   )
 }
 
-function ProjectGrid({ projects }) {
+function ProjectGrid({ projects }: { projects: Project[] }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       {projects.map((project) => (
         <ProjectCard key={project.id} project={project} />
       ))}
       {projects.length === 0 && (
-        <div className="col-span-full py-12 text-center">
-          <p className="text-muted-foreground">No projects found in this category.</p>
+        <div className="col-span-full py-10 text-center bg-muted/20 rounded-lg border border-border/30">
+          <p className="text-muted-foreground">No projects match the selected filters</p>
+          <Button variant="link" size="sm" className="mt-2" onClick={() => window.scrollTo(0, 0)}>
+            Adjust filters
+          </Button>
         </div>
       )}
     </div>
   )
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project }: { project: Project }) {
   return (
     <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
       <div className="aspect-video bg-muted rounded-t-lg overflow-hidden">
