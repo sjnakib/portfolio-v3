@@ -317,7 +317,8 @@ This specification is designed to be implemented deterministically, with no room
   - Background: Deep, dark color (#121212 or similar dark purple/black)
   - Typography:
     - "Inter" font family throughout
-    - Greeting: font-size: 1.2rem, font-weight: 400, lighter color
+    - Greeting: font-size: 1.2rem, font-weight: 400, lighter color, monospace font (code-like) with comment syntax (//) styling
+    - Typewriter effect that mimics code writing with blinking cursor
     - Main Title: font-size: clamp(2.5rem, 8vw, 6rem), font-weight: 800, vibrant colors
     - Location: font-size: 1rem (standard body text size), font-weight: 400, light grey, with location pin icon
     - Tags: font-size: 1rem (standard body text size), subtle colors, rounded backgrounds
@@ -601,6 +602,10 @@ This specification is designed to be implemented deterministically, with no room
   - Color shift: subtle brightness increase
 - **Page Transitions**: Subtle fade between pages
 - **Loading States**: Skeleton screens instead of spinners
+- **Typewriter Effects**:
+  - Code-like typing effect for greeting with syntax highlighting
+  - Customized cursor blink animation
+  - Random pauses to mimic human typing pattern
 
 ## Interaction Patterns
 

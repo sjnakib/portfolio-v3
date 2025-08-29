@@ -13,14 +13,27 @@
   animation: pulse-slow 3s ease-in-out infinite;
 }
 
-@keyframes typewriter {
+@keyframes cursor-blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: cursor-blink 1s infinite;
+}
+
+@keyframes code-typing {
   from { width: 0 }
   to { width: 100% }
 }
 
-.typewriter {
+.code-typing {
   overflow: hidden;
-  display: inline-block;
+  border-right: 2px solid currentColor;
   white-space: nowrap;
-  animation: typewriter 2s steps(40, end);
+  display: inline-block;
+  animation: 
+    code-typing 2s steps(40, end),
+    cursor-blink 0.75s step-end infinite;
 }

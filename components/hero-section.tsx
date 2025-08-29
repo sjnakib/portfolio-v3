@@ -7,30 +7,20 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Download, ArrowRight, MessageSquare } from "lucide-react"
 import { useViewportHeight } from "@/hooks/use-viewport-height"
+import { useTypewriter } from "@/hooks/use-typewriter"
 
 export function HeroSection() {
-  const [typedText, setTypedText] = useState("")
-  const fullText = "Hello! I'm Shafaat."
-  const typeSpeed = 100
   const skills = ["React", "Next.js", "Node.js", "TypeScript", "Figma", "Git", "Linux"]
   
   // Use the viewport height hook
   useViewportHeight()
   
-  // Typewriter effect
-  useEffect(() => {
-    let currentIndex = 0
-    const interval = setInterval(() => {
-      if (currentIndex <= fullText.length) {
-        setTypedText(fullText.substring(0, currentIndex))
-        currentIndex++
-      } else {
-        clearInterval(interval)
-      }
-    }, typeSpeed)
-    
-    return () => clearInterval(interval)
-  }, [])
+  // Typewriter effect that looks like writing code
+  const { displayText, isTyping } = useTypewriter({
+    text: "Hello! I'm Shafaat.",
+    speed: 80,
+    codeLike: true
+  })
 
   return (
     <section className="h-screen min-h-[calc(var(--vh,1vh)*100)] px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden flex items-center">
@@ -53,9 +43,11 @@ export function HeroSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent" />
               </div>
-              <p className="text-lg text-muted-foreground font-light">
-                {typedText}<span className="animate-pulse">|</span>
-              </p>
+              <div className="text-lg text-muted-foreground font-light font-mono">
+                <span className="text-green-400">// </span>
+                <span>{displayText}</span>
+                <span className={`${isTyping ? 'animate-pulse' : 'animate-pulse'}`}>|</span>
+              </div>
             </div>
             
             <div className="space-y-3">
