@@ -270,11 +270,23 @@ This specification is designed to be implemented deterministically, with no room
     - Uses display: flex with justify-content: center for even spacing
   - **Right Section**:
     - Theme toggle for switching between light and dark modes
+    - Theme toggle features visually enlarged icons using CSS transform scale (1.8x) for dramatic size increase
+    - Icons wrapped in scaled container div to overcome SVG rendering limitations
+    - Base icon size of 20px (h-5 w-5) scaled to appear approximately 36px
+    - Multi-level flexbox centering to ensure perfect icon alignment and position
+    - Precise positioning of the sun/moon icons within their container using absolute positioning
     - Prominent "Contact Me" button as rightmost element with contrasting background
     - Rounded corners and dynamic hover effect (background color change, shadow)
     - Links to contact page (/contact)
   - **Mobile**:
     - Site logo "sjnakib" with decorative circle positioned at leftmost side of header with appropriate padding
+    - Hamburger menu uses the same CSS transform scaling (1.8x) for visual consistency
+    - Icon scaling approach ensures cross-browser compatibility and proper rendering
+    - Theme toggle and hamburger menu icons visually enlarged to the same degree for perfect balance
+    - Both buttons maintain reasonable 40px × 40px footprints while containing visually enlarged icons
+    - Additional wrapper divs with flex centering to ensure proper alignment in the header
+    - CSS transform technique provides cleaner scaling than manipulating SVG dimensions directly
+    - Icons centered precisely within multiple nested flex containers for perfect alignment
     - Hamburger menu positioned at rightmost side of header with enough margin to be fully visible (min 12px from edge)
     - "Contact Me" button moved inside the hamburger menu
     - Collapsible hamburger menu with smooth animation

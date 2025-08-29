@@ -71,7 +71,9 @@ export function Header() {
           
           {/* Right Section - Theme/Contact (desktop) or Hamburger (mobile) */}
           <div className="flex items-center space-x-4">
-            <ThemeToggle />
+            <div className="flex items-center justify-center">
+              <ThemeToggle />
+            </div>
             {/* Contact Me button - only visible on desktop */}
             <div className="hidden md:block">
               <Button className="rounded-md bg-primary text-primary-foreground hover:bg-primary/90" asChild>
@@ -82,8 +84,10 @@ export function Header() {
             </div>
             {/* Mobile Menu Button - Moved to rightmost with proper spacing */}
             <div className="md:hidden">
-              <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu" className="mr-1">
-                {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu" className="mr-1 h-10 w-10 flex items-center justify-center relative">
+                <div className="transform scale-[1.8] flex items-center justify-center">
+                  {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                </div>
               </Button>
             </div>
           </div>
