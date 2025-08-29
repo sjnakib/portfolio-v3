@@ -255,8 +255,9 @@ This specification is designed to be implemented deterministically, with no room
 - **Structure & Layout**:
   - **Position**: Sticky navigation bar fixed at the top of the viewport
   - **Left Section**: 
-    - Portfolio owner's name or custom logo in SVG format
-    - Hover animation with subtle scale-up (transform: scale(1.05)) or color shift
+    - Site domain name "sjnakib" in a stadium-shaped border as logo
+    - Hover animation with subtle scale-up (transform: scale(1.05)) and color shift matching the site theme
+    - Stadium shape uses border-radius with elongated sides for distinctive appearance
     - Links to homepage (/)
   - **Center Section**:
     - Navigation links ("Home", "My Projects", "Academic", "About Me")
@@ -264,10 +265,10 @@ This specification is designed to be implemented deterministically, with no room
     - Active page visually differentiated
     - Uses display: flex with justify-content: center for even spacing
   - **Right Section**:
-    - Prominent "Contact Me" button with contrasting background
+    - Theme toggle for switching between light and dark modes
+    - Prominent "Contact Me" button as rightmost element with contrasting background
     - Rounded corners and dynamic hover effect (background color change, shadow)
     - Links to contact page (/contact)
-    - Resume download button and theme toggle
   - **Mobile**:
     - Collapsible hamburger menu with smooth animation
     - Full-width overlay navigation when expanded

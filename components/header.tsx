@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Menu, X, Download } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -34,9 +34,11 @@ export function Header() {
           {/* Left Section - Logo/Name */}
           <Link 
             href="/" 
-            className="text-xl font-bold text-foreground hover:scale-105 transition-all duration-300"
+            className="relative px-4 py-2 border-2 border-primary rounded-[50px] group hover:scale-105 transition-all duration-300"
           >
-            Shafaat Jamil Nakib
+            <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+              sjnakib
+            </span>
           </Link>
 
           {/* Center Section - Navigation */}
@@ -66,24 +68,18 @@ export function Header() {
             </div>
           </nav>
           
-          {/* Right Section - Contact/Resume/Theme */}
+          {/* Right Section - Theme/Contact */}
           <div className="flex items-center space-x-4">
+            <ThemeToggle />
             <Button className="rounded-md bg-primary text-primary-foreground hover:bg-primary/90" asChild>
               <Link href="/contact">
                 Contact Me
               </Link>
             </Button>
-            <Button variant="outline" size="icon" asChild className="hidden md:flex">
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download Resume">
-                <Download className="h-4 w-4" />
-              </a>
-            </Button>
-            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center space-x-2 md:hidden">
-            <ThemeToggle />
             <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -122,11 +118,6 @@ export function Header() {
               >
                 Contact
               </Link>
-              <Button variant="outline" size="sm" className="w-fit bg-transparent" asChild>
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                  Resume
-                </a>
-              </Button>
             </nav>
           </div>
         )}
