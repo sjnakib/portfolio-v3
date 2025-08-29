@@ -270,8 +270,9 @@ This specification is designed to be implemented deterministically, with no room
     - Rounded corners and dynamic hover effect (background color change, shadow)
     - Links to contact page (/contact)
   - **Mobile**:
-    - Hamburger menu positioned at leftmost side of header
-    - Site logo "sjnakib" displayed inside mobile menu
+    - Site logo "sjnakib" positioned at leftmost side of header
+    - Hamburger menu positioned at rightmost side of header
+    - "Contact Me" button moved inside the hamburger menu
     - Collapsible hamburger menu with smooth animation
     - Full-width overlay navigation when expanded
     - Navigation link names are consistent with desktop view ("Home", "Projects", "Academic", "About Me", "Contact")

@@ -31,24 +31,17 @@ export function Header() {
     }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Mobile Menu Button - Moved to leftmost */}
-          <div className="md:hidden">
-            <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
-          </div>
-
-          {/* Left Section - Logo/Name (hidden on mobile) */}
+          {/* Left Section - Logo/Name (visible on all devices) */}
           <Link 
             href="/" 
-            className="relative hidden md:block px-4 py-2 border-2 border-primary rounded-[50px] group hover:scale-105 transition-all duration-300"
+            className="relative px-4 py-2 border-2 border-primary rounded-[50px] group hover:scale-105 transition-all duration-300"
           >
             <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
               sjnakib
             </span>
           </Link>
 
-          {/* Center Section - Navigation */}
+          {/* Center Section - Navigation (desktop only) */}
           <nav className="hidden md:flex items-center justify-center">
             <div className="flex space-x-1">
               {[
@@ -75,14 +68,23 @@ export function Header() {
             </div>
           </nav>
           
-          {/* Right Section - Theme/Contact */}
+          {/* Right Section - Theme/Contact (desktop) or Hamburger (mobile) */}
           <div className="flex items-center space-x-4">
             <ThemeToggle />
-            <Button className="rounded-md bg-primary text-primary-foreground hover:bg-primary/90" asChild>
-              <Link href="/contact">
-                Contact Me
-              </Link>
-            </Button>
+            {/* Contact Me button - only visible on desktop */}
+            <div className="hidden md:block">
+              <Button className="rounded-md bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+                <Link href="/contact">
+                  Contact Me
+                </Link>
+              </Button>
+            </div>
+            {/* Mobile Menu Button - Moved to rightmost */}
+            <div className="md:hidden">
+              <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+                {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -90,17 +92,6 @@ export function Header() {
         {isMenuOpen && (
           <div className="md:hidden border-t bg-background">
             <nav className="flex flex-col space-y-4 px-4 py-6">
-              {/* Site Logo in Mobile Menu */}
-              <Link 
-                href="/" 
-                className="relative px-4 py-2 border-2 border-primary rounded-[50px] group w-fit mb-4 hover:scale-105 transition-all duration-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                  sjnakib
-                </span>
-              </Link>
-              
               <Link
                 href="/"
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
@@ -136,6 +127,15 @@ export function Header() {
               >
                 Contact
               </Link>
+              
+              {/* Contact Me button added to mobile menu */}
+              <div className="pt-4 mt-2 border-t">
+                <Button className="w-full rounded-md bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+                  <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
+                    Contact Me
+                  </Link>
+                </Button>
+              </div>
             </nav>
           </div>
         )}
