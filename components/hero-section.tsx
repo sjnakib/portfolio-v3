@@ -65,10 +65,12 @@ export function HeroSection() {
                 <span className="block text-cyan-500 transition-all hover:scale-[1.05] duration-300">DEVELOPER</span>
               </h1>
               
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-xl">
-                I create digital experiences that border on <span className="text-primary">efficiency</span>, 
-                <span className="text-cyan-500"> aesthetics</span> and 
-                <span className="text-emerald-500"> functionality</span>.
+              <p className="text-base text-muted-foreground flex items-center gap-2">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                Dhaka, Bangladesh
               </p>
             </div>
 

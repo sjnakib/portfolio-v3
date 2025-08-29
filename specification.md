@@ -166,7 +166,7 @@ This specification is designed to be implemented deterministically, with no room
   "hero": {
     "greeting": "Hi!, I'm",
     "mainTitle": "FULL-STACK & UI/UX DEVELOPER",
-    "tagline": "I create digital experiences that border on efficiency, aesthetics and functionality.",
+    "location": "Dhaka, Bangladesh",
   }
 }
 ```
@@ -304,9 +304,9 @@ This specification is designed to be implemented deterministically, with no room
       - Contextual tags: "// Based in Dhaka, Bangladesh"
       - Small product tags with colored backgrounds
       - Role tags: "// UI/UX Designer", "Full Stack Developer"
-    - **Tagline/Value Proposition**:
-      - Concise sentence summarizing expertise and approach
-      - Key words highlighted with different color or underline
+    - **Location Information**:
+      - Display with location pin icon
+      - Shows "Dhaka, Bangladesh" to indicate location
   - **Background**:
     - Subtle, non-distracting animation (particles, geometric shapes, or gradient)
 - **Styling**:
@@ -315,7 +315,7 @@ This specification is designed to be implemented deterministically, with no room
     - "Inter" font family throughout
     - Greeting: font-size: 1.2rem, font-weight: 400, lighter color
     - Main Title: font-size: clamp(2.5rem, 8vw, 6rem), font-weight: 800, vibrant colors
-    - Tagline: font-size: clamp(1rem, 3vw, 1.5rem), font-weight: 300, light grey
+    - Location: font-size: 1rem (standard body text size), font-weight: 400, light grey, with location pin icon
     - Tags: font-size: 1rem (standard body text size), subtle colors, rounded backgrounds
   - Spacing: Ample vertical and horizontal spacing for clean, uncrowded feel
   - Responsive: Font sizes scale fluidly with viewport width using clamp() or media queries

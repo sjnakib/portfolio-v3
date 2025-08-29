@@ -54,9 +54,8 @@
   "hero": {
     "greeting": "Hello, I'm",
     "mainTitle": "FULL-STACK & UI/UX DEVELOPER",
-    "tagline": "I create digital experiences that border on efficiency, aesthetics and functionality.",
+    "location": "Dhaka, Bangladesh",
     "contextualTags": [
-      "// Based in Dhaka, Bangladesh",
       "// UI/UX Designer",
       "// Full-Stack Developer"
     ]
