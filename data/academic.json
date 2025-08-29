@@ -2,11 +2,11 @@
   "education": [
     {
       "institution": "BRAC University",
-      "degree": "BSc in Computer Science and Engineering",
+      "degree": "BSc in Computer Science",
       "gpa": "3.97/4.0",
       "location": "Dhaka, Bangladesh",
-      "startDate": "2016-01",
-      "endDate": "2020-12",
+      "startDate": "2022-01",
+      "endDate": "2025-12",
       "highlights": [
         "Top of class in algorithm design",
         "Research assistant in robotics lab",

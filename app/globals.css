@@ -5,40 +5,40 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color tokens to match the design brief with deep navy primary and professional color scheme */
-  --background: oklch(1 0 0); /* White background */
-  --foreground: oklch(0.15 0.02 240); /* Deep navy text */
-  --card: oklch(0.98 0 0); /* Light gray card background */
-  --card-foreground: oklch(0.35 0.01 220); /* Charcoal gray text on cards */
-  --popover: oklch(1 0 0); /* White popover background */
-  --popover-foreground: oklch(0.15 0.02 240); /* Deep navy popover text */
-  --primary: oklch(0.15 0.02 240); /* Deep navy primary */
-  --primary-foreground: oklch(1 0 0); /* White text on primary */
-  --secondary: oklch(0.35 0.01 220); /* Charcoal gray secondary */
-  --secondary-foreground: oklch(1 0 0); /* White text on secondary */
-  --muted: oklch(0.98 0 0); /* Light gray muted background */
-  --muted-foreground: oklch(0.35 0.01 220); /* Charcoal gray muted text */
-  --accent: oklch(0.55 0.15 240); /* Sky blue accent */
-  --accent-foreground: oklch(1 0 0); /* White text on accent */
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.9 0 0); /* Light border */
-  --input: oklch(1 0 0); /* White input background */
-  --ring: oklch(0.55 0.15 240 / 0.5); /* Sky blue focus ring */
-  --chart-1: oklch(0.55 0.15 240);
-  --chart-2: oklch(0.45 0.01 220);
-  --chart-3: oklch(0.5 0.15 140);
-  --chart-4: oklch(0.55 0.2 20);
-  --chart-5: oklch(0.7 0.15 80);
+  /* Soothing light mode colors with off-white background and harmonious palette */
+  --background: #F7F9FB; /* Soft off-white background - more soothing than pure white */
+  --foreground: #1A2942; /* Deep blue-gray text - softer than pure navy */
+  --card: #FFFFFF; /* Pure white card background for subtle contrast with background */
+  --card-foreground: #2D3748; /* Softer charcoal text on cards */
+  --popover: #FFFFFF; /* White popover background */
+  --popover-foreground: #1A2942; /* Matching the main foreground text */
+  --primary: #5CCFA9; /* Teal-green primary consistent with dark mode */
+  --primary-foreground: #0F2E20; /* Dark green text on primary for better contrast */
+  --secondary: #4A5568; /* Muted blue-gray secondary */
+  --secondary-foreground: #FFFFFF; /* White text on secondary */
+  --muted: #EDF2F7; /* Lighter gray muted background */
+  --muted-foreground: #4A5568; /* Muted text matching secondary */
+  --accent: #3EC99F; /* Slightly darker teal accent for better contrast in light mode */
+  --accent-foreground: #0F2E20; /* Dark green text on accent */
+  --destructive: #E53E3E; /* Softer red for destructive actions */
+  --destructive-foreground: #FFFFFF; /* White text on destructive */
+  --border: #E2E8F0; /* Subtle light border */
+  --input: #F7F9FB; /* Input matching the background */
+  --ring: #5CCFA980; /* Primary teal-green with 50% opacity for focus ring */
+  --chart-1: #5CCFA9; /* Teal-green primary for charts */
+  --chart-2: #4A5568; /* Secondary color for charts */
+  --chart-3: #3B9D82; /* Darker teal for charts */
+  --chart-4: #E9B949; /* Soft amber for charts */
+  --chart-5: #ED8936; /* Soft orange for charts */
   --radius: 0.5rem;
-  --sidebar: oklch(0.98 0 0);
-  --sidebar-foreground: oklch(0.35 0.01 220);
-  --sidebar-primary: oklch(0.15 0.02 240);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.55 0.15 240);
-  --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.9 0 0);
-  --sidebar-ring: oklch(0.55 0.15 240 / 0.5);
+  --sidebar: #F7F9FB; /* Matching main background */
+  --sidebar-foreground: #2D3748; /* Matching card foreground */
+  --sidebar-primary: #5CCFA9; /* Matching primary teal-green */
+  --sidebar-primary-foreground: #0F2E20; /* Dark green text on primary */
+  --sidebar-accent: #3EC99F; /* Matching accent */
+  --sidebar-accent-foreground: #0F2E20; /* Dark green text on accent */
+  --sidebar-border: #E2E8F0; /* Matching main border */
+  --sidebar-ring: #5CCFA980; /* Matching main ring with teal-green */
 }
 
 .dark {

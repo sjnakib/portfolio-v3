@@ -559,26 +559,31 @@ This specification is designed to be implemented deterministically, with no room
 
 ### Colors
 - **Primary**: 
-  - Light mode: #0f172a (deep navy) - For key elements and emphasis
-  - Dark mode: #5CCFA9 (teal-green) - For key elements and emphasis in dark mode
+  - Both modes: #5CCFA9 (teal-green) - For key elements and emphasis in both light and dark mode
 - **Secondary**: 
-  - Light mode: #6366f1 (indigo) - For accents and interactive elements
+  - Light mode: #4A5568 (muted blue-gray) - Softer than indigo for better readability
   - Dark mode: #1E2224 - For secondary elements in dark mode
 - **Neutral**: 
-  - Light mode: #f8fafc (near white) to #64748b (slate)
+  - Light mode: #F7F9FB (soft off-white) to #4A5568 (muted blue-gray)
   - Dark mode: #0E100F (rich dark) to #C9CDCF (light slate)
 - **Background**:
-  - Light mode: #FFFFFF (white)
+  - Light mode: #F7F9FB (soft off-white) - More soothing than pure white
   - Dark mode: #0E100F (rich dark) - Custom dark background that's gentler than pure black
 - **Card/Surface**:
-  - Light mode: #F8FAFC (light gray)
+  - Light mode: #FFFFFF (white) - Creates subtle contrast with the off-white background
   - Dark mode: #14171A (slightly lighter than background)
 - **Accent**: 
-  - Light mode: #06b6d4 (cyan) - For highlights and call-to-action elements
+  - Light mode: #3EC99F (soft teal accent) - Harmonizes with the primary teal-green
   - Dark mode: #5CCFA9 (teal-green) - Harmonizes with the dark background
-- **Success**: #10b981 (emerald) - For success states
-- **Warning**: #f59e0b (amber) - For warnings
-- **Error**: #ef4444 (red) - For errors
+- **Text**:
+  - Light mode: #1A2942 (deep blue-gray) - Softer than black for reduced eye strain
+  - Dark mode: #F7F9FB (soft off-white) - Slightly warmer than pure white
+- **Borders**:
+  - Light mode: #E2E8F0 (subtle light gray) - Gentle definition between elements
+  - Dark mode: #1E2224 (dark gray) - Subtle separation in dark mode
+- **Success**: #4DAD89 (soft green) - Easier on the eyes than bright emerald
+- **Warning**: #E9B949 (soft amber) - Gentler warning color
+- **Error**: #E53E3E (soft red) - Less harsh than bright red
 
 ### Typography
 - **Primary Font**: Inter (modern, clean sans-serif)
