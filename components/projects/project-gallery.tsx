@@ -78,12 +78,12 @@ function ProjectCard({ project }) {
       <CardContent className="space-y-4">
         <div className="flex flex-wrap gap-2">
           {project.technologies.slice(0, 4).map((tech) => (
-            <Badge key={tech} variant="outline" className="text-xs">
+            <Badge key={tech} variant="outline" className="text-base">
               {tech}
             </Badge>
           ))}
           {project.technologies.length > 4 && (
-            <Badge variant="outline" className="text-xs">
+            <Badge variant="outline" className="text-base">
               +{project.technologies.length - 4} more
             </Badge>
           )}

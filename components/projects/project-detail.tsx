@@ -28,7 +28,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
             </p>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech) => (
-                <Badge key={tech} className="bg-white/20 text-white hover:bg-white/30">
+                <Badge key={tech} className="bg-white/20 text-white hover:bg-white/30 text-base">
                   {tech}
                 </Badge>
               ))}

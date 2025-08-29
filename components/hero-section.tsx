@@ -96,12 +96,12 @@ export function HeroSection() {
 
             {/* Skills */}
             <div className="space-y-2">
-              <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
+              <h3 className="text-base font-medium text-muted-foreground uppercase tracking-wide">
                 Technologies & Skills
               </h3>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="text-xs px-2 py-0.5">
+                  <Badge key={skill} variant="secondary" className="text-base px-3 py-1">
                     {skill}
                   </Badge>
                 ))}

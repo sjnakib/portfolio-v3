@@ -62,7 +62,7 @@ export function ProjectsSection() {
               <CardContent className="space-y-4">
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="outline" className="text-xs">
+                    <Badge key={tech} variant="outline" className="text-base">
                       {tech}
                     </Badge>
                   ))}

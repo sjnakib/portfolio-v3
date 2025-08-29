@@ -99,7 +99,7 @@ function SkillCategory({ title, skills }: SkillCategoryProps) {
       <CardContent>
         <div className="flex flex-wrap gap-2">
           {skills.map((skill) => (
-            <Badge key={skill} variant="secondary">{skill}</Badge>
+            <Badge key={skill} variant="secondary" className="text-base">{skill}</Badge>
           ))}
         </div>
       </CardContent>

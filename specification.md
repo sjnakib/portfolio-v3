@@ -316,7 +316,7 @@ This specification is designed to be implemented deterministically, with no room
     - Greeting: font-size: 1.2rem, font-weight: 400, lighter color
     - Main Title: font-size: clamp(2.5rem, 8vw, 6rem), font-weight: 800, vibrant colors
     - Tagline: font-size: clamp(1rem, 3vw, 1.5rem), font-weight: 300, light grey
-    - Tags: font-size: 0.8rem, subtle colors, rounded backgrounds
+    - Tags: font-size: 1rem (standard body text size), subtle colors, rounded backgrounds
   - Spacing: Ample vertical and horizontal spacing for clean, uncrowded feel
   - Responsive: Font sizes scale fluidly with viewport width using clamp() or media queries
 - **Functionality**:
@@ -329,6 +329,7 @@ This specification is designed to be implemented deterministically, with no room
 - Categories: Programming Languages, Frameworks, Tools, Academic Specialties
 - Visual distinction between categories
 - Each badge has minimal, consistent styling with optional micro-icon
+- Text size maintains standard body font size (1rem) for better readability
 
 #### Featured Projects Section
 - Grid of 3-4 featured projects (your best work)

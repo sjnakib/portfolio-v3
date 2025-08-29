@@ -25,7 +25,7 @@ export function ResearchItem({ project }: ResearchItemProps) {
           <p className="font-medium mb-2">Technologies</p>
           <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
-              <Badge key={tech} variant="outline">{tech}</Badge>
+              <Badge key={tech} variant="outline" className="text-base">{tech}</Badge>
             ))}
           </div>
         </div>
