@@ -29,7 +29,7 @@ export function Header() {
     <header className={`fixed top-0 z-50 w-full backdrop-blur transition-all duration-300 ${
       isScrolled ? "bg-background/80 shadow-sm" : "bg-background/30"
     }`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-3 sm:container sm:mx-auto sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Left Section - Logo/Name (visible on all devices) */}
           <Link 
@@ -79,9 +79,9 @@ export function Header() {
                 </Link>
               </Button>
             </div>
-            {/* Mobile Menu Button - Moved to rightmost */}
+            {/* Mobile Menu Button - Moved to rightmost with proper spacing */}
             <div className="md:hidden">
-              <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+              <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu" className="mr-1">
                 {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
             </div>

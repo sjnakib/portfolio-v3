@@ -270,14 +270,15 @@ This specification is designed to be implemented deterministically, with no room
     - Rounded corners and dynamic hover effect (background color change, shadow)
     - Links to contact page (/contact)
   - **Mobile**:
-    - Site logo "sjnakib" positioned at leftmost side of header
-    - Hamburger menu positioned at rightmost side of header
+    - Site logo "sjnakib" positioned at leftmost side of header with appropriate padding
+    - Hamburger menu positioned at rightmost side of header with enough margin to be fully visible (min 12px from edge)
     - "Contact Me" button moved inside the hamburger menu
     - Collapsible hamburger menu with smooth animation
     - Full-width overlay navigation when expanded
     - Navigation link names are consistent with desktop view ("Home", "Projects", "Academic", "About Me")
     - Menu items have distinctive hover effect (color change, slight scaling)
     - Current/active page visually differentiated (bold font, accent color, or subtle indicator)
+    - Header should adapt to smallest screens (320px width) without UI elements being cut off
 - **Styling**:
   - Background: Dark, semi-transparent (rgba(20, 20, 20, 0.8)) with backdrop-filter: blur(10px)
   - Typography: "Inter" font, navigation links at font-size: 1rem, font-weight: 500
@@ -362,25 +363,36 @@ This specification is designed to be implemented deterministically, with no room
 
 #### Header
 - Page title with brief description
-- Filter system (tabs or dropdown):
-  - All Projects
-  - Client Websites
-  - Personal Projects
-  - UI/UX Designs
+- Appropriate text sizing that scales with viewport (smaller on mobile, larger on desktop)
+- Adequate vertical spacing (reduced on mobile)
+- Consistent horizontal padding that prevents content from touching screen edges
+
+#### Filter System
+- Filter tabs with responsive design:
+  - Wrap gracefully on small screens or reduce font size
+  - Maintain readability on mobile (min text size 12px)
+  - Include overflow handling for many filter options
+  - Maintain touch-friendly tap targets (min 44×44px)
+  - Clear visual indication of active filter
   
 #### Project Grid
-- Responsive grid layout (3 columns desktop, 2 tablet, 1 mobile)
-- Consistent card design with:
-  - Large project image (16:9)
-  - Title and short description
-  - Technologies used as badges
-  - Project type indicator
-  - "View Details" action
+- Fully responsive grid layout:
+  - 1 column on mobile (<640px)
+  - 1-2 columns on tablet (640px-1024px)
+  - 3 columns on desktop (>1024px)
+- Appropriate gap spacing that scales with screen size (smaller on mobile)
+- Even margins around grid to prevent edge collision
 
 #### Individual Project Cards
+- Mobile-optimized design:
+  - Reduced padding on mobile (16px) vs desktop (24px)
+  - Smaller font sizes on mobile with proper scaling
+  - Limited number of technology badges on mobile (3 max)
+  - Properly sized buttons for touch interaction
+  - Square icon buttons with adequate touch targets
 - Clean, minimalist design
 - Clear hierarchy of information
-- Subtle hover animations
+- Subtle hover animations (where appropriate for device)
 - Consistent image sizing and treatment
 
 ### 3. Project Detail Page (/projects/[slug])
@@ -643,16 +655,57 @@ This specification is designed to be implemented deterministically, with no room
 - Canonical URLs
 
 ### Responsive Design
-- Mobile-first approach
-- Breakpoints:
-  - Mobile: < 640px
+- Mobile-first approach (design for smallest screen first, then enhance for larger screens)
+- Comprehensive breakpoints:
+  - Small mobile: 320px - 480px (must test on iPhone SE/5)
+  - Mobile: 481px - 639px
   - Tablet: 640px - 1024px
-  - Desktop: > 1024px
+  - Desktop: 1025px - 1280px
   - Large desktop: > 1280px
-- Hero section must maintain full viewport height (100vh) across all devices with all content visible without scrolling
-- Flexible images and grid layouts
-- Touch-friendly targets (min 44px × 44px)
-- No horizontal scrolling on any screen size
+
+#### Mobile Optimization
+- Set viewport correctly: `<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">`
+- Proper touch targets:
+  - Minimum size: 44px × 44px for all interactive elements
+  - Adequate spacing between touch targets (min 8px)
+  - Prioritize larger targets for important actions
+- UI Element Visibility:
+  - No UI elements cut off at screen edges (min 12px safe zone)
+  - All interactive elements fully accessible without horizontal scrolling
+  - Avoid fixed width containers on mobile
+  - Use relative width units (%, vw) over fixed widths
+  - Use container queries where needed for component-specific responsive behavior
+  
+#### Content Adaptations
+- Typography scaling:
+  - Use fluid typography with clamp() for key text elements
+  - Small mobile: base text 14-16px
+  - Desktop: base text 16-18px
+  - Headings scale proportionally (use relative em units)
+- Content prioritization:
+  - Hide less important content on mobile
+  - Reorder content for mobile priority
+  - Use progressive disclosure for complex information
+- Component adaptations:
+  - Filter systems: vertical stack or scrollable on mobile
+  - Multi-column grids: single column on mobile
+  - Navigation: hamburger menu with adequate tap targets
+  - Forms: stacked inputs with full width on mobile
+
+#### Layout & Spacing
+- Use consistent padding that scales appropriately:
+  - Small mobile: 12px margins/padding
+  - Mobile: 16px margins/padding
+  - Tablet: 24px margins/padding  
+  - Desktop: 32px+ margins/padding
+- Flexible grid systems:
+  - Use smaller gaps on mobile (16px) vs desktop (24-32px)
+  - Adjust number of columns based on screen width
+  - Test content overflow for all screen sizes
+- Test extreme cases:
+  - Verify layout on 320px width devices
+  - Test with enlarged text (200%)
+  - Ensure keyboard navigation doesn't cause overflow
 
 ### Analytics & Monitoring
 - Page views and user flow tracking
