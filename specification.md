@@ -256,6 +256,8 @@ This specification is designed to be implemented deterministically, with no room
   - **Position**: Sticky navigation bar fixed at the top of the viewport
   - **Left Section**: 
     - Site domain name "sjnakib" in a stadium-shaped border as logo
+    - Small solid circle in primary color preceding the text for visual interest
+    - Circle perfectly aligned with the text baseline for visual harmony
     - Hover animation with subtle scale-up (transform: scale(1.05)) and color shift matching the site theme
     - Stadium shape uses border-radius with elongated sides for distinctive appearance
     - Links to homepage (/)
@@ -270,7 +272,7 @@ This specification is designed to be implemented deterministically, with no room
     - Rounded corners and dynamic hover effect (background color change, shadow)
     - Links to contact page (/contact)
   - **Mobile**:
-    - Site logo "sjnakib" positioned at leftmost side of header with appropriate padding
+    - Site logo "sjnakib" with decorative circle positioned at leftmost side of header with appropriate padding
     - Hamburger menu positioned at rightmost side of header with enough margin to be fully visible (min 12px from edge)
     - "Contact Me" button moved inside the hamburger menu
     - Collapsible hamburger menu with smooth animation
