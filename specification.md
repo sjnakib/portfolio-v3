@@ -283,6 +283,7 @@ This specification is designed to be implemented deterministically, with no room
     - Header should adapt to smallest screens (320px width) without UI elements being cut off
 - **Styling**:
   - Background: Dark, semi-transparent (rgba(20, 20, 20, 0.8)) with backdrop-filter: blur(10px)
+  - Border: Thin border at the bottom using primary theme color (border-primary/20 for normal state, border-primary/30 for scrolled state) for subtle visual separation
   - Typography: "Inter" font, navigation links at font-size: 1rem, font-weight: 500
   - Transitions: Smooth transitions (0.3s ease-in-out) for all hover/active states
   - Accessible: All interactive elements keyboard-navigable with ARIA labels
