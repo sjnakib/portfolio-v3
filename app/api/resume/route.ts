@@ -8,10 +8,10 @@ export async function GET() {
     const resumeData = {
       personalInfo: {
         name: "Shafaat Jamil Nakib",
-        title: "Full-stack & Robotics Engineer",
+        title: "Frontend & UI/UX Developer",
         email: "shafaat@example.com",
         location: "Available for remote work",
-        summary: "Full-stack developer and robotics engineer with expertise in modern web technologies and autonomous systems."
+        summary: "Frontend developer and UI/UX designer with expertise in modern web technologies and creating engaging user experiences."
       },
       education: academicData.education,
       experience: experienceData.experiences,

@@ -11,9 +11,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Shafaat Jamil Nakib - Full-stack & Robotics Engineer",
+  title: "Shafaat Jamil Nakib - Frontend & UI/UX Developer",
   description:
-    "Portfolio of Shafaat Jamil Nakib, a full-stack developer and robotics engineer specializing in React, Next.js, Node.js, TypeScript, and robotics systems.",
+    "Portfolio of Shafaat Jamil Nakib, a frontend developer and UI/UX designer specializing in React, Next.js, TypeScript, and creating engaging user experiences.",
   generator: "v0.app",
 }
 

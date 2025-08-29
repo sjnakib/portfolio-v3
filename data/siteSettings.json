@@ -1,12 +1,12 @@
 {
   "owner": {
     "name": "Shafaat Jamil Nakib",
-    "title": "Full-Stack & UI/UX Developer",
+    "title": "Frontend & UI/UX Developer",
     "location": "Dhaka, Bangladesh",
     "email": "shafaat@example.com",
     "phone": "+1 (555) 123-4567",
     "avatar": "/profile-photo.jpg",
-    "bio": "Full-stack developer and UI/UX designer with expertise in designing and developing innovative digital solutions that combine technical excellence with exceptional user experience.",
+    "bio": "Frontend developer and UI/UX designer with expertise in designing and developing innovative digital solutions that combine technical excellence with exceptional user experience.",
     "motto": "// Design, Code, Innovate",
     "tagline": "Where aesthetics & functionality meet",
     "brandDisplay": "sjnakib"
@@ -53,11 +53,11 @@
   },
   "hero": {
     "greeting": "Hello, I'm",
-    "mainTitle": "FULL-STACK & UI/UX DEVELOPER",
+    "mainTitle": "FRONTEND & UI/UX DEVELOPER",
     "location": "Dhaka, Bangladesh",
     "contextualTags": [
       "// UI/UX Designer",
-      "// Full-Stack Developer"
+      "// Frontend Developer"
     ]
   }
 }

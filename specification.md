@@ -131,7 +131,7 @@ This specification is designed to be implemented deterministically, with no room
 {
   "owner": {
     "name": "Shafaat Jamil Nakib",
-    "title": "Full-stack & Robotics Engineer",
+    "title": "Frontend & UI/UX Developer",
     "location": "Dhaka, Bangladesh",
     "email": "sjnakib@gmail.com",
     "avatar": "/profile-photo.jpg",
@@ -165,7 +165,7 @@ This specification is designed to be implemented deterministically, with no room
   },
   "hero": {
     "greeting": "Hi!, I'm",
-    "mainTitle": "FULL-STACK & UI/UX DEVELOPER",
+    "mainTitle": "FRONTEND & UI/UX DEVELOPER",
     "location": "Dhaka, Bangladesh",
   }
 }
@@ -293,9 +293,10 @@ This specification is designed to be implemented deterministically, with no room
       - "Hello, I'm Shafaat Jamil Nakib" text with typewriter effect on load
     - **Main Title/Profession**:
       - Large, bold typography displaying professional identity
-      - "FULL-STACK & ROBOTICS ENGINEER" broken into multiple lines
-      - Keywords in different vibrant colors (#BD93F9 purple, #FFD700 yellow, #69F0AE green)
-      - Interactive text effect on hover (subtle color/scale/rotation shifts)
+      - "FRONTEND & UI/UX DEVELOPER" broken into multiple lines
+      - Keywords in different vibrant colors (FRONTEND, UI/UX in orange, DEVELOPER in cyan)
+      - The "&" character is greyed out (low profile, muted color) and has no hover animation
+      - Interactive text effect on hover for main keywords (subtle scale shifts)
     - **CTAs**:
       - Primary "View Projects" button
       - Secondary "Download Resume" button with download icon

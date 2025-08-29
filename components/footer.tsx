@@ -13,8 +13,8 @@ export function Footer() {
           <div className="space-y-4">
             <p className="text-sm font-mono text-primary/80">// Design, Code, Innovate</p>
             <p className="text-muted-foreground text-pretty">
-              Full-stack & Robotics Engineer passionate about creating innovative solutions that bridge software and
-              hardware. Building digital experiences that make an impact.
+              Frontend & UI/UX Developer passionate about creating innovative solutions with modern technologies.
+              Building digital experiences that make an impact.
             </p>
           </div>
           

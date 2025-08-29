@@ -60,7 +60,10 @@ export function HeroSection() {
             
             <div className="space-y-3">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="block text-foreground transition-all hover:scale-[1.05] duration-300">FULL-STACK &</span>
+                <span className="block">
+                  <span className="text-foreground transition-all hover:scale-[1.05] duration-300 inline-block">FRONTEND</span>
+                  <span className="text-muted-foreground/60"> &</span>
+                </span>
                 <span className="block text-orange-400 transition-all hover:scale-[1.05] duration-300">UI/UX</span>
                 <span className="block text-cyan-500 transition-all hover:scale-[1.05] duration-300">DEVELOPER</span>
               </h1>
