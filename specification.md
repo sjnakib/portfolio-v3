@@ -66,7 +66,7 @@ This specification is designed to be implemented deterministically, with no room
 ```
 /app
   /layout.tsx                -> Global layout with header/footer, theme provider
-  /page.tsx                  -> Home page with hero section and key sections
+  /page.tsx                  -> Home page with hero section and tabbed section
   /projects/
     /page.tsx                -> Project gallery with filter options
     /[slug]/page.tsx         -> Detailed project view
@@ -84,13 +84,11 @@ This specification is designed to be implemented deterministically, with no room
 /components
   /ui/                       -> All shadcn/ui components (button, card, etc.)
   /hero-section.tsx          -> Above-the-fold introduction
-  /about-section.tsx         -> Brief about section for homepage
   /tabbed-section.tsx        -> Tabbed component with Projects, Experience, and Education
   /projects-section.tsx      -> Featured projects showcase (used within tabbed-section)
   /academic-highlights-section.tsx -> Academic highlights (used within tabbed-section)
-  /contact-section.tsx       -> Quick contact form or links
   /header.tsx                -> Site header with navigation
-  /footer.tsx                -> Site footer with links
+  /footer.tsx                -> Site footer with links, contact information, and site navigation
   /projects/
     /project-detail.tsx      -> Project details component
     /project-gallery.tsx     -> Project grid layout
@@ -411,8 +409,8 @@ This specification is designed to be implemented deterministically, with no room
 - Consistent styling across all tabs for a cohesive appearance
 
 #### Tabbed Content Section (TabbedSection component)
-- Replaces individual project, experience, and academic sections on the homepage
-- Integrated directly into app/page.tsx between HeroSection and AboutSection
+- Primary content section on the homepage after the hero section
+- Integrated directly into app/page.tsx after HeroSection
 - Creates a streamlined, space-efficient layout that consolidates multiple sections
 - Implements the "Boxed Tabbed Content Section with Compact Tiles" design pattern
 - Interactive component built with shadcn/ui Tabs component for accessibility and consistency
@@ -424,15 +422,11 @@ This specification is designed to be implemented deterministically, with no room
   - Academic information from academic.json
 - Client-side component with proper hydration handling to prevent layout shift
 
-#### Brief About Section
-- 2-3 sentence personal introduction
-- Emphasis on combined academic and practical expertise
-- Link to full About page
-
-#### Contact CTA
-- Simple, prominent call to action
-- Short form (email + message) or direct "Contact Me" button
-- Professional social links (LinkedIn, GitHub)
+#### Enhanced Footer
+- Contains contact information (email, location)
+- Includes social media links
+- Features site navigation links for easy access to all pages
+- Displays copyright information and branding
 
 ### 2. Projects Page (/projects)
 
@@ -727,13 +721,18 @@ This specification is designed to be implemented deterministically, with no room
   - **Left Section**: 
     - Brief motto/statement (e.g., "// Design, Code, Engage")
     - Portfolio owner's brief summary
-  - **Center Section**:
+  - **Navigation Section**:
+    - Site navigation links for easy access to all pages
+    - Clean listing with proper spacing and hover effects
+  - **Social Section**:
     - Social media links with scalable SVG icons (GitHub, LinkedIn, X, etc.)
     - Icons with subtle hover effects (color change, slight scale)
     - Even spacing between icons
-  - **Right Section**:
-    - Contact email address with clickable mailto: link
-    - Subtle hover effect on email link
+  - **Contact Section**:
+    - Contact email address with clickable mailto: link and mail icon
+    - Phone number (if available)
+    - Location information
+    - Subtle hover effects on interactive elements
 - **Styling**:
   - Background: Dark, consistent with the header/hero section
   - Typography: "Inter" font, font-size: 0.9rem, light grey color
