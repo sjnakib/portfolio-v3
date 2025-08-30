@@ -370,7 +370,11 @@ This specification is designed to be implemented deterministically, with no room
   - Medium-sized project image thumbnail with subtle shadow and rounded corners
   - Concise description displayed with proper text size for readability
   - Technologies used as badges with consistent styling and proper padding
-  - Action buttons with relevant icons (ExternalLink for live site, GitHub for source)
+  - Action buttons with relevant icons:
+    - Primary "View Details" button (large size) for main action
+    - Icon-only square buttons for source code (GitHub) and live site (ExternalLink)
+    - Source and live site buttons show as disabled when URLs aren't available
+    - Tooltips appear on hover over icon-only buttons with descriptive text ("View Source Code", "Visit Live Site" or "not available" messages)
 - Improved horizontal layout that balances information density with readability
 - Enhanced hover effects with subtle background color change
 - Clean, lightweight border styling with proper padding and spacing
@@ -415,6 +419,12 @@ This specification is designed to be implemented deterministically, with no room
 - Interactive component built with shadcn/ui Tabs component for accessibility and consistency
 - Enhanced UI with larger tab buttons, proper spacing, and improved typography
 - Each tab contains a wrapper component that formats data in compact tiles
+- Projects section features:
+  - Consistent UI with main projects section
+  - Interactive buttons for project actions rather than simple links
+  - Primary button for "View Details" link
+  - Secondary outline buttons with icons for "Source" and "Live Site" links
+  - Button sizing and spacing optimized for mobile and desktop views
 - Renders data dynamically from corresponding JSON files in the data directory:
   - Projects from projects.json
   - Experience from experience.json
@@ -519,9 +529,10 @@ This specification is designed to be implemented deterministically, with no room
   - Optional lightbox for enlarged viewing
 
 #### Call to Action
-- Live site link (if applicable)
-- GitHub repository link (if applicable)
-- Contact CTA for similar projects
+- Live site link as icon-only button with tooltip (disabled when not applicable)
+- GitHub repository link as icon-only button with tooltip (disabled when not applicable)
+- Contact CTA for similar projects as primary button
+- Tooltips provide context for icon-only buttons and show alternative text when links are unavailable
 
 #### Related Projects
 - 2-3 related project cards at bottom of page
@@ -679,6 +690,31 @@ This specification is designed to be implemented deterministically, with no room
 - **Accessibility**:
   - Focus states with visible rings
   - Disabled states with reduced opacity
+  - Icon-only buttons include aria-labels for screen readers
+  - Tooltips provide additional context for icon-only buttons on hover
+  - Tooltip content changes based on button state (enabled/disabled)
+  - Clear visual indication of interactive vs. disabled state
+
+### Tooltip Components
+- **Appearance**:
+  - Background: Primary color (matches button primary)
+  - Text: Primary foreground color (high contrast for readability)
+  - Rounded corners (consistent with button styling)
+  - Small arrow indicator pointing to the triggering element
+  - Appropriate padding (px-3 py-1.5) for readability
+- **Behavior**:
+  - Appears on hover after a short delay
+  - Smooth fade-in/zoom-in animation on appear
+  - Smooth fade-out/zoom-out animation on disappear
+  - Positioned intelligently to stay within viewport
+- **Content**:
+  - Concise text describing the action or state
+  - Dynamic content based on the element's state (enabled/disabled)
+  - Text sized appropriately (text-xs) for tooltip context
+- **Usage**:
+  - Used for all icon-only buttons to provide context
+  - Provides alternative text for disabled elements explaining why
+  - Consistent implementation across similar UI elements
   - Consistent hover effects that maintain contrast in both light and dark modes
 
 ### Animations
@@ -895,6 +931,24 @@ This specification is designed to be implemented deterministically, with no room
     - Visual distinction between tags and links
     - Consistent padding and font sizes across all interactive elements
 
+- **Project Items**:
+  - Project Header:
+    - Horizontal bar with project logo/image and project title
+    - Logo displayed as small circular icon on left
+    - Project title in bold text-xl font
+  - Project Details:
+    - Project type (e.g., "Personal Project") and completion timeframe
+    - Short description of the project in text-base
+    - Key features displayed as bullet points when available
+  - Technologies:
+    - Pill-shaped technology tags with primary color background (text-sm)
+    - Consistent styling with experience tags
+  - Action Buttons:
+    - Primary button for "View Details" using default button variant
+    - Secondary outline buttons for "Source" and "Live Site" with appropriate icons
+    - Proper spacing between buttons with flex-wrap for responsive layout
+    - Small size (size="sm") to maintain compact appearance while improving clickability
+
 #### Typography & Visual Consistency
 - **Font Size Hierarchy**:
   - Section headings: text-2xl font-bold
@@ -913,6 +967,15 @@ This specification is designed to be implemented deterministically, with no room
   - Padding and margins scale appropriately with font sizes
   - Proportional spacing between elements based on text size
   - Consistent treatment of similar elements across tabs
+  - Button styles align with the site's design system:
+    - Primary buttons for main actions (View Details)
+    - Outline buttons for secondary actions
+    - Icon-only square buttons (size="icon") for secondary actions (Source, Live Site)
+    - Disabled state for buttons when associated URLs aren't available
+    - Tooltips on hover for icon-only buttons providing context and improving accessibility
+    - Consistent icon usage and placement within buttons
+    - Large-size buttons (size="lg") used site-wide for primary call-to-action buttons
+    - Consistent button sizing with the hero section and header components
 
 #### Responsive Behavior
 - **Mobile & Small Screens**:

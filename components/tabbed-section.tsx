@@ -6,6 +6,8 @@ import { AcademicHighlightsSection } from "@/components/academic-highlights-sect
 import { useState, useEffect } from "react"
 import { Briefcase, GraduationCap, Code, ExternalLink, Github } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import experienceData from "@/data/experience.json"
 import projectsData from "@/data/projects.json"
 import academicData from "@/data/academic.json"
@@ -185,35 +187,72 @@ function ProjectsWrapper() {
             </div>
             
             {/* Action Buttons */}
-            <div className="flex gap-3 px-3">
-              <a 
-                href={`/projects/${project.slug}`}
-                className="text-base font-medium text-primary hover:text-primary/80 flex items-center gap-1 hover:underline"
-              >
-                View Details
-              </a>
-              {project.sourceUrl && (
-                <a 
-                  href={project.sourceUrl} 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-base font-medium text-muted-foreground hover:text-foreground flex items-center gap-1 hover:underline"
-                >
-                  <Github className="h-4 w-4" />
-                  Source
+            <div className="flex flex-wrap items-center gap-2 px-3 mt-4">
+              <Button size="lg" asChild className="mr-1">
+                <a href={`/projects/${project.slug}`}>
+                  View Details
                 </a>
-              )}
-              {project.liveUrl && (
-                <a 
-                  href={project.liveUrl} 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-base font-medium text-muted-foreground hover:text-foreground flex items-center gap-1 hover:underline"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  Live Site
-                </a>
-              )}
+              </Button>
+              {/* Source button - icon only with tooltip and disabled if no URL */}
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button 
+                    variant="outline" 
+                    size="icon" 
+                    className="h-10 w-10" 
+                    disabled={!project.sourceUrl} 
+                    asChild={!!project.sourceUrl}
+                  >
+                    {project.sourceUrl ? (
+                      <a 
+                        href={project.sourceUrl} 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View source code"
+                      >
+                        <Github className="h-4 w-4" />
+                      </a>
+                    ) : (
+                      <span>
+                        <Github className="h-4 w-4" />
+                      </span>
+                    )}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{project.sourceUrl ? "View Source Code" : "Source code not available"}</p>
+                </TooltipContent>
+              </Tooltip>
+              {/* Live Site button - icon only with tooltip and disabled if no URL */}
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button 
+                    variant="outline" 
+                    size="icon" 
+                    className="h-10 w-10" 
+                    disabled={!project.liveUrl} 
+                    asChild={!!project.liveUrl}
+                  >
+                    {project.liveUrl ? (
+                      <a 
+                        href={project.liveUrl} 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View live site"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    ) : (
+                      <span>
+                        <ExternalLink className="h-4 w-4" />
+                      </span>
+                    )}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{project.liveUrl ? "Visit Live Site" : "Live site not available"}</p>
+                </TooltipContent>
+              </Tooltip>
             </div>
           </div>
         ))}
