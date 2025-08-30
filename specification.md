@@ -83,17 +83,15 @@ This specification is designed to be implemented deterministically, with no room
       /route.ts              -> Serve machine-readable resume data
 /components
   /ui/                       -> All shadcn/ui components (button, card, etc.)
-  /sections/
-    /hero-section.tsx        -> Above-the-fold introduction
-    /about-section.tsx       -> Brief about section for homepage
-    /projects-section.tsx    -> Featured projects showcase
-    /academic-section.tsx    -> Academic highlights
-    /contact-section.tsx     -> Quick contact form or links
-  /layout/
-    /header.tsx              -> Site header with navigation
-    /footer.tsx              -> Site footer with links
+  /hero-section.tsx          -> Above-the-fold introduction
+  /about-section.tsx         -> Brief about section for homepage
+  /tabbed-section.tsx        -> Tabbed component with Projects, Experience, and Education
+  /projects-section.tsx      -> Featured projects showcase (used within tabbed-section)
+  /academic-highlights-section.tsx -> Academic highlights (used within tabbed-section)
+  /contact-section.tsx       -> Quick contact form or links
+  /header.tsx                -> Site header with navigation
+  /footer.tsx                -> Site footer with links
   /projects/
-    /project-card.tsx        -> Individual project card
     /project-detail.tsx      -> Project details component
     /project-gallery.tsx     -> Project grid layout
   /academic/
@@ -361,43 +359,70 @@ This specification is designed to be implemented deterministically, with no room
 - Tabs are positioned at the top of the box with a border separator
 - Tab switching changes content inside the box without affecting the box's size or position
 - Each tab has a distinctive icon for better visual identification
-- Animation for smooth content transitions when switching tabs
-- Consistent header styling within each tab content
+- Animation for smooth content transitions when switching tabs (fade-in animation with 500ms duration)
+- Consistent header styling within each tab content (centered title with description)
 - Mobile-responsive design that maintains the boxed appearance
+- Enhanced UI with proper spacing, typography, and visual hierarchy
+- Polished visual design following industry standards while maintaining compactness
 
 ##### Projects Tab with Compact Tiles
 - Vertical list of compact project tiles (SWE resume style)
+- Data sourced dynamically from projects.json in the data directory
 - Each tile includes:
-  - Small project image thumbnail (aligned to the left)
-  - Project title (bold, prominent)
-  - Concise description (1 line max)
-  - Technologies used (as small, minimalist badges)
-- Horizontal layout that maximizes information density
-- Subtle hover effects with background color change
-- Clean, lightweight border styling for visual separation
+  - Project title (bold, prominent) with completion year and time spent (right-aligned)
+  - Medium-sized project image thumbnail with subtle shadow and rounded corners
+  - Concise description displayed with proper text size for readability
+  - Technologies used as badges with consistent styling and proper padding
+  - Action buttons with relevant icons (ExternalLink for live site, GitHub for source)
+- Improved horizontal layout that balances information density with readability
+- Enhanced hover effects with subtle background color change
+- Clean, lightweight border styling with proper padding and spacing
+- Border opacity increases on hover for better visual feedback
 
 ##### Experience Tab with Compact Tiles
 - List of professional experiences in reverse chronological order
+- Data sourced dynamically from experience.json in the data directory
 - Each experience tile includes:
-  - Job title and timeline on the same row (justified between)
-  - Company and location on a single line
-  - 2-3 key bullet points with accomplishments (concise)
-  - Relevant technologies as small badges
-- Resume-like formatting optimized for quick scanning
+  - Company name (bold, prominent) as the main heading with years (right-aligned)
+  - Role/position and location on separate lines for better readability
+  - Multiple responsibilities with proper text size and spacing
+  - Relevant technologies as small badges with consistent styling
+- Resume-like formatting optimized for quick scanning with improved typography
 - Consistent vertical spacing between entries
+- Improved padding and border styling
+- Hover effect changes background to a subtle muted color
 
 ##### Education Tab with Compact Tiles
 - Organized section with education and publications
+- Data sourced dynamically from academic.json in the data directory
+- Section divided into two distinct areas with enhanced icon headers:
+  - Education section with graduation cap icon in a circular background
+  - Research & Publications section with briefcase icon in a circular background
 - Education tiles include:
   - Degree and GPA on the same row (justified between)
   - Institution and years on a single line
-  - Key achievements as bullet points
+  - Key achievements as bullet points with proper indentation and spacing
 - Publication tiles include:
   - Paper title (prominent)
-  - Authors list
-  - Journal name and publication date
-- Section headers with small icons for visual organization
-- Consistent styling with other tabs for cohesive appearance
+  - Authors list (comma-separated)
+  - Journal name and publication date (justified between)
+  - External link to view publication with icon
+- Section headers with larger icons in circular backgrounds for better visual organization
+- Consistent styling across all tabs for a cohesive appearance
+
+#### Tabbed Content Section (TabbedSection component)
+- Replaces individual project, experience, and academic sections on the homepage
+- Integrated directly into app/page.tsx between HeroSection and AboutSection
+- Creates a streamlined, space-efficient layout that consolidates multiple sections
+- Implements the "Boxed Tabbed Content Section with Compact Tiles" design pattern
+- Interactive component built with shadcn/ui Tabs component for accessibility and consistency
+- Enhanced UI with larger tab buttons, proper spacing, and improved typography
+- Each tab contains a wrapper component that formats data in compact tiles
+- Renders data dynamically from corresponding JSON files in the data directory:
+  - Projects from projects.json
+  - Experience from experience.json
+  - Academic information from academic.json
+- Client-side component with proper hydration handling to prevent layout shift
 
 #### Brief About Section
 - 2-3 sentence personal introduction
