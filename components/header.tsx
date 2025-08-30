@@ -70,7 +70,7 @@ export function Header() {
               {[
                 { name: "Home", path: "/" },
                 { name: "Projects", path: "/projects" },
-                { name: "Academic", path: "/academic" },
+                { name: "Experiences", path: "/experiences" },
                 { name: "About Me", path: "/about" }
               ].map((link) => (
                 <Link
@@ -129,7 +129,7 @@ export function Header() {
               {[
                 { name: "Home", path: "/" },
                 { name: "Projects", path: "/projects" },
-                { name: "Academic", path: "/academic" },
+                { name: "Experiences", path: "/experiences" },
                 { name: "About Me", path: "/about" }
               ].map((link) => (
                 <Link

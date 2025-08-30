@@ -70,8 +70,8 @@ This specification is designed to be implemented deterministically, with no room
   /projects/
     /page.tsx                -> Project gallery with filter options
     /[slug]/page.tsx         -> Detailed project view
-  /academic/
-    /page.tsx                -> Academic achievements, research, publications
+  /experiences/
+    /page.tsx                -> Professional experience, roles, and achievements
   /about/
     /page.tsx                -> Personal background, skills, education
   /contact/
@@ -92,9 +92,8 @@ This specification is designed to be implemented deterministically, with no room
   /projects/
     /project-detail.tsx      -> Project details component
     /project-gallery.tsx     -> Project grid layout
-  /academic/
-    /publication-card.tsx    -> Publication listing
-    /research-item.tsx       -> Research project item
+  /experiences/
+    /experiences-section.tsx -> Professional experience section
   /theme/
     /theme-provider.tsx      -> Context provider for theme
     /theme-toggle.tsx        -> Light/dark mode toggle
@@ -155,7 +154,7 @@ This specification is designed to be implemented deterministically, with no room
     "headerLinks": [
       { "name": "Home", "path": "/" },
       { "name": "Projects", "path": "/projects" },
-      { "name": "Academic", "path": "/academic" },
+      { "name": "Experiences", "path": "/experiences" },
       { "name": "About Me", "path": "/about" }
     ]
   },
@@ -260,7 +259,7 @@ This specification is designed to be implemented deterministically, with no room
     - Stadium shape uses border-radius with elongated sides for distinctive appearance
     - Links to homepage (/)
   - **Center Section**:
-    - Navigation links ("Home", "Projects", "Academic", "About Me")
+    - Navigation links ("Home", "Projects", "Experiences", "About Me")
     - Each link with unique hover effect (underline expanding from center)
     - Active page visually differentiated
     - Uses display: flex with justify-content: center for even spacing
@@ -289,7 +288,7 @@ This specification is designed to be implemented deterministically, with no room
     - Menu automatically closes when user clicks outside of it (improved UX with click-outside detection)
     - Uses React refs to track both menu container and toggle button for accurate click detection
     - Full-width overlay navigation when expanded
-    - Navigation link names are consistent with desktop view ("Home", "Projects", "Academic", "About Me")
+    - Navigation link names are consistent with desktop view ("Home", "Projects", "Experiences", "About Me")
     - Menu items have distinctive hover effect (color change, slight scaling)
     - Current/active page visually differentiated (bold font, accent color, or subtle indicator)
     - Header should adapt to smallest screens (320px width) without UI elements being cut off
@@ -527,30 +526,21 @@ This specification is designed to be implemented deterministically, with no room
 #### Related Projects
 - 2-3 related project cards at bottom of page
 
-### 4. Academic Page (/academic)
+### 4. Experiences Page (/experiences)
 
-#### Education Section
-- Visually appealing representation of educational background
-- BRAC University with degree details
-- GPA and academic achievements
-- Relevant coursework highlights
+#### Professional Experience Section
+- Detailed listing of professional work history in reverse chronological order
+- Job titles, company names, and employment dates clearly displayed
+- Responsibilities and key achievements for each role
+- Technologies and skills used in each position
+- Visual separation between different work experiences
+- Consistent formatting for easy scanning
 
-#### Publications Section
-- Academic paper citations in standard format
-- Brief abstracts with "Read More" expansion
-- Links to papers where available
-- Co-authors and publication details
-
-#### Research Projects
-- Research focus areas
-- Technologies and methodologies used
-- Visual representation of results or findings
-- Impact of research (if applicable)
-
-#### Skills & Certifications
-- Academic and technical skills organized by category
-- Any relevant certifications or specialized training
-- Proficiency indicators for key skills
+#### Key Accomplishments
+- Highlighted major professional accomplishments
+- Metrics and quantifiable results where applicable
+- Projects led or contributed to significantly
+- Technologies mastered and implemented
 
 ### 5. About Page (/about)
 
@@ -889,7 +879,7 @@ This specification is designed to be implemented deterministically, with no room
    - Home page with all sections
    - Projects listing page with filtering
    - Project detail page template
-   - Academic and About pages
+   - Experiences and About pages
    - Contact page with form functionality
 
 5. **Enhancements & Polish**
