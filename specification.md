@@ -856,6 +856,82 @@ This specification is designed to be implemented deterministically, with no room
 - Performance testing
 - End-to-end user flows
 
+## Component Specifications
+
+### Tabbed Section Component
+
+#### Design & Layout
+- **Tab Navigation**:
+  - Clean, minimalist tabbed navigation at the top
+  - Horizontally aligned tabs with equal width distribution
+  - Active tab highlighted with:
+    - Slightly different background color (muted/30)
+    - Primary text color
+    - Thin primary-colored line underneath
+  - Inactive tabs:
+    - Lighter shade (default text color)
+    - No underline
+    - Hover state with subtle background change
+  - Smooth transitions between tab states (150ms)
+  - Rounded corners effect for the overall navigation bar
+
+#### Content Display
+- **Experience Items**:
+  - Company/Institution Header:
+    - Horizontal bar with logo and company/institution name
+    - Logo displayed as small circular icon on left
+    - Company name in bold text-xl font
+  - Time Period and Role:
+    - Duration (e.g., "Jul 2023 - Present") displayed prominently in text-base
+    - Job title in medium font weight (text-base)
+    - Location information in text-sm muted text
+  - Bullet Points:
+    - Indented list of responsibilities/accomplishments
+    - Consistent text-base font size for all content
+    - Limited to key points (3-5 per role)
+  - Tags/Links:
+    - Pill-shaped technology tags with primary color (text-sm)
+    - Optional clickable links (e.g., NFTVue) with accent color
+    - Visual distinction between tags and links
+    - Consistent padding and font sizes across all interactive elements
+
+#### Typography & Visual Consistency
+- **Font Size Hierarchy**:
+  - Section headings: text-2xl font-bold
+  - Section descriptions: text-base
+  - Item headings (company/institution): text-xl font-bold
+  - Item details (position/degree): text-base font-medium
+  - Item content (responsibilities/features): text-base
+  - Tags and metadata: text-sm
+- **Spacing Consistency**:
+  - Consistent spacing between sections (mb-6)
+  - Uniform padding within content blocks
+  - Proper vertical rhythm maintained throughout
+  - Consistent icon sizing proportional to text
+- **Visual Coherence**:
+  - Font sizes match the rest of the website
+  - Padding and margins scale appropriately with font sizes
+  - Proportional spacing between elements based on text size
+  - Consistent treatment of similar elements across tabs
+
+#### Responsive Behavior
+- **Mobile & Small Screens**:
+  - Horizontally scrollable tab navigation with hidden scrollbars for clean appearance
+  - Reduced horizontal padding with appropriate text-sm font size on tab buttons
+  - Icons properly sized (h-4 w-4) to match text size
+  - Content layout adapts to stack vertically:
+    - Job titles/dates stack instead of appearing side-by-side
+    - Publication titles and dates stack vertically
+    - Consistent spacing and alignment maintained
+  - Minimum width for tab buttons to ensure touch targets remain accessible
+  - Smaller padding on content areas to maximize available screen space
+  - Preserve all key information despite limited screen real estate
+- **Tablet & Desktop**:
+  - Full horizontal tab layout with generous spacing
+  - Side-by-side layout for job titles/dates and other information
+  - More generous padding and spacing throughout
+  - Standard text-base font size and proportional h-5 w-5 icons
+
 ## Implementation Plan
 
 1. **Setup & Infrastructure**
