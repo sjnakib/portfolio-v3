@@ -29,9 +29,9 @@ function ExperienceSection() {
             className="group rounded-md transition-colors"
           >
             {/* Company/Institution Header */}
-            <div className="flex items-center gap-3 border border-border/60 rounded-md p-3 bg-muted/5 mb-2">
+            <div className="flex items-center gap-3 border-2 border-primary/20 rounded-md p-3 bg-muted/5 mb-2 shadow-sm">
               {/* Logo */}
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-border/40">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border-2 border-primary/30">
                 <img 
                   src="/placeholder-logo.svg" 
                   alt={`${exp.company} logo`}
@@ -126,7 +126,7 @@ function ProjectsWrapper() {
             className="group rounded-md transition-colors"
           >
             {/* Two column layout with screenshot on left, details on right */}
-            <div className="flex flex-col sm:flex-row border border-border/60 rounded-md p-4 bg-muted/5">
+            <div className="flex flex-col sm:flex-row border-2 border-primary/20 rounded-md p-4 bg-muted/5 shadow-sm">
               {/* Left column - Screenshot only */}
               {project.images && project.images.length > 0 && (
                 <div className="sm:w-2/5 min-w-[240px] max-w-[280px] flex-shrink-0 mr-0 sm:mr-5 mb-4 sm:mb-0">
@@ -301,13 +301,7 @@ function AcademicWrapper() {
   
   return (
     <div>
-      <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-foreground mb-2">Academic Highlights</h3>
-        <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-          My educational background, research work, and publications
-        </p>
-      </div>
-      
+
       <div className="space-y-8">
         {/* Education Section */}
         <div>
@@ -325,9 +319,9 @@ function AcademicWrapper() {
                 className="group rounded-md transition-colors"
               >
                 {/* Institution Header */}
-                <div className="flex items-center gap-3 border border-border/60 rounded-md p-3 bg-muted/5 mb-2">
+                <div className="flex items-center gap-3 border-2 border-primary/20 rounded-md p-3 bg-muted/5 mb-2 shadow-sm">
                   {/* Logo */}
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-border/40">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border-2 border-primary/30">
                     <img 
                       src="/placeholder-logo.svg" 
                       alt={`${edu.institution} logo`}
@@ -382,9 +376,9 @@ function AcademicWrapper() {
                 className="group rounded-md transition-colors"
               >
                 {/* Journal Header */}
-                <div className="flex items-center gap-3 border border-border/60 rounded-md p-3 bg-muted/5 mb-2">
+                <div className="flex items-center gap-3 border-2 border-primary/20 rounded-md p-3 bg-muted/5 mb-2 shadow-sm">
                   {/* Logo */}
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-border/40">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border-2 border-primary/30">
                     <img 
                       src="/placeholder-logo.svg" 
                       alt={`${pub.journal} logo`}
@@ -451,9 +445,9 @@ export function TabbedSection() {
     <section id="tabbed-content" className="py-12 px-4 sm:px-6">
       <div className="container mx-auto max-w-6xl">
 
-        <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+        <div className="rounded-lg border-2 border-primary/30 bg-card text-card-foreground shadow-md">
           <Tabs defaultValue="projects" value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <div className="flex justify-center border-b overflow-x-auto scrollbar-hide">
+            <div className="flex justify-center border-b border-b-primary/20 overflow-x-auto scrollbar-hide">
               <TabsList className="w-full max-w-xl mx-auto p-0 rounded-none bg-transparent flex justify-center min-w-full sm:min-w-0">
                 <TabsTrigger 
                   value="projects" 

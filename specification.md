@@ -352,8 +352,8 @@ This specification is designed to be implemented deterministically, with no room
   - Projects
   - Experience
   - Education
-- Content is contained within a card/box with consistent borders and shadow styling
-- Tabs are positioned at the top of the box with a border separator
+- Content is contained within a card/box with prominent border (2px) using primary theme color at 30% opacity (border-primary/30) and shadow-md for better visibility
+- Tabs are positioned at the top of the box with a border separator using primary theme color at 20% opacity (border-b-primary/20)
 - Tab switching changes content inside the box without affecting the box's size or position
 - Each tab has a distinctive icon for better visual identification
 - Animation for smooth content transitions when switching tabs (fade-in animation with 500ms duration)
@@ -417,7 +417,8 @@ This specification is designed to be implemented deterministically, with no room
   - Relevant technologies as small badges with consistent styling
 - Resume-like formatting optimized for quick scanning with improved typography
 - Consistent vertical spacing between entries
-- Improved padding and border styling
+- Enhanced border styling with 2px borders using primary theme color at 20% opacity (border-primary/20) and subtle shadow (shadow-sm)
+- Company/institution logos with more prominent circular borders (border-2 border-primary/30)
 - Hover effect changes background to a subtle muted color
 
 ##### Education Tab with Compact Tiles
@@ -435,6 +436,8 @@ This specification is designed to be implemented deterministically, with no room
   - Authors list (comma-separated)
   - Journal name and publication date (justified between)
   - External link to view publication with icon
+- Enhanced border styling with 2px borders using primary theme color at 20% opacity (border-primary/20) and subtle shadow (shadow-sm)
+- Institution/journal logos with more prominent circular borders (border-2 border-primary/30)
 - Section headers with larger icons in circular backgrounds for better visual organization
 - Consistent styling across all tabs for a cohesive appearance
 
