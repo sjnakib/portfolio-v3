@@ -366,18 +366,45 @@ This specification is designed to be implemented deterministically, with no room
 - Vertical list of compact project tiles (SWE resume style)
 - Data sourced dynamically from projects.json in the data directory
 - Each tile includes:
-  - Project title (bold, prominent) with completion year and time spent (right-aligned)
-  - Medium-sized project image thumbnail with subtle shadow and rounded corners
+  - Two-column layout with project information flow:
+    - Larger screenshot positioned on the left side with optimal spacing
+    - Title prominently displayed at the top of the right column
+    - Project type and time period below the title with improved spacing
+    - Short description with increased top margin for better readability
+    - Technology tags with increased spacing and padding
+    - "View Details" button grouped with source and live site buttons, with consistent sizing
+  - Enhanced interactive screenshot preview with themed border styling:
+    - Widescreen aspect ratio (16:9) for better representation of web projects
+    - Larger size with min-width of 240px and max-width of 280px for better visibility
+    - Increased horizontal spacing (margin-right: 5) for better separation from content
+    - Improved vertical spacing with consistent padding around the card (p-4)
+    - Distinctive border styling with primary theme color at 20% opacity (border-primary/20)
+    - Decorative corner accents with thicker borders in primary theme color (40% opacity)
+    - Shadow effects (shadow-md) that enhance on hover (shadow-lg)
+    - Smooth transition effects with duration-300 for hover states
+    - Border color darkens on hover (40% opacity) for better visual feedback
+    - Cursor changes to pointer on hover to indicate clickability
+    - Click to expand into a full-screen 16:9 lightbox with matching border styling
+    - "View Larger" indicator appears on hover
+    - Caption display in the expanded view when available
   - Concise description displayed with proper text size for readability
-  - Technologies used as badges with consistent styling and proper padding
-  - Action buttons with relevant icons:
-    - Primary "View Details" button (large size) for main action
-    - Icon-only square buttons for source code (GitHub) and live site (ExternalLink)
-    - Source and live site buttons show as disabled when URLs aren't available
-    - Tooltips appear on hover over icon-only buttons with descriptive text ("View Source Code", "Visit Live Site" or "not available" messages)
+  - Technologies used as badges with compact styling and proper padding
+  - Action buttons placement:
+    - All action buttons grouped together in the main content column
+    - Buttons vertically aligned with the content for visual harmony
+    - Primary "View Details" button as the main call-to-action with size="sm" for better proportion
+    - Smaller icon-only buttons (h-8 w-8) with reduced icon size (3.5px) for better balance
+    - Consistent button sizes throughout the interface
+    - Buttons show as disabled when URLs aren't available
 - Improved horizontal layout that balances information density with readability
 - Enhanced hover effects with subtle background color change
-- Clean, lightweight border styling with proper padding and spacing
+- Themed border styling for screenshots with decorative corners that tie into the site's visual language
+- Consistent use of primary theme colors in border accents at varying opacity levels
+- Enhanced visual interest through subtle shadow effects and transition animations
+- Clean, lightweight card styling with increased padding (p-4) for better spacing
+- Consistent vertical spacing between elements (space-y-3)
+- Increased margins between content sections for improved readability
+- Technology tags with larger horizontal padding and increased gap spacing
 - Border opacity increases on hover for better visual feedback
 
 ##### Experience Tab with Compact Tiles
@@ -526,7 +553,12 @@ This specification is designed to be implemented deterministically, with no room
 - High-quality images of the project
   - Use placeholders with clear labeling
   - Support for multiple image formats
-  - Optional lightbox for enlarged viewing
+  - Interactive lightbox for enlarged viewing
+    - Elegant modal dialog with 16:9 aspect ratio
+    - Caption display when available
+    - Optimized for high-quality viewing experience
+    - Close button and keyboard navigation
+    - Mobile-friendly with touch gestures
 
 #### Call to Action
 - Live site link as icon-only button with tooltip (disabled when not applicable)
@@ -777,8 +809,29 @@ This specification is designed to be implemented deterministically, with no room
 ### Image Handling
 - Lazy loading for all images
 - Blur-up technique for image loading
-- Optional lightbox for project images
+- Interactive lightbox for project screenshots
 - Responsive images that maintain aspect ratio
+
+### Screenshot Viewer Component
+- **Appearance**:
+  - Clean, minimal dialog with focus on the image content
+  - Dark background to enhance visibility of screenshots
+  - Square thumbnail (1:1) positioned on right side of project tile, max-width 150px
+  - Cursor changes to pointer on hover to indicate clickability
+  - Expanded view uses 16:9 aspect ratio for optimal viewing experience
+  - Optional caption display at the bottom of the viewer
+- **Interaction**:
+  - Clickable thumbnail with subtle hover effect and scale transform
+  - "View Larger" indicator appears on hover
+  - Close button in the top-right corner
+  - Click outside the image to close
+  - Keyboard navigation (Escape to close)
+- **Technical**:
+  - Built with Dialog and AspectRatio components from shadcn/ui
+  - Uses Next.js Image component for optimized image loading
+  - Flexible grid layout with responsive breakpoints
+  - Properly handles different image resolutions
+  - Efficiently uses space in both desktop and mobile views
 
 ### Forms
 - Inline validation with helpful error messages
@@ -967,6 +1020,9 @@ This specification is designed to be implemented deterministically, with no room
   - Padding and margins scale appropriately with font sizes
   - Proportional spacing between elements based on text size
   - Consistent treatment of similar elements across tabs
+  - Screenshot previews use ultra-compact square (1:1) thumbnails with size constraints
+  - Side-by-side layout with buttons integrated in content column for maximum space efficiency
+  - Interactive elements provide visual feedback on hover/focus
   - Button styles align with the site's design system:
     - Primary buttons for main actions (View Details)
     - Outline buttons for secondary actions
@@ -976,6 +1032,11 @@ This specification is designed to be implemented deterministically, with no room
     - Consistent icon usage and placement within buttons
     - Large-size buttons (size="lg") used site-wide for primary call-to-action buttons
     - Consistent button sizing with the hero section and header components
+  - Screenshot viewer follows site's design language:
+    - Clean, minimal interface with focus on content
+    - Consistent with dialog components used elsewhere
+    - Proper spacing and contrast for readability
+    - Smooth transitions for opening/closing
 
 #### Responsive Behavior
 - **Mobile & Small Screens**:
@@ -1043,3 +1104,31 @@ This specification is designed to be implemented deterministically, with no room
 - **Microinteractions**: Additional polish for delightful user experience
 
 This specification provides a comprehensive blueprint for creating a stunning portfolio website that effectively communicates both academic achievements and practical development skills. The resulting site will create immediate impact with recruiters while maintaining excellent performance and accessibility.
+
+## Conclusion
+
+### Design Highlights
+- **Clean, Minimalist Aesthetic:** The portfolio employs a clean, minimalist design that maintains visual interest through strategic use of color, typography, and spacing without overwhelming the viewer.
+- **Space-Efficient Layouts:** Each component is designed for maximum information density while maintaining readability, making it easy for recruiters to scan quickly.
+- **Thoughtful Information Hierarchy:** Content is organized with clear visual hierarchy that guides the viewer's attention to the most important information first.
+- **Logical Content Flow:** The two-column layout in project tiles presents information in a natural left-to-right reading flow, with the most important details (project title and description) appearing before visual elements.
+- **Interactive Elements:** Strategic use of tabs, tooltips, and the screenshot viewer enhances usability while maintaining a clean interface.
+- **Accessibility Considerations:** All interactive elements are keyboard-navigable with appropriate ARIA labels and proper contrast ratios.
+- **Mobile-First Responsive Design:** The layout gracefully adapts from mobile to desktop with appropriate content reordering and spacing adjustments.
+
+### Future Enhancements
+- **Animation Improvements:** Subtle animation sequences could be added for smoother transitions between sections and more engaging user interactions.
+- **Blog Integration:** A lightweight blog system could be integrated to showcase technical writing skills and thought leadership.
+- **Testimonials Section:** Adding client or colleague testimonials would provide social proof of skills and work ethic.
+- **Project Filtering:** An advanced filtering system could allow visitors to sort projects by technology, type, or timeline.
+- **Theme Customization:** Additional theme options beyond light/dark mode could offer more personalization.
+- **Analytics Integration:** Adding visitor analytics could provide insights into which projects attract the most attention.
+- **Interactive Timeline:** Converting the experience section to an interactive timeline could create a more engaging view of career progression.
+
+### Why This is an Effective Portfolio
+- **Fast Scanning Capability:** The layout is optimized for the "10-20 second rule" – the typical time recruiters spend on initial portfolio review.
+- **Balance of Information and Aesthetics:** The design achieves high information density without sacrificing visual appeal, making it both functional and impressive.
+- **Technical Skill Demonstration:** The implementation itself showcases frontend development skills through modern React patterns, responsive design, and accessibility features.
+- **Professional Presentation:** Clean typography, consistent spacing, and thoughtful color usage create a polished, professional appearance that builds trust.
+- **Recruiter-Focused Design:** The content organization prioritizes information that recruiters and hiring managers look for first: project types, technologies used, and tangible outcomes.
+- **Strategic Content Organization:** The tabbed interface allows for presenting a comprehensive view of projects, experience, and education without overwhelming the user with too much initial content.

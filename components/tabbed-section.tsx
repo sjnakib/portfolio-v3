@@ -4,10 +4,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ProjectsSection } from "@/components/projects-section"
 import { AcademicHighlightsSection } from "@/components/academic-highlights-section"
 import { useState, useEffect } from "react"
-import { Briefcase, GraduationCap, Code, ExternalLink, Github } from "lucide-react"
+import { Briefcase, GraduationCap, Code, ExternalLink, Github, X, ArrowLeft, ArrowRight } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Dialog, DialogContent, DialogTrigger, DialogClose } from "@/components/ui/dialog"
+import { AspectRatio } from "@/components/ui/aspect-ratio"
+import Image from "next/image"
 import experienceData from "@/data/experience.json"
 import projectsData from "@/data/projects.json"
 import academicData from "@/data/academic.json"
@@ -18,13 +21,7 @@ function ExperienceSection() {
   
   return (
     <div>
-      <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-foreground mb-2">Professional Experience</h3>
-        <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-          My professional journey and career highlights
-        </p>
-      </div>
-      
+
       <div className="space-y-5">
         {experiences.map((exp, index) => (
           <div 
@@ -122,137 +119,174 @@ function ProjectsWrapper() {
   
   return (
     <div>
-      <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-foreground mb-2">Featured Projects</h3>
-        <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-          A showcase of my recent work in full-stack development and robotics engineering
-        </p>
-      </div>
       <div className="space-y-5">
         {projects.slice(0, 3).map((project, index) => (
           <div 
             key={project.id} 
             className="group rounded-md transition-colors"
           >
-            {/* Project Header */}
-            <div className="flex items-center gap-3 border border-border/60 rounded-md p-3 bg-muted/5 mb-2">
-              {/* Project Image/Logo */}
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-border/40">
-                <img
-                  src={project.images[0]?.src || "/placeholder-logo.svg"}
-                  alt={project.images[0]?.alt || `${project.title} logo`}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              {/* Project Name */}
-              <h4 className="font-bold text-xl">{project.title}</h4>
-            </div>
-            
-            {/* Time Period and Type */}
-            <div className="mb-3 px-3">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
-                <span className="font-medium text-base capitalize">
-                  {project.type?.replace(/-/g, ' ') || "Personal Project"}
-                </span>
-                <div className="text-base text-primary font-medium mt-1 sm:mt-0">
-                  {getProjectYear(project.date)} • {getTimeSpent(project)}
+            {/* Two column layout with screenshot on left, details on right */}
+            <div className="flex flex-col sm:flex-row border border-border/60 rounded-md p-4 bg-muted/5">
+              {/* Left column - Screenshot only */}
+              {project.images && project.images.length > 0 && (
+                <div className="sm:w-2/5 min-w-[240px] max-w-[280px] flex-shrink-0 mr-0 sm:mr-5 mb-4 sm:mb-0">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <div className="cursor-pointer relative overflow-hidden rounded-md border-2 border-primary/20 shadow-md hover:border-primary/40 hover:shadow-lg transition-all duration-300 w-full">
+                        {/* Decorative corners for added visual interest */}
+                        <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/40 rounded-tl-sm"></div>
+                        <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary/40 rounded-tr-sm"></div>
+                        <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary/40 rounded-bl-sm"></div>
+                        <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary/40 rounded-br-sm"></div>
+                        
+                        <AspectRatio ratio={16/9} className="bg-muted/30">
+                          <Image
+                            src={project.images[0].src}
+                            alt={project.images[0].alt || `${project.title} screenshot`}
+                            fill
+                            className="object-cover hover:scale-105 transition-transform duration-300"
+                          />
+                        </AspectRatio>
+                        <div className="absolute inset-0 bg-black/10 hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 hover:opacity-100">
+                          <span className="bg-background/90 text-foreground px-2 py-1 rounded-md text-xs font-medium">View Larger</span>
+                        </div>
+                      </div>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[80vw] max-h-[90vh] p-1 overflow-hidden border-2 border-primary/20 shadow-xl">
+                      <div className="relative h-full w-full">
+                        {/* Decorative corners for the dialog too */}
+                        <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary/40 rounded-tl-sm z-10"></div>
+                        <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary/40 rounded-tr-sm z-10"></div>
+                        <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary/40 rounded-bl-sm z-10"></div>
+                        <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary/40 rounded-br-sm z-10"></div>
+                        
+                        <AspectRatio ratio={16/9} className="bg-black">
+                          <Image 
+                            src={project.images[0].src}
+                            alt={project.images[0].alt || `${project.title} screenshot`}
+                            fill
+                            className="object-contain"
+                            quality={95}
+                          />
+                        </AspectRatio>
+                        {project.images[0].caption && (
+                          <div className="absolute bottom-0 left-0 right-0 bg-background/80 p-2 text-sm text-center backdrop-blur-sm">
+                            {project.images[0].caption}
+                          </div>
+                        )}
+                        <DialogClose className="absolute top-2 right-2 bg-background/80 rounded-full p-1 hover:bg-background z-20">
+                          <X className="h-5 w-5" />
+                        </DialogClose>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              )}
+              
+              {/* Right column - Main content */}
+              <div className="flex-1 flex flex-col space-y-3">
+                {/* Project title */}
+                <h4 className="font-bold text-xl leading-tight">{project.title}</h4>
+                
+                {/* Time Period and Type */}
+                <div>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+                    <span className="font-medium text-base capitalize">
+                      {project.type?.replace(/-/g, ' ') || "Personal Project"}
+                    </span>
+                    <div className="text-sm text-primary font-medium mt-1 sm:mt-0">
+                      {getProjectYear(project.date)} • {getTimeSpent(project)}
+                    </div>
+                  </div>
+                  <div className="text-sm text-muted-foreground mt-2">
+                    {project.shortDescription}
+                  </div>
+                </div>
+                
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-1.5 mt-1">
+                  {project.technologies.slice(0, 4).map((tech) => (
+                    <span 
+                      key={tech} 
+                      className="bg-primary/10 text-primary px-2 py-0.5 text-xs font-medium rounded-full shadow-sm"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                
+                {/* Action buttons in the main content column */}
+                <div className="flex flex-wrap items-center gap-2 mt-1">
+                  {/* View Details button */}
+                  <Button size="sm" variant="default" asChild className="mr-1">
+                    <a href={`/projects/${project.slug}`}>
+                      View Details
+                    </a>
+                  </Button>
+                  
+                  {/* Source button - icon only with tooltip and disabled if no URL */}
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-8 w-8" 
+                        disabled={!project.sourceUrl} 
+                        asChild={!!project.sourceUrl}
+                      >
+                        {project.sourceUrl ? (
+                          <a 
+                            href={project.sourceUrl} 
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="View source code"
+                          >
+                            <Github className="h-3.5 w-3.5" />
+                          </a>
+                        ) : (
+                          <span>
+                            <Github className="h-3.5 w-3.5" />
+                          </span>
+                        )}
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{project.sourceUrl ? "View Source Code" : "Source code not available"}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                  
+                  {/* Live Site button - icon only with tooltip and disabled if no URL */}
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-8 w-8" 
+                        disabled={!project.liveUrl} 
+                        asChild={!!project.liveUrl}
+                      >
+                        {project.liveUrl ? (
+                          <a 
+                            href={project.liveUrl} 
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="View live site"
+                          >
+                            <ExternalLink className="h-3.5 w-3.5" />
+                          </a>
+                        ) : (
+                          <span>
+                            <ExternalLink className="h-3.5 w-3.5" />
+                          </span>
+                        )}
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{project.liveUrl ? "Visit Live Site" : "Live site not available"}</p>
+                    </TooltipContent>
+                  </Tooltip>
                 </div>
               </div>
-              <div className="text-base text-muted-foreground">
-                {project.shortDescription}
-              </div>
-            </div>
-            
-            {/* Features as Bullet Points */}
-            {project.features && project.features.length > 0 && (
-              <div className="px-3 mb-3">
-                <ul className="list-disc list-outside pl-5 space-y-1 text-base text-muted-foreground">
-                  {project.features.slice(0, 3).map((feature, idx) => (
-                    <li key={idx}>{feature}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            
-            {/* Technologies */}
-            <div className="flex flex-wrap gap-1.5 mb-3 px-3">
-              {project.technologies.slice(0, 4).map((tech) => (
-                <span 
-                  key={tech} 
-                  className="bg-primary/10 text-primary px-2.5 py-1 text-sm font-medium rounded-full shadow-sm"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-            
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-2 px-3 mt-4">
-              <Button size="lg" asChild className="mr-1">
-                <a href={`/projects/${project.slug}`}>
-                  View Details
-                </a>
-              </Button>
-              {/* Source button - icon only with tooltip and disabled if no URL */}
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button 
-                    variant="outline" 
-                    size="icon" 
-                    className="h-10 w-10" 
-                    disabled={!project.sourceUrl} 
-                    asChild={!!project.sourceUrl}
-                  >
-                    {project.sourceUrl ? (
-                      <a 
-                        href={project.sourceUrl} 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="View source code"
-                      >
-                        <Github className="h-4 w-4" />
-                      </a>
-                    ) : (
-                      <span>
-                        <Github className="h-4 w-4" />
-                      </span>
-                    )}
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{project.sourceUrl ? "View Source Code" : "Source code not available"}</p>
-                </TooltipContent>
-              </Tooltip>
-              {/* Live Site button - icon only with tooltip and disabled if no URL */}
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button 
-                    variant="outline" 
-                    size="icon" 
-                    className="h-10 w-10" 
-                    disabled={!project.liveUrl} 
-                    asChild={!!project.liveUrl}
-                  >
-                    {project.liveUrl ? (
-                      <a 
-                        href={project.liveUrl} 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="View live site"
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                      </a>
-                    ) : (
-                      <span>
-                        <ExternalLink className="h-4 w-4" />
-                      </span>
-                    )}
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{project.liveUrl ? "Visit Live Site" : "Live site not available"}</p>
-                </TooltipContent>
-              </Tooltip>
             </div>
           </div>
         ))}

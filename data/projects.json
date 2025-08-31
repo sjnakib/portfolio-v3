@@ -4,7 +4,7 @@
       "id": "usis-20",
       "title": "USIS 2.0",
       "slug": "usis-20",
-      "shortDescription": "A comprehensive university student information system with real-time data processing",
+      "shortDescription": "A comprehensive university student information system with real-time data processing. Let's make this a two line short description.",
       "fullDescription": "A comprehensive university student information system built with modern web technologies, featuring real-time data processing and intuitive user interfaces. Designed to streamline administrative tasks, enhance student experience, and provide powerful analytics for decision-making.",
       "type": "client-website",
       "technologies": ["React", "Next.js", "TypeScript", "MySQL"],
