@@ -4,6 +4,32 @@ import academicData from '@/data/academic.json'
 
 export async function GET() {
   try {
+    // Format experience data for ATS compatibility
+    const formattedExperience = experienceData.companies.flatMap(company => 
+      company.roles.map(role => ({
+        company: company.name,
+        position: role.title,
+        location: company.location,
+        startDate: role.startDate,
+        endDate: role.endDate,
+        responsibilities: role.responsibilities,
+        technologies: role.technologies
+      }))
+    );
+    
+    // Format education data for ATS compatibility
+    const formattedEducation = academicData.institutions.flatMap(institution => 
+      institution.degrees.map(degree => ({
+        institution: institution.name,
+        degree: degree.name,
+        gpa: degree.gpa,
+        location: institution.location,
+        startDate: degree.startDate,
+        endDate: degree.endDate,
+        highlights: degree.highlights
+      }))
+    );
+    
     // Combine the data from different JSON files to create a structured resume
     const resumeData = {
       personalInfo: {
@@ -13,8 +39,8 @@ export async function GET() {
         location: "Available for remote work",
         summary: "Frontend developer and UI/UX designer with expertise in modern web technologies and creating engaging user experiences."
       },
-      education: academicData.education,
-      experience: experienceData.experiences,
+      education: formattedEducation,
+      experience: formattedExperience,
       skills: experienceData.skills,
       certifications: experienceData.certifications,
       publications: academicData.publications,

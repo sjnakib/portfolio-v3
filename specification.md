@@ -204,20 +204,76 @@ This specification is designed to be implemented deterministically, with no room
 }
 ```
 
+### Experience Schema
+```json
+{
+  "companies": [
+    {
+      "name": "Company Name",
+      "logo": "/path/to/logo.svg",
+      "location": "City, Country",
+      "url": "https://company-website.com",
+      "roles": [
+        {
+          "title": "Position Title",
+          "startDate": "2022-01",
+          "endDate": "2023-05",
+          "responsibilities": [
+            "Key responsibility with active verb",
+            "Another key responsibility"
+          ],
+          "technologies": ["React", "TypeScript", "etc"]
+        },
+        {
+          "title": "Previous Position Title",
+          "startDate": "2020-06",
+          "endDate": "2021-12",
+          "responsibilities": [
+            "Key responsibility with active verb",
+            "Another key responsibility"
+          ],
+          "technologies": ["JavaScript", "Node.js", "etc"]
+        }
+      ]
+    }
+  ],
+  "skills": {
+    "programming": ["JavaScript/TypeScript", "Python", "etc"],
+    "frameworks": ["React", "Next.js", "etc"],
+    "databases": ["MySQL", "PostgreSQL", "etc"],
+    "devOps": ["AWS", "Docker", "etc"]
+  },
+  "certifications": [
+    {
+      "name": "Certification Name",
+      "issuer": "Issuing Organization",
+      "date": "2023-03",
+      "expires": "2026-03"
+    }
+  ]
+}
+```
+
 ### Academic Schema
 ```json
 {
-  "education": [
+  "institutions": [
     {
-      "institution": "BRAC University",
-      "degree": "BSc in Computer Science and Engineering",
-      "gpa": "3.97/4.0", // Displayed as "CGPA" in the UI
+      "name": "BRAC University",
+      "logo": "/path/to/logo.svg",
       "location": "Dhaka, Bangladesh",
-      "startDate": "2016-01",
-      "endDate": "2020-12",
-      "highlights": [
-        "Top of class in algorithm design",
-        "Research assistant in robotics lab"
+      "url": "https://bracu.ac.bd",
+      "degrees": [
+        {
+          "name": "BSc in Computer Science and Engineering",
+          "gpa": "3.97/4.0", // Displayed as "CGPA" in the UI
+          "startDate": "2016-01",
+          "endDate": "2020-12",
+          "highlights": [
+            "Top of class in algorithm design",
+            "Research assistant in robotics lab"
+          ]
+        }
       ]
     }
   ],
@@ -1132,7 +1188,7 @@ This specification provides a comprehensive blueprint for creating a stunning po
 - **Project Filtering:** An advanced filtering system could allow visitors to sort projects by technology, type, or timeline.
 - **Theme Customization:** Additional theme options beyond light/dark mode could offer more personalization.
 - **Analytics Integration:** Adding visitor analytics could provide insights into which projects attract the most attention.
-- **Interactive Timeline:** Converting the experience section to an interactive timeline could create a more engaging view of career progression.
+- **Interactive Timeline:** The experience section uses a LinkedIn-like interface with a vertical timeline showing multiple roles at the same company and academic achievements at institutions, creating an engaging and familiar view of career progression.
 
 ### Why This is an Effective Portfolio
 - **Fast Scanning Capability:** The layout is optimized for the "10-20 second rule" – the typical time recruiters spend on initial portfolio review.

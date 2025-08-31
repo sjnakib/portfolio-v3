@@ -6,7 +6,7 @@ import experienceData from "@/data/experience.json"
 import academicData from "@/data/academic.json"
 
 export function AboutDetail() {
-  const { experiences, skills, certifications } = experienceData
+  const { companies, skills, certifications } = experienceData
   
   return (
     <div className="space-y-16">
@@ -81,37 +81,51 @@ export function AboutDetail() {
       <section>
         <h2 className="text-2xl font-bold mb-8">Professional Experience</h2>
         <div className="relative space-y-8">
-          {experiences.map((exp, index) => (
-            <div key={index} className="flex gap-6">
-              <div className="flex flex-col items-center">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Briefcase className="h-5 w-5 text-primary" />
-                </div>
-                {index < experiences.length - 1 && <div className="w-0.5 grow bg-border mt-2"></div>}
-              </div>
-              <div className="space-y-3 pb-8">
-                <div className="flex flex-wrap justify-between gap-4">
-                  <div>
-                    <h3 className="font-bold text-lg">{exp.position}</h3>
-                    <p className="text-muted-foreground">{exp.company}, {exp.location}</p>
+          {companies.map((company: any, companyIndex: number) => (
+            <div key={companyIndex}>
+              <div className="flex gap-6 mb-2">
+                <div className="flex flex-col items-center">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Briefcase className="h-5 w-5 text-primary" />
                   </div>
-                  <p className="text-sm text-muted-foreground">
-                    {formatDate(exp.startDate)} - {exp.endDate === "Present" ? "Present" : formatDate(exp.endDate)}
-                  </p>
+                  <div className="w-0.5 grow bg-border mt-2"></div>
                 </div>
-                <ul className="space-y-2 list-disc list-inside">
-                  {exp.responsibilities.map((resp, idx) => (
-                    <li key={idx} className="text-muted-foreground">{resp}</li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {exp.technologies.slice(0, 5).map((tech) => (
-                    <Badge key={tech} variant="outline">{tech}</Badge>
-                  ))}
-                  {exp.technologies.length > 5 && (
-                    <Badge variant="outline">+{exp.technologies.length - 5} more</Badge>
-                  )}
+                <div>
+                  <h3 className="font-bold text-lg">{company.name}</h3>
+                  <p className="text-muted-foreground">{company.location}</p>
                 </div>
+              </div>
+              
+              {/* Show roles */}
+              <div className="ml-16 space-y-6 mb-8">
+                {company.roles.map((role: any, roleIndex: number) => (
+                  <div key={roleIndex} className="relative border-l-2 border-border pl-6 pb-6">
+                    <div className="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-primary"></div>
+                    <div className="space-y-3">
+                      <div className="flex flex-wrap justify-between gap-4">
+                        <div>
+                          <h4 className="font-semibold">{role.title}</h4>
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          {formatDate(role.startDate)} - {role.endDate === "Present" ? "Present" : formatDate(role.endDate)}
+                        </p>
+                      </div>
+                      <ul className="space-y-2 list-disc list-inside">
+                        {role.responsibilities.slice(0, 2).map((resp: string, idx: number) => (
+                          <li key={idx} className="text-muted-foreground">{resp}</li>
+                        ))}
+                      </ul>
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {role.technologies.slice(0, 3).map((tech: string) => (
+                          <Badge key={tech} variant="outline">{tech}</Badge>
+                        ))}
+                        {role.technologies.length > 3 && (
+                          <Badge variant="outline">+{role.technologies.length - 3} more</Badge>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           ))}

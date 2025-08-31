@@ -15,82 +15,154 @@ import experienceData from "@/data/experience.json"
 import projectsData from "@/data/projects.json"
 import academicData from "@/data/academic.json"
 
-// Experience section component with compact tiles
+// Experience section component with LinkedIn-like interface
 function ExperienceSection() {
-  const { experiences } = experienceData;
+  const { companies } = experienceData;
+  
+  // Define interfaces for TypeScript
+  interface Role {
+    title: string;
+    startDate: string;
+    endDate: string;
+    responsibilities: string[];
+    technologies: string[];
+  }
+  
+  // Format date in "MMM YYYY" format
+  const formatDate = (dateString: string): string => {
+    if (dateString === "Present") return "Present";
+    return new Date(dateString).toLocaleDateString('en-US', {month: 'short', year: 'numeric'});
+  };
+
+  // Calculate duration between two dates
+  const calculateDuration = (startDate: string, endDate: string): string => {
+    const start = new Date(startDate);
+    const end = endDate === "Present" ? new Date() : new Date(endDate);
+    
+    const monthsDiff = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+    const years = Math.floor(monthsDiff / 12);
+    const months = monthsDiff % 12;
+    
+    if (years === 0) {
+      return `${months} ${months === 1 ? 'month' : 'months'}`;
+    } else if (months === 0) {
+      return `${years} ${years === 1 ? 'year' : 'years'}`;
+    } else {
+      return `${years} ${years === 1 ? 'year' : 'years'} ${months} ${months === 1 ? 'month' : 'months'}`;
+    }
+  };
+
+  // Calculate total duration at company across all roles
+  const calculateCompanyDuration = (roles: Role[]): string => {
+    if (!roles || roles.length === 0) return "";
+    
+    // Find earliest start date and latest end date
+    const startDates = roles.map(role => new Date(role.startDate));
+    const endDates = roles.map(role => role.endDate === "Present" ? new Date() : new Date(role.endDate));
+    
+    const earliestStart = new Date(Math.min(...startDates.map(date => date.getTime())));
+    const latestEnd = new Date(Math.max(...endDates.map(date => date.getTime())));
+    
+    const startFormatted = earliestStart.toLocaleDateString('en-US', {month: 'short', year: 'numeric'});
+    const endFormatted = latestEnd.getTime() === new Date().getTime() 
+      ? "Present" 
+      : latestEnd.toLocaleDateString('en-US', {month: 'short', year: 'numeric'});
+    
+    return `${startFormatted} - ${endFormatted}`;
+  };
   
   return (
     <div>
-
-      <div className="space-y-5">
-        {experiences.map((exp, index) => (
+      <div className="space-y-10">
+        {companies.map((company, index) => (
           <div 
             key={index} 
             className="group rounded-md transition-colors"
           >
-            {/* Company/Institution Header */}
-            <div className="flex items-center gap-3 border-2 border-primary/20 rounded-md p-3 bg-muted/5 mb-2 shadow-sm">
+            {/* Company Header */}
+            <div className="flex items-center gap-4 mb-4">
               {/* Logo */}
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border-2 border-primary/30">
+              <div className="w-14 h-14 rounded-md bg-background flex items-center justify-center overflow-hidden border border-primary/20 shadow-sm">
                 <img 
-                  src="/placeholder-logo.svg" 
-                  alt={`${exp.company} logo`}
-                  className="w-full h-full object-contain"
+                  src={company.logo} 
+                  alt={`${company.name} logo`}
+                  className="w-full h-full object-contain p-1"
                 />
               </div>
-              {/* Company Name */}
-              <h4 className="font-bold text-xl">{exp.company}</h4>
-            </div>
-            
-            {/* Time Period and Role */}
-            <div className="mb-3 px-3">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
-                <span className="font-medium text-base">{exp.position}</span>
-                <div className="text-base text-primary font-medium mt-1 sm:mt-0">
-                  {new Date(exp.startDate).toLocaleDateString('en-US', {month: 'short', year: 'numeric'})} - 
-                  {exp.endDate === "Present" 
-                    ? " Present" 
-                    : ` ${new Date(exp.endDate).toLocaleDateString('en-US', {month: 'short', year: 'numeric'})}`
-                  }
+              
+              {/* Company Name and Duration */}
+              <div className="flex flex-col">
+                <div className="flex items-baseline gap-2">
+                  <h4 className="font-bold text-xl">{company.name}</h4>
+                  {company.url && (
+                    <a 
+                      href={company.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-primary/80"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  )}
+                </div>
+                <div className="flex flex-col text-sm text-muted-foreground">
+                  <span>{company.location}</span>
+                  <span>{calculateCompanyDuration(company.roles)}</span>
                 </div>
               </div>
-              <div className="text-sm text-muted-foreground">
-                {exp.location}
-              </div>
             </div>
             
-            {/* Bullet Points */}
-            <div className="px-3 mb-3">
-              <ul className="space-y-2 list-disc list-outside pl-5">
-                {exp.responsibilities.map((responsibility, idx) => (
-                  <li key={idx} className="text-base text-muted-foreground">
-                    {responsibility}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Tags/Links */}
-            <div className="flex flex-wrap gap-1.5 px-3">
-              {exp.technologies.map((tech) => (
-                <span 
-                  key={tech} 
-                  className="bg-primary/10 text-primary px-2.5 py-1 text-sm font-medium rounded-full shadow-sm"
+            {/* Roles Section - LinkedIn style with vertical timeline */}
+            <div className="pl-7 relative">
+              {company.roles.map((role, roleIndex) => (
+                <div 
+                  key={roleIndex} 
+                  className={`relative mb-6 pl-10 ${roleIndex < company.roles.length - 1 ? 'pb-1' : ''}`}
                 >
-                  {tech}
-                </span>
+                  {/* Timeline connector */}
+                  {roleIndex < company.roles.length - 1 && (
+                    <div className="absolute left-1.5 top-3 bottom-0 w-0.5 bg-primary/30"></div>
+                  )}
+                  
+                  {/* Timeline dot */}
+                  <div className="absolute left-0 top-2 w-3 h-3 rounded-full bg-primary border-2 border-background"></div>
+                  
+                  {/* Role details */}
+                  <div className="mb-2">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1">
+                      <h5 className="font-semibold text-lg">{role.title}</h5>
+                      <div className="text-sm text-primary font-medium mt-0.5 sm:mt-0.5 flex items-center gap-1">
+                        <span>{formatDate(role.startDate)} - {formatDate(role.endDate)}</span>
+                        <span className="text-muted-foreground">·</span>
+                        <span className="text-muted-foreground">{calculateDuration(role.startDate, role.endDate)}</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Responsibilities */}
+                  <div className="mb-3">
+                    <ul className="space-y-2 list-disc list-outside pl-5">
+                      {role.responsibilities.map((responsibility, idx) => (
+                        <li key={idx} className="text-sm text-muted-foreground">
+                          {responsibility}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  {/* Technologies/Skills */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {role.technologies.map((tech) => (
+                      <span 
+                        key={tech} 
+                        className="bg-primary/10 text-primary px-2 py-0.5 text-xs font-medium rounded-full shadow-sm"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               ))}
-              
-              {/* Add NFTVue-like tag/link for appropriate entries */}
-              {exp.company === "Singapore Institute of Technology" && (
-                <a 
-                  href="#" 
-                  className="bg-accent/15 text-accent px-2.5 py-1 text-sm font-medium rounded-full shadow-sm flex items-center gap-1 hover:bg-accent/25 transition-colors"
-                >
-                  <span>NFTVue</span>
-                  <ExternalLink className="h-3.5 w-3.5" />
-                </a>
-              )}
             </div>
           </div>
         ))}
@@ -299,9 +371,28 @@ function ProjectsWrapper() {
 function AcademicWrapper() {
   // Using academic data from the imported json file
   
+  // Format date in "YYYY" format for education
+  const formatDate = (dateString: string): string => {
+    return new Date(dateString).toLocaleDateString('en-US', {year: 'numeric'});
+  };
+
+  // Calculate duration between two dates for education
+  const calculateDuration = (startDate: string, endDate: string): string => {
+    const start = new Date(startDate);
+    const end = endDate === "Present" ? new Date() : new Date(endDate);
+    
+    // For education, we typically just care about years
+    const years = end.getFullYear() - start.getFullYear();
+    
+    if (years === 0) {
+      return "Less than 1 year";
+    } else {
+      return `${years} ${years === 1 ? 'year' : 'years'}`;
+    }
+  };
+  
   return (
     <div>
-
       <div className="space-y-8">
         {/* Education Section */}
         <div>
@@ -312,48 +403,85 @@ function AcademicWrapper() {
             <h4 className="text-xl font-semibold">Education</h4>
           </div>
           
-          <div className="space-y-5">
-            {academicData.education.map((edu, index) => (
+          <div className="space-y-10">
+            {academicData.institutions.map((institution, index) => (
               <div 
                 key={index}
                 className="group rounded-md transition-colors"
               >
                 {/* Institution Header */}
-                <div className="flex items-center gap-3 border-2 border-primary/20 rounded-md p-3 bg-muted/5 mb-2 shadow-sm">
+                <div className="flex items-center gap-4 mb-4">
                   {/* Logo */}
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border-2 border-primary/30">
+                  <div className="w-14 h-14 rounded-md bg-background flex items-center justify-center overflow-hidden border border-primary/20 shadow-sm">
                     <img 
-                      src="/placeholder-logo.svg" 
-                      alt={`${edu.institution} logo`}
-                      className="w-full h-full object-contain"
+                      src={institution.logo} 
+                      alt={`${institution.name} logo`}
+                      className="w-full h-full object-contain p-1"
                     />
                   </div>
-                  {/* Institution Name */}
-                  <h4 className="font-bold text-xl">{edu.institution}</h4>
-                </div>
-                
-                {/* Time Period and Degree */}
-                <div className="mb-3 px-3">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
-                    <span className="font-medium text-base">{edu.degree}</span>
-                    <div className="text-base text-primary font-medium mt-1 sm:mt-0">
-                      {new Date(edu.startDate).toLocaleDateString('en-US', {year: 'numeric'})} - 
-                      {new Date(edu.endDate).toLocaleDateString('en-US', {year: 'numeric'})}
+                  
+                  {/* Institution Name and Location */}
+                  <div className="flex flex-col">
+                    <div className="flex items-baseline gap-2">
+                      <h4 className="font-bold text-xl">{institution.name}</h4>
+                      {institution.url && (
+                        <a 
+                          href={institution.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:text-primary/80"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
+                      )}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      <span>{institution.location}</span>
                     </div>
                   </div>
-                  <div className="text-sm text-muted-foreground flex flex-col sm:flex-row sm:justify-between">
-                    <span>{edu.location}</span>
-                    <span className="mt-1 sm:mt-0">CGPA: {edu.gpa}</span>
-                  </div>
                 </div>
                 
-                {/* Highlights as Bullet Points */}
-                <div className="px-3">
-                  <ul className="list-disc list-outside pl-5 space-y-2 text-base text-muted-foreground">
-                    {edu.highlights.map((highlight, idx) => (
-                      <li key={idx}>{highlight}</li>
-                    ))}
-                  </ul>
+                {/* Degrees Section - LinkedIn style with vertical timeline */}
+                <div className="pl-7 relative">
+                  {institution.degrees.map((degree, degreeIndex) => (
+                    <div 
+                      key={degreeIndex} 
+                      className={`relative mb-6 pl-10 ${degreeIndex < institution.degrees.length - 1 ? 'pb-1' : ''}`}
+                    >
+                      {/* Timeline connector */}
+                      {degreeIndex < institution.degrees.length - 1 && (
+                        <div className="absolute left-1.5 top-3 bottom-0 w-0.5 bg-primary/30"></div>
+                      )}
+                      
+                      {/* Timeline dot */}
+                      <div className="absolute left-0 top-2 w-3 h-3 rounded-full bg-primary border-2 border-background"></div>
+                      
+                      {/* Degree details */}
+                      <div className="mb-2">
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
+                          <h5 className="font-semibold text-lg">{degree.name}</h5>
+                          <div className="text-sm text-primary font-medium mt-1 sm:mt-0 whitespace-nowrap sm:ml-3">
+                            {formatDate(degree.startDate)} - {formatDate(degree.endDate)}
+                          </div>
+                        </div>
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-sm text-muted-foreground mt-1">
+                          <span className="font-medium">CGPA: {degree.gpa}</span>
+                          <span className="mt-0.5 sm:mt-0">{calculateDuration(degree.startDate, degree.endDate)}</span>
+                        </div>
+                      </div>
+                      
+                      {/* Highlights */}
+                      <div className="mb-2">
+                        <ul className="list-disc list-outside pl-5 space-y-1.5">
+                          {degree.highlights.map((highlight, idx) => (
+                            <li key={idx} className="text-sm text-muted-foreground">
+                              {highlight}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}

@@ -1,46 +1,76 @@
 {
-  "experiences": [
+  "companies": [
     {
-      "company": "TechInnovate Solutions",
-      "position": "Senior Full-stack Developer",
+      "name": "TechInnovate Solutions",
+      "logo": "/placeholder-logo.svg",
       "location": "Remote",
-      "startDate": "2022-01",
-      "endDate": "Present",
-      "responsibilities": [
-        "Lead development of enterprise-level web applications using React, Next.js and Node.js",
-        "Architect database schemas and API endpoints for optimal performance and scalability",
-        "Mentor junior developers and conduct code reviews to ensure code quality",
-        "Collaborate with product managers to define technical requirements and project timelines"
-      ],
-      "technologies": ["React", "Next.js", "Node.js", "TypeScript", "MySQL", "AWS"]
+      "url": "https://techinnovate-example.com",
+      "roles": [
+        {
+          "title": "Senior Full-stack Developer",
+          "startDate": "2022-01",
+          "endDate": "Present",
+          "responsibilities": [
+            "Lead development of enterprise-level web applications using React, Next.js and Node.js",
+            "Architect database schemas and API endpoints for optimal performance and scalability",
+            "Mentor junior developers and conduct code reviews to ensure code quality",
+            "Collaborate with product managers to define technical requirements and project timelines"
+          ],
+          "technologies": ["React", "Next.js", "Node.js", "TypeScript", "MySQL", "AWS"]
+        },
+        {
+          "title": "Full-stack Developer",
+          "startDate": "2021-04",
+          "endDate": "2021-12",
+          "responsibilities": [
+            "Developed RESTful APIs and backend services using Node.js and Express",
+            "Implemented responsive frontend interfaces with React and TypeScript",
+            "Integrated third-party APIs and payment gateways into applications",
+            "Participated in daily stand-ups and sprint planning sessions"
+          ],
+          "technologies": ["React", "JavaScript", "Node.js", "Express", "MongoDB"]
+        }
+      ]
     },
     {
-      "company": "RoboSystems Inc.",
-      "position": "Robotics Software Engineer",
+      "name": "RoboSystems Inc.",
+      "logo": "/placeholder-logo.svg",
       "location": "Boston, MA",
-      "startDate": "2020-03",
-      "endDate": "2021-12",
-      "responsibilities": [
-        "Developed control systems for autonomous industrial robots using ROS and Python",
-        "Created web interfaces for robot monitoring and control using React and TypeScript",
-        "Implemented machine learning algorithms for obstacle detection and path planning",
-        "Collaborated with hardware engineers to integrate software with sensor systems"
-      ],
-      "technologies": ["Python", "ROS", "React", "TensorFlow", "Computer Vision"]
+      "url": "https://robosystems-example.com",
+      "roles": [
+        {
+          "title": "Robotics Software Engineer",
+          "startDate": "2020-03",
+          "endDate": "2021-03",
+          "responsibilities": [
+            "Developed control systems for autonomous industrial robots using ROS and Python",
+            "Created web interfaces for robot monitoring and control using React and TypeScript",
+            "Implemented machine learning algorithms for obstacle detection and path planning",
+            "Collaborated with hardware engineers to integrate software with sensor systems"
+          ],
+          "technologies": ["Python", "ROS", "React", "TensorFlow", "Computer Vision"]
+        }
+      ]
     },
     {
-      "company": "BRAC University",
-      "position": "Research Assistant - Robotics Lab",
+      "name": "BRAC University",
+      "logo": "/placeholder-logo.svg",
       "location": "Dhaka, Bangladesh",
-      "startDate": "2018-06",
-      "endDate": "2020-01",
-      "responsibilities": [
-        "Assisted in research projects focused on autonomous navigation and robot perception",
-        "Implemented and tested computer vision algorithms for object recognition",
-        "Contributed to academic papers published in robotics conferences",
-        "Mentored undergraduate students on robotics projects"
-      ],
-      "technologies": ["Python", "ROS", "Computer Vision", "Machine Learning"]
+      "url": "https://bracu.ac.bd",
+      "roles": [
+        {
+          "title": "Research Assistant - Robotics Lab",
+          "startDate": "2018-06",
+          "endDate": "2020-01",
+          "responsibilities": [
+            "Assisted in research projects focused on autonomous navigation and robot perception",
+            "Implemented and tested computer vision algorithms for object recognition",
+            "Contributed to academic papers published in robotics conferences",
+            "Mentored undergraduate students on robotics projects"
+          ],
+          "technologies": ["Python", "ROS", "Computer Vision", "Machine Learning"]
+        }
+      ]
     }
   ],
   "skills": {
