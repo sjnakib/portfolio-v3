@@ -21,6 +21,14 @@ export function HeroSection() {
     speed: 80,
     codeLike: true
   })
+  
+  // Function to scroll down to the tabbed section smoothly
+  const scrollToContent = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    })
+  }
 
   return (
     <section className="h-screen min-h-[calc(var(--vh,1vh)*100)] px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden flex items-center">
@@ -120,6 +128,35 @@ export function HeroSection() {
             </div>
           </div>
         </div>
+      </div>
+      
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center z-10">
+        <button 
+          onClick={scrollToContent}
+          className="flex flex-col items-center gap-2 text-muted-foreground/70 hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          aria-label="Scroll down to content"
+        >
+          <span className="text-xs font-medium">Scroll Down</span>
+          <div className="flex flex-col items-center">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+              className="animate-scroll-down"
+            >
+              <path d="M12 5v14" />
+              <path d="m19 12-7 7-7-7" />
+            </svg>
+            <div className="w-[1px] h-8 bg-gradient-to-b from-primary to-transparent animate-fade-in-out mt-2"></div>
+          </div>
+        </button>
       </div>
     </section>
   )
