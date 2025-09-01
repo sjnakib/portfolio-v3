@@ -1,74 +1,210 @@
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { FileText, Briefcase, GraduationCap, Award } from "lucide-react"
+import { FileText, Film, Globe, Cat, Code, Milestone, Scroll } from "lucide-react"
 import experienceData from "@/data/experience.json"
-import academicData from "@/data/academic.json"
+import personalData from "@/data/personal.json"
+import Image from "next/image"
 
 export function AboutDetail() {
-  const { companies, skills, certifications } = experienceData
+  const { skills } = experienceData
+  const { introduction, personalJourney, philosophies, milestones, currentQuest } = personalData
+  
+  // Function to get the appropriate icon component
+  const getIconComponent = (iconName: string) => {
+    switch(iconName) {
+      case 'Film': return <Film className="h-5 w-5 text-primary" />;
+      case 'Globe': return <Globe className="h-5 w-5 text-primary" />;
+      case 'Cat': return <Cat className="h-5 w-5 text-primary" />;
+      case 'Code': return <Code className="h-5 w-5 text-primary" />;
+      default: return <Code className="h-5 w-5 text-primary" />;
+    }
+  };
   
   return (
     <div className="space-y-16">
-      {/* Personal Introduction */}
-      <section className="grid lg:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold">Professional Background</h2>
-          <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
-            <p>
-              I'm a full-stack developer and robotics engineer with a passion for building innovative solutions that
-              bridge the gap between software and hardware. With expertise in modern web technologies and robotics
-              systems, I create applications that are both user-friendly and technically robust.
-            </p>
-            <p>
-              My academic background in Computer Science from BRAC University, where I graduated with a 3.97 GPA,
-              provided me with a strong foundation in algorithms, data structures, and system design. As a research
-              assistant in the university's robotics lab, I developed a keen interest in autonomous systems and
-              computer vision.
-            </p>
-            <p>
-              Throughout my professional career, I've worked on a diverse range of projects, from enterprise-level web
-              applications to autonomous robotic systems. I take pride in writing clean, maintainable code and
-              designing intuitive user experiences that solve real-world problems.
-            </p>
-          </div>
-          <div>
-            <Button size="lg" asChild>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                <FileText className="mr-2 h-4 w-4" />
-                Download Resume
-              </a>
-            </Button>
-          </div>
+      {/* Adventure Introduction */}
+      <section className="relative overflow-hidden rounded-xl border bg-gradient-to-br from-background to-muted p-8">
+        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+          <Image 
+            src="/grid.svg" 
+            alt="Adventure background" 
+            fill
+            className="opacity-10" 
+          />
         </div>
+        
+        <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/50">
+              {introduction.title}
+            </h2>
+            <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
+              {introduction.paragraphs.map((paragraph: string, idx: number) => (
+                <p key={idx}>{paragraph}</p>
+              ))}
+            </div>
+            <div className="pt-4">
+              <Button size="lg" asChild>
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                  <FileText className="mr-2 h-4 w-4" />
+                  Download Resume
+                </a>
+              </Button>
+            </div>
+          </div>
 
-        <div className="flex justify-center">
-          <div className="w-80 h-96 rounded-lg bg-muted flex items-center justify-center border">
-            <div className="text-center text-muted-foreground">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted-foreground/20 flex items-center justify-center">
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                </svg>
-              </div>
-              <p className="text-sm font-medium">Professional Photo</p>
+          <div className="flex justify-center">
+            <div className="relative w-80 h-96 rounded-lg overflow-hidden border transform rotate-3 hover:rotate-0 transition-transform duration-500">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+              <Image
+                src={introduction.photo || "/placeholder-user.jpg"}
+                alt="Shafaat Jamil Nakib"
+                fill
+                className="object-cover transition-transform duration-700 hover:scale-105"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Skills & Expertise */}
+      {/* Personal Journey Cards */}
+      <section className="space-y-8">
+        <h2 className="text-2xl font-bold mb-8 flex items-center">
+          <Scroll className="mr-2 h-6 w-6 text-primary" />
+          Personal Journey
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {personalJourney.map((journey: any) => (
+            <Card 
+              key={journey.title} 
+              className="overflow-hidden hover:shadow-lg transition-shadow duration-300"
+            >
+              <CardHeader className="bg-muted/30">
+                <CardTitle className="flex items-center text-xl">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                    {getIconComponent(journey.icon)}
+                  </div>
+                  {journey.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-6 space-y-4">
+                <p className="text-muted-foreground">{journey.description}</p>
+                
+                {journey.favorites && (
+                  <div>
+                    <h4 className="text-sm font-semibold mb-2">Favorites:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {journey.favorites.map((fav: string) => (
+                        <Badge key={fav} variant="secondary" className="hover:scale-105 transition-transform">
+                          {fav}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                {journey.memorable && (
+                  <div>
+                    <h4 className="text-sm font-semibold mb-2">Memorable Moments:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {journey.memorable.map((mem: string) => (
+                        <Badge key={mem} variant="secondary" className="hover:scale-105 transition-transform">
+                          {mem}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                {journey.traits && (
+                  <div>
+                    <h4 className="text-sm font-semibold mb-2">Cat Traits:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {journey.traits.map((trait: string) => (
+                        <Badge key={trait} variant="secondary" className="hover:scale-105 transition-transform">
+                          {trait}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                {journey.favorite_finds && (
+                  <div>
+                    <h4 className="text-sm font-semibold mb-2">Favorite Finds:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {journey.favorite_finds.map((find: string) => (
+                        <Badge key={find} variant="secondary" className="hover:scale-105 transition-transform">
+                          {find}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+      
+      {/* Adventure Timeline */}
       <section>
-        <h2 className="text-2xl font-bold mb-8">Skills & Expertise</h2>
+        <h2 className="text-2xl font-bold mb-8 flex items-center">
+          <Milestone className="mr-2 h-6 w-6 text-primary" />
+          Milestone Adventures
+        </h2>
+        
+        <div className="relative">
+          <div className="absolute top-0 bottom-0 left-16 w-0.5 bg-border"></div>
+          
+          {milestones.map((milestone: any) => (
+            <div 
+              key={milestone.year} 
+              className="relative pl-24 pb-12"
+            >
+              <div className="absolute left-12 w-9 h-9 rounded-full bg-primary/20 border-4 border-background flex items-center justify-center">
+                <div className="w-3 h-3 rounded-full bg-primary"></div>
+              </div>
+              
+              <Card className="overflow-hidden hover:shadow-md transition-shadow duration-300">
+                <CardHeader className="bg-muted/30 pb-3">
+                  <CardTitle className="flex items-center text-xl">
+                    <span className="text-2xl font-bold text-primary mr-3">{milestone.year}</span>
+                    {milestone.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-4">
+                  <p className="text-muted-foreground">{milestone.description}</p>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Skills & Expertise - kept from the original with a new design */}
+      <section>
+        <h2 className="text-2xl font-bold mb-8">Professional Arsenal</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(skills).map(([category, skillList]) => (
-            <Card key={category}>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold capitalize mb-4">
+            <Card key={category} className="h-full hover:shadow-lg transition-shadow duration-300">
+              <CardHeader className="bg-muted/30 pb-3">
+                <CardTitle className="text-lg capitalize">
                   {category.replace(/([A-Z])/g, ' $1').trim()}
-                </h3>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-6">
                 <div className="flex flex-wrap gap-2">
-                  {skillList.map((skill) => (
-                    <Badge key={skill} variant="secondary">{skill}</Badge>
+                  {(skillList as string[]).map((skill) => (
+                    <Badge 
+                      key={skill} 
+                      variant="secondary"
+                      className="hover:scale-105 transition-transform"
+                    >
+                      {skill}
+                    </Badge>
                   ))}
                 </div>
               </CardContent>
@@ -77,112 +213,40 @@ export function AboutDetail() {
         </div>
       </section>
 
-      {/* Experience Timeline */}
-      <section>
-        <h2 className="text-2xl font-bold mb-8">Professional Experience</h2>
-        <div className="relative space-y-8">
-          {companies.map((company: any, companyIndex: number) => (
-            <div key={companyIndex}>
-              <div className="flex gap-6 mb-2">
-                <div className="flex flex-col items-center">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Briefcase className="h-5 w-5 text-primary" />
-                  </div>
-                  <div className="w-0.5 grow bg-border mt-2"></div>
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg">{company.name}</h3>
-                  <p className="text-muted-foreground">{company.location}</p>
-                </div>
-              </div>
-              
-              {/* Show roles */}
-              <div className="ml-16 space-y-6 mb-8">
-                {company.roles.map((role: any, roleIndex: number) => (
-                  <div key={roleIndex} className="relative border-l-2 border-border pl-6 pb-6">
-                    <div className="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-primary"></div>
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap justify-between gap-4">
-                        <div>
-                          <h4 className="font-semibold">{role.title}</h4>
-                        </div>
-                        <p className="text-sm text-muted-foreground">
-                          {formatDate(role.startDate)} - {role.endDate === "Present" ? "Present" : formatDate(role.endDate)}
-                        </p>
-                      </div>
-                      <ul className="space-y-2 list-disc list-inside">
-                        {role.responsibilities.slice(0, 2).map((resp: string, idx: number) => (
-                          <li key={idx} className="text-muted-foreground">{resp}</li>
-                        ))}
-                      </ul>
-                      <div className="flex flex-wrap gap-2 pt-2">
-                        {role.technologies.slice(0, 3).map((tech: string) => (
-                          <Badge key={tech} variant="outline">{tech}</Badge>
-                        ))}
-                        {role.technologies.length > 3 && (
-                          <Badge variant="outline">+{role.technologies.length - 3} more</Badge>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+      {/* Personal Philosophies */}
+      <section className="space-y-8">
+        <h2 className="text-2xl font-bold mb-8">Guiding Principles</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {philosophies.map((philosophy: string, index: number) => (
+            <div 
+              key={index} 
+              className="bg-muted/30 rounded-lg p-8 border border-border relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-16 h-16 bg-primary/10 rounded-bl-3xl -z-10"></div>
+              <p className="text-lg italic">"{philosophy}"</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Certifications */}
+      {/* Current Quest */}
       <section>
-        <h2 className="text-2xl font-bold mb-8">Certifications</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certifications.map((cert, index) => (
-            <Card key={index}>
-              <CardContent className="p-6 flex items-start gap-4">
-                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Award className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold">{cert.name}</h3>
-                  <p className="text-sm text-muted-foreground">{cert.issuer}</p>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    Issued: {formatDate(cert.date)}
-                    {cert.expires && <span> · Expires: {formatDate(cert.expires)}</span>}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Personal Interests */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6">Personal Interests</h2>
-        <Card>
-          <CardContent className="p-6">
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Beyond my professional work, I'm an avid tech enthusiast who enjoys exploring emerging technologies
-                and contributing to open-source projects. I'm particularly interested in the intersection of robotics
-                and artificial intelligence, and how they can be applied to solve real-world problems.
-              </p>
-              <p>
-                In my free time, I enjoy participating in hackathons, attending tech conferences, and mentoring
-                aspiring developers. I also have a passion for photography and hiking, which helps me maintain a
-                healthy work-life balance.
-              </p>
+        <div className="relative rounded-xl overflow-hidden border">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-background/0 -z-10"></div>
+          <div className="p-8 space-y-4">
+            <h2 className="text-2xl font-bold text-center mb-6">Current Quest: {currentQuest.title}</h2>
+            <p className="text-lg text-center text-muted-foreground max-w-3xl mx-auto">{currentQuest.description}</p>
+            <div className="flex justify-center pt-6">
+              <Button size="lg" asChild>
+                <a href="/contact">
+                  Join My Adventure
+                </a>
+              </Button>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </section>
     </div>
-  )
-}
-
-function formatDate(dateString: string): string {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short'
-  });
+  );
 }

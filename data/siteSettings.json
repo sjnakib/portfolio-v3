@@ -47,8 +47,7 @@
     "headerLinks": [
       { "name": "Home", "path": "/" },
       { "name": "Projects", "path": "/projects" },
-      { "name": "Experiences", "path": "/experiences" },
-      { "name": "About Me", "path": "/about" }
+      { "name": "Experiences", "path": "/experiences" }
     ]
   },
   "hero": {

@@ -68,12 +68,7 @@ export function Header() {
           {/* Center Section - Navigation (desktop only) */}
           <nav className="hidden md:flex items-center justify-center">
             <div className="flex space-x-1">
-              {[
-                { name: "Home", path: "/" },
-                { name: "Projects", path: "/projects" },
-                { name: "Experiences", path: "/experiences" },
-                { name: "About Me", path: "/about" }
-              ].map((link) => (
+              {siteSettings.navigation.headerLinks.map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}
@@ -142,12 +137,7 @@ export function Header() {
         {isMenuOpen && (
           <div ref={menuRef} className="md:hidden border-t bg-background">
             <nav className="flex flex-col space-y-4 px-4 py-6">
-              {[
-                { name: "Home", path: "/" },
-                { name: "Projects", path: "/projects" },
-                { name: "Experiences", path: "/experiences" },
-                { name: "About Me", path: "/about" }
-              ].map((link) => (
+              {siteSettings.navigation.headerLinks.map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}
