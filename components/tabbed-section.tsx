@@ -106,7 +106,7 @@ function ExperienceSection() {
                     </a>
                   )}
                 </div>
-                <div className="flex flex-col text-sm text-muted-foreground">
+                <div className="flex flex-col text-base text-muted-foreground">
                   <span>{company.location}</span>
                   <span>{calculateCompanyDuration(company.roles)}</span>
                 </div>
@@ -132,7 +132,7 @@ function ExperienceSection() {
                   <div className="mb-2">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1">
                       <h5 className="font-semibold text-lg">{role.title}</h5>
-                      <div className="text-sm text-primary font-medium mt-0.5 sm:mt-0.5 flex items-center gap-1">
+                      <div className="text-base text-primary font-medium mt-0.5 sm:mt-0.5 flex items-center gap-1">
                         <span>{formatDate(role.startDate)} - {formatDate(role.endDate)}</span>
                         <span className="text-muted-foreground">·</span>
                         <span className="text-muted-foreground">{calculateDuration(role.startDate, role.endDate)}</span>
@@ -144,7 +144,7 @@ function ExperienceSection() {
                   <div className="mb-3">
                     <ul className="space-y-2 list-disc list-outside pl-5">
                       {role.responsibilities.map((responsibility, idx) => (
-                        <li key={idx} className="text-sm text-muted-foreground">
+                        <li key={idx} className="text-base text-muted-foreground">
                           {responsibility}
                         </li>
                       ))}
@@ -156,7 +156,7 @@ function ExperienceSection() {
                     {role.technologies.map((tech) => (
                       <span 
                         key={tech} 
-                        className="bg-primary/10 text-primary px-2 py-0.5 text-xs font-medium rounded-full shadow-sm"
+                        className="bg-primary/10 text-primary px-2 py-0.5 text-sm font-medium rounded-full shadow-sm"
                       >
                         {tech}
                       </span>
@@ -218,7 +218,7 @@ function ProjectsWrapper() {
                           />
                         </AspectRatio>
                         <div className="absolute inset-0 bg-black/10 hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 hover:opacity-100">
-                          <span className="bg-background/90 text-foreground px-2 py-1 rounded-md text-xs font-medium">View Larger</span>
+                          <span className="bg-background/90 text-foreground px-2 py-1 rounded-md text-sm font-medium">View Larger</span>
                         </div>
                       </div>
                     </DialogTrigger>
@@ -261,11 +261,11 @@ function ProjectsWrapper() {
                     <span className="font-medium text-base capitalize">
                       {project.type?.replace(/-/g, ' ') || "Personal Project"}
                     </span>
-                    <div className="text-sm text-primary font-medium mt-1 sm:mt-0">
+                    <div className="text-base text-primary font-medium mt-1 sm:mt-0">
                       {getProjectYear(project.date)} • {getTimeSpent(project)}
                     </div>
                   </div>
-                  <div className="text-sm text-muted-foreground mt-2">
+                  <div className="text-base text-muted-foreground mt-2">
                     {project.shortDescription}
                   </div>
                 </div>
@@ -275,7 +275,7 @@ function ProjectsWrapper() {
                   {project.technologies.slice(0, 4).map((tech) => (
                     <span 
                       key={tech} 
-                      className="bg-primary/10 text-primary px-2 py-0.5 text-xs font-medium rounded-full shadow-sm"
+                      className="bg-primary/10 text-primary px-2 py-0.5 text-sm font-medium rounded-full shadow-sm"
                     >
                       {tech}
                     </span>
@@ -430,7 +430,7 @@ function AcademicWrapper() {
                         </a>
                       )}
                     </div>
-                    <div className="text-sm text-muted-foreground">
+                    <div className="text-base text-muted-foreground">
                       <span>{institution.location}</span>
                     </div>
                   </div>
@@ -455,11 +455,11 @@ function AcademicWrapper() {
                       <div className="mb-2">
                         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
                           <h5 className="font-semibold text-lg">{degree.name}</h5>
-                          <div className="text-sm text-primary font-medium mt-1 sm:mt-0 whitespace-nowrap sm:ml-3">
+                          <div className="text-base text-primary font-medium mt-1 sm:mt-0 whitespace-nowrap sm:ml-3">
                             {formatDate(degree.startDate)} - {formatDate(degree.endDate)}
                           </div>
                         </div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-sm text-muted-foreground mt-1">
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-base text-muted-foreground mt-1">
                           <span className="font-medium">CGPA: {degree.gpa}</span>
                           <span className="mt-0.5 sm:mt-0">{calculateDuration(degree.startDate, degree.endDate)}</span>
                         </div>
@@ -469,7 +469,7 @@ function AcademicWrapper() {
                       <div className="mb-2">
                         <ul className="list-disc list-outside pl-5 space-y-1.5">
                           {degree.highlights.map((highlight, idx) => (
-                            <li key={idx} className="text-sm text-muted-foreground">
+                            <li key={idx} className="text-base text-muted-foreground">
                               {highlight}
                             </li>
                           ))}
@@ -523,7 +523,7 @@ function AcademicWrapper() {
                       })}
                     </div>
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-base text-muted-foreground">
                     {pub.authors.join(", ")}
                   </div>
                 </div>

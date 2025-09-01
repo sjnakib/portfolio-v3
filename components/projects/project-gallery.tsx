@@ -189,23 +189,23 @@ function ProjectCard({ project, imageOnRight = false }: { project: Project; imag
             
             {/* Project Type and Time Period */}
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3">
-              <span className="font-medium text-sm capitalize bg-muted/50 px-2.5 py-1 rounded-sm inline-block">
+              <span className="font-medium text-base capitalize bg-muted/50 px-2.5 py-1 rounded-sm inline-block">
                 {project.type?.replace(/-/g, ' ') || "Personal Project"}
               </span>
-              <div className="text-sm text-primary font-medium mt-2 sm:mt-0">
+              <div className="text-base text-primary font-medium mt-2 sm:mt-0">
                 {getProjectYear(project.date)} • {getTimeSpent(project)}
               </div>
             </div>
             
-            <p className="text-pretty text-sm text-muted-foreground mb-4">{project.shortDescription}</p>
+            <p className="text-pretty text-base text-muted-foreground mb-4">{project.shortDescription}</p>
             
             {/* Key features with bullet points - more compact */}
             <div className="mb-4">
-              <h4 className="text-sm font-medium mb-2 text-foreground/90 flex items-center">
+              <h4 className="text-base font-medium mb-2 text-foreground/90 flex items-center">
                 <span className="inline-block w-2 h-2 rounded-full bg-primary mr-2"></span>
                 Key Features:
               </h4>
-              <ul className="list-disc pl-5 text-sm space-y-2 text-muted-foreground">
+              <ul className="list-disc pl-5 text-base space-y-2 text-muted-foreground">
                 {project.features.slice(0, 3).map((feature, index) => (
                   <li key={index} className="text-pretty">{feature}</li>
                 ))}
@@ -216,13 +216,13 @@ function ProjectCard({ project, imageOnRight = false }: { project: Project; imag
               {project.technologies.slice(0, 4).map((tech) => (
                 <span 
                   key={tech} 
-                  className="bg-primary/10 text-primary px-2.5 py-1 text-xs font-medium rounded-full shadow-sm"
+                  className="bg-primary/10 text-primary px-2.5 py-1 text-sm font-medium rounded-full shadow-sm"
                 >
                   {tech}
                 </span>
               ))}
               {project.technologies.length > 4 && (
-                <span className="bg-primary/10 text-primary px-2.5 py-1 text-xs font-medium rounded-full shadow-sm">
+                <span className="bg-primary/10 text-primary px-2.5 py-1 text-sm font-medium rounded-full shadow-sm">
                   +{project.technologies.length - 4} more
                 </span>
               )}

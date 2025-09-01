@@ -556,7 +556,12 @@ This specification is designed to be implemented deterministically, with no room
     - Provides quick way to clear all selections at once
   - Consistent text size matching the rest of the site
   - Responsive design across all devices:
-    - Standard text size (16px) for better readability
+    - Standard text size (16px/text-base) for better readability
+    - Consistent text sizing across all sections including:
+      - Tabbed sections (projects, experiences, academic)
+      - Project gallery page and project details
+      - Experiences section on all pages
+      - Using text-base rather than text-sm or text-xs for improved readability
     - Touch-friendly tap targets (min 44×44px)
     - Flexible wrapping on smaller screens
     - Divider between category and technology sections
@@ -792,8 +797,12 @@ This specification is designed to be implemented deterministically, with no room
   - Heading 1: 3rem/48px (desktop), 2.25rem/36px (mobile)
   - Heading 2: 2.25rem/36px (desktop), 1.875rem/30px (mobile)
   - Heading 3: 1.5rem/24px (desktop), 1.25rem/20px (mobile)
-  - Body: 1rem/16px
-  - Small: 0.875rem/14px
+  - Body: 1rem/16px (text-base class)
+  - Small: 0.875rem/14px (text-sm class, used sparingly and not for main content)
+- **Typography Consistency**:
+  - All main content uses text-base (1rem/16px) for readability, including in tabbed sections
+  - Avoid using text-xs (0.75rem) or text-sm (0.875rem) for important content that users need to read
+  - Technology tags, role descriptions, and other details in tabbed sections maintain consistent text-base size
 - **Line Heights**:
   - Headings: 1.2
   - Body: 1.5
@@ -1136,7 +1145,7 @@ This specification is designed to be implemented deterministically, with no room
   - Item headings (company/institution): text-xl font-bold
   - Item details (position/degree): text-base font-medium
   - Item content (responsibilities/features): text-base
-  - Tags and metadata: text-sm
+  - Tags and metadata: text-sm updated to text-base for better readability in tabbed sections
 - **Spacing Consistency**:
   - Consistent spacing between sections (mb-6)
   - Uniform padding within content blocks

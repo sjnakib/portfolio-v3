@@ -1,5 +1,12 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/                    <p className="text-base text-muted-foreground">{pub.authors.join(", ")}</p>
+                    <p className="text-base font-medium">{pub.journal}</p>
+                    <p className="text-base text-muted-foreground">
+                      {new Date(pub.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short'
+                      })}
+                    </p>
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { GraduationCap, FileText, ArrowRight, Lightbulb } from "lucide-react"
 import academicData from "@/data/academic.json"
@@ -38,10 +45,10 @@ export function AcademicHighlightsSection() {
                       <p className="font-medium">{edu.institution}</p>
                       <p className="text-primary font-medium">CGPA: {edu.gpa}</p>
                     </div>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-base text-muted-foreground">
                       {new Date(edu.startDate).getFullYear()} - {new Date(edu.endDate).getFullYear()}
                     </p>
-                    <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mt-2">
+                    <ul className="list-disc list-inside space-y-1 text-base text-muted-foreground mt-2">
                       {edu.highlights.slice(0, 2).map((highlight, idx) => (
                         <li key={idx}>{highlight}</li>
                       ))}
@@ -68,9 +75,9 @@ export function AcademicHighlightsSection() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    <p className="text-sm text-muted-foreground">{pub.authors.join(", ")}</p>
-                    <p className="text-sm font-medium">{pub.journal}</p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-base text-muted-foreground">{pub.authors.join(", ")}</p>
+                    <p className="text-base font-medium">{pub.journal}</p>
+                    <p className="text-base text-muted-foreground">
                       {new Date(pub.date).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'long'

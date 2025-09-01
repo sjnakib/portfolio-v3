@@ -104,7 +104,7 @@ export function ExperiencesSection() {
                       </a>
                     )}
                   </div>
-                  <div className="flex flex-col text-sm text-muted-foreground">
+                  <div className="flex flex-col text-base text-muted-foreground">
                     <span>{company.location}</span>
                     <span>{calculateCompanyDuration(company.roles)}</span>
                   </div>
@@ -130,7 +130,7 @@ export function ExperiencesSection() {
                     <div className="mb-3">
                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1">
                         <h4 className="font-semibold text-lg">{role.title}</h4>
-                        <div className="text-sm text-primary font-medium mt-1 sm:mt-0 flex items-center gap-1 sm:ml-3">
+                        <div className="text-base text-primary font-medium mt-1 sm:mt-0 flex items-center gap-1 sm:ml-3">
                           <span>{formatDate(role.startDate)} - {formatDate(role.endDate)}</span>
                           <span className="text-muted-foreground">·</span>
                           <span className="text-muted-foreground">{calculateDuration(role.startDate, role.endDate)}</span>
@@ -154,7 +154,7 @@ export function ExperiencesSection() {
                       {role.technologies.map((tech) => (
                         <span 
                           key={tech} 
-                          className="bg-primary/10 text-primary px-2 py-0.5 text-xs font-medium rounded-full shadow-sm"
+                          className="bg-primary/10 text-primary px-2 py-0.5 text-sm font-medium rounded-full shadow-sm"
                         >
                           {tech}
                         </span>
