@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { FileText, ArrowRight, MessageSquare, Sparkles } from "lucide-react"
+import { FileDown, ArrowRight, Layout, Briefcase } from "lucide-react"
 import { useViewportHeight } from "@/hooks/use-viewport-height"
 import { useTypewriter } from "@/hooks/use-typewriter"
 import { TechBadge } from "@/components/ui/tech-badge"
@@ -84,15 +84,9 @@ export function HeroSection() {
             <div className="flex flex-wrap gap-3">
               <Button size="lg" className="group bg-primary text-primary-foreground" asChild>
                 <Link href="/projects">
+                  <Layout className="mr-2 h-4 w-4" />
                   View Projects
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                  <FileText className="mr-2 h-4 w-4" />
-                  Resume
-                </a>
               </Button>
               <Button 
                 variant="secondary" 
@@ -101,9 +95,15 @@ export function HeroSection() {
                 asChild
               >
                 <Link href="/experiences">
-                  <Sparkles className="mr-2 h-4 w-4" />
+                  <Briefcase className="mr-2 h-4 w-4" />
                   Experiences
                 </Link>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                  <FileDown className="mr-2 h-4 w-4" />
+                  Resume
+                </a>
               </Button>
             </div>
 

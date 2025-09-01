@@ -407,9 +407,9 @@ This specification is designed to be implemented deterministically, with no room
       - The "&" character is greyed out (low profile, muted color) and has no hover animation
       - Interactive text effect on hover for main keywords (subtle scale shifts)
     - **CTAs**:
-      - Primary "View Projects" button
-      - Secondary "Download Resume" button with download icon
-      - "Experiences" button with sparkles icon
+      - Primary "View Projects" button with Layout icon
+      - Secondary "Experiences" button with Briefcase icon
+      - "Resume" button with FileDown icon (outline variant) for document download
     - **Supporting Information**:
       - Contextual tags: "// Based in Dhaka, Bangladesh"
       - Small product tags with colored backgrounds
