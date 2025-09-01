@@ -1132,21 +1132,19 @@ This specification is designed to be implemented deterministically, with no room
 
 #### Content Display
 - **Card Components**:
-  - Uses reusable `HoverableCard` component for all card elements:
-    - Subtle upward movement (transform: -translate-y-1)
-    - Border color transition from border-primary/20 to border-primary/40
+  - Consistently styled cards for all items (projects, experiences, education):
+    - Border-2 with border-primary/20, rounded-md styling
+    - Hover effect with border color changing to border-primary/40
     - Shadow enhancement from shadow-sm to shadow-md
     - Smooth transition with duration-300
-    - Optional padding control with `noPadding` prop
-    - Optional hover effect disabling with `noHover` prop
-  - Uses reusable `CardCorners` component for decorative corner accents with thicker borders in primary theme color (40% opacity)
-    - Consistent styling across all cards
-    - Size customization through className prop
+    - p-6 padding to provide consistent spacing inside cards
+    - Decorative corners on all four edges with thicker borders in primary theme color (40% opacity)
+  - Consistent card styling across all tabs and content types ensures visual harmony
     
 - **Experience Items**:
   - Company/Institution Header:
     - Horizontal bar with logo and company/institution name
-    - Logo displayed as small circular icon on left
+    - Logo displayed as small square icon (w-14 h-14) on left with rounded-md styling
     - Company name in bold text-xl font
   - Time Period and Role:
     - Duration (e.g., "Jul 2023 - Present") displayed prominently in text-base

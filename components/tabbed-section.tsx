@@ -78,12 +78,18 @@ function ExperienceSection() {
         {companies.map((company, index) => (
           <div 
             key={index} 
-            className="group rounded-md transition-colors"
+            className="group border-2 border-primary/20 rounded-md p-6 bg-muted/5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all duration-300 relative"
           >
+            {/* Decorative corners */}
+            <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/40 rounded-tl-sm"></div>
+            <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary/40 rounded-tr-sm"></div>
+            <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary/40 rounded-bl-sm"></div>
+            <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary/40 rounded-br-sm"></div>
+            
             {/* Company Header */}
-            <HoverableCard className="flex items-center gap-4 mb-4">
+            <div className="flex items-center gap-4 mb-4">
               {/* Logo */}
-              <div className="w-14 h-14 rounded-md bg-background flex items-center justify-center overflow-hidden border border-primary/20 shadow-sm">
+              <div className="w-14 h-14 rounded-md bg-background flex items-center justify-center overflow-hidden border-2 border-primary/20 shadow-sm">
                 <img 
                   src={company.logo} 
                   alt={`${company.name} logo`}
@@ -111,7 +117,7 @@ function ExperienceSection() {
                   <span>{calculateCompanyDuration(company.roles)}</span>
                 </div>
               </div>
-            </HoverableCard>
+            </div>
             
             {/* Roles Section - LinkedIn style with vertical timeline */}
             <div className="pl-7 relative">
@@ -196,10 +202,16 @@ function ProjectsWrapper() {
         {projects.slice(0, 3).map((project, index) => (
           <div 
             key={project.id} 
-            className="group rounded-md transition-colors"
+            className="group border-2 border-primary/20 rounded-md p-6 bg-muted/5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all duration-300 relative"
           >
+            {/* Decorative corners */}
+            <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/40 rounded-tl-sm"></div>
+            <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary/40 rounded-tr-sm"></div>
+            <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary/40 rounded-bl-sm"></div>
+            <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary/40 rounded-br-sm"></div>
+            
             {/* Two column layout with screenshot on left, details on right */}
-            <HoverableCard className="flex flex-col sm:flex-row">
+            <div className="flex flex-col sm:flex-row">
               {/* Left column - Screenshot only */}
               {project.images && project.images.length > 0 && (
                 <div className="sm:w-2/5 min-w-[240px] max-w-[280px] flex-shrink-0 mr-0 sm:mr-5 mb-4 sm:mb-0">
@@ -354,7 +366,7 @@ function ProjectsWrapper() {
                   </Tooltip>
                 </div>
               </div>
-            </HoverableCard>
+            </div>
           </div>
         ))}
       </div>
@@ -402,12 +414,18 @@ function AcademicWrapper() {
             {academicData.institutions.map((institution, index) => (
               <div 
                 key={index}
-                className="group rounded-md transition-colors"
+                className="group border-2 border-primary/20 rounded-md p-6 bg-muted/5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all duration-300 relative"
               >
+                {/* Decorative corners */}
+                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/40 rounded-tl-sm"></div>
+                <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary/40 rounded-tr-sm"></div>
+                <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary/40 rounded-bl-sm"></div>
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary/40 rounded-br-sm"></div>
+                
                 {/* Institution Header */}
-                <HoverableCard className="flex items-center gap-4 mb-4">
+                <div className="flex items-center gap-4 mb-4">
                   {/* Logo */}
-                  <div className="w-14 h-14 rounded-md bg-background flex items-center justify-center overflow-hidden border border-primary/20 shadow-sm">
+                  <div className="w-14 h-14 rounded-md bg-background flex items-center justify-center overflow-hidden border-2 border-primary/20 shadow-sm">
                     <img 
                       src={institution.logo} 
                       alt={`${institution.name} logo`}
@@ -434,7 +452,7 @@ function AcademicWrapper() {
                       <span>{institution.location}</span>
                     </div>
                   </div>
-                </HoverableCard>
+                </div>
                 
                 {/* Degrees Section - LinkedIn style with vertical timeline */}
                 <div className="pl-7 relative">
@@ -496,10 +514,16 @@ function AcademicWrapper() {
             {academicData.publications.map((pub, index) => (
               <div 
                 key={index}
-                className="group rounded-md transition-colors"
+                className="group border-2 border-primary/20 rounded-md p-6 bg-muted/5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all duration-300 relative"
               >
+                {/* Decorative corners */}
+                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/40 rounded-tl-sm"></div>
+                <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary/40 rounded-tr-sm"></div>
+                <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary/40 rounded-bl-sm"></div>
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary/40 rounded-br-sm"></div>
+                
                 {/* Journal Header */}
-                <HoverableCard className="flex items-center gap-3 mb-2">
+                <div className="flex items-center gap-3 mb-2">
                   {/* Logo */}
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border-2 border-primary/30">
                     <img 
@@ -510,10 +534,10 @@ function AcademicWrapper() {
                   </div>
                   {/* Journal Name */}
                   <h4 className="font-bold text-xl">{pub.journal}</h4>
-                </HoverableCard>
+                </div>
                 
                 {/* Publication Title and Date */}
-                <div className="mb-3 px-3">
+                <div className="mb-3">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
                     <h5 className="font-medium text-lg">{pub.title}</h5>
                     <div className="text-base text-primary font-medium sm:ml-2 whitespace-nowrap mt-1 sm:mt-0">
@@ -530,7 +554,7 @@ function AcademicWrapper() {
                 
                 {/* Link to Publication */}
                 {pub.link && (
-                  <div className="px-3">
+                  <div>
                     <a 
                       href={pub.link} 
                       target="_blank" 
