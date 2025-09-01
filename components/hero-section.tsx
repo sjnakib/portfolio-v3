@@ -21,7 +21,7 @@ export function HeroSection() {
   // Typewriter effect that looks like writing code
   const { displayText, isTyping } = useTypewriter({
     text: "hello! it's shafaat (sha-fa-aat).",
-    speed: 80,
+    speed: 32,
     codeLike: true
   })
   
