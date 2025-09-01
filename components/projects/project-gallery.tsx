@@ -166,9 +166,9 @@ function ProjectCard({ project, imageOnRight = false }: { project: Project; imag
 
   return (
     <HoverableCard className="group overflow-hidden h-full">
-      <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 ${imageOnRight ? 'md:grid-flow-dense' : ''} h-full max-h-[400px]`}>
+      <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 ${imageOnRight ? 'md:grid-flow-dense' : ''} h-full md:max-h-[400px]`}>
         {/* Project image - Order changes based on imageOnRight prop */}
-        <div className={`relative bg-muted overflow-hidden h-full md:h-[400px] min-h-[180px] ${imageOnRight ? 'md:col-start-2' : ''}`}>
+        <div className={`relative bg-muted overflow-hidden h-[200px] sm:h-[250px] md:h-[400px] ${imageOnRight ? 'md:col-start-2' : ''}`}>
           {/* Decorative corners for added visual interest */}
           <CardCorners className="z-10" />
           
@@ -180,71 +180,71 @@ function ProjectCard({ project, imageOnRight = false }: { project: Project; imag
         </div>
         
         {/* Content section */}
-        <div className={`p-3 sm:p-5 flex flex-col ${imageOnRight ? 'md:col-start-1' : ''} h-full overflow-y-auto`}>
+        <div className={`p-4 sm:p-5 flex flex-col ${imageOnRight ? 'md:col-start-1' : ''} h-full md:overflow-y-auto`}>
           <div className="h-full flex flex-col">
             {/* Project title with visual emphasis */}
-            <h3 className="text-lg sm:text-xl font-bold mb-1.5 text-foreground border-b border-primary/10 pb-1.5">
+            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-foreground border-b border-primary/10 pb-2">
               {project.title}
             </h3>
             
             {/* Project Type and Time Period */}
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
-              <span className="font-medium text-sm capitalize bg-muted/50 px-2 py-0.5 rounded-sm inline-block">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3">
+              <span className="font-medium text-sm capitalize bg-muted/50 px-2.5 py-1 rounded-sm inline-block">
                 {project.type?.replace(/-/g, ' ') || "Personal Project"}
               </span>
-              <div className="text-xs sm:text-sm text-primary font-medium mt-1 sm:mt-0">
+              <div className="text-sm text-primary font-medium mt-2 sm:mt-0">
                 {getProjectYear(project.date)} • {getTimeSpent(project)}
               </div>
             </div>
             
-            <p className="text-pretty text-xs sm:text-sm text-muted-foreground mb-3">{project.shortDescription}</p>
+            <p className="text-pretty text-sm text-muted-foreground mb-4">{project.shortDescription}</p>
             
             {/* Key features with bullet points - more compact */}
-            <div className="mb-3">
-              <h4 className="text-xs sm:text-sm font-medium mb-1 text-foreground/90 flex items-center">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary mr-2"></span>
+            <div className="mb-4">
+              <h4 className="text-sm font-medium mb-2 text-foreground/90 flex items-center">
+                <span className="inline-block w-2 h-2 rounded-full bg-primary mr-2"></span>
                 Key Features:
               </h4>
-              <ul className="list-disc pl-5 text-xs sm:text-sm space-y-1 text-muted-foreground">
+              <ul className="list-disc pl-5 text-sm space-y-2 text-muted-foreground">
                 {project.features.slice(0, 3).map((feature, index) => (
                   <li key={index} className="text-pretty">{feature}</li>
                 ))}
               </ul>
             </div>
           
-            <div className="flex flex-wrap gap-1.5 mb-3">
-              {project.technologies.slice(0, 6).map((tech) => (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.technologies.slice(0, 4).map((tech) => (
                 <span 
                   key={tech} 
-                  className="bg-primary/10 text-primary px-2 py-0.5 text-xs font-medium rounded-full shadow-sm"
+                  className="bg-primary/10 text-primary px-2.5 py-1 text-xs font-medium rounded-full shadow-sm"
                 >
                   {tech}
                 </span>
               ))}
-              {project.technologies.length > 6 && (
-                <span className="bg-primary/10 text-primary px-2 py-0.5 text-xs font-medium rounded-full shadow-sm">
-                  +{project.technologies.length - 6} more
+              {project.technologies.length > 4 && (
+                <span className="bg-primary/10 text-primary px-2.5 py-1 text-xs font-medium rounded-full shadow-sm">
+                  +{project.technologies.length - 4} more
                 </span>
               )}
             </div>
             
-            <div className="flex items-center gap-1.5 sm:gap-2 mt-auto">
-              <Button size="sm" variant="default" className="h-8 text-xs sm:text-sm px-2 sm:px-3" asChild>
+            <div className="flex items-center gap-2 sm:gap-3 mt-auto">
+              <Button size="sm" variant="default" className="h-9 text-sm px-3 sm:px-4" asChild>
                 <Link href={`/projects/${project.slug}`}>
                   View Details
                 </Link>
               </Button>
               {project.liveUrl && (
-                <Button variant="outline" size="sm" className="h-8 w-8 p-0" asChild>
+                <Button variant="outline" size="sm" className="h-9 w-9 p-0" asChild>
                   <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title} demo`}>
-                    <ExternalLink className="h-3.5 w-3.5" />
+                    <ExternalLink className="h-4 w-4" />
                   </a>
                 </Button>
               )}
               {project.sourceUrl && (
-                <Button variant="outline" size="sm" className="h-8 w-8 p-0" asChild>
+                <Button variant="outline" size="sm" className="h-9 w-9 p-0" asChild>
                   <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code`}>
-                    <Github className="h-3.5 w-3.5" />
+                    <Github className="h-4 w-4" />
                   </a>
                 </Button>
               )}

@@ -599,11 +599,11 @@ This specification is designed to be implemented deterministically, with no room
 - Two-column structure on desktop with perfect 50/50 split using CSS Grid
 - Alternating image position (left/right) for visual interest across rows
 - Single column stacked layout on mobile devices
-- More compact design with reduced spacing and optimized typography:
-  - Smaller text sizes for better information density
-  - Reduced vertical spacing between elements
-  - Consistent height across all project cards regardless of content
-  - Overflow scrolling for content sections if needed
+- Mobile-optimized design with appropriate spacing and typography:
+  - Optimized text sizes for better readability on small screens
+  - Improved vertical spacing between elements for better separation
+  - Consistent height for project images (200px on mobile, 250px on small screens, 400px on desktop)
+  - Content fully displayed without scrollbars on mobile for better user experience
 - Enhanced visual hierarchy with improved spacing and subtle design touches:
   - Subtle border-bottom for project title
   - Slight background color for project type badge
@@ -613,11 +613,11 @@ This specification is designed to be implemented deterministically, with no room
 - Feature bullet points with key project highlights (up to 3 points)
 - Larger project screenshots (50% of tile width) on desktop with object-cover to maintain aspect ratio while filling the container
 - Button styling:
-  - Smaller, more compact buttons (height: 8 instead of 9)
-  - Non-stretched "View Details" button with reduced padding
+  - Touch-friendly buttons with adequate size (height: 9 for better touch targets)
+  - "View Details" button with appropriate padding on mobile and desktop
   - Consistent sizing across all buttons
-  - Smaller square icon buttons for external links (32px → 28px)
-  - Proper horizontal alignment of all action buttons
+  - Properly sized icon buttons for external links (36px) for better touch interaction
+  - Increased gap spacing between action buttons for easier tapping
 - Mobile-optimized design:
   - Stacked layout on mobile with image above content
   - Reduced padding on mobile (16px) vs desktop (24px)
