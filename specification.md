@@ -577,6 +577,15 @@ This specification is designed to be implemented deterministically, with no room
   - 3 columns on desktop (>1024px)
 - Appropriate gap spacing that scales with screen size (smaller on mobile)
 - Even margins around grid to prevent edge collision
+- Enhanced visual consistency with the tabbed section:
+  - Themed border styling with 2px borders using primary theme color at 20% opacity (border-primary/20) 
+  - Subtle shadow effects (shadow-sm) that enhance on hover (shadow-md)
+  - Decorative corner accents with thicker borders in primary theme color (40% opacity)
+  - Smooth hover animations with transition-all duration-300
+  - Project cards lift slightly on hover (-translate-y-1)
+  - Border color darkens on hover (40% opacity) for better visual feedback
+  - Technology badges matching the tabbed section style with bg-primary/10 styling and rounded-full shape
+  - Consistent spacing and typography matching the main site theme
 
 #### Individual Project Cards
 - Mobile-optimized design:
@@ -643,6 +652,16 @@ This specification is designed to be implemented deterministically, with no room
 - Technologies and skills used in each position
 - Visual separation between different work experiences
 - Consistent formatting for easy scanning
+- Enhanced visual consistency with the tabbed section:
+  - Themed border styling with 2px borders using primary theme color at 20% opacity (border-primary/20)
+  - Shadow effects (shadow-sm) with hover enhancement (shadow-md) for depth
+  - Decorative corner accents with thicker borders in primary theme color (40% opacity)
+  - Smooth hover animations with transition-all duration-300
+  - Border color darkens on hover (40% opacity) for better visual feedback
+  - Company logos with more prominent borders (border-2 border-primary/20)
+  - Technology badges matching the tabbed section style with bg-primary/10 styling and rounded-full shape
+  - LinkedIn-inspired vertical timeline for roles within the same company
+  - Consistent text styling and spacing across all pages
 
 #### Key Accomplishments
 - Highlighted major professional accomplishments

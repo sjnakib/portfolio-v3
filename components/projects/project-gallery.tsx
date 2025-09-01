@@ -148,53 +148,62 @@ function ProjectGrid({ projects }: { projects: Project[] }) {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-      <div className="aspect-video bg-muted rounded-t-lg overflow-hidden">
+    <div className="group border-2 border-primary/20 rounded-md bg-muted/5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+      <div className="aspect-video bg-muted rounded-t-md overflow-hidden relative">
+        {/* Decorative corners for added visual interest */}
+        <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/40 rounded-tl-sm z-10"></div>
+        <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary/40 rounded-tr-sm z-10"></div>
+        <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary/40 rounded-bl-sm z-10"></div>
+        <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary/40 rounded-br-sm z-10"></div>
+        
         <img
           src={project.images[0]?.src || "/placeholder.svg"}
           alt={`${project.title} screenshot`}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
-      <CardHeader className="p-4 sm:p-6">
-        <CardTitle className="text-lg sm:text-xl">{project.title}</CardTitle>
-        <CardDescription className="text-pretty text-sm sm:text-base">{project.shortDescription}</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4 p-4 sm:p-6 pt-0 sm:pt-0">
-        <div className="flex flex-wrap gap-1 sm:gap-2">
+      <div className="p-4 sm:p-6">
+        <h3 className="text-lg sm:text-xl font-bold mb-1">{project.title}</h3>
+        <p className="text-pretty text-sm text-muted-foreground mb-4">{project.shortDescription}</p>
+        
+        <div className="flex flex-wrap gap-1.5 mb-4">
           {project.technologies.slice(0, 3).map((tech) => (
-            <Badge key={tech} variant="outline" className="text-xs sm:text-sm">
+            <span 
+              key={tech} 
+              className="bg-primary/10 text-primary px-2 py-0.5 text-xs font-medium rounded-full shadow-sm"
+            >
               {tech}
-            </Badge>
+            </span>
           ))}
           {project.technologies.length > 3 && (
-            <Badge variant="outline" className="text-xs sm:text-sm">
+            <span className="bg-primary/10 text-primary px-2 py-0.5 text-xs font-medium rounded-full shadow-sm">
               +{project.technologies.length - 3} more
-            </Badge>
+            </span>
           )}
         </div>
+        
         <div className="flex gap-1 sm:gap-2">
-          <Button size="sm" className="flex-1 text-xs sm:text-sm py-1 h-8 sm:h-9" asChild>
+          <Button size="sm" variant="default" className="flex-1" asChild>
             <Link href={`/projects/${project.slug}`}>
               View Details
             </Link>
           </Button>
           {project.liveUrl && (
-            <Button variant="outline" size="sm" className="h-8 sm:h-9 w-8 sm:w-9 p-0" asChild>
+            <Button variant="outline" size="sm" className="h-9 w-9 p-0" asChild>
               <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title} demo`}>
-                <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
+                <ExternalLink className="h-4 w-4" />
               </a>
             </Button>
           )}
           {project.sourceUrl && (
-            <Button variant="outline" size="sm" className="h-8 sm:h-9 w-8 sm:w-9 p-0" asChild>
+            <Button variant="outline" size="sm" className="h-9 w-9 p-0" asChild>
               <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code`}>
-                <Github className="h-3 w-3 sm:h-4 sm:w-4" />
+                <Github className="h-4 w-4" />
               </a>
             </Button>
           )}
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   )
 }
