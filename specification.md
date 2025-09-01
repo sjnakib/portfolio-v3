@@ -399,7 +399,7 @@ This specification is designed to be implemented deterministically, with no room
   - Distinct hover and active states for buttons
   - Animated scroll indicator at the bottom of the viewport that:
     - Visually prompts users to scroll down to see more content
-    - Features a subtle bouncing arrow animation with a vertical gradient line
+    - Features an animated mouse icon with scrolling wheel animation
     - Provides a clear affordance for discovering content below the fold
     - Matches the site's design theme with hover effects and accessible focus states
     - Includes smooth scrolling behavior when clicked

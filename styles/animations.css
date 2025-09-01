@@ -66,3 +66,22 @@
 .animate-fade-in-out {
   animation: fade-in-out 2s infinite ease-in-out;
 }
+
+@keyframes mouse-scroll {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-mouse-scroll {
+  animation: mouse-scroll 1.5s ease-in-out infinite;
+}
