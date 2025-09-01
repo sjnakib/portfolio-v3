@@ -1,0 +1,53 @@
+{
+  "technologies": [
+    {
+      "name": "React",
+      "icon": "react",
+      "color": "#61DAFB",
+      "description": "A JavaScript library for building user interfaces with a declarative, component-based approach",
+      "url": "https://react.dev"
+    },
+    {
+      "name": "Next.js",
+      "icon": "nextjs",
+      "color": "#8A2BE2",
+      "description": "The React framework for production-grade applications with hybrid static & server rendering",
+      "url": "https://nextjs.org"
+    },
+    {
+      "name": "Node.js",
+      "icon": "nodejs",
+      "color": "#339933",
+      "description": "JavaScript runtime built on Chrome's V8 JavaScript engine for building scalable network applications",
+      "url": "https://nodejs.org"
+    },
+    {
+      "name": "TypeScript",
+      "icon": "typescript",
+      "color": "#3178C6",
+      "description": "A strongly typed programming language that builds on JavaScript with static type definitions",
+      "url": "https://www.typescriptlang.org"
+    },
+    {
+      "name": "Figma",
+      "icon": "figma",
+      "color": "#F8A79E",
+      "description": "A collaborative interface design tool for creating UI/UX designs and prototypes",
+      "url": "https://www.figma.com"
+    },
+    {
+      "name": "Git",
+      "icon": "git",
+      "color": "#F05032",
+      "description": "Free and open source distributed version control system designed for speed and efficiency",
+      "url": "https://git-scm.com"
+    },
+    {
+      "name": "Linux",
+      "icon": "linux",
+      "color": "#FCC624",
+      "description": "Open-source Unix-like operating system kernel that powers many servers, desktops, and embedded devices",
+      "url": "https://www.linux.org"
+    }
+  ]
+}

@@ -5,12 +5,15 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { FileText, ArrowRight, MessageSquare } from "lucide-react"
+import { FileText, ArrowRight, MessageSquare, Sparkles } from "lucide-react"
 import { useViewportHeight } from "@/hooks/use-viewport-height"
 import { useTypewriter } from "@/hooks/use-typewriter"
+import { TechBadge } from "@/components/ui/tech-badge"
+import techData from "@/data/technologies.json"
 
 export function HeroSection() {
-  const skills = ["React", "Next.js", "Node.js", "TypeScript", "Figma", "Git", "Linux"]
+  // Use technologies from our data file
+  const technologies = techData.technologies
   
   // Use the viewport height hook
   useViewportHeight()
@@ -99,16 +102,21 @@ export function HeroSection() {
               </Button>
             </div>
 
-            {/* Skills */}
+            {/* Technologies */}
             <div className="space-y-2">
               <h3 className="text-base font-medium text-muted-foreground uppercase tracking-wide">
                 Technologies & Skills
               </h3>
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="text-base px-3 py-1">
-                    {skill}
-                  </Badge>
+              <div className="flex flex-wrap gap-2 items-center">
+                {technologies.map((tech) => (
+                  <TechBadge 
+                    key={tech.name}
+                    name={tech.name}
+                    icon={tech.icon}
+                    color={tech.color}
+                    description={tech.description}
+                    url={tech.url}
+                  />
                 ))}
               </div>
             </div>

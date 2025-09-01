@@ -58,6 +58,11 @@
     "contextualTags": [
       "// UI/UX Designer",
       "// Frontend Developer"
-    ]
+    ],
+    "easterEggs": {
+      "technologies": true,
+      "hoverEffects": true,
+      "animatedIcons": true
+    }
   }
 }

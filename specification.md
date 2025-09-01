@@ -84,6 +84,8 @@ This specification is designed to be implemented deterministically, with no room
 /components
   /ui/                       -> All shadcn/ui components (button, card, etc.)
     /hoverable-card.tsx      -> Reusable card component with consistent hover animations
+    /tech-badge.tsx          -> Interactive technology badge with hover effects and tooltips
+    /tech-icon.tsx           -> SVG icons for various technologies with brand colors
   /hero-section.tsx          -> Above-the-fold introduction
   /tabbed-section.tsx        -> Tabbed component with Projects, Experience, and Education
   /projects-section.tsx      -> Featured projects showcase (used within tabbed-section)
@@ -299,6 +301,35 @@ This specification is designed to be implemented deterministically, with no room
 }
 ```
 
+### Technologies Schema
+```json
+{
+  "technologies": [
+    {
+      "name": "React",
+      "icon": "react",
+      "color": "#61DAFB",
+      "description": "A JavaScript library for building user interfaces with a declarative, component-based approach",
+      "url": "https://react.dev"
+    },
+    {
+      "name": "Next.js",
+      "icon": "nextjs",
+      "color": "#000000",
+      "description": "The React framework for production-grade applications with hybrid static & server rendering",
+      "url": "https://nextjs.org"
+    },
+    {
+      "name": "Node.js",
+      "icon": "nodejs",
+      "color": "#339933",
+      "description": "JavaScript runtime built on Chrome's V8 JavaScript engine for building scalable network applications",
+      "url": "https://nodejs.org"
+    }
+  ]
+}
+```
+
 ## Page-by-Page Design & Requirements
 
 ### 1. Home Page (/)
@@ -377,6 +408,11 @@ This specification is designed to be implemented deterministically, with no room
       - Contextual tags: "// Based in Dhaka, Bangladesh"
       - Small product tags with colored backgrounds
       - Role tags: "// UI/UX Designer", "Full Stack Developer"
+      - **Technology Easter Eggs**:
+        - Interactive technology badges that glow with brand colors on hover
+        - Each technology badge shows its icon and detailed information on hover
+        - Custom animations for specific technologies (React icon spins, Git icon bounces)
+        - Brand-color-matched tooltips with descriptions and "Learn more" links
     - **Location Information**:
       - Display with location pin icon
       - Shows "Dhaka, Bangladesh" to indicate location

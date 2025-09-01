@@ -1,0 +1,12 @@
+/* Tech badges styling */
+.tech-badge {
+  text-align: center !important;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tech-badge span {
+  display: block;
+  text-align: center;
+}
