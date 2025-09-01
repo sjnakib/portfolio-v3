@@ -1,34 +1,16 @@
 {
-  "institutions": [
+  "education": [
     {
-      "name": "BRAC University",
-      "logo": "/placeholder-logo.svg",
+      "institution": "BRAC University",
+      "degree": "BSc in Computer Science",
+      "logo": "/academic/bracu-logo.webp",
       "location": "Dhaka, Bangladesh",
       "url": "https://bracu.ac.bd",
-      "degrees": [
-        {
-          "name": "BSc in Computer Science",
-          "gpa": "3.97/4.0",
-          "startDate": "2022-01",
-          "endDate": "2025-12",
-          "highlights": [
-            "Top of class in algorithm design",
-            "Research assistant in robotics lab",
-            "Received Merit Scholarship for academic excellence",
-            "Senior project in autonomous robotics systems"
-          ]
-        },
-        {
-          "name": "Minor in Mathematics",
-          "gpa": "3.9/4.0",
-          "startDate": "2022-01",
-          "endDate": "2025-12",
-          "highlights": [
-            "Advanced coursework in Calculus and Linear Algebra",
-            "Member of Mathematics Club",
-            "Applied mathematical principles to computer science projects"
-          ]
-        }
+      "gpa": "*.**/4.0",
+      "startDate": "2022-01",
+      "endDate": "2025-12",
+      "highlights": [
+        "toDO"
       ]
     }
   ],
