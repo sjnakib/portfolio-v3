@@ -94,10 +94,15 @@ export function HeroSection() {
                   Resume
                 </a>
               </Button>
-              <Button variant="secondary" size="lg" asChild>
-                <Link href="/contact">
-                  <MessageSquare className="mr-2 h-4 w-4" />
-                  Connect
+              <Button 
+                variant="secondary" 
+                size="lg" 
+                className="px-4 min-w-0"
+                asChild
+              >
+                <Link href="/experiences">
+                  <Sparkles className="mr-2 h-4 w-4" />
+                  Experiences
                 </Link>
               </Button>
             </div>

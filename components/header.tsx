@@ -5,7 +5,8 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Mail } from "lucide-react"
+import siteSettings from "@/data/siteSettings.json"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -96,12 +97,27 @@ export function Header() {
             <div className="flex items-center justify-center">
               <ThemeToggle />
             </div>
-            {/* Contact Me button - only visible on desktop */}
-            <div className="hidden md:block">
-              <Button className="rounded-md bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+            {/* Connect button - only visible on desktop */}
+            <div className="hidden md:flex">
+              <Button 
+                className="rounded-r-none bg-primary text-primary-foreground hover:bg-primary/90 px-3 py-2 h-9" 
+                asChild
+              >
                 <Link href="/contact">
-                  Contact Me
+                  Connect
                 </Link>
+              </Button>
+              <div className="h-9 flex items-center bg-primary">
+                <div className="h-5 w-[1px] bg-primary-foreground/30"></div>
+              </div>
+              <Button 
+                className="rounded-l-none bg-primary text-primary-foreground hover:bg-primary/80 px-2 py-2 h-9" 
+                asChild
+              >
+                <a href={`mailto:${siteSettings.owner.email}`}>
+                  <Mail className="h-4 w-4" />
+                  <span className="sr-only">Email Me</span>
+                </a>
               </Button>
             </div>
             {/* Mobile Menu Button - Moved to rightmost with proper spacing */}
@@ -146,13 +162,30 @@ export function Header() {
                 </Link>
               ))}
               
-              {/* Contact Me button added to mobile menu */}
+              {/* Connect button added to mobile menu */}
               <div className="pt-4 mt-2 border-t">
-                <Button className="w-full rounded-md bg-primary text-primary-foreground hover:bg-primary/90" asChild>
-                  <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
-                    Contact Me
-                  </Link>
-                </Button>
+                <div className="flex w-full">
+                  <Button 
+                    className="rounded-r-none bg-primary text-primary-foreground hover:bg-primary/90 px-3 py-2" 
+                    asChild
+                  >
+                    <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
+                      Connect
+                    </Link>
+                  </Button>
+                  <div className="flex items-center bg-primary">
+                    <div className="h-5 w-[1px] bg-primary-foreground/30"></div>
+                  </div>
+                  <Button 
+                    className="rounded-l-none bg-primary text-primary-foreground hover:bg-primary/80 px-2 py-2" 
+                    asChild
+                  >
+                    <a href={`mailto:${siteSettings.owner.email}`}>
+                      <Mail className="h-4 w-4" />
+                      <span className="sr-only">Email Me</span>
+                    </a>
+                  </Button>
+                </div>
               </div>
             </nav>
           </div>

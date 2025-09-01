@@ -358,9 +358,12 @@ This specification is designed to be implemented deterministically, with no room
     - Base icon size of 20px (h-5 w-5) scaled to appear approximately 36px
     - Multi-level flexbox centering to ensure perfect icon alignment and position
     - Precise positioning of the sun/moon icons within their container using absolute positioning
-    - Prominent "Contact Me" button as rightmost element with contrasting background
-    - Rounded corners and dynamic hover effect (background color change, shadow)
-    - Links to contact page (/contact)
+    - Prominent split "Connect | Mail" button as rightmost element with contrasting background:
+      - Left side "Connect" text navigates to the contact page (/contact)
+      - Right side mail icon opens email client with owner's email as recipient
+      - Visible separation bar between button sections using primary-foreground color at 30% opacity
+    - Rounded corners on outside edges only
+    - Dynamic hover effects (background color change) for both sections of the button
   - **Mobile**:
     - Site logo "sjnakib" with decorative circle positioned at leftmost side of header with appropriate padding
     - Hamburger menu uses the same CSS transform scaling (1.8x) for visual consistency
@@ -371,7 +374,10 @@ This specification is designed to be implemented deterministically, with no room
     - CSS transform technique provides cleaner scaling than manipulating SVG dimensions directly
     - Icons centered precisely within multiple nested flex containers for perfect alignment
     - Hamburger menu positioned at rightmost side of header with enough margin to be fully visible (min 12px from edge)
-    - "Contact Me" button moved inside the hamburger menu
+    - Split "Connect | Mail" button moved inside the hamburger menu:
+      - Left side "Connect" text navigates to the contact page (/contact)
+      - Right side mail icon opens email client with owner's email as recipient
+      - Visible separation bar between button sections using primary-foreground color at 30% opacity
     - Collapsible hamburger menu with smooth animation
     - Menu automatically closes when user clicks outside of it (improved UX with click-outside detection)
     - Uses React refs to track both menu container and toggle button for accurate click detection
@@ -403,7 +409,7 @@ This specification is designed to be implemented deterministically, with no room
     - **CTAs**:
       - Primary "View Projects" button
       - Secondary "Download Resume" button with download icon
-      - "Let's Connect" button positioned near main title
+      - "Experiences" button with sparkles icon
     - **Supporting Information**:
       - Contextual tags: "// Based in Dhaka, Bangladesh"
       - Small product tags with colored backgrounds
