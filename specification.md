@@ -611,7 +611,7 @@ This specification is designed to be implemented deterministically, with no room
   - Consistent spacing between sections
 - Project year and completion time display below project title
 - Feature bullet points with key project highlights (up to 3 points)
-- Larger project screenshots (50% of tile width) on desktop with object-fill to ensure the image fills the entire container
+- Larger project screenshots (50% of tile width) on desktop with object-cover to maintain aspect ratio while filling the container
 - Button styling:
   - Smaller, more compact buttons (height: 8 instead of 9)
   - Non-stretched "View Details" button with reduced padding

@@ -175,7 +175,7 @@ function ProjectCard({ project, imageOnRight = false }: { project: Project; imag
           <img
             src={project.images[0]?.src || "/placeholder.svg"}
             alt={`${project.title} screenshot`}
-            className="w-full h-full object-fill group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </div>
         
