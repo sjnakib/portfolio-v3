@@ -6,6 +6,7 @@ import { AcademicHighlightsSection } from "@/components/academic-highlights-sect
 import { useState, useEffect } from "react"
 import { Briefcase, GraduationCap, Code, ExternalLink, Github, X, ArrowLeft, ArrowRight } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { HoverableCard, CardCorners } from "@/components/ui/hoverable-card"
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Dialog, DialogContent, DialogTrigger, DialogClose } from "@/components/ui/dialog"
@@ -80,7 +81,7 @@ function ExperienceSection() {
             className="group rounded-md transition-colors"
           >
             {/* Company Header */}
-            <div className="flex items-center gap-4 mb-4">
+            <HoverableCard className="flex items-center gap-4 mb-4">
               {/* Logo */}
               <div className="w-14 h-14 rounded-md bg-background flex items-center justify-center overflow-hidden border border-primary/20 shadow-sm">
                 <img 
@@ -110,7 +111,7 @@ function ExperienceSection() {
                   <span>{calculateCompanyDuration(company.roles)}</span>
                 </div>
               </div>
-            </div>
+            </HoverableCard>
             
             {/* Roles Section - LinkedIn style with vertical timeline */}
             <div className="pl-7 relative">
@@ -198,7 +199,7 @@ function ProjectsWrapper() {
             className="group rounded-md transition-colors"
           >
             {/* Two column layout with screenshot on left, details on right */}
-            <div className="flex flex-col sm:flex-row border-2 border-primary/20 rounded-md p-4 bg-muted/5 shadow-sm">
+            <HoverableCard className="flex flex-col sm:flex-row">
               {/* Left column - Screenshot only */}
               {project.images && project.images.length > 0 && (
                 <div className="sm:w-2/5 min-w-[240px] max-w-[280px] flex-shrink-0 mr-0 sm:mr-5 mb-4 sm:mb-0">
@@ -206,10 +207,7 @@ function ProjectsWrapper() {
                     <DialogTrigger asChild>
                       <div className="cursor-pointer relative overflow-hidden rounded-md border-2 border-primary/20 shadow-md hover:border-primary/40 hover:shadow-lg transition-all duration-300 w-full">
                         {/* Decorative corners for added visual interest */}
-                        <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/40 rounded-tl-sm"></div>
-                        <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary/40 rounded-tr-sm"></div>
-                        <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary/40 rounded-bl-sm"></div>
-                        <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary/40 rounded-br-sm"></div>
+                        <CardCorners />
                         
                         <AspectRatio ratio={16/9} className="bg-muted/30">
                           <Image
@@ -227,10 +225,7 @@ function ProjectsWrapper() {
                     <DialogContent className="sm:max-w-[80vw] max-h-[90vh] p-1 overflow-hidden border-2 border-primary/20 shadow-xl">
                       <div className="relative h-full w-full">
                         {/* Decorative corners for the dialog too */}
-                        <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary/40 rounded-tl-sm z-10"></div>
-                        <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary/40 rounded-tr-sm z-10"></div>
-                        <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary/40 rounded-bl-sm z-10"></div>
-                        <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary/40 rounded-br-sm z-10"></div>
+                        <CardCorners className="w-4 h-4 z-10" />
                         
                         <AspectRatio ratio={16/9} className="bg-black">
                           <Image 
@@ -359,7 +354,7 @@ function ProjectsWrapper() {
                   </Tooltip>
                 </div>
               </div>
-            </div>
+            </HoverableCard>
           </div>
         ))}
       </div>
@@ -410,7 +405,7 @@ function AcademicWrapper() {
                 className="group rounded-md transition-colors"
               >
                 {/* Institution Header */}
-                <div className="flex items-center gap-4 mb-4">
+                <HoverableCard className="flex items-center gap-4 mb-4">
                   {/* Logo */}
                   <div className="w-14 h-14 rounded-md bg-background flex items-center justify-center overflow-hidden border border-primary/20 shadow-sm">
                     <img 
@@ -439,7 +434,7 @@ function AcademicWrapper() {
                       <span>{institution.location}</span>
                     </div>
                   </div>
-                </div>
+                </HoverableCard>
                 
                 {/* Degrees Section - LinkedIn style with vertical timeline */}
                 <div className="pl-7 relative">
@@ -504,7 +499,7 @@ function AcademicWrapper() {
                 className="group rounded-md transition-colors"
               >
                 {/* Journal Header */}
-                <div className="flex items-center gap-3 border-2 border-primary/20 rounded-md p-3 bg-muted/5 mb-2 shadow-sm">
+                <HoverableCard className="flex items-center gap-3 mb-2">
                   {/* Logo */}
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border-2 border-primary/30">
                     <img 
@@ -515,7 +510,7 @@ function AcademicWrapper() {
                   </div>
                   {/* Journal Name */}
                   <h4 className="font-bold text-xl">{pub.journal}</h4>
-                </div>
+                </HoverableCard>
                 
                 {/* Publication Title and Date */}
                 <div className="mb-3 px-3">

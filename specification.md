@@ -83,6 +83,7 @@ This specification is designed to be implemented deterministically, with no room
       /route.ts              -> Serve machine-readable resume data
 /components
   /ui/                       -> All shadcn/ui components (button, card, etc.)
+    /hoverable-card.tsx      -> Reusable card component with consistent hover animations
   /hero-section.tsx          -> Above-the-fold introduction
   /tabbed-section.tsx        -> Tabbed component with Projects, Experience, and Education
   /projects-section.tsx      -> Featured projects showcase (used within tabbed-section)
@@ -577,15 +578,17 @@ This specification is designed to be implemented deterministically, with no room
   - 3 columns on desktop (>1024px)
 - Appropriate gap spacing that scales with screen size (smaller on mobile)
 - Even margins around grid to prevent edge collision
-- Enhanced visual consistency with the tabbed section:
-  - Themed border styling with 2px borders using primary theme color at 20% opacity (border-primary/20) 
-  - Subtle shadow effects (shadow-sm) that enhance on hover (shadow-md)
-  - Decorative corner accents with thicker borders in primary theme color (40% opacity)
-  - Smooth hover animations with transition-all duration-300
-  - Project cards lift slightly on hover (-translate-y-1)
-  - Border color darkens on hover (40% opacity) for better visual feedback
+- Enhanced visual consistency across the project:
+  - Reusable `HoverableCard` component for all card elements providing:
+    - Themed border styling with 2px borders using primary theme color at 20% opacity (border-primary/20) 
+    - Subtle shadow effects (shadow-sm) that enhance on hover (shadow-md)
+    - Smooth hover animations with transition-all duration-300
+    - Cards lift slightly on hover (-translate-y-1) across all sections
+    - Border color darkens on hover (40% opacity) for better visual feedback
+  - Reusable `CardCorners` component for decorative corner accents with thicker borders in primary theme color (40% opacity)
   - Technology badges matching the tabbed section style with bg-primary/10 styling and rounded-full shape
   - Consistent spacing and typography matching the main site theme
+  - Uniform hover animations applied to all card elements through component reuse
 
 #### Individual Project Cards
 - Mobile-optimized design:
@@ -1049,6 +1052,18 @@ This specification is designed to be implemented deterministically, with no room
   - Rounded corners effect for the overall navigation bar
 
 #### Content Display
+- **Card Components**:
+  - Uses reusable `HoverableCard` component for all card elements:
+    - Subtle upward movement (transform: -translate-y-1)
+    - Border color transition from border-primary/20 to border-primary/40
+    - Shadow enhancement from shadow-sm to shadow-md
+    - Smooth transition with duration-300
+    - Optional padding control with `noPadding` prop
+    - Optional hover effect disabling with `noHover` prop
+  - Uses reusable `CardCorners` component for decorative corner accents with thicker borders in primary theme color (40% opacity)
+    - Consistent styling across all cards
+    - Size customization through className prop
+    
 - **Experience Items**:
   - Company/Institution Header:
     - Horizontal bar with logo and company/institution name
@@ -1199,6 +1214,12 @@ This specification provides a comprehensive blueprint for creating a stunning po
 - **Interactive Elements:** Strategic use of tabs, tooltips, and the screenshot viewer enhances usability while maintaining a clean interface.
 - **Accessibility Considerations:** All interactive elements are keyboard-navigable with appropriate ARIA labels and proper contrast ratios.
 - **Mobile-First Responsive Design:** The layout gracefully adapts from mobile to desktop with appropriate content reordering and spacing adjustments.
+
+### Component System Architecture
+- **Reusable UI Components:** The portfolio implements a component-based architecture with reusable UI elements:
+  - `HoverableCard`: A versatile card component with consistent hover animations and styling
+  - `CardCorners`: Decorative corner accents for visual interest
+  - See `ui-components.md` for detailed documentation on the component system
 
 ### Future Enhancements
 - **Animation Improvements:** Subtle animation sequences could be added for smoother transitions between sections and more engaging user interactions.

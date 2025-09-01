@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github, X } from "lucide-react"
+import { HoverableCard, CardCorners } from "@/components/ui/hoverable-card"
 import projectsData from "@/data/projects.json"
 import type { Project } from "@/types/project"
 
@@ -148,13 +149,10 @@ function ProjectGrid({ projects }: { projects: Project[] }) {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group border-2 border-primary/20 rounded-md bg-muted/5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+    <HoverableCard className="group">
       <div className="aspect-video bg-muted rounded-t-md overflow-hidden relative">
         {/* Decorative corners for added visual interest */}
-        <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/40 rounded-tl-sm z-10"></div>
-        <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary/40 rounded-tr-sm z-10"></div>
-        <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary/40 rounded-bl-sm z-10"></div>
-        <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary/40 rounded-br-sm z-10"></div>
+        <CardCorners className="z-10" />
         
         <img
           src={project.images[0]?.src || "/placeholder.svg"}
@@ -204,6 +202,6 @@ function ProjectCard({ project }: { project: Project }) {
           )}
         </div>
       </div>
-    </div>
+    </HoverableCard>
   )
 }
