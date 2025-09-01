@@ -577,7 +577,10 @@ This specification is designed to be implemented deterministically, with no room
 - Single column throughout all screen sizes
 - CSS Flexbox column layout with consistent vertical spacing
 - Consistent gap spacing between project tiles (6px on mobile, 8px on larger screens)
-- Internal grid layout for each tile to create the horizontal arrangement
+- Alternating layout pattern: 
+  - Even rows (first, third, etc.) have image on the left, content on the right
+  - Odd rows (second, fourth, etc.) have image on the right, content on the left
+- Internal grid layout with CSS Grid's grid-flow-dense for alternating content positioning
 - Even margins around grid to prevent edge collision
 - Enhanced visual consistency across the project:
   - Reusable `HoverableCard` component for all card elements providing:
@@ -592,11 +595,29 @@ This specification is designed to be implemented deterministically, with no room
   - Uniform hover animations applied to all card elements through component reuse
 
 #### Individual Project Cards
-- Horizontal tile-shaped layout with one project per row
-- Two-column structure on desktop (image left, content right)
+- Horizontal tile-shaped layout with one project per row and consistent height (max-height: 400px)
+- Two-column structure on desktop with perfect 50/50 split using CSS Grid
+- Alternating image position (left/right) for visual interest across rows
 - Single column stacked layout on mobile devices
+- More compact design with reduced spacing and optimized typography:
+  - Smaller text sizes for better information density
+  - Reduced vertical spacing between elements
+  - Consistent height across all project cards regardless of content
+  - Overflow scrolling for content sections if needed
+- Enhanced visual hierarchy with improved spacing and subtle design touches:
+  - Subtle border-bottom for project title
+  - Slight background color for project type badge
+  - Improved bullet point styling with custom marker
+  - Consistent spacing between sections
+- Project year and completion time display below project title
 - Feature bullet points with key project highlights (up to 3 points)
-- Larger project screenshots with fixed width on desktop (300px)
+- Larger project screenshots (50% of tile width) on desktop with object-fill to ensure the image fills the entire container
+- Button styling:
+  - Smaller, more compact buttons (height: 8 instead of 9)
+  - Non-stretched "View Details" button with reduced padding
+  - Consistent sizing across all buttons
+  - Smaller square icon buttons for external links (32px → 28px)
+  - Proper horizontal alignment of all action buttons
 - Mobile-optimized design:
   - Stacked layout on mobile with image above content
   - Reduced padding on mobile (16px) vs desktop (24px)
