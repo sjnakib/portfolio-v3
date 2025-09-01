@@ -572,11 +572,12 @@ This specification is designed to be implemented deterministically, with no room
   - Focus attention on the projects themselves rather than the filtering UI
   
 #### Project Grid
-- Fully responsive grid layout:
-  - 1 column on mobile (<640px)
-  - 1-2 columns on tablet (640px-1024px)
-  - 3 columns on desktop (>1024px)
-- Appropriate gap spacing that scales with screen size (smaller on mobile)
+- Vertical list layout with one tile per row
+- Each tile is a horizontal card on desktop and stacked card on mobile
+- Single column throughout all screen sizes
+- CSS Flexbox column layout with consistent vertical spacing
+- Consistent gap spacing between project tiles (6px on mobile, 8px on larger screens)
+- Internal grid layout for each tile to create the horizontal arrangement
 - Even margins around grid to prevent edge collision
 - Enhanced visual consistency across the project:
   - Reusable `HoverableCard` component for all card elements providing:
@@ -591,16 +592,22 @@ This specification is designed to be implemented deterministically, with no room
   - Uniform hover animations applied to all card elements through component reuse
 
 #### Individual Project Cards
+- Horizontal tile-shaped layout with one project per row
+- Two-column structure on desktop (image left, content right)
+- Single column stacked layout on mobile devices
+- Feature bullet points with key project highlights (up to 3 points)
+- Larger project screenshots with fixed width on desktop (300px)
 - Mobile-optimized design:
+  - Stacked layout on mobile with image above content
   - Reduced padding on mobile (16px) vs desktop (24px)
   - Smaller font sizes on mobile with proper scaling
-  - Limited number of technology badges on mobile (3 max)
+  - Expanded technology badges display (up to 6 visible)
   - Properly sized buttons for touch interaction
   - Square icon buttons with adequate touch targets
-- Clean, minimalist design
-- Clear hierarchy of information
-- Subtle hover animations (where appropriate for device)
-- Consistent image sizing and treatment
+- Clean, minimalist horizontal tile design
+- Clear hierarchy of information with feature bullet points
+- Subtle hover animations on images (scale effect)
+- Consistent image sizing and treatment with object-position: top for better visibility
 
 ### 3. Project Detail Page (/projects/[slug])
 

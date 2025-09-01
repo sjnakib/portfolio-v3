@@ -131,12 +131,12 @@ export function ProjectGallery() {
 
 function ProjectGrid({ projects }: { projects: Project[] }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+    <div className="flex flex-col gap-6 sm:gap-8">
       {projects.map((project) => (
         <ProjectCard key={project.id} project={project} />
       ))}
       {projects.length === 0 && (
-        <div className="col-span-full py-10 text-center bg-muted/20 rounded-lg border border-border/30">
+        <div className="py-10 text-center bg-muted/20 rounded-lg border border-border/30">
           <p className="text-muted-foreground">No projects match the selected filters</p>
           <Button variant="link" size="sm" className="mt-2" onClick={() => window.scrollTo(0, 0)}>
             Adjust filters
@@ -149,57 +149,74 @@ function ProjectGrid({ projects }: { projects: Project[] }) {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <HoverableCard className="group">
-      <div className="aspect-video bg-muted rounded-t-md overflow-hidden relative">
-        {/* Decorative corners for added visual interest */}
-        <CardCorners className="z-10" />
-        
-        <img
-          src={project.images[0]?.src || "/placeholder.svg"}
-          alt={`${project.title} screenshot`}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-      </div>
-      <div className="p-4 sm:p-6">
-        <h3 className="text-lg sm:text-xl font-bold mb-1">{project.title}</h3>
-        <p className="text-pretty text-sm text-muted-foreground mb-4">{project.shortDescription}</p>
-        
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {project.technologies.slice(0, 3).map((tech) => (
-            <span 
-              key={tech} 
-              className="bg-primary/10 text-primary px-2 py-0.5 text-xs font-medium rounded-full shadow-sm"
-            >
-              {tech}
-            </span>
-          ))}
-          {project.technologies.length > 3 && (
-            <span className="bg-primary/10 text-primary px-2 py-0.5 text-xs font-medium rounded-full shadow-sm">
-              +{project.technologies.length - 3} more
-            </span>
-          )}
+    <HoverableCard className="group overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-4 sm:gap-6">
+        {/* Left side - Project image */}
+        <div className="relative bg-muted overflow-hidden h-full min-h-[200px] md:min-h-0">
+          {/* Decorative corners for added visual interest */}
+          <CardCorners className="z-10" />
+          
+          <img
+            src={project.images[0]?.src || "/placeholder.svg"}
+            alt={`${project.title} screenshot`}
+            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+          />
         </div>
         
-        <div className="flex gap-1 sm:gap-2">
-          <Button size="sm" variant="default" className="flex-1" asChild>
-            <Link href={`/projects/${project.slug}`}>
-              View Details
-            </Link>
-          </Button>
-          {project.liveUrl && (
-            <Button variant="outline" size="sm" className="h-9 w-9 p-0" asChild>
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title} demo`}>
-                <ExternalLink className="h-4 w-4" />
-              </a>
-            </Button>
-          )}
-          {project.sourceUrl && (
-            <Button variant="outline" size="sm" className="h-9 w-9 p-0" asChild>
-              <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code`}>
-                <Github className="h-4 w-4" />
-              </a>
-            </Button>
-          )}
+        {/* Right side - Content */}
+        <div className="p-2 sm:p-4 flex flex-col">
+          <div>
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">{project.title}</h3>
+            <p className="text-pretty text-sm sm:text-base text-muted-foreground mb-4">{project.shortDescription}</p>
+            
+            {/* Key features with bullet points */}
+            <div className="mb-4">
+              <h4 className="text-sm font-medium mb-2">Key Features:</h4>
+              <ul className="list-disc pl-5 text-sm space-y-1 text-muted-foreground">
+                {project.features.slice(0, 3).map((feature, index) => (
+                  <li key={index} className="text-pretty">{feature}</li>
+                ))}
+              </ul>
+            </div>
+          
+            <div className="flex flex-wrap gap-1.5 mb-4">
+              {project.technologies.slice(0, 6).map((tech) => (
+                <span 
+                  key={tech} 
+                  className="bg-primary/10 text-primary px-2 py-0.5 text-xs font-medium rounded-full shadow-sm"
+                >
+                  {tech}
+                </span>
+              ))}
+              {project.technologies.length > 6 && (
+                <span className="bg-primary/10 text-primary px-2 py-0.5 text-xs font-medium rounded-full shadow-sm">
+                  +{project.technologies.length - 6} more
+                </span>
+              )}
+            </div>
+            
+            <div className="flex gap-1 sm:gap-2 mt-4">
+              <Button size="sm" variant="default" className="flex-1" asChild>
+                <Link href={`/projects/${project.slug}`}>
+                  View Details
+                </Link>
+              </Button>
+              {project.liveUrl && (
+                <Button variant="outline" size="sm" className="h-9 w-9 p-0" asChild>
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title} demo`}>
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                </Button>
+              )}
+              {project.sourceUrl && (
+                <Button variant="outline" size="sm" className="h-9 w-9 p-0" asChild>
+                  <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code`}>
+                    <Github className="h-4 w-4" />
+                  </a>
+                </Button>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </HoverableCard>
