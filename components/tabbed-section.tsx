@@ -411,7 +411,7 @@ function AcademicWrapper() {
           </div>
           
           <div className="space-y-10">
-            {academicData.institutions.map((institution, index) => (
+            {academicData.education.map((institution, index) => (
               <div 
                 key={index}
                 className="group border-2 border-primary/20 rounded-md p-6 bg-muted/5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all duration-300 relative"
@@ -428,7 +428,7 @@ function AcademicWrapper() {
                   <div className="w-14 h-14 rounded-md bg-background flex items-center justify-center overflow-hidden border-2 border-primary/20 shadow-sm">
                     <img 
                       src={institution.logo} 
-                      alt={`${institution.name} logo`}
+                      alt={`${institution.institution} logo`}
                       className="w-full h-full object-contain p-1"
                     />
                   </div>
@@ -436,7 +436,7 @@ function AcademicWrapper() {
                   {/* Institution Name and Location */}
                   <div className="flex flex-col">
                     <div className="flex items-baseline gap-2">
-                      <h4 className="font-bold text-xl">{institution.name}</h4>
+                      <h4 className="font-bold text-xl">{institution.institution}</h4>
                       {institution.url && (
                         <a 
                           href={institution.url}
@@ -454,47 +454,37 @@ function AcademicWrapper() {
                   </div>
                 </div>
                 
-                {/* Degrees Section - LinkedIn style with vertical timeline */}
+                {/* Degree details */}
                 <div className="pl-7 relative">
-                  {institution.degrees.map((degree, degreeIndex) => (
-                    <div 
-                      key={degreeIndex} 
-                      className={`relative mb-6 pl-10 ${degreeIndex < institution.degrees.length - 1 ? 'pb-1' : ''}`}
-                    >
-                      {/* Timeline connector */}
-                      {degreeIndex < institution.degrees.length - 1 && (
-                        <div className="absolute left-1.5 top-3 bottom-0 w-0.5 bg-primary/30"></div>
-                      )}
-                      
-                      {/* Timeline dot */}
-                      <div className="absolute left-0 top-2 w-3 h-3 rounded-full bg-primary border-2 border-background"></div>
-                      
-                      {/* Degree details */}
-                      <div className="mb-2">
-                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
-                          <h5 className="font-semibold text-lg">{degree.name}</h5>
-                          <div className="text-base text-primary font-medium mt-1 sm:mt-0 whitespace-nowrap sm:ml-3">
-                            {formatDate(degree.startDate)} - {formatDate(degree.endDate)}
-                          </div>
-                        </div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-base text-muted-foreground mt-1">
-                          <span className="font-medium">CGPA: {degree.gpa}</span>
-                          <span className="mt-0.5 sm:mt-0">{calculateDuration(degree.startDate, degree.endDate)}</span>
+                  <div className="relative mb-6 pl-10">
+                    {/* Timeline dot */}
+                    <div className="absolute left-0 top-2 w-3 h-3 rounded-full bg-primary border-2 border-background"></div>
+                    
+                    {/* Degree details */}
+                    <div className="mb-2">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
+                        <h5 className="font-semibold text-lg">{institution.degree}</h5>
+                        <div className="text-base text-primary font-medium mt-1 sm:mt-0 whitespace-nowrap sm:ml-3">
+                          {formatDate(institution.startDate)} - {formatDate(institution.endDate)}
                         </div>
                       </div>
-                      
-                      {/* Highlights */}
-                      <div className="mb-2">
-                        <ul className="list-disc list-outside pl-5 space-y-1.5">
-                          {degree.highlights.map((highlight, idx) => (
-                            <li key={idx} className="text-base text-muted-foreground">
-                              {highlight}
-                            </li>
-                          ))}
-                        </ul>
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-base text-muted-foreground mt-1">
+                        <span className="font-medium">CGPA: {institution.gpa}</span>
+                        <span className="mt-0.5 sm:mt-0">{calculateDuration(institution.startDate, institution.endDate)}</span>
                       </div>
                     </div>
-                  ))}
+                    
+                    {/* Highlights */}
+                    <div className="mb-2">
+                      <ul className="list-disc list-outside pl-5 space-y-1.5">
+                        {institution.highlights.map((highlight, idx) => (
+                          <li key={idx} className="text-base text-muted-foreground">
+                            {highlight}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
