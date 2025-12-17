@@ -5,26 +5,38 @@
       "Greetings, fellow adventurer! I'm Shafaat, a digital craftsman navigating the vast landscapes of code and creativity. My story begins at the intersection of technology and imagination, where I've spent years building bridges between human needs and digital solutions.",
       "When I'm not crafting elegant code or designing intuitive interfaces, you'll find me on a different kind of adventure altogether. Life, after all, is about balance - between the digital and physical worlds we inhabit."
     ],
-    "photo": "/profile-photo.jpg"
+    "photo": "/shafaat-jamil-nakib-coxs-bazar.jpg"
   },
   "personalJourney": [
     {
       "title": "Anime Enthusiast",
       "icon": "Film",
       "description": "My journey through countless anime worlds has shaped my appreciation for storytelling and visual aesthetics. From the philosophical depths of 'Ghost in the Shell' to the creative worldbuilding of 'Made in Abyss', anime influences how I approach design challenges and narrative elements in my work.",
-      "favorites": ["Steins;Gate", "Attack on Titan", "Fullmetal Alchemist: Brotherhood"]
+      "favorites": [
+        "Steins;Gate",
+        "Attack on Titan",
+        "Fullmetal Alchemist: Brotherhood"
+      ]
     },
     {
       "title": "Travel Explorer",
       "icon": "Globe",
       "description": "Each new place I visit adds another perspective to how I see the world. Whether it's wandering through bustling city streets or hiking remote mountain trails, travel reminds me that there are infinite ways to solve a problem - a mindset I bring back to my coding projects.",
-      "memorable": ["Watching the sunrise from Mount Fuji", "Getting lost in the streets of Kyoto", "Hiking through the Himalayas"]
+      "memorable": [
+        "Watching the sunrise from Mount Fuji",
+        "Getting lost in the streets of Kyoto",
+        "Hiking through the Himalayas"
+      ]
     },
     {
       "title": "Cat Parent",
       "icon": "Cat",
       "description": "My feline companion, Whiskers, is both my most demanding user and my most honest critic. She's taught me the importance of focus, agility, and occasionally knocking things over to see what happens - valuable lessons for both software development and life.",
-      "traits": ["Curious", "Independent", "Expert at UI testing (by walking across keyboards)"]
+      "traits": [
+        "Curious",
+        "Independent",
+        "Expert at UI testing (by walking across keyboards)"
+      ]
     },
     {
       "title": "Open-Source Hunter",

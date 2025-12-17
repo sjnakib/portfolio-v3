@@ -29,20 +29,6 @@
       "url": "https://wordpress.org"
     },
     {
-      "name": "HTML5",
-      "icon": "html5",
-      "color": "#E34F26",
-      "description": "The latest evolution of the standard markup language for web content",
-      "url": "https://developer.mozilla.org/en-US/docs/Web/HTML"
-    },
-    {
-      "name": "CSS3",
-      "icon": "css3",
-      "color": "#1572B6",
-      "description": "Cascading Style Sheets for styling and layouting web content",
-      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
-    },
-    {
       "name": "Git",
       "icon": "git",
       "color": "#F05032",
@@ -57,11 +43,11 @@
       "url": "https://github.com"
     },
     {
-      "name": "VSCode",
-      "icon": "vscode",
-      "color": "#007ACC",
-      "description": "Powerful, lightweight code editor with built-in Git support and extensions",
-      "url": "https://code.visualstudio.com"
+      "name": "AWS",
+      "icon": "aws",
+      "color": "#FF9900",
+      "description": "Amazon Web Services provides on-demand cloud computing platforms and APIs",
+      "url": "https://aws.amazon.com"
     },
     {
       "name": "DigitalOcean",

@@ -5,7 +5,7 @@
     "location": "Dhaka, Bangladesh",
     "email": "sjnakib@gmail.com",
     "phone": "+1 (555) 123-4567",
-    "avatar": "/profile-photo.jpg",
+    "avatar": "/shafaat-jamil-nakib-coxs-bazar.jpg",
     "bio": "Frontend developer and UI/UX designer with expertise in designing and developing innovative digital solutions that combine technical excellence with exceptional user experience.",
     "motto": "// Design, Code, Innovate",
     "tagline": "Where aesthetics & functionality meet",
@@ -54,10 +54,7 @@
     "greeting": "Hello, I'm",
     "mainTitle": "FRONTEND & UI/UX DEVELOPER",
     "location": "Dhaka, Bangladesh",
-    "contextualTags": [
-      "// UI/UX Designer",
-      "// Frontend Developer"
-    ],
+    "contextualTags": ["// UI/UX Designer", "// Frontend Developer"],
     "easterEggs": {
       "technologies": true,
       "hoverEffects": true,
