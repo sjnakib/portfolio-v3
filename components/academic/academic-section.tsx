@@ -24,7 +24,7 @@ export function AcademicSection() {
                   </div>
                   <div className="text-right">
                     <p className="font-medium">
-                      {new Date(edu.startDate).getFullYear()} - {new Date(edu.endDate).getFullYear()}
+                      {new Date(edu.startDate).getFullYear()} - {edu.endDate ? new Date(edu.endDate).getFullYear() : "Present"}
                     </p>
                     <p className="text-primary font-medium mt-1">CGPA: {edu.gpa}</p>
                   </div>

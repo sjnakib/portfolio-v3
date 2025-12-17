@@ -1,54 +1,28 @@
 {
   "companies": [
     {
-      "name": "TechInnovate Solutions",
+      "name": "Freelance",
       "logo": "/placeholder-logo.svg",
       "location": "Remote",
-      "url": "https://techinnovate-example.com",
+      "url": null,
       "roles": [
         {
-          "title": "Senior Full-stack Developer",
-          "startDate": "2022-01",
+          "title": "Freelance Web Developer",
+          "startDate": "2024-01",
           "endDate": "Present",
           "responsibilities": [
-            "Lead development of enterprise-level web applications using React, Next.js and Node.js",
-            "Architect database schemas and API endpoints for optimal performance and scalability",
-            "Mentor junior developers and conduct code reviews to ensure code quality",
-            "Collaborate with product managers to define technical requirements and project timelines"
+            "Designed and developed responsive client websites using WordPress and Next.js",
+            "Translated client requirements and UI mockups into clean, SEO-friendly front-end interfaces",
+            "Collaborated remotely with clients to iterate on feedback, deploy solutions, and maintain production websites"
           ],
-          "technologies": ["React", "Next.js", "Node.js", "TypeScript", "MySQL", "AWS"]
-        },
-        {
-          "title": "Full-stack Developer",
-          "startDate": "2021-04",
-          "endDate": "2021-12",
-          "responsibilities": [
-            "Developed RESTful APIs and backend services using Node.js and Express",
-            "Implemented responsive frontend interfaces with React and TypeScript",
-            "Integrated third-party APIs and payment gateways into applications",
-            "Participated in daily stand-ups and sprint planning sessions"
-          ],
-          "technologies": ["React", "JavaScript", "Node.js", "Express", "MongoDB"]
-        }
-      ]
-    },
-    {
-      "name": "RoboSystems Inc.",
-      "logo": "/placeholder-logo.svg",
-      "location": "Boston, MA",
-      "url": "https://robosystems-example.com",
-      "roles": [
-        {
-          "title": "Robotics Software Engineer",
-          "startDate": "2020-03",
-          "endDate": "2021-03",
-          "responsibilities": [
-            "Developed control systems for autonomous industrial robots using ROS and Python",
-            "Created web interfaces for robot monitoring and control using React and TypeScript",
-            "Implemented machine learning algorithms for obstacle detection and path planning",
-            "Collaborated with hardware engineers to integrate software with sensor systems"
-          ],
-          "technologies": ["Python", "ROS", "React", "TensorFlow", "Computer Vision"]
+          "technologies": [
+            "Next.js",
+            "React",
+            "WordPress",
+            "HTML5",
+            "CSS3",
+            "TypeScript"
+          ]
         }
       ]
     },
@@ -59,46 +33,42 @@
       "url": "https://bracu.ac.bd",
       "roles": [
         {
-          "title": "Research Assistant - Robotics Lab",
-          "startDate": "2018-06",
-          "endDate": "2020-01",
+          "title": "Student Tutor — Algorithms (CSE221)",
+          "startDate": "2024-11",
+          "endDate": "Present",
           "responsibilities": [
-            "Assisted in research projects focused on autonomous navigation and robot perception",
-            "Implemented and tested computer vision algorithms for object recognition",
-            "Contributed to academic papers published in robotics conferences",
-            "Mentored undergraduate students on robotics projects"
+            "Conduct regular one-on-one and group sessions, explaining complex technical concepts clearly to diverse audiences",
+            "Assist students in problem-solving, debugging code, and improving logical thinking skills",
+            "Collaborate with faculty and teaching teams in an academic, deadline-driven environment"
           ],
-          "technologies": ["Python", "ROS", "Computer Vision", "Machine Learning"]
+          "technologies": ["Algorithms", "Data Structures", "Problem Solving"]
+        }
+      ]
+    },
+    {
+      "name": "Team Atlas",
+      "logo": "/placeholder-logo.svg",
+      "location": "BRAC University",
+      "url": null,
+      "roles": [
+        {
+          "title": "Hardware Designer",
+          "startDate": "2022-12",
+          "endDate": "Present",
+          "responsibilities": [
+            "Worked in multidisciplinary teams to design and build robotics systems under real-world constraints",
+            "Collaborated across hardware and software teams to integrate systems and meet project deadlines"
+          ],
+          "technologies": ["Robotics", "Hardware Design", "System Integration"]
         }
       ]
     }
   ],
   "skills": {
-    "programming": ["JavaScript/TypeScript", "Python", "C++", "SQL", "HTML/CSS"],
-    "frameworks": ["React", "Next.js", "Node.js", "Express", "Django", "Flask"],
-    "databases": ["MySQL", "PostgreSQL", "MongoDB", "Redis"],
-    "devOps": ["AWS", "Docker", "CI/CD", "Git"],
-    "robotics": ["ROS", "Computer Vision", "Path Planning", "Sensor Integration"],
-    "other": ["UI/UX Design", "Agile Methodologies", "Technical Writing", "Project Management"]
+    "frontEnd": ["Next.js (React)", "WordPress", "HTML5", "CSS3", "TypeScript"],
+    "tools": ["Git", "GitHub", "VSCode", "DigitalOcean", "CPanel"],
+    "prototyping": ["Figma"],
+    "seo": ["Basic SEO Practices", "Web Performance", "Cross Browser Testing"]
   },
-  "certifications": [
-    {
-      "name": "AWS Certified Solutions Architect",
-      "issuer": "Amazon Web Services",
-      "date": "2023-03",
-      "expires": "2026-03"
-    },
-    {
-      "name": "Professional Scrum Master I",
-      "issuer": "Scrum.org",
-      "date": "2022-06",
-      "expires": null
-    },
-    {
-      "name": "TensorFlow Developer Certificate",
-      "issuer": "Google",
-      "date": "2021-05",
-      "expires": null
-    }
-  ]
+  "certifications": []
 }

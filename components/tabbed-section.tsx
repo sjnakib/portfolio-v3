@@ -15,6 +15,7 @@ import Image from "next/image"
 import experienceData from "@/data/experience.json"
 import projectsData from "@/data/projects.json"
 import academicData from "@/data/academic.json"
+import type { AcademicData } from "@/types/academic"
 
 // Experience section component with LinkedIn-like interface
 function ExperienceSection() {
@@ -30,8 +31,8 @@ function ExperienceSection() {
   }
   
   // Format date in "MMM YYYY" format
-  const formatDate = (dateString: string): string => {
-    if (dateString === "Present") return "Present";
+  const formatDate = (dateString: string | null): string => {
+    if (dateString === "Present" || dateString === null) return "Present";
     return new Date(dateString).toLocaleDateString('en-US', {month: 'short', year: 'numeric'});
   };
 
@@ -379,14 +380,15 @@ function AcademicWrapper() {
   // Using academic data from the imported json file
   
   // Format date in "YYYY" format for education
-  const formatDate = (dateString: string): string => {
+  const formatDate = (dateString: string | null): string => {
+    if (dateString === null) return "Present";
     return new Date(dateString).toLocaleDateString('en-US', {year: 'numeric'});
   };
 
   // Calculate duration between two dates for education
-  const calculateDuration = (startDate: string, endDate: string): string => {
+  const calculateDuration = (startDate: string, endDate: string | null): string => {
     const start = new Date(startDate);
-    const end = endDate === "Present" ? new Date() : new Date(endDate);
+    const end = (endDate === "Present" || endDate === null) ? new Date() : new Date(endDate);
     
     // For education, we typically just care about years
     const years = end.getFullYear() - start.getFullYear();
@@ -501,63 +503,71 @@ function AcademicWrapper() {
           </div>
           
           <div className="space-y-5">
-            {academicData.publications.map((pub, index) => (
-              <div 
-                key={index}
-                className="group border-2 border-primary/20 rounded-md p-6 bg-muted/5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all duration-300 relative"
-              >
-                {/* Decorative corners */}
-                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/40 rounded-tl-sm"></div>
-                <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary/40 rounded-tr-sm"></div>
-                <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary/40 rounded-bl-sm"></div>
-                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary/40 rounded-br-sm"></div>
-                
-                {/* Journal Header */}
-                <div className="flex items-center gap-3 mb-2">
-                  {/* Logo */}
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border-2 border-primary/30">
-                    <img 
-                      src="/placeholder-logo.svg" 
-                      alt={`${pub.journal} logo`}
-                      className="w-full h-full object-contain"
-                    />
+            {(academicData as AcademicData).publications.length > 0 ? (
+              (academicData as AcademicData).publications.map((pub, index) => (
+                <div 
+                  key={index}
+                  className="group border-2 border-primary/20 rounded-md p-6 bg-muted/5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all duration-300 relative"
+                >
+                  {/* Decorative corners */}
+                  <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/40 rounded-tl-sm"></div>
+                  <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary/40 rounded-tr-sm"></div>
+                  <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary/40 rounded-bl-sm"></div>
+                  <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary/40 rounded-br-sm"></div>
+                  
+                  {/* Journal Header */}
+                  <div className="flex items-center gap-3 mb-2">
+                    {/* Logo */}
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border-2 border-primary/30">
+                      <img 
+                        src="/placeholder-logo.svg" 
+                        alt={`${pub.journal} logo`}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    {/* Journal Name */}
+                    <h4 className="font-bold text-xl">{pub.journal}</h4>
                   </div>
-                  {/* Journal Name */}
-                  <h4 className="font-bold text-xl">{pub.journal}</h4>
-                </div>
-                
-                {/* Publication Title and Date */}
-                <div className="mb-3">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                    <h5 className="font-medium text-lg">{pub.title}</h5>
-                    <div className="text-base text-primary font-medium sm:ml-2 whitespace-nowrap mt-1 sm:mt-0">
-                      {new Date(pub.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short'
-                      })}
+                  
+                  {/* Publication Title and Date */}
+                  <div className="mb-3">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                      <h5 className="font-medium text-lg">{pub.title}</h5>
+                      <div className="text-base text-primary font-medium sm:ml-2 whitespace-nowrap mt-1 sm:mt-0">
+                        {new Date(pub.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short'
+                        })}
+                      </div>
+                    </div>
+                    <div className="text-base text-muted-foreground">
+                      {pub.authors.join(", ")}
                     </div>
                   </div>
-                  <div className="text-base text-muted-foreground">
-                    {pub.authors.join(", ")}
-                  </div>
+                  
+                  {/* Link to Publication */}
+                  {pub.link && (
+                    <div>
+                      <a 
+                        href={pub.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-base font-medium text-primary hover:text-primary/80 flex items-center gap-1 hover:underline"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        View Publication
+                      </a>
+                    </div>
+                  )}
                 </div>
-                
-                {/* Link to Publication */}
-                {pub.link && (
-                  <div>
-                    <a 
-                      href={pub.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-base font-medium text-primary hover:text-primary/80 flex items-center gap-1 hover:underline"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                      View Publication
-                    </a>
-                  </div>
-                )}
+              ))
+            ) : (
+              <div className="border-2 border-primary/20 rounded-md p-6 bg-muted/5">
+                <p className="text-muted-foreground text-center">
+                  Publications coming soon as I continue my academic journey.
+                </p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </div>

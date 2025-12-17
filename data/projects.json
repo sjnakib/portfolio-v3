@@ -1,103 +1,112 @@
 {
   "projects": [
     {
-      "id": "usis-20",
-      "title": "USIS 2.0",
-      "slug": "usis-20",
-      "shortDescription": "A comprehensive university student information system with real-time data processing. Let's make this a two line short description.",
-      "fullDescription": "A comprehensive university student information system built with modern web technologies, featuring real-time data processing and intuitive user interfaces. Designed to streamline administrative tasks, enhance student experience, and provide powerful analytics for decision-making.",
+      "id": "qkodes",
+      "title": "qKodes — IT Startup Website",
+      "slug": "qkodes",
+      "shortDescription": "Fully responsive multi-page marketing website for an IT startup with SEO-friendly components.",
+      "fullDescription": "Built a fully responsive multi-page marketing website for an IT startup using Next.js and React. Implemented clean, SEO-friendly UI components from business requirements and deployed a production website for a real-world client. The website features modern design principles, optimal performance, and cross-browser compatibility.",
       "type": "client-website",
-      "technologies": ["React", "Next.js", "TypeScript", "MySQL"],
-      "roles": ["Full-stack Developer", "UI Designer"],
+      "technologies": ["Next.js", "React", "HTML5", "CSS3", "TypeScript"],
+      "roles": ["Frontend Developer", "UI Designer"],
       "features": [
-        "Implemented real-time data synchronization between client and server",
-        "Designed intuitive dashboards for students and administrators",
-        "Created automated grade calculation and reporting system"
+        "Implemented clean, SEO-friendly UI components from business requirements",
+        "Built fully responsive multi-page marketing website",
+        "Deployed and maintained production website for real-world client",
+        "Optimized web performance and cross-browser compatibility"
       ],
       "challenges": [
-        "Overcame complex data relationships by implementing a well-structured database schema",
-        "Solved performance issues by optimizing database queries and implementing caching"
+        "Translated complex business requirements into intuitive UI components",
+        "Ensured consistent branding and design language across all pages",
+        "Optimized performance for fast loading times and good SEO rankings"
       ],
       "outcomes": [
-        "Reduced administrative processing time by 40%",
-        "Improved student satisfaction ratings by 35%"
+        "Successfully launched production website serving real users",
+        "Achieved excellent web performance scores",
+        "Client satisfaction with professional, modern web presence"
       ],
       "images": [
         {
-          "src": "/university-student-information-system-dashboard.png",
-          "alt": "USIS 2.0 Dashboard Interface",
-          "caption": "Main dashboard showing student information and course selection"
+          "src": "/placeholder.jpg",
+          "alt": "qKodes Website Interface",
+          "caption": "Clean and modern IT startup marketing website"
         }
       ],
-      "liveUrl": "https://usis-example.com",
-      "sourceUrl": "https://github.com/username/usis-20",
-      "date": "2023-08"
+      "liveUrl": "https://qkodes.com",
+      "sourceUrl": "https://github.com/sjnakib/qkodes-website",
+      "date": "2024-01"
     },
     {
-      "id": "accounting-dashboard",
-      "title": "Accounting Dashboard",
-      "slug": "accounting-dashboard",
-      "shortDescription": "Professional financial management dashboard with advanced analytics and reporting",
-      "fullDescription": "Professional financial management dashboard with advanced analytics, reporting features, and real-time data visualization for business insights. This system integrates with major accounting platforms and provides customizable reports for businesses of all sizes.",
+      "id": "globalstudy24",
+      "title": "GlobalStudy24 — Education & Travel Services",
+      "slug": "globalstudy24",
+      "shortDescription": "Education and travel services website for study abroad and Hajj/Umrah services.",
+      "fullDescription": "Developed and continuously maintained a client website for study abroad and Hajj/Umrah services. Published blog content and updated service information to support marketing campaigns. Implemented UI improvements and content updates based on client feedback, ensuring the website remains current and engaging for visitors.",
       "type": "client-website",
-      "technologies": ["Node.js", "React", "Python", "MySQL"],
-      "roles": ["Backend Developer", "Data Visualization Specialist"],
+      "technologies": ["WordPress", "CSS3"],
+      "roles": ["Web Developer", "Content Manager"],
       "features": [
-        "Built dynamic reporting system with customizable parameters",
-        "Integrated with external financial APIs for real-time data",
-        "Designed interactive charts and visualizations for financial metrics"
+        "Developed and continuously maintained client website",
+        "Published blog content and updated service information",
+        "Implemented UI improvements based on client feedback",
+        "Supported marketing campaigns with timely content updates"
       ],
       "challenges": [
-        "Ensured data accuracy across multiple integration points",
-        "Optimized performance for handling large financial datasets"
+        "Managed content updates while maintaining site performance",
+        "Balanced client feedback with best practices for UX",
+        "Ensured consistent design language across dynamic content"
       ],
       "outcomes": [
-        "Increased financial decision-making efficiency by 25%",
-        "Reduced monthly closing process time by 3 business days"
+        "Ongoing client relationship since 2023",
+        "Regular content updates supporting business growth",
+        "Improved user engagement through UI enhancements"
       ],
       "images": [
         {
-          "src": "/financial-accounting-dashboard-with-charts.png",
-          "alt": "Financial Dashboard Interface",
-          "caption": "Financial overview dashboard with interactive charts"
+          "src": "/placeholder.jpg",
+          "alt": "GlobalStudy24 Website",
+          "caption": "Education and travel services platform"
         }
       ],
-      "liveUrl": "https://accounting-example.com",
-      "sourceUrl": "https://github.com/username/accounting-dashboard",
-      "date": "2023-05"
+      "liveUrl": "https://globalstudy24.com",
+      "sourceUrl": null,
+      "date": "2023-01"
     },
     {
-      "id": "robotics-control-system",
-      "title": "Robotics Control System",
-      "slug": "robotics-control-system",
-      "shortDescription": "Advanced robotics control interface using ROS for autonomous navigation",
-      "fullDescription": "Advanced robotics control interface using ROS for autonomous navigation and real-time sensor data processing in industrial environments. The system provides a user-friendly interface for monitoring and controlling robotic systems with precise movement control and safety features.",
+      "id": "portfolio-v3",
+      "title": "Personal Portfolio Website",
+      "slug": "portfolio-v3",
+      "shortDescription": "Pixel-perfect personal portfolio with strong attention to UI details and modular components.",
+      "fullDescription": "Designed and developed a pixel-perfect personal portfolio with strong attention to UI details. Built modular, reusable components for long-term maintainability and optimized responsiveness and performance across devices. Features modern design principles, smooth animations, and an exceptional user experience.",
       "type": "personal-project",
-      "technologies": ["Python", "ROS", "TypeScript", "React"],
-      "roles": ["Robotics Engineer", "UI Developer"],
+      "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      "roles": ["Frontend Developer", "UI/UX Designer"],
       "features": [
-        "Developed path planning algorithms for efficient navigation",
-        "Created real-time sensor data visualization dashboard",
-        "Implemented safety protocols and collision avoidance systems"
+        "Designed pixel-perfect UI with strong attention to detail",
+        "Built modular, reusable components for maintainability",
+        "Optimized responsiveness and performance across devices",
+        "Implemented smooth animations and micro-interactions"
       ],
       "challenges": [
-        "Integrated diverse sensor systems with varying data formats",
-        "Optimized algorithms for real-time performance on embedded systems"
+        "Balanced aesthetic design with technical performance",
+        "Created consistent design system with reusable components",
+        "Ensured accessibility and responsive design across all screen sizes"
       ],
       "outcomes": [
-        "Achieved 98.5% accuracy in autonomous navigation tasks",
-        "Reduced robot setup and programming time by 60%"
+        "Professional portfolio showcasing technical skills",
+        "Excellent web performance and accessibility scores",
+        "Maintainable codebase with reusable component architecture"
       ],
       "images": [
         {
-          "src": "/robotics-control-system-interface.png",
-          "alt": "Robotics Control System Interface",
-          "caption": "Control interface showing robot status and sensor data"
+          "src": "/placeholder.jpg",
+          "alt": "Portfolio Website Interface",
+          "caption": "Modern personal portfolio with clean design"
         }
       ],
-      "liveUrl": "https://robotics-demo.example.com",
-      "sourceUrl": "https://github.com/username/robotics-control",
-      "date": "2023-02"
+      "liveUrl": "https://sjnakib.com",
+      "sourceUrl": "https://github.com/sjnakib/portfolio-v3",
+      "date": "2025-01"
     }
   ]
 }

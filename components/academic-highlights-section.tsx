@@ -1,18 +1,12 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/                    <p className="text-base text-muted-foreground">{pub.authors.join(", ")}</p>
-                    <p className="text-base font-medium">{pub.journal}</p>
-                    <p className="text-base text-muted-foreground">
-                      {new Date(pub.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short'
-                      })}
-                    </p>
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { GraduationCap, FileText, ArrowRight, Lightbulb } from "lucide-react"
 import academicData from "@/data/academic.json"
+import type { AcademicData } from "@/types/academic"
 
 export function AcademicHighlightsSection() {
-  const { education, publications } = academicData
+  const { education, publications } = academicData as AcademicData
   
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
@@ -46,7 +40,7 @@ export function AcademicHighlightsSection() {
                       <p className="text-primary font-medium">CGPA: {edu.gpa}</p>
                     </div>
                     <p className="text-base text-muted-foreground">
-                      {new Date(edu.startDate).getFullYear()} - {new Date(edu.endDate).getFullYear()}
+                      {new Date(edu.startDate).getFullYear()} - {edu.endDate ? new Date(edu.endDate).getFullYear() : "Present"}
                     </p>
                     <ul className="list-disc list-inside space-y-1 text-base text-muted-foreground mt-2">
                       {edu.highlights.slice(0, 2).map((highlight, idx) => (
@@ -68,25 +62,35 @@ export function AcademicHighlightsSection() {
               <h3 className="text-2xl font-semibold">Research & Publications</h3>
             </div>
             
-            {publications.slice(0, 1).map((pub, index) => (
-              <Card key={index}>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-xl">{pub.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <p className="text-base text-muted-foreground">{pub.authors.join(", ")}</p>
-                    <p className="text-base font-medium">{pub.journal}</p>
-                    <p className="text-base text-muted-foreground">
-                      {new Date(pub.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long'
-                      })}
-                    </p>
-                  </div>
+            {publications.length > 0 ? (
+              publications.slice(0, 1).map((pub, index) => (
+                <Card key={index}>
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-xl">{pub.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <p className="text-base text-muted-foreground">{pub.authors.join(", ")}</p>
+                      <p className="text-base font-medium">{pub.journal}</p>
+                      <p className="text-base text-muted-foreground">
+                        {new Date(pub.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long'
+                        })}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))
+            ) : (
+              <Card>
+                <CardContent className="pt-6">
+                  <p className="text-muted-foreground text-center">
+                    Publications coming soon as I continue my academic journey.
+                  </p>
                 </CardContent>
               </Card>
-            ))}
+            )}
             
             <div className="flex items-center gap-4 pt-4">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -94,7 +98,7 @@ export function AcademicHighlightsSection() {
               </div>
               <div>
                 <h3 className="text-xl font-semibold">Research Focus Areas</h3>
-                <p className="text-muted-foreground mt-1">Autonomous Systems, Computer Vision, Machine Learning</p>
+                <p className="text-muted-foreground mt-1">Web Development, UI/UX Design, Robotics</p>
               </div>
             </div>
           </div>
