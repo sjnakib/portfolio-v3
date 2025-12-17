@@ -186,15 +186,14 @@ function ExperienceSection() {
                   <div className="mb-2">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1">
                       <h5 className="font-semibold text-lg">{role.title}</h5>
-                      <div className="text-base text-primary font-medium mt-0.5 sm:mt-0.5 flex items-center gap-1">
-                        <span>
+                      <div className="text-sm sm:text-base text-muted-foreground mt-1 sm:mt-0 text-left sm:text-right">
+                        <div className="font-medium">
                           {formatDate(role.startDate)} -{" "}
                           {formatDate(role.endDate)}
-                        </span>
-                        <span className="text-muted-foreground">·</span>
-                        <span className="text-muted-foreground">
+                        </div>
+                        <div className="text-xs sm:text-sm mt-0.5">
                           {calculateDuration(role.startDate, role.endDate)}
-                        </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -335,12 +334,17 @@ function ProjectsWrapper() {
 
                 {/* Time Period and Type */}
                 <div>
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
                     <span className="font-medium text-base capitalize">
                       {project.type?.replace(/-/g, " ") || "Personal Project"}
                     </span>
-                    <div className="text-base text-primary font-medium mt-1 sm:mt-0">
-                      {getProjectYear(project.date)} • {getTimeSpent(project)}
+                    <div className="text-sm sm:text-base text-muted-foreground mt-1 sm:mt-0 text-left sm:text-right">
+                      <div className="font-medium">
+                        {getProjectYear(project.date)}
+                      </div>
+                      <div className="text-xs sm:text-sm mt-0.5">
+                        {getTimeSpent(project)}
+                      </div>
                     </div>
                   </div>
                   <div className="text-base text-muted-foreground mt-2">
@@ -549,20 +553,22 @@ function AcademicWrapper() {
                         <h5 className="font-semibold text-lg">
                           {institution.degree}
                         </h5>
-                        <div className="text-base text-primary font-medium mt-1 sm:mt-0 whitespace-nowrap sm:ml-3">
-                          {formatDate(institution.startDate)} -{" "}
-                          {formatDate(institution.endDate)}
+                        <div className="text-sm sm:text-base text-muted-foreground mt-1 sm:mt-0 text-left sm:text-right sm:ml-3">
+                          <div className="font-medium">
+                            {formatDate(institution.startDate)} -{" "}
+                            {formatDate(institution.endDate)}
+                          </div>
+                          <div className="text-xs sm:text-sm mt-0.5">
+                            {calculateDuration(
+                              institution.startDate,
+                              institution.endDate
+                            )}
+                          </div>
                         </div>
                       </div>
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-base text-muted-foreground mt-1">
+                      <div className="flex flex-col text-base text-muted-foreground mt-1">
                         <span className="font-medium">
                           CGPA: {institution.gpa}
-                        </span>
-                        <span className="mt-0.5 sm:mt-0">
-                          {calculateDuration(
-                            institution.startDate,
-                            institution.endDate
-                          )}
                         </span>
                       </div>
                     </div>
