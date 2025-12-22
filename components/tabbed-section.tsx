@@ -293,11 +293,25 @@ function ProjectsWrapper() {
                         </div>
                       </div>
                     </DialogTrigger>
-                    <DialogContent className="sm:max-w-[90vw] max-h-[90vh] p-0 overflow-hidden border-2 border-primary/20 shadow-xl">
+                    <DialogContent
+                      className="sm:max-w-[90vw] max-h-[90vh] p-0 overflow-hidden border-2 border-primary/20 shadow-xl"
+                      showCloseButton={false}
+                    >
                       <DialogTitle className="sr-only">
                         {project.title} Screenshots
                       </DialogTitle>
-                      <ImageCarouselDialog images={project.images} />
+                      <DialogClose
+                        className="absolute top-0 left-0 z-[100] opacity-0 pointer-events-none"
+                        id={`dialog-close-${project.id}`}
+                      />
+                      <ImageCarouselDialog
+                        images={project.images}
+                        onClose={() => {
+                          document
+                            .getElementById(`dialog-close-${project.id}`)
+                            ?.click();
+                        }}
+                      />
                     </DialogContent>
                   </Dialog>
                 </div>
