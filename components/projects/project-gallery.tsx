@@ -11,7 +11,12 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { ExternalLink, Github, X } from "lucide-react";
 import { HoverableCard, CardCorners } from "@/components/ui/hoverable-card";
 import { ImageCarouselDialog } from "@/components/ui/image-carousel-dialog";
@@ -241,6 +246,9 @@ function ProjectCard({
             </div>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[90vw] max-h-[90vh] p-0 overflow-hidden border-2 border-primary/20 shadow-xl">
+            <DialogTitle className="sr-only">
+              {project.title} Screenshots
+            </DialogTitle>
             <ImageCarouselDialog images={project.images} />
           </DialogContent>
         </Dialog>

@@ -31,6 +31,7 @@ import {
   DialogContent,
   DialogTrigger,
   DialogClose,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
@@ -293,6 +294,9 @@ function ProjectsWrapper() {
                       </div>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[90vw] max-h-[90vh] p-0 overflow-hidden border-2 border-primary/20 shadow-xl">
+                      <DialogTitle className="sr-only">
+                        {project.title} Screenshots
+                      </DialogTitle>
                       <ImageCarouselDialog images={project.images} />
                     </DialogContent>
                   </Dialog>

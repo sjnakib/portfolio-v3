@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import {
@@ -97,10 +98,13 @@ export function ImageCarouselDialog({
       <div className="relative h-full w-full">
         <CardCorners className="w-4 h-4 z-10" />
         <AspectRatio ratio={16 / 9} className="bg-black">
-          <img
+          <Image
             src={images[0].src}
             alt={images[0].alt}
+            width={1920}
+            height={1080}
             className="w-full h-full object-contain"
+            priority
           />
         </AspectRatio>
         {images[0].caption && (
@@ -129,11 +133,13 @@ export function ImageCarouselDialog({
             <CarouselItem key={index} className="h-full">
               <div className="flex flex-col items-center justify-center h-full p-4 md:p-8">
                 <div className="relative w-full h-[calc(100%-100px)] flex items-center justify-center">
-                  <img
+                  <Image
                     src={image.src}
                     alt={image.alt}
+                    width={1920}
+                    height={1080}
                     className="max-w-full max-h-full object-contain"
-                    loading={index === initialIndex ? "eager" : "lazy"}
+                    priority={index === initialIndex}
                   />
                 </div>
                 <div className="text-center space-y-2 mt-4">
