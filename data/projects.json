@@ -27,9 +27,44 @@
       ],
       "images": [
         {
-          "src": "/placeholder.jpg",
-          "alt": "qKodes Website Interface",
-          "caption": "Clean and modern IT startup marketing website"
+          "src": "/projects/qkodes/qKodes_screenshot_1.png",
+          "alt": "qKodes Homepage - Hero Section",
+          "caption": "Modern hero section with clear value proposition and call-to-action"
+        },
+        {
+          "src": "/projects/qkodes/qKodes_screenshot_2.png",
+          "alt": "qKodes Services Section",
+          "caption": "Comprehensive service offerings with engaging visual layout"
+        },
+        {
+          "src": "/projects/qkodes/qKodes_screenshot_3.png",
+          "alt": "qKodes About Us Section",
+          "caption": "Company overview with professional team presentation"
+        },
+        {
+          "src": "/projects/qkodes/qKodes_screenshot_4.png",
+          "alt": "qKodes Technology Stack",
+          "caption": "Showcase of technologies and expertise areas"
+        },
+        {
+          "src": "/projects/qkodes/qKodes_screenshot_5.png",
+          "alt": "qKodes Portfolio Section",
+          "caption": "Featured projects and client work showcase"
+        },
+        {
+          "src": "/projects/qkodes/qKodes_screenshot_6.png",
+          "alt": "qKodes Contact Section",
+          "caption": "User-friendly contact form with multiple contact options"
+        },
+        {
+          "src": "/projects/qkodes/qKodes_screenshot_7.png",
+          "alt": "qKodes Mobile Responsive Design",
+          "caption": "Fully responsive layout optimized for mobile devices"
+        },
+        {
+          "src": "/projects/qkodes/qKodes_screenshot_8.png",
+          "alt": "qKodes Footer and Navigation",
+          "caption": "Comprehensive footer with easy navigation and social links"
         }
       ],
       "liveUrl": "https://qkodes.com",

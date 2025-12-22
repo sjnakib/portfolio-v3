@@ -11,8 +11,10 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ExternalLink, Github, X } from "lucide-react";
 import { HoverableCard, CardCorners } from "@/components/ui/hoverable-card";
+import { ImageCarouselDialog } from "@/components/ui/image-carousel-dialog";
 import projectsData from "@/data/projects.json";
 import type { Project } from "@/types/project";
 
@@ -214,20 +216,34 @@ function ProjectCard({
         } h-full md:max-h-[400px]`}
       >
         {/* Project image - Order changes based on imageOnRight prop */}
-        <div
-          className={`relative bg-muted overflow-hidden h-[200px] sm:h-[250px] md:h-[400px] ${
-            imageOnRight ? "md:col-start-2" : ""
-          }`}
-        >
-          {/* Decorative corners for added visual interest */}
-          <CardCorners className="z-10" />
+        <Dialog>
+          <DialogTrigger asChild>
+            <div
+              className={`relative bg-muted overflow-hidden h-[200px] sm:h-[250px] md:h-[400px] cursor-pointer ${
+                imageOnRight ? "md:col-start-2" : ""
+              }`}
+            >
+              {/* Decorative corners for added visual interest */}
+              <CardCorners className="z-10" />
 
-          <img
-            src={project.images[0]?.src || "/placeholder.svg"}
-            alt={`${project.title} screenshot`}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        </div>
+              <img
+                src={project.images[0]?.src || "/placeholder.svg"}
+                alt={`${project.title} screenshot`}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+
+              {/* Hover overlay to indicate clickability */}
+              <div className="absolute inset-0 bg-black/10 hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 hover:opacity-100">
+                <span className="bg-background/90 text-foreground px-3 py-1.5 rounded-md text-sm font-medium">
+                  View Screenshots
+                </span>
+              </div>
+            </div>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[90vw] max-h-[90vh] p-0 overflow-hidden border-2 border-primary/20 shadow-xl">
+            <ImageCarouselDialog images={project.images} />
+          </DialogContent>
+        </Dialog>
 
         {/* Content section */}
         <div

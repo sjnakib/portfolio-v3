@@ -10,9 +10,6 @@ import {
   Code,
   ExternalLink,
   Github,
-  X,
-  ArrowLeft,
-  ArrowRight,
 } from "lucide-react";
 import {
   Card,
@@ -37,6 +34,7 @@ import {
 } from "@/components/ui/dialog";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
+import { ImageCarouselDialog } from "@/components/ui/image-carousel-dialog";
 import experienceData from "@/data/experience.json";
 import projectsData from "@/data/projects.json";
 import academicData from "@/data/academic.json";
@@ -294,32 +292,8 @@ function ProjectsWrapper() {
                         </div>
                       </div>
                     </DialogTrigger>
-                    <DialogContent className="sm:max-w-[80vw] max-h-[90vh] p-1 overflow-hidden border-2 border-primary/20 shadow-xl">
-                      <div className="relative h-full w-full">
-                        {/* Decorative corners for the dialog too */}
-                        <CardCorners className="w-4 h-4 z-10" />
-
-                        <AspectRatio ratio={16 / 9} className="bg-black">
-                          <Image
-                            src={project.images[0].src}
-                            alt={
-                              project.images[0].alt ||
-                              `${project.title} screenshot`
-                            }
-                            fill
-                            className="object-contain"
-                            quality={95}
-                          />
-                        </AspectRatio>
-                        {project.images[0].caption && (
-                          <div className="absolute bottom-0 left-0 right-0 bg-background/80 p-2 text-sm text-center backdrop-blur-sm">
-                            {project.images[0].caption}
-                          </div>
-                        )}
-                        <DialogClose className="absolute top-2 right-2 bg-background/80 rounded-full p-1 hover:bg-background z-20">
-                          <X className="h-5 w-5" />
-                        </DialogClose>
-                      </div>
+                    <DialogContent className="sm:max-w-[90vw] max-h-[90vh] p-0 overflow-hidden border-2 border-primary/20 shadow-xl">
+                      <ImageCarouselDialog images={project.images} />
                     </DialogContent>
                   </Dialog>
                 </div>
