@@ -98,9 +98,34 @@
       ],
       "images": [
         {
-          "src": "/placeholder.jpg",
-          "alt": "GlobalStudy24 Website",
-          "caption": "Education and travel services platform"
+          "src": "/projects/globalstudy24/GlobalStudy24_screenshot_1.webp",
+          "alt": "GlobalStudy24 Homepage - Hero Section",
+          "caption": "Homepage hero section showcasing education and travel services"
+        },
+        {
+          "src": "/projects/globalstudy24/GlobalStudy24_screenshot_2.webp",
+          "alt": "GlobalStudy24 Study Abroad Services",
+          "caption": "Comprehensive study abroad programs and services"
+        },
+        {
+          "src": "/projects/globalstudy24/GlobalStudy24_screenshot_3.webp",
+          "alt": "GlobalStudy24 Hajj/Umrah Services",
+          "caption": "Hajj and Umrah travel packages with detailed information"
+        },
+        {
+          "src": "/projects/globalstudy24/GlobalStudy24_screenshot_4.webp",
+          "alt": "GlobalStudy24 Blog Section",
+          "caption": "Regularly updated blog with educational and travel content"
+        },
+        {
+          "src": "/projects/globalstudy24/GlobalStudy24_screenshot_5.webp",
+          "alt": "GlobalStudy24 Contact and Services",
+          "caption": "Contact information and additional service offerings"
+        },
+        {
+          "src": "/projects/globalstudy24/GlobalStudy24_screenshot_6.webp",
+          "alt": "GlobalStudy24 Footer and Navigation",
+          "caption": "Site navigation and footer with comprehensive links"
         }
       ],
       "liveUrl": "https://globalstudy24.com",
