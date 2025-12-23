@@ -101,11 +101,11 @@ export function ExperiencesSection() {
               {/* Company Header */}
               <div className="flex items-center gap-4 mb-6">
                 {/* Logo */}
-                <div className="w-14 h-14 rounded-md bg-background flex items-center justify-center overflow-hidden border-2 border-primary/20 shadow-sm">
+                <div className="w-14 h-14 rounded-md bg-white flex items-center justify-center overflow-hidden border border-border/50 shadow-sm p-2">
                   <img
                     src={company.logo}
                     alt={`${company.name} logo`}
-                    className="w-full h-full object-contain p-1"
+                    className="w-full h-full object-contain"
                   />
                 </div>
 

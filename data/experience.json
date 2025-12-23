@@ -8,7 +8,7 @@
       "roles": [
         {
           "title": "Freelance Web Developer",
-          "startDate": "2024-01",
+          "startDate": "2023-05",
           "endDate": "Present",
           "responsibilities": [
             "Designed and developed responsive client websites using WordPress and Next.js",
@@ -28,12 +28,12 @@
     },
     {
       "name": "BRAC University",
-      "logo": "/placeholder-logo.svg",
+      "logo": "/experiences/bracu-logo.webp",
       "location": "Dhaka, Bangladesh",
       "url": "https://bracu.ac.bd",
       "roles": [
         {
-          "title": "Student Tutor — Algorithms (CSE221)",
+          "title": "Undergraduate Teaching Assistant",
           "startDate": "2024-11",
           "endDate": "Present",
           "responsibilities": [
@@ -47,8 +47,8 @@
     },
     {
       "name": "Team Atlas",
-      "logo": "/placeholder-logo.svg",
-      "location": "BRAC University",
+      "logo": "/experiences/team-atlas-bd-logo.webp",
+      "location": "Dhaka, Bangladesh",
       "url": null,
       "roles": [
         {
