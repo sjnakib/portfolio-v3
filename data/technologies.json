@@ -29,6 +29,13 @@
       "url": "https://wordpress.org"
     },
     {
+      "name": "Figma",
+      "icon": "figma",
+      "color": "#F8A79E",
+      "description": "A collaborative interface design tool for creating UI/UX designs and prototypes",
+      "url": "https://www.figma.com"
+    },
+    {
       "name": "Git",
       "icon": "git",
       "color": "#F05032",
@@ -55,13 +62,6 @@
       "color": "#0080FF",
       "description": "Cloud infrastructure provider for deploying and scaling applications",
       "url": "https://www.digitalocean.com"
-    },
-    {
-      "name": "Figma",
-      "icon": "figma",
-      "color": "#F8A79E",
-      "description": "A collaborative interface design tool for creating UI/UX designs and prototypes",
-      "url": "https://www.figma.com"
     }
   ]
 }

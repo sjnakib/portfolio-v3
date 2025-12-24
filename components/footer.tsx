@@ -1,12 +1,13 @@
-import Link from "next/link"
-import { Github, Linkedin, Mail, X } from "lucide-react"
-import siteSettings from "@/data/siteSettings.json"
+import Link from "next/link";
+import { Mail } from "lucide-react";
+import siteSettings from "@/data/siteSettings.json";
+import { SocialLinks } from "@/components/social-links";
 
 export function Footer() {
   // Get current year for copyright
-  const currentYear = new Date().getFullYear()
-  const { owner, social, navigation } = siteSettings
-  
+  const currentYear = new Date().getFullYear();
+  const { owner, social, navigation } = siteSettings;
+
   return (
     <footer className="border-t bg-background/90 backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -14,11 +15,9 @@ export function Footer() {
           {/* Left section - Brand */}
           <div className="space-y-4">
             <p className="text-sm font-mono text-primary/80">{owner.motto}</p>
-            <p className="text-muted-foreground text-pretty">
-              {owner.bio}
-            </p>
+            <p className="text-muted-foreground text-pretty">{owner.bio}</p>
           </div>
-          
+
           {/* Site Navigation Links */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold">Site Navigation</h3>
@@ -26,7 +25,7 @@ export function Footer() {
               <ul className="space-y-2">
                 {navigation.headerLinks.map((link) => (
                   <li key={link.path}>
-                    <Link 
+                    <Link
                       href={link.path}
                       className="text-muted-foreground hover:text-primary transition-colors duration-300"
                     >
@@ -37,28 +36,10 @@ export function Footer() {
               </ul>
             </nav>
           </div>
-          
+
           {/* Social Links */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-semibold">Connect</h3>
-            <div className="flex flex-wrap gap-3">
-              {social.slice(0, 5).map((item) => (
-                <Link
-                  key={item.platform}
-                  href={item.url}
-                  className="w-10 h-10 bg-muted hover:bg-primary hover:text-primary-foreground rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                  aria-label={item.platform}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {item.icon === "Github" && <Github className="h-5 w-5" />}
-                  {item.icon === "Linkedin" && <Linkedin className="h-5 w-5" />}
-                  {item.icon === "X" && <X className="h-5 w-5" />}
-                </Link>
-              ))}
-            </div>
-          </div>
-          
+          <SocialLinks limit={5} />
+
           {/* Contact Information */}
           <div className="flex flex-col space-y-2">
             <h3 className="text-sm font-semibold">Contact</h3>
@@ -70,14 +51,10 @@ export function Footer() {
               {owner.email}
             </Link>
             {owner.phone && (
-              <p className="text-muted-foreground">
-                {owner.phone}
-              </p>
+              <p className="text-muted-foreground">{owner.phone}</p>
             )}
             {owner.location && (
-              <p className="text-muted-foreground text-sm">
-                {owner.location}
-              </p>
+              <p className="text-muted-foreground text-sm">{owner.location}</p>
             )}
           </div>
         </div>
@@ -89,5 +66,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

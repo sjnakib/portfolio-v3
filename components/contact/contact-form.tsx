@@ -12,17 +12,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-  Github,
-  Linkedin,
-  X,
-  MessageSquare,
-} from "lucide-react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
 import siteSettings from "@/data/siteSettings.json";
+import { SocialLinks } from "@/components/social-links";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -153,28 +145,11 @@ export function ContactForm() {
           </div>
         </div>
 
-        <div className="pt-6">
-          <p className="font-medium text-foreground mb-4">Connect with me</p>
-          <div className="flex space-x-4">
-            {siteSettings.social.map((social) => (
-              <a
-                key={social.platform}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-muted hover:bg-primary hover:text-primary-foreground rounded-lg flex items-center justify-center transition-colors"
-                aria-label={social.platform}
-              >
-                {social.icon === "Github" && <Github className="h-5 w-5" />}
-                {social.icon === "Linkedin" && <Linkedin className="h-5 w-5" />}
-                {social.icon === "X" && <X className="h-5 w-5" />}
-                {social.icon === "MessageSquare" && (
-                  <MessageSquare className="h-5 w-5" />
-                )}
-              </a>
-            ))}
-          </div>
-        </div>
+        <SocialLinks
+          title="Connect with me"
+          variant="rounded"
+          linkClassName="transition-colors"
+        />
 
         <div className="pt-6">
           <p className="text-muted-foreground">

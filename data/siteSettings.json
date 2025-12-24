@@ -24,22 +24,12 @@
     },
     {
       "platform": "X",
-      "url": "https://x.com/username",
+      "url": "https://x.com/sjnakib",
       "icon": "X"
     },
     {
-      "platform": "Behance",
-      "url": "https://behance.net/username",
-      "icon": "Behance"
-    },
-    {
-      "platform": "Dribbble",
-      "url": "https://dribbble.com/username",
-      "icon": "Dribbble"
-    },
-    {
       "platform": "Discord",
-      "url": "https://discord.com/users/username",
+      "url": "https://discord.com/users/.sjnakib",
       "icon": "MessageSquare"
     }
   ],
