@@ -50,9 +50,6 @@ export function Footer() {
               <Mail className="h-4 w-4 mr-2 group-hover:text-primary" />
               {owner.email}
             </Link>
-            {owner.phone && (
-              <p className="text-muted-foreground">{owner.phone}</p>
-            )}
             {owner.location && (
               <p className="text-muted-foreground text-sm">{owner.location}</p>
             )}
