@@ -95,10 +95,8 @@ export function ContactForm() {
             Let's Connect
           </h3>
           <p className="text-muted-foreground mb-8 text-pretty">
-            Whether you're looking for a full-stack developer, robotics
-            engineer, or someone who can bridge both worlds, I'm here to help
-            bring your ideas to life. Feel free to reach out for collaborations,
-            questions, or just to say hello!
+            If you have a project, a question, or just want to talk, feel free
+            to reach out.
           </p>
         </div>
 
@@ -108,7 +106,7 @@ export function ContactForm() {
               <Mail className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <p className="font-medium text-foreground">Email</p>
+              <p className="font-medium text-foreground">Email me:</p>
               <a
                 href={`mailto:${siteSettings.owner.email}`}
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -132,22 +130,26 @@ export function ContactForm() {
         </div>
 
         <SocialLinks
-          title="Connect with me"
+          title="Connect with me on"
           variant="rounded"
           linkClassName="transition-colors"
         />
+
+        <p className="text-muted-foreground text-pretty text-sm">
+          I am actually active there! 😂
+        </p>
 
         <div className="pt-6">
           <p className="text-muted-foreground">
             <span className="font-medium text-foreground">
               Expected Response Time:
             </span>{" "}
-            Within 24-48 hours
+            Within 2-6 hours (anyday)
           </p>
           <p className="text-muted-foreground mt-2">
             <span className="font-medium text-foreground">Availability:</span>{" "}
-            Open to freelance projects, full-time opportunities, and
-            collaborations
+            Open to freelance projects, full-time opportunities (on-site,
+            hybrid, remote).
           </p>
         </div>
       </div>
