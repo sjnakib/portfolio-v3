@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import siteSettings from "@/data/siteSettings.json";
 import { SocialLinks } from "@/components/social-links";
 
@@ -51,7 +51,10 @@ export function Footer() {
               {owner.email}
             </Link>
             {owner.location && (
-              <p className="text-muted-foreground text-sm">{owner.location}</p>
+              <p className="flex items-center text-muted-foreground text-sm">
+                <MapPin className="h-4 w-4 mr-2" />
+                {owner.location}
+              </p>
             )}
           </div>
         </div>
