@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, memo } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -91,11 +91,11 @@ export function ImageCarouselDialog({
   }, [carouselApi]);
 
   // Zoom functions
-  const zoomIn = () => {
+  const zoomIn = useCallback(() => {
     setScale((prev) => Math.min(prev + ZOOM_STEP, MAX_SCALE));
-  };
+  }, []);
 
-  const zoomOut = () => {
+  const zoomOut = useCallback(() => {
     setScale((prev) => {
       const newScale = Math.max(prev - ZOOM_STEP, MIN_SCALE);
       if (newScale === MIN_SCALE) {
@@ -103,12 +103,12 @@ export function ImageCarouselDialog({
       }
       return newScale;
     });
-  };
+  }, []);
 
-  const resetZoom = () => {
+  const resetZoom = useCallback(() => {
     setScale(MIN_SCALE);
     setPosition({ x: 0, y: 0 });
-  };
+  }, []);
 
   // Navigation handlers that reset zoom before navigating
   const handlePrevious = useCallback(() => {
@@ -146,106 +146,121 @@ export function ImageCarouselDialog({
   };
 
   // Touch event handlers for pinch-to-zoom
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (e.touches.length === 2) {
-      // Pinch gesture
-      const distance = getTouchDistance(e.touches);
-      setInitialPinchDistance(distance);
-      setInitialScale(scale);
-    } else if (e.touches.length === 1) {
-      // Single touch for dragging or double-tap
-      const now = Date.now();
-      const timeSinceLastTap = now - lastTap;
+  const handleTouchStart = useCallback(
+    (e: React.TouchEvent) => {
+      if (e.touches.length === 2) {
+        // Pinch gesture
+        const distance = getTouchDistance(e.touches);
+        setInitialPinchDistance(distance);
+        setInitialScale(scale);
+      } else if (e.touches.length === 1) {
+        // Single touch for dragging or double-tap
+        const now = Date.now();
+        const timeSinceLastTap = now - lastTap;
 
-      if (timeSinceLastTap < 300 && timeSinceLastTap > 0) {
-        // Double tap detected
-        if (scale === MIN_SCALE) {
-          setScale(2);
-        } else {
-          resetZoom();
+        if (timeSinceLastTap < 300 && timeSinceLastTap > 0) {
+          // Double tap detected
+          if (scale === MIN_SCALE) {
+            setScale(2);
+          } else {
+            resetZoom();
+          }
+        }
+        setLastTap(now);
+
+        if (scale > MIN_SCALE) {
+          setIsDragging(true);
+          setDragStart({
+            x: e.touches[0].clientX - position.x,
+            y: e.touches[0].clientY - position.y,
+          });
         }
       }
-      setLastTap(now);
+    },
+    [scale, lastTap, position, resetZoom]
+  );
 
-      if (scale > MIN_SCALE) {
-        setIsDragging(true);
-        setDragStart({
-          x: e.touches[0].clientX - position.x,
-          y: e.touches[0].clientY - position.y,
+  const handleTouchMove = useCallback(
+    (e: React.TouchEvent) => {
+      if (e.touches.length === 2 && initialPinchDistance !== null) {
+        // Pinch zoom
+        e.preventDefault();
+        const currentDistance = getTouchDistance(e.touches);
+        const scaleChange = currentDistance / initialPinchDistance;
+        const newScale = Math.min(
+          Math.max(initialScale * scaleChange, MIN_SCALE),
+          MAX_SCALE
+        );
+        setScale(newScale);
+      } else if (e.touches.length === 1 && isDragging && scale > MIN_SCALE) {
+        // Pan while zoomed
+        e.preventDefault();
+        setPosition({
+          x: e.touches[0].clientX - dragStart.x,
+          y: e.touches[0].clientY - dragStart.y,
         });
       }
-    }
-  };
+    },
+    [isDragging, initialPinchDistance, initialScale, scale, dragStart]
+  );
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (e.touches.length === 2 && initialPinchDistance !== null) {
-      // Pinch zoom
-      e.preventDefault();
-      const currentDistance = getTouchDistance(e.touches);
-      const scaleChange = currentDistance / initialPinchDistance;
-      const newScale = Math.min(
-        Math.max(initialScale * scaleChange, MIN_SCALE),
-        MAX_SCALE
-      );
-      setScale(newScale);
-    } else if (e.touches.length === 1 && isDragging && scale > MIN_SCALE) {
-      // Pan while zoomed
-      e.preventDefault();
-      setPosition({
-        x: e.touches[0].clientX - dragStart.x,
-        y: e.touches[0].clientY - dragStart.y,
-      });
-    }
-  };
-
-  const handleTouchEnd = () => {
+  const handleTouchEnd = useCallback(() => {
     setIsDragging(false);
     setInitialPinchDistance(null);
-  };
+  }, []);
 
   // Mouse event handlers for desktop
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (scale > MIN_SCALE) {
-      e.preventDefault();
-      setIsDragging(true);
-      setDragStart({
-        x: e.clientX - position.x,
-        y: e.clientY - position.y,
-      });
-    }
-  };
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      if (scale > MIN_SCALE) {
+        e.preventDefault();
+        setIsDragging(true);
+        setDragStart({
+          x: e.clientX - position.x,
+          y: e.clientY - position.y,
+        });
+      }
+    },
+    [scale, position]
+  );
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging && scale > MIN_SCALE) {
-      setPosition({
-        x: e.clientX - dragStart.x,
-        y: e.clientY - dragStart.y,
-      });
-    }
-  };
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (isDragging && scale > MIN_SCALE) {
+        setPosition({
+          x: e.clientX - dragStart.x,
+          y: e.clientY - dragStart.y,
+        });
+      }
+    },
+    [isDragging, scale, dragStart]
+  );
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setIsDragging(false);
-  };
+  }, []);
 
   // Double-click to zoom
-  const handleDoubleClick = () => {
+  const handleDoubleClick = useCallback(() => {
     if (scale === MIN_SCALE) {
       setScale(2);
     } else {
       resetZoom();
     }
-  };
+  }, [scale, resetZoom]);
 
   // Mouse wheel zoom
-  const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault();
-    if (e.deltaY < 0) {
-      zoomIn();
-    } else {
-      zoomOut();
-    }
-  };
+  const handleWheel = useCallback(
+    (e: React.WheelEvent) => {
+      e.preventDefault();
+      if (e.deltaY < 0) {
+        zoomIn();
+      } else {
+        zoomOut();
+      }
+    },
+    [zoomIn, zoomOut]
+  );
 
   // Keyboard navigation
   useEffect(() => {
@@ -329,6 +344,8 @@ export function ImageCarouselDialog({
                   height: "auto",
                 }}
                 priority
+                loading="eager"
+                sizes="(max-width: 640px) 90vw, 100vw"
                 draggable={false}
               />
             </div>
@@ -400,7 +417,10 @@ export function ImageCarouselDialog({
 
   // Multiple images - show carousel with navigation
   return (
-    <div className="relative w-full h-[80vh] md:h-[85vh] bg-background flex items-center justify-center">
+    <div
+      className="relative w-full bg-background flex items-center justify-center"
+      style={{ height: "min(80vh, 90vh)" }}
+    >
       <Carousel
         setApi={setCarouselApi}
         opts={{
@@ -459,6 +479,8 @@ export function ImageCarouselDialog({
                         height: "auto",
                       }}
                       priority={index === initialIndex}
+                      loading={index === initialIndex ? "eager" : "lazy"}
+                      sizes="(max-width: 640px) 90vw, (max-width: 1024px) 85vw, 80vw"
                       draggable={false}
                     />
                   </div>
@@ -552,24 +574,43 @@ export function ImageCarouselDialog({
 
       {/* Thumbnail dots navigation - hide when zoomed */}
       {scale === MIN_SCALE && (
-        <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-50 flex gap-1.5 md:gap-2 bg-muted/80 px-3 md:px-4 py-1.5 md:py-2 rounded-full backdrop-blur-sm shadow-lg">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                carouselApi?.scrollTo(index);
-                setCurrentIndex(index);
-              }}
-              className={`rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? "bg-primary w-4 md:w-6 h-1.5 md:h-2"
-                  : "bg-muted-foreground/50 hover:bg-muted-foreground/75 w-1.5 h-1.5 md:w-2 md:h-2"
-              }`}
-              aria-label={`Go to image ${index + 1}`}
-            />
-          ))}
-        </div>
+        <ThumbnailDots
+          images={images}
+          currentIndex={currentIndex}
+          onThumbnailClick={(index) => {
+            carouselApi?.scrollTo(index);
+            setCurrentIndex(index);
+          }}
+        />
       )}
     </div>
   );
 }
+
+// Memoized thumbnail dots component to prevent unnecessary re-renders
+const ThumbnailDots = memo(function ThumbnailDots({
+  images,
+  currentIndex,
+  onThumbnailClick,
+}: {
+  images: ImageCarouselImage[];
+  currentIndex: number;
+  onThumbnailClick: (index: number) => void;
+}) {
+  return (
+    <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-50 flex gap-1.5 md:gap-2 bg-muted/80 px-3 md:px-4 py-1.5 md:py-2 rounded-full backdrop-blur-sm shadow-lg">
+      {images.map((_, index) => (
+        <button
+          key={index}
+          onClick={() => onThumbnailClick(index)}
+          className={`rounded-full transition-all duration-300 ${
+            index === currentIndex
+              ? "bg-primary w-4 md:w-6 h-1.5 md:h-2"
+              : "bg-muted-foreground/50 hover:bg-muted-foreground/75 w-1.5 h-1.5 md:w-2 md:h-2"
+          }`}
+          aria-label={`Go to image ${index + 1}`}
+        />
+      ))}
+    </div>
+  );
+});
