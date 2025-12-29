@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,7 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Mail, MapPin, Send, Check } from "lucide-react";
+import { Mail, MapPin, Send, Check, RotateCcw } from "lucide-react";
 import siteSettings from "@/data/siteSettings.json";
 import { SocialLinks } from "@/components/social-links";
 
@@ -224,7 +225,8 @@ export function ContactForm() {
             Create Email Thread
           </h3>
           <p className="text-muted-foreground text-sm">
-            Start the conversation here.
+            Create an email thread from here and keep the conversation going in
+            your email inbox!
           </p>
         </div>
 
@@ -264,50 +266,76 @@ export function ContactForm() {
                     href="https://mail.google.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2 text-sm font-medium"
+                    className="p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-start gap-3"
                   >
-                    <span>📧</span>
-                    Gmail
+                    <Image
+                      src="/assets/icons/gmail-logo.webp"
+                      alt="Gmail"
+                      width={48}
+                      height={48}
+                      className="flex-shrink-0"
+                    />
+                    <span className="text-base font-medium">Gmail</span>
                   </a>
                   <a
                     href="https://outlook.live.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2 text-sm font-medium"
+                    className="p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-start gap-3"
                   >
-                    <span>💌</span>
-                    Outlook
+                    <Image
+                      src="/assets/icons/outlook-logo.webp"
+                      alt="Outlook"
+                      width={48}
+                      height={48}
+                      className="flex-shrink-0"
+                    />
+                    <span className="text-base font-medium">Outlook</span>
                   </a>
                   <a
                     href="https://mail.protonmail.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2 text-sm font-medium"
+                    className="p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-start gap-3"
                   >
-                    <span>🔒</span>
-                    ProtonMail
+                    <Image
+                      src="/assets/icons/proton-mail-logo.webp"
+                      alt="ProtonMail"
+                      width={48}
+                      height={48}
+                      className="flex-shrink-0"
+                    />
+                    <span className="text-base font-medium">ProtonMail</span>
                   </a>
                   <button
                     type="button"
                     onClick={() => {
                       window.location.href = `mailto:${siteSettings.owner.email}`;
                     }}
-                    className="p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2 text-sm font-medium"
+                    className="p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-start gap-3"
                   >
-                    <span>✉️</span>
-                    Default App
+                    <Image
+                      src="/assets/icons/generic-email-app-logo.webp"
+                      alt="Default Email App"
+                      width={48}
+                      height={48}
+                      className="flex-shrink-0"
+                    />
+                    <span className="text-base font-medium">Default App</span>
                   </button>
                 </div>
-                <button
+                <Button
                   type="button"
+                  variant="secondary"
                   onClick={() => {
                     setStatus({ type: null, message: "" });
                     setFormData({ email: "", subject: "", message: "" });
                   }}
-                  className="w-full mt-4 p-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                  className="w-full mt-4"
                 >
+                  <RotateCcw className="w-4 h-4 mr-2" />
                   Send another message
-                </button>
+                </Button>
               </div>
             ) : (
               // Form state: Email compose
