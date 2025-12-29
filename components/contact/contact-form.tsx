@@ -161,21 +161,62 @@ export function ContactForm() {
           </p>
         </div>
 
-        <div className="space-y-6">
-          <a
-            href={`mailto:${siteSettings.owner.email}`}
-            className="flex items-center space-x-3 p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer"
-          >
-            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <Mail className="h-5 w-5 text-primary" />
-            </div>
-            <div>
-              <p className="font-medium text-foreground">Email me:</p>
-              <p className="text-muted-foreground hover:text-primary transition-colors">
-                {siteSettings.owner.email}
-              </p>
-            </div>
-          </a>
+        <div className="space-y-3">
+          {/* Email and Create Thread - stacked on mobile, side-by-side on desktop */}
+          <div className="flex flex-col gap-3">
+            {/* Create Email Thread Button - Only visible on mobile (hidden on lg+) */}
+            <button
+              type="button"
+              onClick={() => {
+                const formSection = document.querySelector(
+                  "[data-testid='contact-form-section']"
+                ) as HTMLElement;
+                const emailField = document.querySelector(
+                  "#email"
+                ) as HTMLInputElement;
+                if (formSection) {
+                  formSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }
+                if (emailField) {
+                  setTimeout(() => {
+                    emailField.focus();
+                  }, 500);
+                }
+              }}
+              className="lg:hidden flex items-center space-x-3 p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer animate-breathing bg-primary/5"
+            >
+              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Send className="h-5 w-5 text-primary" />
+              </div>
+              <div className="text-left">
+                <p className="font-medium text-foreground">
+                  Create email thread
+                </p>
+                <p className="text-muted-foreground hover:text-primary transition-colors">
+                  Start an email thread from here!
+                </p>
+              </div>
+            </button>
+
+            {/* Email me link */}
+            <a
+              href={`mailto:${siteSettings.owner.email}`}
+              className="flex items-center space-x-3 p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer"
+            >
+              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Mail className="h-5 w-5 text-primary" />
+              </div>
+              <div>
+                <p className="font-medium text-foreground">Email me:</p>
+                <p className="text-muted-foreground hover:text-primary transition-colors">
+                  {siteSettings.owner.email}
+                </p>
+              </div>
+            </a>
+          </div>
 
           <a
             href={`https://www.google.com/maps/search/${encodeURIComponent(
@@ -226,7 +267,7 @@ export function ContactForm() {
       <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-border transform -translate-x-1/2" />
 
       {/* Contact Form */}
-      <div className="space-y-6">
+      <div className="space-y-6" data-testid="contact-form-section">
         <div>
           <h3 className="text-2xl font-semibold text-foreground mb-2">
             Create Email Thread
@@ -314,22 +355,6 @@ export function ContactForm() {
                     />
                     <span className="text-base font-medium">ProtonMail</span>
                   </a>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      window.location.href = `mailto:${siteSettings.owner.email}`;
-                    }}
-                    className="p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-start gap-3"
-                  >
-                    <Image
-                      src="/assets/icons/generic-email-app-logo.webp"
-                      alt="Default Email App"
-                      width={48}
-                      height={48}
-                      className="flex-shrink-0"
-                    />
-                    <span className="text-base font-medium">Default App</span>
-                  </button>
                 </div>
                 <Button
                   type="button"
@@ -457,7 +482,7 @@ export function ContactForm() {
 
                 {/* Privacy notice */}
                 <p className="text-xs text-muted-foreground mt-4">
-                  ✓ Your email will be used only to respond to your inquiry and
+                  * Your email will be used only to respond to your inquiry and
                   maintain our conversation thread.
                 </p>
               </>

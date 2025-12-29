@@ -7,74 +7,78 @@
 
 :root {
   /* Soothing light mode colors with off-white background and harmonious palette */
-  --background: #F7F9FB; /* Soft off-white background - more soothing than pure white */
-  --foreground: #1A2942; /* Deep blue-gray text - softer than pure navy */
-  --card: #FFFFFF; /* Pure white card background for subtle contrast with background */
-  --card-foreground: #2D3748; /* Softer charcoal text on cards */
-  --popover: #FFFFFF; /* White popover background */
-  --popover-foreground: #1A2942; /* Matching the main foreground text */
-  --primary: #5CCFA9; /* Teal-green primary consistent with dark mode */
-  --primary-foreground: #0F2E20; /* Dark green text on primary for better contrast */
-  --secondary: #4A5568; /* Muted blue-gray secondary */
-  --secondary-foreground: #FFFFFF; /* White text on secondary */
-  --muted: #EDF2F7; /* Lighter gray muted background */
-  --muted-foreground: #4A5568; /* Muted text matching secondary */
-  --accent: #3EC99F; /* Slightly darker teal accent for better contrast in light mode */
-  --accent-foreground: #0F2E20; /* Dark green text on accent */
-  --destructive: #E53E3E; /* Softer red for destructive actions */
-  --destructive-foreground: #FFFFFF; /* White text on destructive */
-  --border: #E2E8F0; /* Subtle light border */
-  --input: #F7F9FB; /* Input matching the background */
-  --ring: #5CCFA980; /* Primary teal-green with 50% opacity for focus ring */
-  --chart-1: #5CCFA9; /* Teal-green primary for charts */
-  --chart-2: #4A5568; /* Secondary color for charts */
-  --chart-3: #3B9D82; /* Darker teal for charts */
-  --chart-4: #E9B949; /* Soft amber for charts */
-  --chart-5: #ED8936; /* Soft orange for charts */
+  --background: #f7f9fb; /* Soft off-white background - more soothing than pure white */
+  --foreground: #1a2942; /* Deep blue-gray text - softer than pure navy */
+  --card: #ffffff; /* Pure white card background for subtle contrast with background */
+  --card-foreground: #2d3748; /* Softer charcoal text on cards */
+  --popover: #ffffff; /* White popover background */
+  --popover-foreground: #1a2942; /* Matching the main foreground text */
+  --primary: #5ccfa9; /* Teal-green primary consistent with dark mode */
+  --primary-foreground: #0f2e20; /* Dark green text on primary for better contrast */
+  --primary-rgb: 92, 207, 169; /* RGB values for primary color (used in animations) */
+  --secondary: #4a5568; /* Muted blue-gray secondary */
+  --secondary-foreground: #ffffff; /* White text on secondary */
+  --muted: #edf2f7; /* Lighter gray muted background */
+  --muted-foreground: #4a5568; /* Muted text matching secondary */
+  --accent: #3ec99f; /* Slightly darker teal accent for better contrast in light mode */
+  --accent-foreground: #0f2e20; /* Dark green text on accent */
+  --destructive: #e53e3e; /* Softer red for destructive actions */
+  --destructive-foreground: #ffffff; /* White text on destructive */
+  --border: #e2e8f0; /* Subtle light border */
+  --input: #f7f9fb; /* Input matching the background */
+  --ring: #5ccfa980; /* Primary teal-green with 50% opacity for focus ring */
+  --chart-1: #5ccfa9; /* Teal-green primary for charts */
+  --chart-2: #4a5568; /* Secondary color for charts */
+  --chart-3: #3b9d82; /* Darker teal for charts */
+  --chart-4: #e9b949; /* Soft amber for charts */
+  --chart-5: #ed8936; /* Soft orange for charts */
   --radius: 0.5rem;
-  --sidebar: #F7F9FB; /* Matching main background */
-  --sidebar-foreground: #2D3748; /* Matching card foreground */
-  --sidebar-primary: #5CCFA9; /* Matching primary teal-green */
-  --sidebar-primary-foreground: #0F2E20; /* Dark green text on primary */
-  --sidebar-accent: #3EC99F; /* Matching accent */
-  --sidebar-accent-foreground: #0F2E20; /* Dark green text on accent */
-  --sidebar-border: #E2E8F0; /* Matching main border */
-  --sidebar-ring: #5CCFA980; /* Matching main ring with teal-green */
+  --sidebar: #f7f9fb; /* Matching main background */
+  --sidebar-foreground: #2d3748; /* Matching card foreground */
+  --sidebar-primary: #5ccfa9; /* Matching primary teal-green */
+  --sidebar-primary-foreground: #0f2e20; /* Dark green text on primary */
+  --sidebar-accent: #3ec99f; /* Matching accent */
+  --sidebar-accent-foreground: #0f2e20; /* Dark green text on accent */
+  --sidebar-border: #e2e8f0; /* Matching main border */
+  --sidebar-ring: #5ccfa980; /* Matching main ring with teal-green */
 }
 
 .dark {
   /* Custom dark mode colors using #0E100F as the base background */
-  --background: #0E100F; /* Custom dark background (#0E100F) */
+  --background: #0e100f; /* Custom dark background (#0E100F) */
   --foreground: oklch(0.98 0 0); /* Near white text */
-  --card: #14171A; /* Slightly lighter than background for cards */
+  --card: #14171a; /* Slightly lighter than background for cards */
   --card-foreground: oklch(0.96 0 0); /* Light text on cards */
-  --popover: #14171A; /* Matching card background for popovers */
+  --popover: #14171a; /* Matching card background for popovers */
   --popover-foreground: oklch(0.98 0 0); /* Light popover text */
-  --primary: oklch(0.72 0.18 145); /* Teal-green primary that complements dark background */
+  --primary: oklch(
+    0.72 0.18 145
+  ); /* Teal-green primary that complements dark background */
   --primary-foreground: oklch(0.08 0.01 140); /* Dark text on primary */
-  --secondary: #1E2224; /* Lighter secondary background */
+  --primary-rgb: 92, 207, 169; /* RGB values for primary color (used in animations) */
+  --secondary: #1e2224; /* Lighter secondary background */
   --secondary-foreground: oklch(0.98 0 0); /* Light text on secondary */
-  --muted: #191D1F; /* Muted background slightly lighter than base */
+  --muted: #191d1f; /* Muted background slightly lighter than base */
   --muted-foreground: oklch(0.75 0 0); /* Medium gray muted text */
   --accent: oklch(0.65 0.15 145); /* Accent color in teal-green family */
   --accent-foreground: oklch(0.1 0.01 140); /* Dark text on accent */
   --destructive: oklch(0.65 0.18 25); /* Warm red destructive */
   --destructive-foreground: oklch(0.98 0 0); /* Light text on destructive */
-  --border: #1E2224; /* Dark border matching secondary */
-  --input: #14171A; /* Dark input background matching card */
+  --border: #1e2224; /* Dark border matching secondary */
+  --input: #14171a; /* Dark input background matching card */
   --ring: oklch(0.72 0.18 145 / 0.5); /* Primary color for focus ring */
   --chart-1: oklch(0.72 0.18 145); /* Primary teal-green */
   --chart-2: oklch(0.65 0.15 180); /* Blue-teal */
   --chart-3: oklch(0.68 0.15 110); /* Green */
   --chart-4: oklch(0.65 0.18 30); /* Amber */
   --chart-5: oklch(0.62 0.18 60); /* Orange */
-  --sidebar: #0E100F; /* Match the background color */
+  --sidebar: #0e100f; /* Match the background color */
   --sidebar-foreground: oklch(0.98 0 0); /* Light text on sidebar */
   --sidebar-primary: oklch(0.72 0.18 145); /* Match primary color */
   --sidebar-primary-foreground: oklch(0.08 0.01 140); /* Dark text on primary */
-  --sidebar-accent: #1E2224; /* Match secondary color */
+  --sidebar-accent: #1e2224; /* Match secondary color */
   --sidebar-accent-foreground: oklch(0.98 0 0); /* Light text on accent */
-  --sidebar-border: #1E2224; /* Match border color */
+  --sidebar-border: #1e2224; /* Match border color */
   --sidebar-ring: oklch(0.72 0.18 145 / 0.5); /* Match ring color */
 }
 
@@ -130,10 +134,10 @@
 
 /* Hide scrollbar but keep functionality */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari and Opera */
+  display: none; /* Chrome, Safari and Opera */
 }
