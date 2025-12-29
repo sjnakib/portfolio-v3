@@ -148,17 +148,17 @@ export function ContactForm() {
   };
 
   return (
-    <div className="grid lg:grid-cols-2 gap-12">
+    <div className="grid lg:grid-cols-2 gap-12 relative">
       {/* Contact Information */}
       <div className="space-y-8">
         <div>
           <h3 className="text-2xl font-semibold text-foreground mb-6">
             Let's Connect
           </h3>
-          <p className="text-muted-foreground mb-8 text-pretty">
+          {/* <p className="text-muted-foreground mb-8 text-pretty">
             If you have a project, a question, or just want to talk, feel free
             to reach out.
-          </p>
+          </p> */}
         </div>
 
         <div className="space-y-3">
