@@ -247,7 +247,10 @@ function ProjectsWrapper() {
   };
 
   // Calculate actual duration from startDate and endDate in project data
-  const calculateProjectDuration = (startDate: string, endDate: string): string => {
+  const calculateProjectDuration = (
+    startDate: string,
+    endDate: string
+  ): string => {
     const start = new Date(startDate);
     const end = endDate === "Present" ? new Date() : new Date(endDate);
 
@@ -354,7 +357,10 @@ function ProjectsWrapper() {
                         {formatProjectDate(project.endDate)}
                       </div>
                       <div className="text-xs sm:text-sm mt-0.5">
-                        {calculateProjectDuration(project.startDate, project.endDate)}
+                        {calculateProjectDuration(
+                          project.startDate,
+                          project.endDate
+                        )}
                       </div>
                     </div>
                   </div>

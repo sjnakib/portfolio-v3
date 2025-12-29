@@ -4,7 +4,7 @@ export interface Project {
   slug: string;
   shortDescription: string;
   fullDescription: string;
-  type: 'client-website' | 'personal-project' | 'ui-mockup';
+  type: "client-website" | "personal-project" | "ui-mockup";
   startDate: string;
   endDate: string;
   technologies: string[];
