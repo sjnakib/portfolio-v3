@@ -42,6 +42,13 @@ export function ContactForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const isFormComplete =
+    formData.email.trim() &&
+    formData.subject.trim() &&
+    formData.message.trim() &&
+    formData.subject.trim().length >= 3 &&
+    formData.message.trim().length >= 10;
+
   const validateForm = () => {
     const newErrors: typeof errors = {};
 
@@ -437,7 +444,7 @@ export function ContactForm() {
 
                       <Button
                         type="submit"
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || !isFormComplete}
                         size="sm"
                         className="gap-2 text-xs"
                       >
