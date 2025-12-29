@@ -217,7 +217,8 @@ export function ContactForm() {
             Create Email Thread
           </h3>
           <p className="text-muted-foreground mb-8 text-pretty">
-            Start an email thead from right here!
+            Start an email thead right here and keep the conversation going in
+            your inbox!
           </p>
         </div>
 
@@ -227,17 +228,17 @@ export function ContactForm() {
               <div
                 className={`mb-6 p-4 rounded-lg flex items-start gap-3 animate-in fade-in slide-in-from-top-2 ${
                   status.type === "success"
-                    ? "bg-success/10 border border-success/20"
+                    ? "bg-primary/10 border border-primary/30"
                     : "bg-destructive/10 border border-destructive/20"
                 }`}
               >
                 {status.type === "success" && (
-                  <Check className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
+                  <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                 )}
                 <AlertDescription
                   className={
                     status.type === "success"
-                      ? "text-success"
+                      ? "text-primary font-medium"
                       : "text-destructive"
                   }
                 >
@@ -246,125 +247,119 @@ export function ContactForm() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Email Field */}
-              <div className="space-y-2">
-                <label
-                  htmlFor="email"
-                  className="text-sm font-medium text-foreground"
-                >
-                  Email Address <span className="text-destructive">*</span>
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="your.email@company.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                  autoComplete="email"
-                  className={`${
-                    errors.email
-                      ? "border-destructive focus-visible:ring-destructive"
-                      : ""
-                  }`}
-                />
-                {errors.email && (
-                  <p className="text-xs text-destructive flex items-center gap-1">
-                    <span>⚠</span> {errors.email}
-                  </p>
-                )}
-              </div>
-
-              {/* Subject Field */}
-              <div className="space-y-2">
-                <label
-                  htmlFor="subject"
-                  className="text-sm font-medium text-foreground"
-                >
-                  Subject <span className="text-destructive">*</span>
-                </label>
-                <Input
-                  id="subject"
-                  name="subject"
-                  placeholder="e.g., Collaboration Opportunity, Project Inquiry"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  autoComplete="off"
-                  className={`${
-                    errors.subject
-                      ? "border-destructive focus-visible:ring-destructive"
-                      : ""
-                  }`}
-                />
-                {errors.subject && (
-                  <p className="text-xs text-destructive flex items-center gap-1">
-                    <span>⚠</span> {errors.subject}
-                  </p>
-                )}
-              </div>
-
-              {/* Message Field */}
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <label
-                    htmlFor="message"
-                    className="text-sm font-medium text-foreground"
-                  >
-                    Message <span className="text-destructive">*</span>
-                  </label>
-                  <span className="text-xs text-muted-foreground">
-                    {formData.message.length}/{MAX_MESSAGE_LENGTH}
-                  </span>
+            {/* Gmail-style compose box */}
+            <div className="border border-border rounded-lg overflow-hidden bg-card shadow-sm hover:shadow-md transition-shadow">
+              <form onSubmit={handleSubmit} className="flex flex-col">
+                {/* To: Email Field */}
+                <div className="border-b border-border px-4 py-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm font-medium text-muted-foreground min-w-fit">
+                      From:
+                    </span>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="your.email@company.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      autoComplete="email"
+                      className={`border-0 bg-transparent text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:outline-none ${
+                        errors.email ? "text-destructive" : ""
+                      }`}
+                    />
+                  </div>
+                  {errors.email && (
+                    <p className="text-xs text-destructive flex items-center gap-1 mt-2 ml-14">
+                      <span>⚠</span> {errors.email}
+                    </p>
+                  )}
                 </div>
-                <Textarea
-                  id="message"
-                  name="message"
-                  placeholder="Tell me about your project, opportunity, or inquiry. Be as detailed as you'd like..."
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  maxLength={MAX_MESSAGE_LENGTH}
-                  className={`resize-none ${
-                    errors.message
-                      ? "border-destructive focus-visible:ring-destructive"
-                      : ""
-                  }`}
-                />
-                {errors.message ? (
-                  <p className="text-xs text-destructive flex items-center gap-1">
-                    <span>⚠</span> {errors.message}
-                  </p>
-                ) : (
-                  <p className="text-xs text-muted-foreground">
-                    {formData.message.length === 0
-                      ? "Add some context to help me understand your inquiry better"
-                      : `${(
-                          ((MAX_MESSAGE_LENGTH - formData.message.length) /
-                            MAX_MESSAGE_LENGTH) *
-                          100
-                        ).toFixed(0)}% space remaining`}
-                  </p>
-                )}
-              </div>
 
-              {/* Submit Button */}
-              <div className="pt-2">
-                <Button
-                  type="submit"
-                  className="w-full sm:w-auto"
-                  disabled={isSubmitting}
-                >
-                  <Send className="mr-2 h-4 w-4" />
-                  {isSubmitting ? "Creating..." : "Create Thread"}
-                </Button>
+                {/* Subject Field */}
+                <div className="border-b border-border px-4 py-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm font-medium text-muted-foreground min-w-fit">
+                      Subject:
+                    </span>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      placeholder="What's this about?"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      autoComplete="off"
+                      className={`border-0 bg-transparent text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:outline-none font-medium ${
+                        errors.subject ? "text-destructive" : ""
+                      }`}
+                    />
+                  </div>
+                  {errors.subject && (
+                    <p className="text-xs text-destructive flex items-center gap-1 mt-2 ml-24">
+                      <span>⚠</span> {errors.subject}
+                    </p>
+                  )}
+                </div>
 
-                <p className="text-xs text-muted-foreground mt-4">
-                  ✓ Your email will be used only to respond to your inquiry and
-                  maintain our conversation thread.
-                </p>
-              </div>
-            </form>
+                {/* Message Compose Area */}
+                <div className="px-4 py-4 flex-1 relative">
+                  <Textarea
+                    id="message"
+                    name="message"
+                    placeholder="Compose your message..."
+                    value={formData.message}
+                    onChange={handleChange}
+                    maxLength={MAX_MESSAGE_LENGTH}
+                    className={`border-0 bg-transparent text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:outline-none resize-none min-h-[200px] ${
+                      errors.message ? "text-destructive" : ""
+                    }`}
+                  />
+                  {errors.message ? (
+                    <p className="text-xs text-destructive flex items-center gap-1 mt-2">
+                      <span>⚠</span> {errors.message}
+                    </p>
+                  ) : null}
+                </div>
+
+                {/* Footer with char count and buttons */}
+                <div className="border-t border-border px-4 py-3 bg-muted/30 flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-muted-foreground">
+                      {formData.message.length}/{MAX_MESSAGE_LENGTH}
+                    </span>
+                    {formData.message.length > 0 && (
+                      <div className="h-1 w-20 bg-border rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-primary transition-all"
+                          style={{
+                            width: `${
+                              (formData.message.length / MAX_MESSAGE_LENGTH) *
+                              100
+                            }%`,
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    size="sm"
+                    className="gap-2"
+                  >
+                    <Send className="h-4 w-4" />
+                    {isSubmitting ? "Creating..." : "Create Thread"}
+                  </Button>
+                </div>
+              </form>
+            </div>
+
+            {/* Privacy notice */}
+            <p className="text-xs text-muted-foreground mt-4">
+              ✓ Your email will be used only to respond to your inquiry and
+              maintain our conversation thread.
+            </p>
           </CardContent>
         </Card>
       </div>
