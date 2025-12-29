@@ -217,8 +217,7 @@ export function ContactForm() {
             Create Email Thread
           </h3>
           <p className="text-muted-foreground mb-8 text-pretty">
-            Share your inquiry, and I'll add you to an email thread for direct
-            conversation.
+            Start an email thead from right here!
           </p>
         </div>
 
