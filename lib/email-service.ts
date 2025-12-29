@@ -186,7 +186,7 @@ export async function sendContactEmail(payload: EmailPayload): Promise<{
       </div>
     `;
 
-    const textContent = `Hello,
+    const textContent = `Hello!
 
 Thank you for reaching out. I received your message and appreciate you taking the time to connect with me.
 
