@@ -155,10 +155,6 @@ export function ContactForm() {
           <h3 className="text-2xl font-semibold text-foreground mb-6">
             Let's Connect
           </h3>
-          {/* <p className="text-muted-foreground mb-8 text-pretty">
-            If you have a project, a question, or just want to talk, feel free
-            to reach out.
-          </p> */}
         </div>
 
         <div className="space-y-3">
