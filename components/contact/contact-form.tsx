@@ -154,32 +154,39 @@ export function ContactForm() {
         </div>
 
         <div className="space-y-6">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+          <a
+            href={`mailto:${siteSettings.owner.email}`}
+            className="flex items-center space-x-3 p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer"
+          >
+            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
               <Mail className="h-5 w-5 text-primary" />
             </div>
             <div>
               <p className="font-medium text-foreground">Email me:</p>
-              <a
-                href={`mailto:${siteSettings.owner.email}`}
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
+              <p className="text-muted-foreground hover:text-primary transition-colors">
                 {siteSettings.owner.email}
-              </a>
+              </p>
             </div>
-          </div>
+          </a>
 
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+          <a
+            href={`https://www.google.com/maps/search/${encodeURIComponent(
+              siteSettings.owner.location
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-3 p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer"
+          >
+            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
               <MapPin className="h-5 w-5 text-primary" />
             </div>
             <div>
               <p className="font-medium text-foreground">Location</p>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground hover:text-primary transition-colors">
                 {siteSettings.owner.location}
               </p>
             </div>
-          </div>
+          </a>
         </div>
 
         <SocialLinks
