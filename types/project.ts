@@ -5,6 +5,8 @@ export interface Project {
   shortDescription: string;
   fullDescription: string;
   type: 'client-website' | 'personal-project' | 'ui-mockup';
+  startDate: string;
+  endDate: string;
   technologies: string[];
   roles: string[];
   features: string[];

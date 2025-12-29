@@ -237,17 +237,35 @@ function ProjectsWrapper() {
   // Get data from projects.json
   const { projects } = projectsData;
 
-  // Get project completion year and time spent
-  const getProjectYear = (dateString: string) => {
-    return new Date(dateString).getFullYear().toString();
+  // Format date in "YYYY" format for projects
+  const formatProjectDate = (dateString: string): string => {
+    if (dateString === "Present") return "Present";
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+    });
   };
 
-  // Calculate time spent (this is an estimation since we only have one date)
-  // In a real app, you might have startDate and endDate
-  const getTimeSpent = (project: any) => {
-    // For demo purposes, we'll derive this from project complexity (features length)
-    const complexity = project.features?.length || 2;
-    return `${complexity * 2} months`;
+  // Calculate actual duration from startDate and endDate in project data
+  const calculateProjectDuration = (startDate: string, endDate: string): string => {
+    const start = new Date(startDate);
+    const end = endDate === "Present" ? new Date() : new Date(endDate);
+
+    const monthsDiff =
+      (end.getFullYear() - start.getFullYear()) * 12 +
+      (end.getMonth() - start.getMonth());
+    const years = Math.floor(monthsDiff / 12);
+    const months = monthsDiff % 12;
+
+    if (years === 0) {
+      return `${months} ${months === 1 ? "month" : "months"}`;
+    } else if (months === 0) {
+      return `${years} ${years === 1 ? "year" : "years"}`;
+    } else {
+      return `${years} ${years === 1 ? "year" : "years"} ${months} ${
+        months === 1 ? "month" : "months"
+      }`;
+    }
   };
 
   return (
@@ -332,10 +350,11 @@ function ProjectsWrapper() {
                     </span>
                     <div className="text-sm sm:text-base text-muted-foreground mt-1 sm:mt-0 text-left sm:text-right">
                       <div className="font-medium">
-                        {getProjectYear(project.date)}
+                        {formatProjectDate(project.startDate)} -{" "}
+                        {formatProjectDate(project.endDate)}
                       </div>
                       <div className="text-xs sm:text-sm mt-0.5">
-                        {getTimeSpent(project)}
+                        {calculateProjectDuration(project.startDate, project.endDate)}
                       </div>
                     </div>
                   </div>
@@ -454,7 +473,7 @@ function AcademicWrapper() {
     });
   };
 
-  // Calculate duration between two dates for education
+  // Calculate duration between two dates for education (matching experience section format)
   const calculateDuration = (
     startDate: string,
     endDate: string | null
@@ -465,13 +484,20 @@ function AcademicWrapper() {
         ? new Date()
         : new Date(endDate);
 
-    // For education, we typically just care about years
-    const years = end.getFullYear() - start.getFullYear();
+    const monthsDiff =
+      (end.getFullYear() - start.getFullYear()) * 12 +
+      (end.getMonth() - start.getMonth());
+    const years = Math.floor(monthsDiff / 12);
+    const months = monthsDiff % 12;
 
     if (years === 0) {
-      return "Less than 1 year";
-    } else {
+      return `${months} ${months === 1 ? "month" : "months"}`;
+    } else if (months === 0) {
       return `${years} ${years === 1 ? "year" : "years"}`;
+    } else {
+      return `${years} ${years === 1 ? "year" : "years"} ${months} ${
+        months === 1 ? "month" : "months"
+      }`;
     }
   };
 

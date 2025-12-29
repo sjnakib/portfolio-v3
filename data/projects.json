@@ -7,6 +7,8 @@
       "shortDescription": "Fully responsive multi-page marketing website for an IT startup with SEO-friendly components.",
       "fullDescription": "Built a fully responsive multi-page marketing website for an IT startup using Next.js and React. Implemented clean, SEO-friendly UI components from business requirements and deployed a production website for a real-world client. The website features modern design principles, optimal performance, and cross-browser compatibility.",
       "type": "client-website",
+      "startDate": "2023-11",
+      "endDate": "2024-01",
       "technologies": ["Next.js", "React", "HTML5", "CSS3", "TypeScript"],
       "roles": ["Frontend Developer", "UI Designer"],
       "features": [
@@ -78,6 +80,8 @@
       "shortDescription": "Education and travel services website for study abroad and Hajj/Umrah services.",
       "fullDescription": "Developed and continuously maintained a client website for study abroad and Hajj/Umrah services. Published blog content and updated service information to support marketing campaigns. Implemented UI improvements and content updates based on client feedback, ensuring the website remains current and engaging for visitors.",
       "type": "client-website",
+      "startDate": "2023-01",
+      "endDate": "Present",
       "technologies": ["WordPress", "CSS3"],
       "roles": ["Web Developer", "Content Manager"],
       "features": [
@@ -139,6 +143,8 @@
       "shortDescription": "Pixel-perfect personal portfolio with strong attention to UI details and modular components.",
       "fullDescription": "Designed and developed a pixel-perfect personal portfolio with strong attention to UI details. Built modular, reusable components for long-term maintainability and optimized responsiveness and performance across devices. Features modern design principles, smooth animations, and an exceptional user experience.",
       "type": "personal-project",
+      "startDate": "2024-12",
+      "endDate": "Present",
       "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
       "roles": ["Frontend Developer", "UI/UX Designer"],
       "features": [
