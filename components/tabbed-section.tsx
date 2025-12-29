@@ -742,7 +742,7 @@ export function TabbedSection() {
                   data-[state=active]:after:h-0.5 data-[state=active]:after:bg-primary min-w-[80px]"
                 >
                   <Briefcase className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2 flex-shrink-0" />
-                  <span className="truncate">Experience</span>
+                  <span className="truncate">Experiences</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="education"
