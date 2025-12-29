@@ -192,7 +192,7 @@ export function ContactForm() {
           I am actually active there! 😂
         </p>
 
-        <div className="pt-6">
+        <div className="pt-6 border-t border-border">
           <p className="text-muted-foreground">
             <span className="font-medium text-foreground">
               Expected Response Time:
@@ -207,160 +207,168 @@ export function ContactForm() {
         </div>
       </div>
 
+      {/* Vertical Divider */}
+      <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-border transform -translate-x-1/2" />
+
       {/* Contact Form */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Send an Email</CardTitle>
-          <CardDescription>
+      <div className="space-y-8">
+        <div>
+          <h3 className="text-2xl font-semibold text-foreground mb-6">
+            Create Email Thread
+          </h3>
+          <p className="text-muted-foreground mb-8 text-pretty">
             Share your inquiry, and I'll add you to an email thread for direct
             conversation.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          {status.type && (
-            <div
-              className={`mb-6 p-4 rounded-lg flex items-start gap-3 animate-in fade-in slide-in-from-top-2 ${
-                status.type === "success"
-                  ? "bg-success/10 border border-success/20"
-                  : "bg-destructive/10 border border-destructive/20"
-              }`}
-            >
-              {status.type === "success" && (
-                <Check className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
-              )}
-              <AlertDescription
-                className={
+          </p>
+        </div>
+
+        <Card className="border-0 bg-transparent shadow-none">
+          <CardContent className="p-0">
+            {status.type && (
+              <div
+                className={`mb-6 p-4 rounded-lg flex items-start gap-3 animate-in fade-in slide-in-from-top-2 ${
                   status.type === "success"
-                    ? "text-success"
-                    : "text-destructive"
-                }
-              >
-                {status.message}
-              </AlertDescription>
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Email Field */}
-            <div className="space-y-2">
-              <label
-                htmlFor="email"
-                className="text-sm font-medium text-foreground"
-              >
-                Email Address <span className="text-destructive">*</span>
-              </label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="your.email@company.com"
-                value={formData.email}
-                onChange={handleChange}
-                autoComplete="email"
-                className={`${
-                  errors.email
-                    ? "border-destructive focus-visible:ring-destructive"
-                    : ""
+                    ? "bg-success/10 border border-success/20"
+                    : "bg-destructive/10 border border-destructive/20"
                 }`}
-              />
-              {errors.email && (
-                <p className="text-xs text-destructive flex items-center gap-1">
-                  <span>⚠</span> {errors.email}
-                </p>
-              )}
-            </div>
-
-            {/* Subject Field */}
-            <div className="space-y-2">
-              <label
-                htmlFor="subject"
-                className="text-sm font-medium text-foreground"
               >
-                Subject <span className="text-destructive">*</span>
-              </label>
-              <Input
-                id="subject"
-                name="subject"
-                placeholder="e.g., Collaboration Opportunity, Project Inquiry"
-                value={formData.subject}
-                onChange={handleChange}
-                autoComplete="off"
-                className={`${
-                  errors.subject
-                    ? "border-destructive focus-visible:ring-destructive"
-                    : ""
-                }`}
-              />
-              {errors.subject && (
-                <p className="text-xs text-destructive flex items-center gap-1">
-                  <span>⚠</span> {errors.subject}
-                </p>
-              )}
-            </div>
+                {status.type === "success" && (
+                  <Check className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
+                )}
+                <AlertDescription
+                  className={
+                    status.type === "success"
+                      ? "text-success"
+                      : "text-destructive"
+                  }
+                >
+                  {status.message}
+                </AlertDescription>
+              </div>
+            )}
 
-            {/* Message Field */}
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Email Field */}
+              <div className="space-y-2">
                 <label
-                  htmlFor="message"
+                  htmlFor="email"
                   className="text-sm font-medium text-foreground"
                 >
-                  Message <span className="text-destructive">*</span>
+                  Email Address <span className="text-destructive">*</span>
                 </label>
-                <span className="text-xs text-muted-foreground">
-                  {formData.message.length}/{MAX_MESSAGE_LENGTH}
-                </span>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="your.email@company.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  autoComplete="email"
+                  className={`${
+                    errors.email
+                      ? "border-destructive focus-visible:ring-destructive"
+                      : ""
+                  }`}
+                />
+                {errors.email && (
+                  <p className="text-xs text-destructive flex items-center gap-1">
+                    <span>⚠</span> {errors.email}
+                  </p>
+                )}
               </div>
-              <Textarea
-                id="message"
-                name="message"
-                placeholder="Tell me about your project, opportunity, or inquiry. Be as detailed as you'd like..."
-                rows={5}
-                value={formData.message}
-                onChange={handleChange}
-                maxLength={MAX_MESSAGE_LENGTH}
-                className={`resize-none ${
-                  errors.message
-                    ? "border-destructive focus-visible:ring-destructive"
-                    : ""
-                }`}
-              />
-              {errors.message ? (
-                <p className="text-xs text-destructive flex items-center gap-1">
-                  <span>⚠</span> {errors.message}
-                </p>
-              ) : (
-                <p className="text-xs text-muted-foreground">
-                  {formData.message.length === 0
-                    ? "Add some context to help me understand your inquiry better"
-                    : `${(
-                        ((MAX_MESSAGE_LENGTH - formData.message.length) /
-                          MAX_MESSAGE_LENGTH) *
-                        100
-                      ).toFixed(0)}% space remaining`}
-                </p>
-              )}
-            </div>
 
-            {/* Submit Button */}
-            <div className="pt-2 space-y-4">
-              <Button
-                type="submit"
-                className="w-full sm:w-auto h-10 sm:h-11 px-6 sm:px-8"
-                disabled={isSubmitting}
-              >
-                <Send className="mr-2 h-4 w-4" />
-                {isSubmitting ? "Sending..." : "Send Email & Start Thread"}
-              </Button>
+              {/* Subject Field */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="subject"
+                  className="text-sm font-medium text-foreground"
+                >
+                  Subject <span className="text-destructive">*</span>
+                </label>
+                <Input
+                  id="subject"
+                  name="subject"
+                  placeholder="e.g., Collaboration Opportunity, Project Inquiry"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  autoComplete="off"
+                  className={`${
+                    errors.subject
+                      ? "border-destructive focus-visible:ring-destructive"
+                      : ""
+                  }`}
+                />
+                {errors.subject && (
+                  <p className="text-xs text-destructive flex items-center gap-1">
+                    <span>⚠</span> {errors.subject}
+                  </p>
+                )}
+              </div>
 
-              <p className="text-xs text-muted-foreground">
-                ✓ Your email will be used only to respond to your inquiry and
-                maintain our conversation thread.
-              </p>
-            </div>
-          </form>
-        </CardContent>
-      </Card>
+              {/* Message Field */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label
+                    htmlFor="message"
+                    className="text-sm font-medium text-foreground"
+                  >
+                    Message <span className="text-destructive">*</span>
+                  </label>
+                  <span className="text-xs text-muted-foreground">
+                    {formData.message.length}/{MAX_MESSAGE_LENGTH}
+                  </span>
+                </div>
+                <Textarea
+                  id="message"
+                  name="message"
+                  placeholder="Tell me about your project, opportunity, or inquiry. Be as detailed as you'd like..."
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                  maxLength={MAX_MESSAGE_LENGTH}
+                  className={`resize-none ${
+                    errors.message
+                      ? "border-destructive focus-visible:ring-destructive"
+                      : ""
+                  }`}
+                />
+                {errors.message ? (
+                  <p className="text-xs text-destructive flex items-center gap-1">
+                    <span>⚠</span> {errors.message}
+                  </p>
+                ) : (
+                  <p className="text-xs text-muted-foreground">
+                    {formData.message.length === 0
+                      ? "Add some context to help me understand your inquiry better"
+                      : `${(
+                          ((MAX_MESSAGE_LENGTH - formData.message.length) /
+                            MAX_MESSAGE_LENGTH) *
+                          100
+                        ).toFixed(0)}% space remaining`}
+                  </p>
+                )}
+              </div>
+
+              {/* Submit Button */}
+              <div className="pt-2">
+                <Button
+                  type="submit"
+                  className="w-full sm:w-auto"
+                  disabled={isSubmitting}
+                >
+                  <Send className="mr-2 h-4 w-4" />
+                  {isSubmitting ? "Creating..." : "Create Thread"}
+                </Button>
+
+                <p className="text-xs text-muted-foreground mt-4">
+                  ✓ Your email will be used only to respond to your inquiry and
+                  maintain our conversation thread.
+                </p>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
