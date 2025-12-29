@@ -211,14 +211,13 @@ export function ContactForm() {
       <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-border transform -translate-x-1/2" />
 
       {/* Contact Form */}
-      <div className="space-y-8">
+      <div className="space-y-6">
         <div>
-          <h3 className="text-2xl font-semibold text-foreground mb-6">
+          <h3 className="text-2xl font-semibold text-foreground mb-2">
             Create Email Thread
           </h3>
-          <p className="text-muted-foreground mb-8 text-pretty">
-            Start an email thead right here and keep the conversation going in
-            your inbox!
+          <p className="text-muted-foreground text-sm">
+            Start the conversation here.
           </p>
         </div>
 
@@ -251,9 +250,9 @@ export function ContactForm() {
             <div className="border border-border rounded-lg overflow-hidden bg-card shadow-sm hover:shadow-md transition-shadow">
               <form onSubmit={handleSubmit} className="flex flex-col">
                 {/* To: Email Field */}
-                <div className="border-b border-border px-4 py-3">
+                <div className="border-b border-border px-4 py-2">
                   <div className="flex items-center gap-3">
-                    <span className="text-sm font-medium text-muted-foreground min-w-fit">
+                    <span className="text-xs font-medium text-muted-foreground min-w-fit">
                       From:
                     </span>
                     <Input
@@ -264,22 +263,22 @@ export function ContactForm() {
                       value={formData.email}
                       onChange={handleChange}
                       autoComplete="email"
-                      className={`border-0 bg-transparent text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:outline-none ${
+                      className={`border-0 bg-transparent text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:outline-none text-sm ${
                         errors.email ? "text-destructive" : ""
                       }`}
                     />
                   </div>
                   {errors.email && (
-                    <p className="text-xs text-destructive flex items-center gap-1 mt-2 ml-14">
+                    <p className="text-xs text-destructive flex items-center gap-1 mt-1 ml-14">
                       <span>⚠</span> {errors.email}
                     </p>
                   )}
                 </div>
 
                 {/* Subject Field */}
-                <div className="border-b border-border px-4 py-3">
+                <div className="border-b border-border px-4 py-2">
                   <div className="flex items-center gap-3">
-                    <span className="text-sm font-medium text-muted-foreground min-w-fit">
+                    <span className="text-xs font-medium text-muted-foreground min-w-fit">
                       Subject:
                     </span>
                     <Input
@@ -289,20 +288,19 @@ export function ContactForm() {
                       value={formData.subject}
                       onChange={handleChange}
                       autoComplete="off"
-                      className={`border-0 bg-transparent text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:outline-none font-medium ${
+                      className={`border-0 bg-transparent text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:outline-none font-medium text-sm ${
                         errors.subject ? "text-destructive" : ""
                       }`}
                     />
                   </div>
                   {errors.subject && (
-                    <p className="text-xs text-destructive flex items-center gap-1 mt-2 ml-24">
+                    <p className="text-xs text-destructive flex items-center gap-1 mt-1 ml-20">
                       <span>⚠</span> {errors.subject}
                     </p>
                   )}
                 </div>
-
                 {/* Message Compose Area */}
-                <div className="px-4 py-4 flex-1 relative">
+                <div className="px-4 py-3 flex-1 relative">
                   <Textarea
                     id="message"
                     name="message"
@@ -310,25 +308,25 @@ export function ContactForm() {
                     value={formData.message}
                     onChange={handleChange}
                     maxLength={MAX_MESSAGE_LENGTH}
-                    className={`border-0 bg-transparent text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:outline-none resize-none min-h-[200px] ${
+                    className={`border-0 bg-transparent text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:outline-none resize-none min-h-[120px] text-sm ${
                       errors.message ? "text-destructive" : ""
                     }`}
                   />
                   {errors.message ? (
-                    <p className="text-xs text-destructive flex items-center gap-1 mt-2">
+                    <p className="text-xs text-destructive flex items-center gap-1 mt-1">
                       <span>⚠</span> {errors.message}
                     </p>
                   ) : null}
                 </div>
 
                 {/* Footer with char count and buttons */}
-                <div className="border-t border-border px-4 py-3 bg-muted/30 flex items-center justify-between gap-3">
+                <div className="border-t border-border px-4 py-2 bg-muted/30 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2">
                     <span className="text-xs text-muted-foreground">
                       {formData.message.length}/{MAX_MESSAGE_LENGTH}
                     </span>
                     {formData.message.length > 0 && (
-                      <div className="h-1 w-20 bg-border rounded-full overflow-hidden">
+                      <div className="h-1 w-16 bg-border rounded-full overflow-hidden">
                         <div
                           className="h-full bg-primary transition-all"
                           style={{
@@ -346,9 +344,9 @@ export function ContactForm() {
                     type="submit"
                     disabled={isSubmitting}
                     size="sm"
-                    className="gap-2"
+                    className="gap-2 text-xs"
                   >
-                    <Send className="h-4 w-4" />
+                    <Send className="h-3 w-3" />
                     {isSubmitting ? "Creating..." : "Create Thread"}
                   </Button>
                 </div>
